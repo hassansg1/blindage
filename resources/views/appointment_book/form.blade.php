@@ -6,7 +6,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">General Info</h4>
+                <h4 class="card-title mb-4">General Info TEST</h4>
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="mb-3">
