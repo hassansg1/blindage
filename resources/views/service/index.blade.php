@@ -1,0 +1,11 @@
+@extends('components.datatable')
+@section('table_header')
+    <th>ID</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Duration</th>
+    <th>Price</th>
+@endsection
+@section('table_rows')
+    @include($route.'.form_rows')
+@endsection
