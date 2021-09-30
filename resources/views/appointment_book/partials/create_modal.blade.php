@@ -28,7 +28,7 @@
                         <label
                                 class="form-label">Time Start </label>
                         <div class="input-group" id="timepicker-input-group1">
-                            <input id="timepicker" type="text" name="time_start" class="form-control"
+                            <input id="timepicker" type="text" name="time_start[]" class="form-control"
                                    value="{{ $start ?? '' }}"
                                    data-provide="timepicker">
 

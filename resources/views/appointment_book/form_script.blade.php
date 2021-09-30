@@ -6,6 +6,10 @@
 
     $('#select_client_drop_down').on('change', function () {
         resubmitForm();
+    });    
+
+    $('.schedule_details_modal_submit').on('change', function () {
+        resubmitForm();
     });
 
     function resubmitForm() {
