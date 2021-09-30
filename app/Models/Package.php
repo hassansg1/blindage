@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Http\Traits\ModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Package extends Model
 {
@@ -26,7 +27,6 @@ class Package extends Model
     {
         return $this->hasMany(PackageItems::class, 'package_id');
     }
-
     /**
      * @param $item
      * @param $request
@@ -40,6 +40,29 @@ class Package extends Model
         if (isset($request->active)) $item->active = $request->active;
 
         $item->save();
+       $delete = PackageItems::where('package_id',$item->id)->delete();
+       for ($i =0; $i < count($request->id) ; $i ++){
+           if($request['type'][$i] == 'Product' || $request['type'][$i] == 'App\Models\Product'){
+               $packageItem = new PackageItems();
+               $packageItem->package_id	 = $item->id;
+               $packageItem->packageitemable_id = $request['id'][$i];
+               $packageItem->quantity = $request['qty'][$i];
+               $product = Product::find($request['id'][$i]);
+               $product->packageItem()->save($packageItem);
+           }
+           if($request['type'][$i] == 'Service' || $request['type'][$i] == 'App\Models\Service'){
+               $packageItem = new PackageItems();
+               $packageItem->package_id	 = $item->id;
+               $packageItem->packageitemable_id = $request['id'][$i];
+               $packageItem->quantity = $request['qty'][$i];
+               $service = Service::find($request['id'][$i]);
+               $service->packageItem()->save($packageItem);
+           }
+       }
         return $item;
+    }
+    public function categoryData()
+    {
+        return $this->belongsTo(Category::class, 'category');
     }
 }
