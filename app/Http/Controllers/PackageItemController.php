@@ -26,18 +26,10 @@ class PackageItemController extends Controller
      */
     public function create(Request $request)
     {
-        if($request->item_class == 'Product'){
-           $data =  Product::where('id',$request->id)->select(['id','name','retail_price as price'])->first();
-          $dataView =  View::make('package.partials.pckage_item_row')->with(['data'=>$data,'type'=>$request->item_class])->render();
+          $class = '\\App\\Models\\'.$request->item_class;
+          $data =  $class::where('id',$request->id)->first();
+          $dataView =  View::make('package.partials.pckage_item_row')->with(['data'=>$data,'type'=>$class])->render();
            return response()->json(['status'=>'1','type'=>'p','data'=>$dataView]);
-        }
-        if($request->item_class == 'Service'){
-            $data  = Service::find($request->id);
-            $dataView =  View::make('package.partials.pckage_item_row')->with(['data'=>$data,'type'=>$request->item_class])->render();
-            return response()->json(['status'=>'1','type'=>'s','data'=>$dataView]);
-
-        }
-        return false;
     }
 
     /**

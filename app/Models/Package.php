@@ -42,22 +42,12 @@ class Package extends Model
         $item->save();
        $delete = PackageItems::where('package_id',$item->id)->delete();
        for ($i =0; $i < count($request->id) ; $i ++){
-           if($request['type'][$i] == 'Product' || $request['type'][$i] == 'App\Models\Product'){
                $packageItem = new PackageItems();
                $packageItem->package_id	 = $item->id;
                $packageItem->packageitemable_id = $request['id'][$i];
                $packageItem->quantity = $request['qty'][$i];
-               $product = Product::find($request['id'][$i]);
+               $product = $request['type'][$i]::find($request['id'][$i]);
                $product->packageItem()->save($packageItem);
-           }
-           if($request['type'][$i] == 'Service' || $request['type'][$i] == 'App\Models\Service'){
-               $packageItem = new PackageItems();
-               $packageItem->package_id	 = $item->id;
-               $packageItem->packageitemable_id = $request['id'][$i];
-               $packageItem->quantity = $request['qty'][$i];
-               $service = Service::find($request['id'][$i]);
-               $service->packageItem()->save($packageItem);
-           }
        }
         return $item;
     }
