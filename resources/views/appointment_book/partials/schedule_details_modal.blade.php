@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="mb-3">
                         <label for="when" class="form-label required">Which Client?</label>
-                        <select id="select_client_drop_down" name="client_id" class="form-control select2">
+                        <select id="select_client_drop_down" name="client_id" class="form-control select2 schedule_details_modal_submit">
                             <option value="">Select</option>
                             @foreach(\App\Models\Client::all() as $loopVariable)
                                 <option value="{{ $loopVariable->id ?? '' }}" {{ isset($appt->client_id) && $appt->client_id==$loopVariable->id ?'selected':''  }}>{{ $loopVariable->name ?? '' }}</option>
@@ -39,6 +39,18 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="mb-3">
+                <label for="when" class="form-label required">Which Branch?</label>
+                <select class="form-control select2 schedule_details_modal_submit" name="branch_id">
+                    <option value="">Select</option>
+                    @foreach(\App\Models\Branch::all() as $branch)
+                        <option value="{{ $branch->id ?? '' }}" {{ isset($appt->branch_id) && $branch->id==$appt->branch_id?'selected':'' }}>{{ $branch->name ?? '' }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
         <h3 class="card-title mb-4">Services</h3>
         <div class="row">
             <div class="col-lg-12">
@@ -46,13 +58,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title mb-4">{{ $appt_loopVariable->service->name ?? '' }}</h5>
-
+                        <input type="hidden" name="services[]" value="{{ $appt_loopVariable->id }}">
                          <div class="row mb-3">
                             <div class="col-lg-6">
                                 <label
                                         class="form-label">Time Start </label>
                                 <div class="input-group" id="timepicker-input-group1">
-                                    <input id="timepicker" type="text" name="time_start[{{ $appt->id }}]" class="form-control"
+                                    <input id="timepicker" type="text" name="time_start[{{ $appt_loopVariable->id }}]" class="form-control schedule_details_modal_submit"
                                            value="{{ $appt_loopVariable->start_time ?? '' }}"
                                            data-provide="timepicker">
 
@@ -65,31 +77,21 @@
                                 <label
                                         class="form-label">Time Duration </label>
                                 <div class="input-group" id="timepicker-input-group1">
-                                    <input type="text" name="time_start[{{ $appt->id }}]" class="form-control" value="{{ $appt_loopVariable->duration ?? '' }}">
+                                    <input type="text" name="minutes[{{ $appt_loopVariable->id }}]" class="form-control schedule_details_modal_submit" value="{{ $appt_loopVariable->duration ?? '' }}">
 
                                     <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
                                 </div>
                             </div>
                         </div>
 
+
                         <div class="row">
                             <div class="mb-3">
-                                <label for="when" class="form-label required">Which Branch?</label>
-                                <select class="form-control select2" name="branch_id[{{ $appt->id }}]">
+                                <label for="when" class="form-label required">Employee Type</label>
+                                <select id="select_client_drop_down" name="employee_type_id[{{ $appt_loopVariable->id }}]" class="form-control select2 schedule_details_modal_submit">
                                     <option value="">Select</option>
-                                    @foreach(\App\Models\Branch::all() as $branch)
-                                        <option value="{{ $branch->id ?? '' }}" {{ isset($appt->branch_id) && $branch->id==$appt->branch_id?'selected':'' }}>{{ $branch->name ?? '' }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3">
-                                <label for="when" class="form-label required">Which Client?</label>
-                                <select id="select_client_drop_down" name="client_id[{{ $appt->id }}]" class="form-control select2">
-                                    <option value="">Select</option>
-                                    @foreach(\App\Models\Client::all() as $loopVariable)
-                                        <option value="{{ $loopVariable->id ?? '' }}" {{ isset($appt->client_id) && $loopVariable->id==$appt->client_id?'selected':'' }}>{{ $loopVariable->name ?? '' }}</option>
+                                    @foreach(\App\Models\Employee::all() as $loopVariable)
+                                        <option value="{{ $loopVariable->id ?? '' }}">{{ $loopVariable->first_name ?? '' }} {{ $loopVariable->last_name ?? '' }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -98,13 +100,13 @@
                         <div class="row">
                             <div class="mb-3">
                                 <label for="when" class="form-label required">Quantity</label>
-                                <input class="form-control" name="quantity[{{ $appt->id }}]" value="{{ $appt_loopVariable->quantity ?? '' }}" type="text" placeholder="Quantity">
+                                <input class="form-control schedule_details_modal_submit" name="quantity[{{ $appt_loopVariable->id }}]" value="{{ $appt_loopVariable->quantity ?? '' }}" type="text" placeholder="Quantity">
                             </div>
                         </div>
                          <div class="row">
                             <div class="mb-3">
                                 <label for="when" class="form-label required">Price</label>
-                                <input class="form-control" name="price[{{ $appt->id }}]" value="{{ $appt_loopVariable->price }}" type="text" placeholder="Price">
+                                <input class="form-control schedule_details_modal_submit" name="price[{{ $appt_loopVariable->id }}]" value="{{ $appt_loopVariable->price }}" type="text" placeholder="Price">
                             </div>
                         </div>
 
@@ -122,7 +124,7 @@
                             <div class="mb-3">
                                 <label for="when" class="form-label required">Notes</label>
                                 <div class="input-group" id="datepicker1">
-                                    <input type="text" class="form-control" name="notes" placeholder="Notes"
+                                    <input type="text" class="form-control schedule_details_modal_submit" name="notes" placeholder="Notes"
                                            value="{{ $appt->notes ?? '' }}">
                                 </div>
                             </div>

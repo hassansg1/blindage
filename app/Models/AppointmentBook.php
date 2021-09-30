@@ -52,12 +52,21 @@ class AppointmentBook extends Model
         } else {
             $item->appointments()->delete();
             if (isset($request->services)) {
-                $timeStart = date('H:i:s', strtotime($request->time_start));
+                    // $timeStart = date('H:i:s', strtotime($request->time_start));
                 for ($count = 0; $count < count($request->services); $count++) {
                     $currentService = $request->services[$count];
                     $service = Service::find($currentService);
+                    if(isset($request->time_start[$currentService]))
+                    {
+                        $timeStart = $request->time_start[$currentService];
+                    }
+                    else
+                    {
+                        $timeStart = $request->time_start[0];
+                    }
                     $item->appointments()->create([
                         'service_id' => $currentService,
+                        'employee_type_id'=> isset($request->employee_type_id[$currentService]) ? $request->employee_type_id[$currentService] : null,
                         'start_time' => $timeStart,
                         'duration' => isset($request->minutes[$currentService]) ? $request->minutes[$currentService] : $service->minutes,
                         'quantity' => isset($request->quantity[$currentService]) ? $request->quantity[$currentService] : 0,
