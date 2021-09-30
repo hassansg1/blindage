@@ -8,7 +8,6 @@
 
         if($('#'+item_class+id).length == 0)
         {
-            alert("as");
             $.ajax({
                 type: "GET",
                 url: '{{ route('package_item.create') }}',
@@ -18,8 +17,9 @@
                     ajax: true,
                 },
                 success: function (result) {
-                    if (result.status) {
 
+                    if (result.status == '1') {
+                        $('#packageDetails').append(result.data);
                     } else {
                         doSomethingWentWrongToast();
                     }
@@ -27,4 +27,8 @@
             });
         }
     }
+    // function storePackageData(event) {
+    // var form = new FormData;
+    //
+    // }
 </script>

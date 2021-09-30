@@ -29,7 +29,6 @@ class PackageController extends BaseController
     public function index()
     {
         $data = $this->fetchData($this->model);
-
         return view($this->route . "/index")
             ->with(['items' => $data['items'], 'data' => $data, 'route' => $this->route, 'heading' => $this->heading]);
     }
@@ -97,15 +96,14 @@ class PackageController extends BaseController
                 $item = $this->model->find('id', $request->item);
         }
         $item = $this->model->find($item);
-
-
+        $editView = \Illuminate\Support\Facades\View::make($this->route .'.partials.package_item_row_edit')->with('data',$item)->render();
         if ($request->ajax) {
             return response()->json([
                 'status' => true,
-                'html' => view($this->route . '.edit_modal')->with(['route' => $this->route, 'item' => $item, 'clone' => $request->clone ?? null])->render()
+                'html' => view($this->route . '.edit_modal')->with(['route' => $this->route, 'editView' => $editView, 'item' => $item, 'clone' => $request->clone ?? null])->render()
             ]);
         } else
-            return view($this->route . '.edit')->with(['route' => $this->route, 'item' => $item, 'heading' => $this->heading, 'clone' => $request->clone ?? null]);
+            return view($this->route . '.edit')->with(['route' => $this->route, 'item' => $item, 'heading' => $this->heading,'editView' => $editView, 'clone' => $request->clone ?? null]);
     }
 
     /**
@@ -114,6 +112,7 @@ class PackageController extends BaseController
      */
     public function update(Request $request, $item)
     {
+
         $request->validate($this->model->rules);
 
         $item = $this->model->find($item);

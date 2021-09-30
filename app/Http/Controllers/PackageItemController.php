@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class PackageItemController extends Controller
 {
@@ -21,9 +24,20 @@ class PackageItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        if($request->item_class == 'Product'){
+           $data =  Product::where('id',$request->id)->select(['id','name','retail_price as price'])->first();
+          $dataView =  View::make('package.partials.pckage_item_row')->with(['data'=>$data,'type'=>$request->item_class])->render();
+           return response()->json(['status'=>'1','type'=>'p','data'=>$dataView]);
+        }
+        if($request->item_class == 'Service'){
+            $data  = Service::find($request->id);
+            $dataView =  View::make('package.partials.pckage_item_row')->with(['data'=>$data,'type'=>$request->item_class])->render();
+            return response()->json(['status'=>'1','type'=>'s','data'=>$dataView]);
 
+        }
+        return false;
     }
 
     /**
