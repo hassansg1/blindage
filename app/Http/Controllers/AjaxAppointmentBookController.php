@@ -60,4 +60,23 @@ class AjaxAppointmentBookController extends Controller
             'html' => view($this->view_path . '.partials.create_modal')->with(compact('date', 'start', 'end'))->render()
         ]);
     }
+
+    public function getItemsDataView(Request $request)
+    {
+        $modal_name = explode('??', $request->value);
+        dd($modal_name[0]);
+        $getData = $modal_name[0]::find($modal_name[1]);
+
+        $appt = AppointmentBook::find($request->id);
+
+        return response()->json([
+            'status' => true,
+            'html' => view($this->view_path . '.partials.schedule_details_modal')->with(compact('appt'))->render()
+        ]);
+    }
+
+
+
+
+
 }

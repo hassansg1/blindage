@@ -12,6 +12,12 @@
         resubmitForm();
     });
 
+
+    $('.services_items_dropdown').on('change', function () {
+        updateServicesItems(this.value);
+        // resubmitForm();
+    });
+
     function resubmitForm() {
         $.ajax({
             type: "POST",
@@ -40,4 +46,26 @@
             }
         });
     }
+
+    function updateServicesItems(value) {
+        // console.log(value);
+
+        $.ajax({
+            type: "GET",
+            url: '{{ route('appointment_book.getItemsDataView') }}',
+            data: {
+                value: value
+            },
+            success: function (result) {
+                if (result.status) {
+                   
+                } else {
+                }
+            }
+        });
+        
+    }
+
+
+
 </script>

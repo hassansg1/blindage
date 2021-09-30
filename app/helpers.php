@@ -100,6 +100,13 @@ if (!function_exists('getServices')) {
         return \App\Models\Service::all();
     }
 }
+if (!function_exists('getPackages')) {
+    function getPackages()
+    {
+        return \App\Models\Package::all();
+    }
+}
+
 if (!function_exists('getReferrals')) {
     function getReferrals()
     {
