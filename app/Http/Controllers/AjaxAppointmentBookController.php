@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\AppointmentBook;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Service;
+use App\Models\Product;
+use App\Models\Package;
 
 class AjaxAppointmentBookController extends Controller
 {
@@ -60,4 +63,24 @@ class AjaxAppointmentBookController extends Controller
             'html' => view($this->view_path . '.partials.create_modal')->with(compact('date', 'start', 'end'))->render()
         ]);
     }
+
+    public function getItemsDataView(Request $request)
+    {
+        // dd(trim($request->modal_name,'\'"'));
+        // $modal_name = explode('??', $request->value);
+        $getData = $request->modal_name::find($request->value);
+        dd($getData);
+
+        $appt = AppointmentBook::find($request->id);
+
+        return response()->json([
+            'status' => true,
+            'html' => view($this->view_path . '.partials.schedule_details_modal')->with(compact('appt'))->render()
+        ]);
+    }
+
+
+
+
+
 }

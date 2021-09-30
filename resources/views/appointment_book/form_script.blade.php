@@ -12,6 +12,16 @@
         resubmitForm();
     });
 
+
+    $('.services_items_dropdown').on('change', function () {
+        // let value = $(".services_items_dropdown").val();
+        let modal_name = $(".services_items_dropdown :selected").parent().attr('label');
+        console.log(modal_name);
+
+        updateServicesItems(this.value,modal_name);
+        // resubmitForm();
+    });
+
     function resubmitForm() {
         $.ajax({
             type: "POST",
@@ -40,4 +50,27 @@
             }
         });
     }
+
+    function updateServicesItems(value,modal_name) {
+        // console.log(value);
+
+        $.ajax({
+            type: "GET",
+            url: '{{ route('appointment_book.getItemsDataView') }}',
+            data: {
+                value: value,
+                modal_name: modal_name
+            },
+            success: function (result) {
+                if (result.status) {
+                   
+                } else {
+                }
+            }
+        });
+        
+    }
+
+
+
 </script>

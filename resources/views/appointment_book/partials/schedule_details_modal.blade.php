@@ -28,10 +28,10 @@
                     <div class="mb-3">
                         <label for="when" class="form-label required">When?</label>
                         <div class="input-group" id="datepicker1">
-                            <input type="text" class="form-control" name="activity_date" placeholder="y-m-d"
+                            <input type="text" class="form-control schedule_details_modal_submit" name="activity_date" placeholder="y-m-d"
                                    value="{{ $appt->activity_date ?? '' }}"
                                    data-date-format="yyyy-m-d" data-date-container='#datepicker1'
-                                   data-provide="datepicker">
+                                   data-provide="datepicker" >
 
                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                         </div>
@@ -52,6 +52,30 @@
         </div>
 
         <h3 class="card-title mb-4">Services</h3>
+        <div class="row">
+            <div class="mb-3">
+                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown" id="services_items_dropdown">
+                    <option value="">Select</option>
+                    <optgroup label="Service">
+                        @foreach(\App\Models\Service::all() as $service_loopVariable)
+                        <option value="{{ $service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
+                        @endforeach
+                    </optgroup>
+                    <optgroup label="Product">
+                        @foreach(\App\Models\Product::all() as $product_loopVariable)
+                        <option value="{{ $product_loopVariable->id ?? '' }}" >{{ $product_loopVariable->name ?? '' }}</option>
+                        @endforeach
+                    </optgroup>
+                    <optgroup label="Package">
+                        @foreach(\App\Models\Package::all() as $package_loopVariable)
+                        <option value="{{ $package_loopVariable->id ?? '' }}" >{{ $package_loopVariable->name ?? '' }}</option>
+                        @endforeach
+                    </optgroup>
+                    
+                </select>
+            </div>
+           
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 @forelse($appt->appointments as $appt_loopVariable)
