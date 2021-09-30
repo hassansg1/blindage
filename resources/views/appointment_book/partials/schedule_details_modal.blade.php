@@ -54,21 +54,21 @@
         <h3 class="card-title mb-4">Services</h3>
         <div class="row">
             <div class="mb-3">
-                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown">
+                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown" id="services_items_dropdown">
                     <option value="">Select</option>
-                    <optgroup label="Services">
+                    <optgroup label="Service">
                         @foreach(\App\Models\Service::all() as $service_loopVariable)
-                        <option value="{{ 'Service??'.$service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
+                        <option value="{{ $service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
                         @endforeach
                     </optgroup>
-                    <optgroup label="Products">
+                    <optgroup label="Product">
                         @foreach(\App\Models\Product::all() as $product_loopVariable)
-                        <option value="{{ 'Product??'.$product_loopVariable->id ?? '' }}" >{{ $product_loopVariable->name ?? '' }}</option>
+                        <option value="{{ $product_loopVariable->id ?? '' }}" >{{ $product_loopVariable->name ?? '' }}</option>
                         @endforeach
                     </optgroup>
-                    <optgroup label="Packages">
+                    <optgroup label="Package">
                         @foreach(\App\Models\Package::all() as $package_loopVariable)
-                        <option value="{{ 'Package??'.$package_loopVariable->id ?? '' }}" >{{ $package_loopVariable->name ?? '' }}</option>
+                        <option value="{{ $package_loopVariable->id ?? '' }}" >{{ $package_loopVariable->name ?? '' }}</option>
                         @endforeach
                     </optgroup>
                     
