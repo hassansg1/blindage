@@ -1,6 +1,6 @@
 <div class="deleteRow">
 	<h3>Package</h3>
-	<div class="card">
+	{{-- <div class="card">
 	    <div class="card-body">
 
 	        <h5 class="card-title mb-4">
@@ -37,5 +37,5 @@
 
 	    </div>
 	    <!-- end card body -->
-	</div>
+	</div> --}}
 </div>

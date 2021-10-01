@@ -9,12 +9,18 @@
     });    
 
     $('.schedule_details_modal_submit').on('change', function () {
+        console.log('run');
         resubmitForm();
     });
 
 
     $('.services_items_dropdown').on('change', function () {
-        updateServicesItems(this.value);
+       let start =  $('#start_for_service').val();
+       let end =  $('#end_for_service').val();
+       let duration =  $('#duration_for_service').val();
+
+       updateServicesItems(this.value,start,end,duration);
+
     });
 
     function deleteRow() 
@@ -38,12 +44,14 @@
         });
     }
 
-    function openScheduleDetailPopup(id) {
+    function openScheduleDetailPopup(id,start=null,end=null) {
         $.ajax({
             type: "GET",
             url: '{{ route('appointment_book.getAppointmentDetailModal') }}',
             data: {
-                id: id
+                id: id,
+                start_time:start,
+                end_time:end
             },
             success: function (result) {
                 if (result.status) {
@@ -55,12 +63,15 @@
     }
 
 
-    function updateServicesItems(value) {
+    function updateServicesItems(value,start=null,end=null,duration=null) {
         $.ajax({
             type: "GET",
             url: '{{ route('appointment_book.getItemsDataView') }}',
             data: {
-                value: value
+                value: value,
+                start: start,
+                end: end,
+                duration: duration
             },
             success: function (result) {
                     console.log(result);

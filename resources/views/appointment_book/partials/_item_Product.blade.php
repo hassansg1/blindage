@@ -1,6 +1,6 @@
 <div class="deleteRow">
 	<h3>Product</h3>
-	<div class="card">
+	{{-- <div class="card">
 	    <div class="card-body">
 	        <h5 class="card-title mb-4">
 	        	<a href="#" onclick="deleteRow()">{{ $getData->name ?? '' }} <i class="fas fa-window-close"></i>
@@ -35,5 +35,5 @@
 
 	    </div>
 	    <!-- end card body -->
-	</div>
+	</div> --}}
 </div>	

@@ -13,7 +13,7 @@
 	                        class="form-label">Time Start </label>
 	                <div class="input-group" id="timepicker-input-group1">
 	                    <input id="timepicker" type="text" name="time_start[{{ $getData->id }}]" class="form-control schedule_details_modal_submit"
-	                           value="{{ $getData->start_time ?? '' }}"
+	                           value="{{ $start ?? '' }}"
 	                           data-provide="timepicker">
 
 	                    <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
@@ -25,7 +25,7 @@
 	                <label
 	                        class="form-label">Time Duration </label>
 	                <div class="input-group" id="timepicker-input-group1">
-	                    <input type="text" name="minutes[{{ $getData->id }}]" class="form-control schedule_details_modal_submit" value="{{ $getData->duration ?? '' }}">
+	                    <input type="text" name="minutes[{{ $getData->id }}]" class="form-control schedule_details_modal_submit" value="{{ $duration ?? '' }}">
 
 	                    <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
 	                </div>
@@ -48,7 +48,7 @@
 	        <div class="row">
 	            <div class="mb-3">
 	                <label for="when" class="form-label required">Quantity</label>
-	                <input class="form-control schedule_details_modal_submit" name="quantity[{{ $getData->id }}]" value="{{ $getData->quantity ?? '' }}" type="text" placeholder="Quantity">
+	                <input class="form-control schedule_details_modal_submit" name="quantity[{{ $getData->id }}]" value="1" type="text" placeholder="Quantity">
 	            </div>
 	        </div>
 	         <div class="row">
