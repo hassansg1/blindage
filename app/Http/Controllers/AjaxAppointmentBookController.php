@@ -66,17 +66,16 @@ class AjaxAppointmentBookController extends Controller
 
     public function getItemsDataView(Request $request)
     {
-        // dd(trim($request->modal_name,'\'"'));
-        // $modal_name = explode('??', $request->value);
-        $getData = $request->modal_name::find($request->value);
-        dd($getData);
-
-        $appt = AppointmentBook::find($request->id);
+        $modal_name = explode('??', $request->value);
+        $classObj = '\\App\\Models\\'.$modal_name[0];
+        $getData = $classObj::find($modal_name[1]);
+        // dd($getData);
 
         return response()->json([
             'status' => true,
-            'html' => view($this->view_path . '.partials.schedule_details_modal')->with(compact('appt'))->render()
+            'html' => view($this->view_path . '.partials._item_'.$modal_name[0])->with(compact('getData'))->render()
         ]);
+
     }
 
 

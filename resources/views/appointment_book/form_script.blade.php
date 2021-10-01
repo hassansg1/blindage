@@ -14,13 +14,16 @@
 
 
     $('.services_items_dropdown').on('change', function () {
-        // let value = $(".services_items_dropdown").val();
-        let modal_name = $(".services_items_dropdown :selected").parent().attr('label');
-        console.log(modal_name);
-
-        updateServicesItems(this.value,modal_name);
-        // resubmitForm();
+        updateServicesItems(this.value);
     });
+
+    function deleteRow() 
+    {
+        $(event.target).closest('.deleteRow').remove();
+        //console.log('run');
+    }
+
+
 
     function resubmitForm() {
         $.ajax({
@@ -51,26 +54,23 @@
         });
     }
 
-    function updateServicesItems(value,modal_name) {
-        // console.log(value);
 
+    function updateServicesItems(value) {
         $.ajax({
             type: "GET",
             url: '{{ route('appointment_book.getItemsDataView') }}',
             data: {
-                value: value,
-                modal_name: modal_name
+                value: value
             },
             success: function (result) {
+                    console.log(result);
                 if (result.status) {
-                   
+                    $("#services_items_append_div").append(result.html);
                 } else {
                 }
             }
         });
         
     }
-
-
 
 </script>

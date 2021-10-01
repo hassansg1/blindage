@@ -58,17 +58,17 @@
                     <option value="">Select</option>
                     <optgroup label="Service">
                         @foreach(\App\Models\Service::all() as $service_loopVariable)
-                        <option value="{{ $service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
+                        <option value="{{ 'Service??'.$service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
                         @endforeach
                     </optgroup>
                     <optgroup label="Product">
                         @foreach(\App\Models\Product::all() as $product_loopVariable)
-                        <option value="{{ $product_loopVariable->id ?? '' }}" >{{ $product_loopVariable->name ?? '' }}</option>
+                        <option value="{{ 'Product??'.$product_loopVariable->id ?? '' }}" >{{ $product_loopVariable->name ?? '' }}</option>
                         @endforeach
                     </optgroup>
                     <optgroup label="Package">
                         @foreach(\App\Models\Package::all() as $package_loopVariable)
-                        <option value="{{ $package_loopVariable->id ?? '' }}" >{{ $package_loopVariable->name ?? '' }}</option>
+                        <option value="{{ 'Package??'.$package_loopVariable->id ?? '' }}" >{{ $package_loopVariable->name ?? '' }}</option>
                         @endforeach
                     </optgroup>
                     
@@ -78,7 +78,9 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
+                <div id="services_items_append_div"></div>
                 @forelse($appt->appointments as $appt_loopVariable)
+
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title mb-4">{{ $appt_loopVariable->service->name ?? '' }}</h5>
