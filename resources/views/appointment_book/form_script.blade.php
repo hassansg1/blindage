@@ -9,18 +9,27 @@
     });    
 
     $('.schedule_details_modal_submit').on('change', function () {
+        console.log('run');
         resubmitForm();
     });
 
 
     $('.services_items_dropdown').on('change', function () {
-        // let value = $(".services_items_dropdown").val();
-        let modal_name = $(".services_items_dropdown :selected").parent().attr('label');
-        console.log(modal_name);
+       let start =  $('#start_for_service').val();
+       let end =  $('#end_for_service').val();
+       let duration =  $('#duration_for_service').val();
 
-        updateServicesItems(this.value,modal_name);
-        // resubmitForm();
+       updateServicesItems(this.value,start,end,duration);
+
     });
+
+    function deleteRow() 
+    {
+        $(event.target).closest('.deleteRow').remove();
+        //console.log('run');
+    }
+
+
 
     function resubmitForm() {
         $.ajax({
@@ -35,12 +44,14 @@
         });
     }
 
-    function openScheduleDetailPopup(id) {
+    function openScheduleDetailPopup(id,start=null,end=null) {
         $.ajax({
             type: "GET",
             url: '{{ route('appointment_book.getAppointmentDetailModal') }}',
             data: {
-                id: id
+                id: id,
+                start_time:start,
+                end_time:end
             },
             success: function (result) {
                 if (result.status) {
@@ -51,26 +62,26 @@
         });
     }
 
-    function updateServicesItems(value,modal_name) {
-        // console.log(value);
 
+    function updateServicesItems(value,start=null,end=null,duration=null) {
         $.ajax({
             type: "GET",
             url: '{{ route('appointment_book.getItemsDataView') }}',
             data: {
                 value: value,
-                modal_name: modal_name
+                start: start,
+                end: end,
+                duration: duration
             },
             success: function (result) {
+                    console.log(result);
                 if (result.status) {
-                   
+                    $("#services_items_append_div").append(result.html);
                 } else {
                 }
             }
         });
         
     }
-
-
 
 </script>

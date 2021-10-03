@@ -73,7 +73,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <div class="btn btn-primary primary-alt" onclick="openScheduleDetailPopup('{{ $appt->id }}')">Appt. Details</div>
+        <div class="btn btn-primary primary-alt" onclick="openScheduleDetailPopup('{{ $appt->id }}','{{ $start ?? '' }}','{{ $end ?? '' }}')">Appt. Details</div>
         <div class="btn btn-primary" data-bs-dismiss="modal">Schedule</div>
     </div>
 </form>
