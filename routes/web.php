@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
         'package_item' => \App\Http\Controllers\PackageItemController::class,
         'loyalty_points' => \App\Http\Controllers\LoyaltyPointsController::class,
         'appointment_book' => \App\Http\Controllers\AppointmentBookController::class,
+        'cash_drawer' => \App\Http\Controllers\CashDrawerController::class,
     ]);
 
 

@@ -78,6 +78,14 @@
                     <span>Packages</span>
                 </button>
             </div>
+            <div class="dropdown d-none d-lg-inline-block ml-1">
+                <button onclick="location.href='{{ route('package.index') }}'" type="button"
+                        class="btn {{ str_contains(url()->current(), '/package') ? 'selected_btn' : '' }} header-item noti-icon top_nav_btns waves-effect">
+                    <i class="fas fa-cash-register menu_item_icon"></i>
+                    <br>
+                    <span>CashBook</span>
+                </button>
+            </div>
 
 
             {{--            <!-- App Search-->--}}
