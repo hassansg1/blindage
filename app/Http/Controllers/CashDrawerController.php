@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CashDrawer;
+use App\Models\CashDrawersItem;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
@@ -54,8 +55,10 @@ class CashDrawerController extends BaseController
      */
     public function create()
     {
+
+        $editView = \Illuminate\Support\Facades\View::make($this->route .'.partials.cash_item_row')->with('data',null)->render();
         return view($this->route . "/create")
-            ->with(['route' => $this->route, 'heading' => $this->heading]);
+            ->with(['route' => $this->route, 'heading' => $this->heading, 'editView' => $editView]);
     }
 
     /**
@@ -96,7 +99,8 @@ class CashDrawerController extends BaseController
                 $item = $this->model->find('id', $request->item);
         }
         $item = $this->model->find($item);
-        $editView = \Illuminate\Support\Facades\View::make($this->route .'.partials.package_item_row_edit')->with('data',$item)->render();
+        $data = CashDrawersItem::with('cashDrawer')->where('cash_drawer_id',$item->id)->first();
+        $editView = \Illuminate\Support\Facades\View::make($this->route .'.partials.cash_item_row')->with('data',$data)->render();
         if ($request->ajax) {
             return response()->json([
                 'status' => true,
