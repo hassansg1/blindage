@@ -28,7 +28,7 @@ class PackageItemController extends Controller
     {
           $class = '\\App\\Models\\'.$request->item_class;
           $data =  $class::where('id',$request->id)->first();
-          $dataView =  View::make('package.partials.pckage_item_row')->with(['data'=>$data,'type'=>$class])->render();
+          $dataView =  View::make('package.partials.pckage_item_row')->with(['data'=>$data,'type'=>$request->item_class])->render();
            return response()->json(['status'=>'1','type'=>'p','data'=>$dataView]);
     }
 

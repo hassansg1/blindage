@@ -62,6 +62,14 @@ class Product extends Model
         return $this->morphMany(PackageItems::class, 'packageitemable')->orderBy('id','desc');
     }
 
+
+    public function appointmentBookItem(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(AppointmentBookItems::class, 'serviceitemable')->orderBy('id','desc');
+    }
+
+
+
     /**
      * @param $item
      * @param $request

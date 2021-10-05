@@ -22,7 +22,7 @@
                                    class="form-label required">Price</label>
                             <input type="text" value="{{ isset($item) ? $item->price:old('price') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}price" name="price"
-                                   required>
+                                   required onkeypress=" return isNumberOnly(this)">
                         </div>
                     </div>
                     <div class="col-lg-4">

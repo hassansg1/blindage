@@ -6,6 +6,8 @@ use App\Http\Traits\ModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Models\Product;
+use App\Models\Service;
 
 class Package extends Model
 {
@@ -34,22 +36,28 @@ class Package extends Model
      */
     public function saveFormData($item, $request)
     {
-        if (isset($request->name)) $item->name = $request->name;
-        if (isset($request->price)) $item->price = $request->price;
-        if (isset($request->category)) $item->category = $request->category;
-        if (isset($request->active)) $item->active = $request->active;
+      // dd($request->all());
+      if (isset($request->name)) $item->name = $request->name;
+      if (isset($request->price)) $item->price = $request->price;
+      if (isset($request->category)) $item->category = $request->category;
+      if (isset($request->active)) $item->active = $request->active;
 
-        $item->save();
-       $delete = PackageItems::where('package_id',$item->id)->delete();
-       for ($i =0; $i < count($request->id) ; $i ++){
-               $packageItem = new PackageItems();
-               $packageItem->package_id	 = $item->id;
-               $packageItem->packageitemable_id = $request['id'][$i];
-               $packageItem->quantity = $request['qty'][$i];
-               $product = $request['type'][$i]::find($request['id'][$i]);
-               $product->packageItem()->save($packageItem);
-       }
-        return $item;
+      $item->save();
+      $delete = PackageItems::where('package_id',$item->id)->delete();
+      for ($i =0; $i < count($request->id) ; $i ++)
+      {
+        $packageItem = new PackageItems();
+        $packageItem->package_id	 = $item->id;
+        $packageItem->packageitemable_id = $request['id'][$i];
+        $packageItem->quantity = $request['qty'][$i];
+        // $product = $request['type'][$i]::find($request['id'][$i]);
+        $classObj = '\\App\\Models\\'.$request['type'][$i];
+        $product = $classObj::find($request['id'][$i]);
+        $product->packageItem()->save($packageItem);
+      }
+    
+      return $item;
+    
     }
     public function categoryData()
     {
