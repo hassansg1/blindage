@@ -1,4 +1,10 @@
 <script>
+    // .. Global Varible Define
+    (function(global) {
+
+        global.items_bucket = [];
+
+    }(this));
 
     function selectProductForPackage()
     {
@@ -6,29 +12,32 @@
         let id =sel.val();
         let item_class =sel.find(":selected").attr('data-modal');
 
-        if($('#'+item_class+id).length == 0)
-        {
-            $.ajax({
-                type: "GET",
-                url: '{{ route('package_item.create') }}',
-                data: {
-                    id: id,
-                    item_class: item_class,
-                    ajax: true,
-                },
-                success: function (result) {
+        if(jQuery.inArray(item_class+id , items_bucket) != -1) {
+            // console.log("is in array");
+            doWarningToast('Item Already In Bucket !');
+            return false;
+        } 
+        
+        items_bucket.push(item_class+id);
 
-                    if (result.status == '1') {
-                        $('#packageDetails').append(result.data);
-                    } else {
-                        doSomethingWentWrongToast();
-                    }
-                },
-            });
-        }
+        $.ajax({
+            type: "GET",
+            url: '{{ route('package_item.create') }}',
+            data: {
+                id: id,
+                item_class: item_class,
+                ajax: true,
+            },
+            success: function (result) {
+
+                if (result.status == '1') {
+                    $('#packageDetails').append(result.data);
+                } else {
+                    doSomethingWentWrongToast();
+                }
+            },
+        });
+
     }
-    // function storePackageData(event) {
-    // var form = new FormData;
-    //
-    // }
+
 </script>

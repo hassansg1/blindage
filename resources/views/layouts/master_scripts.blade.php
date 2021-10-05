@@ -22,6 +22,11 @@
         doToast(flashMessage, 'success');
     }
 
+    function doWarningToast(flashMessage = "Warning...!!!") {
+        doToast(flashMessage, "warning");
+    }
+
+
     function doToast(flashMessage, type) {
         toast(flashMessage, type);
         $.ajax({
@@ -51,5 +56,20 @@
         });
         instantiateElementsAfterAjax();
     }
+
+    function isNumberOnly(evt) {
+    
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode != 57 && (charCode != 46 || $(evt).val().indexOf('.') != -1) && charCode > 31 &&
+                (charCode < 48 || charCode > 57)) {
+            $(evt).val('');
+            doWarningToast('Please Enter Number Only !'); 
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
 </script>
 

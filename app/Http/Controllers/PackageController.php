@@ -129,6 +129,7 @@ class PackageController extends BaseController
     public function destroy($item)
     {
         $item = $this->model->find($item);
+        $item->items()->delete();
         $item->delete();
 
         flashSuccess(getLang($this->heading . " Successfully Deleted."));

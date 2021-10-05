@@ -79,6 +79,7 @@ class AjaxAppointmentBookController extends Controller
 
         return response()->json([
             'status' => true,
+            'modal_name' => $modal_name[0],
             'html' => view($this->view_path . '.partials._item_'.$modal_name[0])->with(compact('getData','start','end','duration'))->render()
         ]);
 

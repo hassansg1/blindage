@@ -74,9 +74,25 @@
                 duration: duration
             },
             success: function (result) {
+                    console.log('get');
                     console.log(result);
                 if (result.status) {
-                    $("#services_items_append_div").append(result.html);
+                    switch(result.modal_name) {
+                        case 'Product':
+                            $("#products_items_append_div").append(result.html);
+                            doSuccessToast('Success Fully Added In Bucket...');
+                            break;
+                        case 'Service':
+                            $("#services_items_append_div").append(result.html);
+                            doSuccessToast('Success Fully Added In Bucket...');
+                            break;
+                        default:
+                            doWarningToast("Record Not Found...");
+                            return false;
+                    } 
+
+
+
                 } else {
                 }
             }
