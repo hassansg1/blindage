@@ -10,8 +10,8 @@
     <div class="modal-body">
         <div class="row">
             <div class="col-xl-12">
-                <div class="row">
-                    <div class="mb-3">
+                <div class="row mb-3">
+                    <div class="col-lg-6">
                         <label for="when" class="form-label required">When?</label>
                         <div class="input-group" id="datepicker1">
                             <input type="text" class="form-control" name="activity_date" placeholder="y-m-d"
@@ -22,17 +22,13 @@
                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-3">
                     <div class="col-lg-6">
-                        <label
-                                class="form-label">Time Start </label>
+                        <label class="form-label">Time Start</label>
                         <div class="input-group" id="timepicker-input-group1">
                             <input id="timepicker" type="text" name="time_start[]" class="form-control"
                                    value="{{ $start ?? '' }}"
                                    data-provide="timepicker">
-
-                            <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                                   <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
                         </div>
                     </div>
                 </div>

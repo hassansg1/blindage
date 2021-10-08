@@ -86,6 +86,10 @@
                             $("#services_items_append_div").append(result.html);
                             doSuccessToast('Successfully Added in Bucket...');
                             break;
+                        case 'Package':
+                            $("#packages_items_append_div").append(result.html);
+                            doSuccessToast('Success Fully Added In Bucket...');
+                            break;
                         default:
                             doWarningToast("Record Not Found...");
                             return false;

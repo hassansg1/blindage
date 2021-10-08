@@ -10,35 +10,25 @@
                 aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-xl-6">
-                <div class="row">
-                    <div class="mb-3">
-                        <label for="when" class="form-label required">Which Client?</label>
-                        <select id="select_client_drop_down" name="client_id" class="form-control select2 schedule_details_modal_submit">
-                            <option value="">Select</option>
-                            @foreach(\App\Models\Client::all() as $loopVariable)
-                                <option value="{{ $loopVariable->id ?? '' }}" {{ isset($appt->client_id) && $appt->client_id==$loopVariable->id ?'selected':''  }}>{{ $loopVariable->name ?? '' }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+                <label for="when" class="form-label required">Which Client?</label>
+                <select id="select_client_drop_down" name="client_id" class="form-control select2 schedule_details_modal_submit">
+                    <option value="">Select</option>
+                    @foreach(\App\Models\Client::all() as $loopVariable)
+                        <option value="{{ $loopVariable->id ?? '' }}" {{ isset($appt->client_id) && $appt->client_id==$loopVariable->id ?'selected':''  }}>{{ $loopVariable->name ?? '' }}</option>
+                    @endforeach
+                </select>
             </div>
-        </div>
-        <div class="row">
             <div class="col-xl-6">
-                <div class="row">
-                    <div class="mb-3">
-                        <label for="when" class="form-label required">When?</label>
-                        <div class="input-group" id="datepicker1">
-                            <input type="text" class="form-control schedule_details_modal_submit" name="activity_date" placeholder="y-m-d"
-                                   value="{{ $appt->activity_date ?? '' }}"
-                                   data-date-format="yyyy-m-d" data-date-container='#datepicker1'
-                                   data-provide="datepicker" >
+                <label for="when" class="form-label required">When?</label>
+                <div class="input-group" id="datepicker1">
+                    <input type="text" class="form-control schedule_details_modal_submit" name="activity_date" placeholder="y-m-d"
+                           value="{{ $appt->activity_date ?? '' }}"
+                           data-date-format="yyyy-m-d" data-date-container='#datepicker1'
+                           data-provide="datepicker" >
 
-                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                        </div>
-                    </div>
+                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                 </div>
             </div>
         </div>
@@ -54,10 +44,37 @@
             </div>
         </div>
 
-        <h3 class="card-title mb-4">Services</h3>
-        <div class="row">
-            <div class="mb-3">
-                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown" id="services_items_dropdown">
+        
+        <div class="row mb-3">
+            <div class="col-lg-4">
+                <label class="form-label required">Service</label>
+                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown">
+                     <option>-- Select Service -- </option>
+                    @foreach(\App\Models\Service::all() as $service_loopVariable)
+                    <option  value="{{ 'Service??'.$service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label class="form-label required">Product</label>
+                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown">
+                    <option>-- Select Product -- </option>
+                    @foreach(\App\Models\Product::all() as $product_loopVariable)
+                    <option value="{{ 'Product??'.$product_loopVariable->id ?? '' }}" >{{ $product_loopVariable->name ?? '' }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label class="form-label required">Package</label>
+                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown">
+                    <option>-- Select Package -- </option>
+                    @foreach(\App\Models\Package::all() as $package_loopVariable)
+                    <option value="{{ 'Package??'.$package_loopVariable->id ?? '' }}" >{{ $package_loopVariable->name ?? '' }}</option>
+                    @endforeach
+                </select>
+            </div>
+            {{-- <div class="mb-3">
+                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown">
                     <option value="">Select</option>
                     <optgroup label="Service">
                         @foreach(\App\Models\Service::all() as $service_loopVariable)
@@ -76,14 +93,14 @@
                     </optgroup>
                     
                 </select>
-            </div>
+            </div> --}}
            
         </div>
         <div class="row">
             <div class="col-lg-12">
                 {{-- <div id="services_items_append_div"></div> --}}
                 <div id="services_items_append_div">
-                    <h3>
+                    <h3 class="heading-style">
                         Services:
                     </h3>
                     @forelse($appt->appointments as $appt_loopVariable)
@@ -92,7 +109,8 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title mb-4">
-                                            <a href="#" onclick="deleteRow()">{{ $appt_loopVariable->service->name ?? '' }} <i class="fas fa-window-close"></i>
+                                            <a href="#" onclick="deleteRow()">{{ $appt_loopVariable->service->name ?? '' }} 
+                                                <i class="fas fa-times pull-right close-btn"></i>
                                             </a>
                                         </h5>
                                         <input type="hidden" name="services[]" value="{{ $appt_loopVariable->service_id }}">
@@ -156,12 +174,12 @@
                     @endforelse
                 </div>
                 <div id="products_items_append_div">
-                    <h3>
+                    <h3 class="heading-style">
                         Products:
                     </h3>
                 </div>
                 <div id="packages_items_append_div">
-                    <h3>
+                    <h3 class="heading-style">
                         Packages:
                     </h3>
                 </div>

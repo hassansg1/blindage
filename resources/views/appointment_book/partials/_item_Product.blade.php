@@ -1,14 +1,13 @@
 <div class="deleteRow">
 	<div class="card">
+		<h5 class="card-title card-heading">
+        	<a href="#" onclick="deleteRow()">{{ $getData->name ?? '' }} <i class="fas fa-times float-end close-btn"></i>
+	        </a>
+	      </h5>
 	    <div class="card-body">
-	        <h5 class="card-title mb-4">
-	        	<a href="#" onclick="deleteRow()">{{ $getData->name ?? '' }} <i class="fas fa-window-close"></i>
-		        </a>
-	        </h5>
 	        <input type="hidden" name="products[]" value="{{ $getData->id }}">
-	         
 	        <div class="row">
-	            <div class="mb-3">
+	            <div class="col-lg-6">
 	                <label for="when" class="form-label required">Employee Type</label>
 	                <select id="select_client_drop_down" name="employee_type_id[products][{{ $getData->id }}]" class="form-control select2 schedule_details_modal_submit">
 	                    <option value="">Select</option>
@@ -17,21 +16,15 @@
 	                    @endforeach
 	                </select>
 	            </div>
-	        </div>                        
-
-	        <div class="row">
-	            <div class="mb-3">
+	            <div class="col-lg-3">
 	                <label for="when" class="form-label required">Quantity</label>
 	                <input class="form-control schedule_details_modal_submit" name="quantity[products][{{ $getData->id }}]" value="1" type="text" placeholder="Quantity">
 	            </div>
-	        </div>
-	         <div class="row">
-	            <div class="mb-3">
+	            <div class="col-lg-3">
 	                <label for="when" class="form-label required">Price</label>
 	                <input class="form-control schedule_details_modal_submit" name="price[products][{{ $getData->id }}]" value="{{ $getData->retail_price }}" type="text" placeholder="Price">
 	            </div>
-	        </div>
-
+	        </div>                        
 	    </div>
 	    <!-- end card body -->
 	</div>
