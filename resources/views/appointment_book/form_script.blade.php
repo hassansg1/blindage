@@ -74,17 +74,17 @@
                 duration: duration
             },
             success: function (result) {
-                    console.log('get');
-                    console.log(result);
+                    // console.log('get');
+                    // console.log(result);
                 if (result.status) {
                     switch(result.modal_name) {
                         case 'Product':
                             $("#products_items_append_div").append(result.html);
-                            doSuccessToast('Success Fully Added In Bucket...');
+                            doSuccessToast('Successfully Added in Bucket...');
                             break;
                         case 'Service':
                             $("#services_items_append_div").append(result.html);
-                            doSuccessToast('Success Fully Added In Bucket...');
+                            doSuccessToast('Successfully Added in Bucket...');
                             break;
                         default:
                             doWarningToast("Record Not Found...");
