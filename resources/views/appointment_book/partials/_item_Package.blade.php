@@ -24,7 +24,59 @@
 	                <label for="when" class="form-label required">Price</label>
 	                <input class="form-control schedule_details_modal_submit" name="price[{{ $getData->id }}]" value="{{ $getData->retail_price }}" type="text" placeholder="Price">
 	            </div>
-	        </div>                        
+	        </div>
+        	 <div class="row mt-3">
+	            <div class="col-lg-6">
+	            	<h3 class="heading-style">
+                    Services:
+                    </h3>
+	            	<table class="table mb-0 table-hover table-striped">
+					  <tbody>
+					    <tr>
+					      <th width="15%">1 x </th>
+					      <td>Package 1</td>
+					    </tr>
+					    <tr>
+					      <th width="15%">1 x </th>
+					      <td>Package 1</td>
+					    </tr>
+					    <tr>
+					      <th width="15%">1 x </th>
+					      <td>Package 1</td>
+					    </tr>
+					    <tr>
+					      <th width="15%">1 x </th>
+					      <td>Package 1</td>
+					    </tr>
+					  </tbody>
+					</table>
+	            </div>
+	            <div class="col-lg-6">
+	            	<h3 class="heading-style">
+                    Products:
+                    </h3>
+	            	<table class="table  mb-0 table-hover table-striped"">
+					  <tbody>
+					    <tr>
+					      <th width="15%">1 x </th>
+					      <td>Package 1</td>
+					    </tr>
+					    <tr>
+					      <th width="15%">1 x </th>
+					      <td>Package 1</td>
+					    </tr>
+					    <tr>
+					      <th width="15%">1 x </th>
+					      <td>Package 1</td>
+					    </tr>
+					    <tr>
+					      <th width="15%">1 x </th>
+					      <td>Package 1</td>
+					    </tr>
+					  </tbody>
+					</table>
+	            </div>
+            </div>                       
 	    </div>
 	    <!-- end card body -->
 	</div> 
