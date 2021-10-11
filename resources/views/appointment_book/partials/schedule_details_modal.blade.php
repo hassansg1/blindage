@@ -23,15 +23,15 @@
                     </div>
                     <div class="mb-2 icon-wrapper">
                         <i class="fas fa-phone-alt icon"></i>
-                        <input class="form-control" type="number" name="" placeholder="Phone Number">
+                        <input class="form-control" type="number" name="" placeholder="Phone Number" autocomplete="nope">
                     </div>
                     <div class="icon-wrapper">
                         <i class="fas fa-envelope icon"></i>
-                        <input class="form-control" type="email" name="" placeholder="E-mail"> 
+                        <input class="form-control" type="email" name="" placeholder="E-mail" autocomplete="nope"> 
                     </div>
                 </div>
             </div>
-            <div class="client-summary-balance text-center">
+            <div class="client-summary-balance">
                 <div class="mb-2">
                     <span>Loyalty Points:</span> <b>0 Points</b>
                 </div>

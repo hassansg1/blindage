@@ -4104,9 +4104,9 @@ label{
 .client-summary-wrapper{
    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    background: #ddd;
+    background: #f7f7f7;
     border-radius: 7px;
-    padding: 10px;align-items: center;gap:20px;
+    padding: 10px;align-items: center;gap:20px;border:1px solid #ddd;
 }
 .client-summary-info{
     display: flex;gap:20px;align-items: center;
@@ -4137,4 +4137,7 @@ width: 27%
 }
 .icon-wrapper input{
     padding-left: 30px;
+}
+.client-summary-balance{
+    padding-left: 100px;
 }
