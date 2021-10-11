@@ -4101,3 +4101,40 @@ label{
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     line-height: 33px !important;
 }
+.client-summary-wrapper{
+   display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background: #ddd;
+    border-radius: 7px;
+    padding: 10px;align-items: center;gap:20px;
+}
+.client-summary-info{
+    display: flex;gap:20px;align-items: center;
+}
+.client-summary-info .client-pic-wrapper{
+width: 27%
+}
+.client-pic{
+        height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    border: 1px solid;
+    line-height: 100px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 40px;
+
+}
+.client-info-detail{
+    width: 73%;
+}
+.icon-wrapper{
+    position: relative;
+}
+.icon-wrapper .icon{
+    position: absolute;top: 12px;
+    left: 10px;
+}
+.icon-wrapper input{
+    padding-left: 30px;
+}

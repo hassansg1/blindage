@@ -10,6 +10,37 @@
                 aria-label="Close"></button>
     </div>
     <div class="modal-body">
+        <div class="client-summary-wrapper mb-3">
+            <div class="client-summary-info">
+                <div class="client-pic-wrapper">
+                    <div class="client-pic">
+                        AY
+                    </div>
+                </div>
+                <div class="client-info-detail">
+                    <div class="client-name">
+                        <h4>Atique Yousaf</h4>
+                    </div>
+                    <div class="mb-2 icon-wrapper">
+                        <i class="fas fa-phone-alt icon"></i>
+                        <input class="form-control" type="number" name="" placeholder="Phone Number">
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="fas fa-envelope icon"></i>
+                        <input class="form-control" type="email" name="" placeholder="E-mail"> 
+                    </div>
+                </div>
+            </div>
+            <div class="client-summary-balance text-center">
+                <div class="mb-2">
+                    <span>Loyalty Points:</span> <b>0 Points</b>
+                </div>
+                <div>
+                    <span>Balance:</span> <b>$0.00 Credit</b>
+                </div>
+            </div>
+        </div>
+        
         <div class="row mb-3">
             <div class="col-xl-6">
                 <label for="when" class="form-label required">Which Client?</label>
