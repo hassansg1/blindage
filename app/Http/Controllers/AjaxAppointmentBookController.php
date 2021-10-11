@@ -76,13 +76,7 @@ class AjaxAppointmentBookController extends Controller
         $modal_name = explode('??', $request->value);
         $classObj = '\\App\\Models\\'.$modal_name[0];
         $getData = $classObj::find($modal_name[1]);
-        // dd($getData->service_items());
 
-        // foreach ($getData->items->where('packageitemable_type',Service::class) as $key => $value) {
-        //     echo $value->packageitemable_service;
-        // }
-
-        // dd('s');
         return response()->json([
             'status' => true,
             'modal_name' => $modal_name[0],
