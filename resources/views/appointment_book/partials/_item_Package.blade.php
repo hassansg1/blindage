@@ -1,7 +1,7 @@
 <div class="deleteRow">
 	 <div class="card">
 	 	<h5 class="card-title mb-0 card-heading">
-        	<a href="#" onclick="deleteRow()">{{ $getData->name ?? '' }} @if(isset($getData->category) && $getData->category!=null) <b>( $getData->categoryData->name ) </b> @endif <i class="fas fa-times float-end close-btn"></i>
+        	<a href="#" onclick="deleteRow()">{{ $getData->name ?? '' }} @if(isset($getData->category) && $getData->category!=null) <b>( {{ $getData->categoryData->name }} ) </b> @endif <i class="fas fa-times float-end close-btn"></i>
 	        </a>
 	    </h5>
 	    <div class="card-body">
@@ -9,7 +9,7 @@
 	        <div class="row">
 	            <div class="col-lg-6">
 	                <label for="when" class="form-label required">Employee Type</label>
-	                <select id="select_client_drop_down" name="employee_type_id[{{ $getData->id }}]" class="form-control select2 schedule_details_modal_submit">
+	                <select id="select_client_drop_down" name="employee_type_id[packages][{{ $getData->id }}]" class="form-control select2 schedule_details_modal_submit">
 	                    <option value="">Select</option>
 	                    @foreach(\App\Models\Employee::all() as $loopVariable)
 	                        <option value="{{ $loopVariable->id ?? '' }}">{{ $loopVariable->first_name ?? '' }} {{ $loopVariable->last_name ?? '' }}</option>
@@ -18,11 +18,11 @@
 	            </div>
 	            <div class="col-lg-3">
 	                <label for="when" class="form-label required">Quantity</label>
-	                <input class="form-control schedule_details_modal_submit" name="quantity[{{ $getData->id }}]" value="1" type="text" placeholder="Quantity">
+	                <input class="form-control schedule_details_modal_submit" name="quantity[packages][{{ $getData->id }}]" value="1" type="text" placeholder="Quantity">
 	            </div>
 	            <div class="col-lg-3">
 	                <label for="when" class="form-label required">Price</label>
-	                <input class="form-control schedule_details_modal_submit" name="price[{{ $getData->id }}]" value="{{ $getData->price }}" type="text" placeholder="Price">
+	                <input class="form-control schedule_details_modal_submit" name="price[packages][{{ $getData->id }}]" value="{{ $getData->price }}" type="text" placeholder="Price">
 	            </div>
 	        </div>
         	 <div class="row mt-3">
@@ -32,14 +32,16 @@
                     </h3>
 	            	<table class="table mb-0 table-hover table-striped">
 					  <tbody>
+					  	@forelse($getData->service_items() as $loopVariable)
 					    <tr>
-					      <th width="15%">2 x </th>
-					      <td>Service 1</td>
+					      <th width="15%">{{ $loopVariable->quantity }}</th>
+					      <th width="15%">x </th>
+					      <td>{{ $loopVariable->packageitemable->name }}</td>
 					    </tr>
-					    <tr>
-					      <th width="15%">4 x </th>
-					      <td>Package 2</td>
-					    </tr>
+					    @empty
+
+					    @endforelse
+		
 	
 			
 					  </tbody>
@@ -51,14 +53,16 @@
                     </h3>
 	            	<table class="table  mb-0 table-hover table-striped">
 					  <tbody>
+					    @forelse($getData->product_items() as $loopVariable)
 					    <tr>
-					      <th width="15%">3 x </th>
-					      <td>Product 1</td>
+					      <th width="15%">{{ $loopVariable->quantity }}</th>
+					      <th width="15%">x </th>
+					      <td>{{ $loopVariable->packageitemable->name }}</td>
 					    </tr>
-					    <tr>
-					      <th width="15%">2 x </th>
-					      <td>Package 2</td>
-					    </tr>
+					    @empty
+					    	
+					    @endforelse
+				
 					   
 					  </tbody>
 					</table>
