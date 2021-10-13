@@ -82,6 +82,7 @@ class Client extends Model
      */
     public function saveFormData($item, $request)
     {
+
         if (isset($request->first_name)) $item->first_name = $request->first_name;
         if (isset($request->last_name)) $item->last_name = $request->last_name;
         if (isset($request->category)) $item->category = $request->category;
@@ -90,6 +91,9 @@ class Client extends Model
         if (isset($request->dob)) $item->dob = $request->dob;
         if (isset($request->email)) $item->email = $request->email;
         if (isset($request->active)) $item->active = $request->active;
+        if (isset($request->appointment_email)) $item->appointment_email = $request->appointment_email;
+        if (isset($request->marketing_mail)) $item->marketing_mail = $request->marketing_mail;
+        if (isset($request->appointment_message)) $item->appointment_message = $request->appointment_message;
         if (isset($request->address_line_1)) $item->address_line_1 = $request->address_line_1;
         if (isset($request->address_line_2)) $item->address_line_2 = $request->address_line_2;
         if (isset($request->city)) $item->city = $request->city;
