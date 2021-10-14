@@ -243,7 +243,7 @@
                 console.log('clickMore', e);
             },
             'clickSchedule': function clickSchedule(e) {
-                // console.log('clickSchedule', e);
+                console.log('clickSchedule', e);
                 $('#clientInfoModal').modal('show');
             },
             'clickDayname': function clickDayname(date) {

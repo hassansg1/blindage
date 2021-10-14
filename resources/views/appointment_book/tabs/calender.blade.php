@@ -152,7 +152,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="d-flex float-end gap-2 width-400">
-                                <select class="form-control select2 schedule_details_modal_submit" name="branch_id">
+                                <select class="form-control select2 calendar_branch" name="branch_id">
                                     <option value="">All Branch</option>
 
                                     @foreach(\App\Models\Branch::all() as $branch)
