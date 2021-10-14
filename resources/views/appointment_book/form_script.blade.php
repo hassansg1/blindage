@@ -30,7 +30,6 @@
     }
 
 
-
     function resubmitForm() {
         $.ajax({
             type: "POST",

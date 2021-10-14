@@ -46,7 +46,7 @@ class Employee extends Model
         $item->usertype_id = 1;
         if (isset($request->mobile_no)) $item->mobile_no = $request->mobile_no;
         if (isset($request->alt_mobile_no)) $item->alt_mobile_no = $request->alt_mobile_no;
-        if (isset($request->dob)) $item->dob = $request->dob;
+        if (isset($request->dob)) $item->dob = date('Y-m-d',strtotime($request->dob));
         if (isset($request->email)) $item->email = $request->email;
         if (isset($request->active)) $item->active = $request->active;
         if (isset($request->address_line_1)) $item->address_line_1 = $request->address_line_1;

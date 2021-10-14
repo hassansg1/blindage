@@ -52,4 +52,8 @@ class Service extends Model
         $item->save();
         return $item;
     }
+
+    public function serviceCategory(){
+        return $this->belongsTo(Category::class, 'category');
+    }
 }

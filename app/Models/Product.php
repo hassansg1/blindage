@@ -103,4 +103,10 @@ class Product extends Model
         }
         return $item;
     }
+    public function productBrand(){
+        return $this->belongsTo(ProductBrand::class,'brand');
+    }
+    public function productCategory(){
+        return $this->belongsTo(Category::class, 'category');
+    }
 }

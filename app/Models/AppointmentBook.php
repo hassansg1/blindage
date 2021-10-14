@@ -99,6 +99,22 @@ class AppointmentBook extends Model
                 }
             }
 
+            if (isset($request->packages)) {
+                for ($count = 0; $count < count($request['packages']); $count++) 
+                {
+                    $apptBookItem = new AppointmentBookItems();
+                    $apptBookItem->appointment_book_id = $request['appointment_book_id'];
+                    $apptBookItem->serviceitemable_id = $request['packages'][$count];
+                    $apptBookItem->quantity = $request['quantity']['packages'][$request['packages'][$count]];
+                    $apptBookItem->price = $request['price']['packages'][$request['packages'][$count]];
+
+                    $product_Obj = Package::find($request['packages'][$count]);
+                    $product_Obj->appointmentBookItem()->save($apptBookItem);
+                }
+            }
+
+
+            // dd($request->all());
 
         }
         return $item;

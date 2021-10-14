@@ -138,4 +138,19 @@ class AppointmentController extends BaseController
 
         return redirect(route($this->route . ".index"));
     }
+
+    public function getBranchAppointments(Request $request)
+    {
+        // $data  = $this->model->where('branch_id',$request->id)->get();
+        $data  = AppointmentBookParser::parse($request->id);
+        // dd($data);
+        return response()->json([
+            'status' => true,
+            'items' => $data
+        ]);
+
+
+    }
+
+
 }

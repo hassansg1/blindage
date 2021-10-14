@@ -63,4 +63,20 @@ class Package extends Model
     {
         return $this->belongsTo(Category::class, 'category');
     }
+
+    public function service_items()
+    {
+      return $this->items()->where('packageitemable_type',Service::class)->get();
+    }
+
+    public function product_items()
+    {
+      return $this->items()->where('packageitemable_type',Product::class)->get();
+    }
+
+    public function appointmentBookItem(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(AppointmentBookItems::class, 'serviceitemable')->orderBy('id','desc');
+    }
+
 }
