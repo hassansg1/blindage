@@ -34,7 +34,12 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}category" class="form-label">Category</label>
                             <select class="form-select" name="category" id="{{ isset($item) ? $item->id:'' }}category">
-                                <option value=""></option>
+                                @foreach(getProductCategories() as $category)
+                                    <option value=""></option>
+                                    <option
+                                        {{ $category->id == (isset($item) ? $item->category:old('last_name') ?? '') ? 'selected' : ''  }}
+                                        value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

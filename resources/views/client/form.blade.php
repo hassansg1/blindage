@@ -87,12 +87,17 @@
                             <br>
                             <p class="mb-2">Send appointment notifications to this client by:</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="byEmail">
+                                <input class="form-check-input" type="checkbox"
+                                       name="appointment_email"  value="1"
+                                       {{ (isset($item) ? $item->appointment_email:old('appointment_email') ?? '') == 1 ? 'checked' : '' }}
+                               id="byEmail">
                                 <label class="form-check-label" for="byEmail">
                                     Email
                                 </label>
                                 <br>
-                                <input class="form-check-input" type="checkbox" id="byText">
+                                <input class="form-check-input" type="checkbox" id="byText" name="appointment_message"  value="1"
+                                    {{ (isset($item) ? $item->appointment_message:old('appointment_message') ?? '') == 1 ? 'checked' : '' }}
+                                >
                                 <label class="form-check-label" for="byText">
                                     Text Message
                                 </label>
@@ -105,7 +110,9 @@
                             <br>
                             <p class="mb-2">Send marketing campaigns to this client by:</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="byMessage">
+                                <input class="form-check-input" type="checkbox" id="byMessage" name="marketing_mail" value="1"
+                                    {{ (isset($item) ? $item->marketing_mail:old('marketing_mail') ?? '') == 1 ? 'checked' : '' }}
+                                >
                                 <label class="form-check-label" for="byMessage">
                                     Email
                                 </label>
