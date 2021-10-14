@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-lg-2">
-        <div>
+        <div class="left-side-bar-wrapper">
             <label>Calender</label>
             <div data-provide="datepicker-inline" class="bootstrap-datepicker-inline"></div>
-        </div>
-        <div class="card" style="width: 107%;">
+        
+        <div class="card">
             <div class="">
                 <div class="row">
                     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -29,7 +29,8 @@
                 <!-- end row -->
             </div>
         </div>
-        <div class="card" style="width: 107%;">
+
+        <div class="card">
             <div class="">
                 <div class="row">
                     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -55,6 +56,7 @@
                 <!-- end row -->
             </div>
         </div>
+         </div>
     </div>
     <div class="col-lg-10">
         <div class="card">
@@ -149,14 +151,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="d-flex">
+                            <div class="d-flex float-end gap-2 width-400">
                                 <select class="form-control select2 schedule_details_modal_submit" name="branch_id">
                                     <option value="">Select Branch</option>
                                     @foreach(\App\Models\Branch::all() as $branch)
                                         <option value="{{ $branch->id ?? '' }}">{{ $branch->name ?? '' }}</option>
                                     @endforeach
                                 </select>
-                                <button id="btn-new-schedule" type="button" class="btn btn-primary lnb-new-schedule-btn"
+                                <button id="btn-new-schedule" type="button" class="btn btn-primary lnb-new-schedule-btn width-180"
                                         data-toggle="modal">
                                     New schedule
                                 </button>

@@ -199,7 +199,7 @@ body[data-layout="horizontal"] .navbar-brand-box {
 }
 body[data-layout="horizontal"] .page-content {
     margin-top: 70px;
-    padding: 79px 12px 60px;
+    padding: 80px 3px 60px;
 }
 @media (max-width: 992px) {
     body[data-layout="horizontal"] .page-content {
@@ -2564,7 +2564,7 @@ input[switch="dark"]:checked + label:before {
     padding: 7px;
 }
 .bootstrap-datepicker-inline .datepicker-inline {
-    width: auto !important;
+    width: 100% !important;
     display: inline-block;
 }
 .datepicker-container {
@@ -4158,3 +4158,35 @@ width: 27%
     align-items: baseline;
     gap: 15px;
 }
+.width-180{
+    width: 180px;
+}
+.width-400{
+    width: 400px;
+}
+.top-nav-tabs-wrapper{
+        width: 100%;
+    justify-content: space-between;
+    background: #eef1fd;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.top-nav-tabs-wrapper .nav-tabs-custom{
+    flex-basis: 700px;
+}
+.top-nav-tabs-wrapper .nav-tabs .nav-item.show .nav-link, .top-nav-tabs-wrapper .nav-tabs .nav-link.active{
+        background-color: #c9a200;color: #fff !important;
+}
+.top-nav-tabs-wrapper .nav-tabs-custom .nav-item .nav-link:after {
+    background: #9c7f07;
+}
+.left-side-bar-wrapper{
+    background: #eef1fd;padding:10px;border-radius: 5px;
+}
+.left-side-bar-wrapper .accordion-button{
+    background: #ddd;
+}
+.left-side-bar-wrapper .accordion-item{
+    border:none !important;
+} 

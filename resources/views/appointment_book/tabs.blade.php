@@ -1,6 +1,7 @@
-<div class="card">
-    <div class="card-body">
-        <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+
+<div class="top-nav-tabs-wrapper d-flex mb-2">
+            <h3 class="mb-0">Appointment Book</h3>
+            <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-bs-toggle="tab" href="#Calendar" role="tab">
                     <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
@@ -20,11 +21,12 @@
                 </a>
             </li>
         </ul>
-
+        </div>
+<div class="">
+    <div class="">
         <!-- Tab panes -->
-        <div class="tab-content p-3 text-muted">
+        <div class="tab-content text-muted">
             <div class="tab-pane active" id="Calendar" role="tabpanel">
-                <br>
                @include('appointment_book.tabs.calender')
             </div>
             <div class="tab-pane" id="appointment-list" role="tabpanel">
