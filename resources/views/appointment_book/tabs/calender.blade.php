@@ -150,8 +150,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="d-flex">
-                                <select class="form-control select2 schedule_details_modal_submit" name="branch_id">
-                                    <option value="">Select Branch</option>
+                                <select class="form-control select2 calendar_branch" name="cal_branch_id">
+                                    <option value="">All Branch</option>
                                     @foreach(\App\Models\Branch::all() as $branch)
                                         <option value="{{ $branch->id ?? '' }}">{{ $branch->name ?? '' }}</option>
                                     @endforeach
