@@ -153,7 +153,8 @@
                         <div class="col-md-12">
                             <div class="d-flex float-end gap-2 width-400">
                                 <select class="form-control select2 schedule_details_modal_submit" name="branch_id">
-                                    <option value="">Select Branch</option>
+                                    <option value="">All Branch</option>
+
                                     @foreach(\App\Models\Branch::all() as $branch)
                                         <option value="{{ $branch->id ?? '' }}">{{ $branch->name ?? '' }}</option>
                                     @endforeach

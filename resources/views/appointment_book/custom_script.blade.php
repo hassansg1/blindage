@@ -4,9 +4,31 @@
         getAllAppointments();
     });
 
+    $('.calendar_branch').on('change', function () {
+        var branch_id = $(this).val();
+        getBranchAppointments(branch_id);
+       
+    });
+
     function resetCalender(items) {
         $('#calendar').html('');
         renderCalender(window, tui.Calendar, items); // set calendars
+    }
+
+    function getBranchAppointments(id) {
+        $.ajax({
+            type: "GET",
+            url: '{{ route('appointment.getBranchAppointments') }}',
+            data: {
+                id: id,
+            },
+            success: function (result) {
+                if (result.status) {
+                    console.log(result.items);
+                    resetCalender(result.items);
+                }
+            }
+        });
     }
 
     function getAllAppointments() {
