@@ -4141,3 +4141,20 @@ width: 27%
 .client-summary-balance{
     padding-left: 100px;
 }
+.client-summary-modal.client-summary-wrapper{
+    display: inherit;
+}
+.client-summary-modal.client-summary-wrapper .icon-wrapper {
+     position: inherit; 
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.client-summary-modal.client-summary-wrapper .icon-wrapper .icon{
+    position: inherit;
+}
+.client-summary-modal.client-summary-wrapper .box-wrapper {
+        display: flex;
+    align-items: baseline;
+    gap: 15px;
+}

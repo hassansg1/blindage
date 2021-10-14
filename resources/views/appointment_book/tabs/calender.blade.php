@@ -2,7 +2,6 @@
     <div class="col-lg-2">
         <div>
             <label>Calender</label>
-
             <div data-provide="datepicker-inline" class="bootstrap-datepicker-inline"></div>
         </div>
         <div class="card" style="width: 107%;">
