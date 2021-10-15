@@ -201,7 +201,7 @@
                 endDate.minutes(getMinutes(item.end_time));
 
                 schedule.end = endDate.toDate();
-                schedule.isPrivate = item.id;
+                schedule.isPrivate = item.appointment_book_id;
                 schedule.color = '#ffffff';
                 schedule.bgColor = color;
                 schedule.dragBgColor = color;
@@ -244,7 +244,9 @@
             },
             'clickSchedule': function clickSchedule(e) {
                 console.log('clickSchedule', e);
-                $('#clientInfoModal').modal('show');
+                // console.log('clickSchedule', e.schedule.isPrivate);
+
+                getAppointmentView(e.schedule.isPrivate);
             },
             'clickDayname': function clickDayname(date) {
                 console.log('clickDayname', date);

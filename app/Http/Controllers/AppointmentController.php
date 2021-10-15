@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\AppointmentBook;
 use App\Parsers\AppointmentBookParser;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
@@ -141,15 +142,21 @@ class AppointmentController extends BaseController
 
     public function getBranchAppointments(Request $request)
     {
-        // $data  = $this->model->where('branch_id',$request->id)->get();
-        $data  = AppointmentBookParser::parse($request->id);
-        // dd($data);
+        $data  = AppointmentBookParser::parse($request);
         return response()->json([
             'status' => true,
             'items' => $data
         ]);
+    }
 
-
+    public function getAppointmentView(Request $request)
+    {
+        $data  = AppointmentBook::find($request->appointment_book_id);
+        // dd($request->all());
+        return response()->json([
+            'status' => true,
+            'html' => view('appointment_book.partials._appointmentView')->with(['data' => $data])->render()
+        ]);
     }
 
 

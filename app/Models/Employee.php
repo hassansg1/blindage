@@ -33,7 +33,13 @@ class Employee extends Model
     {
         return ucfirst(substr($this->first_name,0,1)).ucfirst(substr($this->last_name,0,1));
     }
-
+    public function getFirstAndLastName()
+    {
+        if(isset($this->first_name) && isset($this->last_name))
+        {
+            return ucfirst($this->first_name).' '.ucfirst($this->last_name);
+        }
+    }
     /**
      * @param $item
      * @param $request
