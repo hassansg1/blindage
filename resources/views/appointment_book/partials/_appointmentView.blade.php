@@ -3,10 +3,6 @@
       <h5 class="modal-title">Client Information </h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
    </div>
-   {{-- {{ dd($data->first()->appointmentBook->appointmentBookItems[0]->serviceitemable->service_items()) }} --}}
-   {{-- {{ dd($data->first()->appointmentBook->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class)) }} --}}
-   
-{{-- {{ dd($data) }} --}}
    <div class="modal-body">
       <div class="client-summary-wrapper client-summary-modal">
          <div class="client-summary-info">
@@ -34,14 +30,18 @@
                   <i class="fas fa-clock"></i>
                   <div class="">
                      <div>
+                        @forelse($data->appointments as $loop_variable)
+                        Session
                         <span>
-                           {{-- {{ $data->first()->start_time}} --}}
+                           {{ $loop_variable->start_time}}
                            </span>  
                               -  
                            <span>
-                              
-                           {{-- {{ $data->first()->getEndTimeAttribute()}} --}}
+                           {{$loop_variable->getEndTimeAttribute()}}
                         </span>
+                        <br>
+                        @empty
+                        @endforelse
                      </div>
                      <div>
                          {{  date('l, M d, Y',strtotime($data->activity_date)) }}
@@ -53,10 +53,15 @@
                   <i class="fas fa-file-signature"></i>
                   <div class="">
                      <div>
-                        
+                        @forelse($data->appointments as $loop_variable)
+                           <div>{{ $loop_variable->service->name }} (Regular Service) </div>
+                           <div>{{ $loop_variable->service->minutes }} Min.</div>
+                        @empty   
+                        @endforelse
+
                         @forelse($data->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class) as $app_book_items)
                            @foreach($app_book_items->serviceitemable->service_items() as $loop_variable)
-                              <div>{{ $loop_variable->packageitemable->name }} (Service) </div>
+                              <div>{{ $loop_variable->packageitemable->name }} (Package Service) </div>
                               <div>{{ $loop_variable->packageitemable->minutes }} Min.</div>
                            @endforeach
                         @empty   
