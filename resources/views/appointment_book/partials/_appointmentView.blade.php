@@ -16,16 +16,20 @@
                <div class="client-name">
                   <h4>{{ isset($data->client->first_name)?$data->client->first_name:''}} {{ isset($data->client->last_name)?$data->client->last_name:'' }}</h4>
                </div>
+               @if(isset($data->client->mobile_no) && $data->client->mobile_no!=null)
                <div class="mb-2 icon-wrapper">
                   <i class="fas fa-phone-alt icon"></i>
                   <div>
                      {{  isset($data->client->mobile_no)?$data->client->mobile_no:'' }} {{ isset($data->client->alt_mobile_no)? ' (&) '.$data->client->alt_mobile_no:''  }}
                   </div>
                </div>
+               @endif
+               @if(isset($data->client->email) && $data->client->email!=null)
                <div class="icon-wrapper mb-2">
                   <i class="fas fa-envelope icon"></i>
                   <div>{{  isset($data->client->email)?$data->client->email:'' }}</div>
                </div>
+               @endif
                <div class="mb-3 box-wrapper">
                   <i class="fas fa-clock"></i>
                   <div class="">
