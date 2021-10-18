@@ -80,14 +80,17 @@
                         case 'Product':
                             $("#products_items_append_div").append(result.html);
                             doSuccessToast('Successfully Added in Bucket...');
+                                    resubmitForm();
                             break;
                         case 'Service':
                             $("#services_items_append_div").append(result.html);
                             doSuccessToast('Successfully Added in Bucket...');
+                                    resubmitForm();
                             break;
                         case 'Package':
                             $("#packages_items_append_div").append(result.html);
                             doSuccessToast('Success Fully Added In Bucket...');
+                                    resubmitForm();
                             break;
                         default:
                             doWarningToast("Record Not Found...");

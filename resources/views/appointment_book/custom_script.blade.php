@@ -15,12 +15,12 @@
         renderCalender(window, tui.Calendar, items); // set calendars
     }
 
-    function getBranchAppointments(id) {
+    function getBranchAppointments(branch_id) {
         $.ajax({
             type: "GET",
             url: '{{ route('appointment.getBranchAppointments') }}',
             data: {
-                id: id,
+                branch_id: branch_id,
             },
             success: function (result) {
                 if (result.status) {
@@ -75,4 +75,26 @@
             },
         });
     }
+
+    function getAppointmentView(appointment_book_id)
+    {
+        console.log(appointment_book_id);
+        $.ajax({
+            type: "GET",
+            url: '{{ route('appointment.getAppointmentView') }}',
+            data: {
+                appointment_book_id: appointment_book_id,
+            },
+            success: function (result) {
+                if (result.status) {
+                    console.log(result.items);
+                    $("#div_id_clientInfoModal_content").html(result.html);
+                    $('#clientInfoModal').modal('show');
+
+                }
+            }
+        });
+    }
+
+
 </script>

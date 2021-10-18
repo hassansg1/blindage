@@ -201,7 +201,7 @@
                 endDate.minutes(getMinutes(item.end_time));
 
                 schedule.end = endDate.toDate();
-                schedule.isPrivate = false;
+                schedule.isPrivate = item.appointment_book_id;
                 schedule.color = '#ffffff';
                 schedule.bgColor = color;
                 schedule.dragBgColor = color;
@@ -243,8 +243,10 @@
                 console.log('clickMore', e);
             },
             'clickSchedule': function clickSchedule(e) {
-                // console.log('clickSchedule', e);
-                $('#clientInfoModal').modal('show');
+                console.log('clickSchedule', e);
+                // console.log('clickSchedule', e.schedule.isPrivate);
+
+                getAppointmentView(e.schedule.isPrivate);
             },
             'clickDayname': function clickDayname(date) {
                 console.log('clickDayname', date);
@@ -305,22 +307,17 @@
                 html.push('<strong>' + start.format('HH:mm') + '</strong> ');
             }
 
-            if (schedule.isPrivate) {
-                html.push('<span class="calendar-font-icon ic-lock-b"></span>');
-                html.push(' Private');
-            } else {
-                if (schedule.isReadOnly) {
-                    html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
-                } else if (schedule.recurrenceRule) {
-                    html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
-                } else if (schedule.attendees.length) {
-                    html.push('<span class="calendar-font-icon ic-user-b"></span>');
-                } else if (schedule.location) {
-                    html.push('<span class="calendar-font-icon ic-location-b"></span>');
-                }
-
-                html.push(' ' + schedule.title);
+            if (schedule.isReadOnly) {
+                html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
+            } else if (schedule.recurrenceRule) {
+                html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
+            } else if (schedule.attendees.length) {
+                html.push('<span class="calendar-font-icon ic-user-b"></span>');
+            } else if (schedule.location) {
+                html.push('<span class="calendar-font-icon ic-location-b"></span>');
             }
+
+            html.push(' ' + schedule.title);
 
             return html.join('');
         }

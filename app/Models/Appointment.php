@@ -29,6 +29,10 @@ class Appointment extends Model
     {
         return $this->belongsTo(Service::class);
     }
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class,'employee_type_id');
+    }
 
     public function getEndTimeAttribute()
     {
