@@ -106,4 +106,16 @@
         
     }
 
+    $(document).ready(function(){
+      $('.client-cancel-info').hide();
+      $('#cancelApptBtn').click(function(){
+         $('.client-cancel-info').show();
+         $('.client-summary-info-main-wrapper').hide();
+      });
+      $('#backToCardBtn').click(function(){
+        $('.client-cancel-info').hide();
+        $('.client-summary-info-main-wrapper').show();
+      });
+    });
+
 </script>
