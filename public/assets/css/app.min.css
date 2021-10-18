@@ -4207,3 +4207,9 @@ width: 27%
 .left-side-bar-wrapper table{
     width: 100%;
 }
+.top-nav-tabs-wrapper .nav-tabs-custom {
+    border-bottom: 2px solid #c3c4c6;
+}
+.roundColorCircle{
+    
+}
