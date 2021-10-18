@@ -19,15 +19,15 @@
                 </div>
                 <div class="client-info-detail">
                     <div class="client-name">
-                        <h4>Atique Yousaf</h4>
+                        <h4>{{ isset($appt->client->first_name)&& $appt->client->first_name!=null? ucfirst($appt->client->first_name):'' }} {{ isset($appt->client->last_name)&& $appt->client->last_name!=null?ucfirst($appt->client->last_name):'' }}</h4>
                     </div>
                     <div class="mb-2 icon-wrapper">
                         <i class="fas fa-phone-alt icon"></i>
-                        <input class="form-control" type="number" name="" placeholder="Phone Number" autocomplete="nope">
+                        <input class="form-control" type="number" name="" value="{{ isset($appt->client->mobile_no) && $appt->client->mobile_no!=null?$appt->client->mobile_no:'' }}" placeholder="Phone Number" autocomplete="nope">
                     </div>
                     <div class="icon-wrapper">
                         <i class="fas fa-envelope icon"></i>
-                        <input class="form-control" type="email" name="" placeholder="E-mail" autocomplete="nope"> 
+                        <input class="form-control" type="email" name="" value="{{ isset($appt->client->email) && $appt->client->email!=null?$appt->client->email:'' }}" placeholder="E-mail" autocomplete="nope"> 
                     </div>
                 </div>
             </div>
