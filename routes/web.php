@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
         'files' => \App\Http\Controllers\FilesController::class,
         'notes' => \App\Http\Controllers\NotesController::class,
         'branch' => \App\Http\Controllers\BranchController::class,
+        'branch_hour' => \App\Http\Controllers\BranchHoursController::class,
         'client' => \App\Http\Controllers\ClientController::class,
         'product' => \App\Http\Controllers\ProductController::class,
         'package' => \App\Http\Controllers\PackageController::class,
