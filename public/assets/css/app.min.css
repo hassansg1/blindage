@@ -2534,11 +2534,12 @@ input[switch="dark"]:checked + label:before {
 .datepicker table tr td.today:hover,
 .datepicker table tr td span.active.active,
 .datepicker table tr td span.active:hover.active {
-    background-color: #556ee6 !important;
+    background-color: #c9a200 !important;
     background-image: none;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #fff !important;
+    background-image: none !important;
 }
 .datepicker table tr td.day.focused,
 .datepicker table tr td.day:hover,
@@ -4182,7 +4183,7 @@ width: 27%
     background: #9c7f07;
 }
 .left-side-bar-wrapper{
-    background: #eef1fd;padding:10px;border-radius: 5px;
+    background: #eef1fd;border-radius: 5px;
 }
 .left-side-bar-wrapper .accordion-button{
     background: #ddd;
@@ -4190,3 +4191,19 @@ width: 27%
 .left-side-bar-wrapper .accordion-item{
     border:none !important;
 } 
+.left-side-bar-wrapper .no-border{
+    border:none !important;
+}
+.datepicker table tr td.day.focused, .datepicker table tr td.day:hover {
+    background: #c9a200 !important;
+    cursor: pointer;color: #fff !important;
+}
+.left-side-bar-wrapper .accordion-button:not(.collapsed){
+    color: inherit;
+}
+.left-side-bar-wrapper .accordion-button{
+    padding:.7rem !important;border-top-left-radius: 4px !important;border-top-right-radius: 4px !important;
+}
+.left-side-bar-wrapper table{
+    width: 100%;
+}

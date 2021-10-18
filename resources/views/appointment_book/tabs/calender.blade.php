@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-lg-2">
-        <div class="left-side-bar-wrapper">
-            <label>Calender</label>
+        <div class="left-side-bar-wrapper pb-2">
+            <label class="p-2">Calender</label>
             <div data-provide="datepicker-inline" class="bootstrap-datepicker-inline"></div>
         
-        <div class="card">
+        <div class="card no-border m-2">
             <div class="">
                 <div class="row">
                     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card no-border m-2">
             <div class="">
                 <div class="row">
                     <div class="accordion accordion-flush" id="accordionFlushExample">
