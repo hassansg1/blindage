@@ -16,16 +16,20 @@
                <div class="client-name">
                   <h4>{{ isset($data->client->first_name)?$data->client->first_name:''}} {{ isset($data->client->last_name)?$data->client->last_name:'' }}</h4>
                </div>
+               @if(isset($data->client->mobile_no) && $data->client->mobile_no!=null)
                <div class="mb-2 icon-wrapper">
                   <i class="fas fa-phone-alt icon"></i>
                   <div>
                      {{  isset($data->client->mobile_no)?$data->client->mobile_no:'' }} {{ isset($data->client->alt_mobile_no)? ' (&) '.$data->client->alt_mobile_no:''  }}
                   </div>
                </div>
+               @endif
+               @if(isset($data->client->email) && $data->client->email!=null)
                <div class="icon-wrapper mb-2">
                   <i class="fas fa-envelope icon"></i>
                   <div>{{  isset($data->client->email)?$data->client->email:'' }}</div>
                </div>
+               @endif
                <div class="mb-3 box-wrapper">
                   <i class="fas fa-clock"></i>
                   <div class="">
@@ -54,8 +58,8 @@
                   <div class="">
                      <div>
                         @forelse($data->appointments as $loop_variable)
-                           <div>{{ $loop_variable->service->name }} (Regular Service) </div>
-                           <div>{{ $loop_variable->service->minutes }} Min.</div>
+                           <div>{{ isset($loop_variable->service)?$loop_variable->service->name:'' }} (Regular Service) </div>
+                           <div>{{ isset($loop_variable->service)?$loop_variable->service->minutes:'' }} Min.</div>
                         @empty   
                         @endforelse
 
@@ -92,7 +96,8 @@
       </div>
    </div>
    <div class="modal-footer">
-      <div class="btn btn-primary primary-alt">Appt. Details</div>
+      <div class="btn btn-primary primary-alt" onclick="openScheduleDetailPopup('{{ $data->id }}','{{ $data->appointments->first()->start_time ?? '' }}','{{ $data->appointments->first()->getEndTimeAttribute() ?? '' }}')">Appt. Details</div>
       <div class="btn btn-primary" data-bs-dismiss="modal">Schedule</div>
    </div>
 </div>
+@include('appointment_book.form_script')
