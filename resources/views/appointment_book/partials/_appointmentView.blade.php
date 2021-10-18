@@ -54,8 +54,8 @@
                   <div class="">
                      <div>
                         @forelse($data->appointments as $loop_variable)
-                           <div>{{ $loop_variable->service->name }} (Regular Service) </div>
-                           <div>{{ $loop_variable->service->minutes }} Min.</div>
+                           <div>{{ isset($loop_variable->service)?$loop_variable->service->name:'' }} (Regular Service) </div>
+                           <div>{{ isset($loop_variable->service)?$loop_variable->service->minutes:'' }} Min.</div>
                         @empty   
                         @endforelse
 
@@ -92,7 +92,8 @@
       </div>
    </div>
    <div class="modal-footer">
-      <div class="btn btn-primary primary-alt">Appt. Details</div>
+      <div class="btn btn-primary primary-alt" onclick="openScheduleDetailPopup('{{ $data->id }}','{{ $data->appointments->first()->start_time ?? '' }}','{{ $data->appointments->first()->getEndTimeAttribute() ?? '' }}')">Appt. Details</div>
       <div class="btn btn-primary" data-bs-dismiss="modal">Schedule</div>
    </div>
 </div>
+@include('appointment_book.form_script')
