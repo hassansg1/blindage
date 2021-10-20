@@ -91,7 +91,7 @@
             </div>
          <div class="client-cancel-info">
              <h3 class="text-center">Cancel Appointment?</h3>
-             <div class="text-center"><i class="fa fa-times-circle-o" aria-hidden="true"></i></div>
+             <div class="text-center"><i class="fa fa-times-circle cross-icon" aria-hidden="true"></i></div>
              <p>This appointment will be canceled and removed from the appointment book.</p>
              <div class="form-chec mb-3">
                  <input class="form-check-input" type="checkbox" id="byMessage" name="marketing_mail" value="1" /> <label class="form-check-label" for="byMessage"> Mark as No Show (QWicQEzvCJ did not appear for this appointment) </label>

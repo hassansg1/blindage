@@ -4210,3 +4210,10 @@ width: 27%
 .top-nav-tabs-wrapper .nav-tabs-custom {
     border-bottom: 2px solid #c3c4c6;
 }
+.client-cancel-info .cross-icon{
+    font-size: 40px;
+    color: #c9a200;
+    margin: 20px 0;
+}
+.sp-original-input-container .sp-add-on {
+    width: 40px !important;}
