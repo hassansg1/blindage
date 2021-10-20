@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
-use App\Models\BranchHours;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
 
-class BranchHoursController extends BaseController
+class ScheduleController extends BaseController
 {
     protected $model;
     protected $route;
@@ -18,10 +18,10 @@ class BranchHoursController extends BaseController
 
     public function __construct()
     {
-        $this->model = new BranchHours();
-        $this->route = 'branch_hour';
-        $this->heading = 'Branch hours';
-        \Illuminate\Support\Facades\View::share('top_heading', 'Branch hours');
+        $this->model = new Schedule();
+        $this->route = 'schedule';
+        $this->heading = 'Schedule';
+        \Illuminate\Support\Facades\View::share('top_heading', 'Schedule');
     }
 
     /**
