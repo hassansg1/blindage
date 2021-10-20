@@ -4217,3 +4217,100 @@ width: 27%
 }
 .sp-original-input-container .sp-add-on {
     width: 40px !important;}
+.scheduleTopBarWrapper{
+    display: flex;align-items: center;gap:20px;
+}  
+.scheduleTopBarWrapper .searchEmployee{
+    flex-basis: 300px;
+}
+.scheduleTopBarWrapper .scheduleDateRange{
+    flex-basis: 220px;
+}
+.scheduleTopBarWrapper .rolesSelect{
+    flex-basis: 150px;
+}
+.scheAvail_unavail{
+    gap:20px;
+} 
+.scheAvail_unavail .sched-available{
+   display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: rgba(47,141,214,.72);
+} 
+.scheAvail_unavail .sched-unavailable{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #dadada;
+}
+.scheTableWrapper .day-of-week{
+    font-size:16px;font-weight: normal;color: #c8c8c8;
+}
+.scheTableWrapper .day-of-month{
+    font-size: 50px;
+    line-height: 1.2;
+    text-align: left;
+    color: #787878;
+    margin-left: 0;font-weight: normal;
+}
+.scheTableWrapper .table td, .scheTableWrapper .table th{
+        padding-bottom: 0;
+    padding-top: 0;
+       border: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;height: 85px;
+}
+.scheTableWrapper .table-bordered{
+    border: none;
+}
+.scheTableWrapper .table-bordered>:not(caption)>* {
+    border-width: 0;
+}
+.scheTableWrapper .businessHoursClosed{
+background: #eaeaea;
+}
+.scheTableWrapper .businessHoursClosed .closedText{
+    margin-top:15px;
+}
+.scheTableWrapper .businessHoursOpen{
+    margin-top: 15px;
+}
+.scheTableWrapper .businessHoursOpen .timing{
+    margin-bottom: 5px;
+}
+.scheTableWrapper .businessHoursOpen.available{
+    background-color: rgba(47,141,214,.72);border-radius: 15px;
+}
+.scheTableWrapper .businessHoursOpen.available .timing{
+    margin-top:15px;
+}
+.scheTableWrapper .employeeInfo{
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    align-items: center;
+}
+.scheTableWrapper .employeeInfo .employeeCircle{
+   height: 60px;
+    width: 60px;
+    min-width: 60px;
+    font-size: 24px;
+    line-height: 60px;
+    border: 1px solid;
+    border-radius: 100%;
+    text-align: center;
+}
+.scheTableWrapper .employeeInfo .employeeName{
+    font-size: 18px;
+}
+.scheTableWrapper .businessHours{
+   height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 18px;
+ 
+}
