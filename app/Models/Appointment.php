@@ -6,11 +6,17 @@ use App\Http\Traits\ModelTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Appointment extends Model
 {
     use HasFactory;
     use ModelTrait;
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
 
     protected $guarded = [];
 
@@ -43,8 +49,6 @@ class Appointment extends Model
 
         return date('H:i:s', strtotime($endTime));
     }
-
-
     /**
      * @param $item
      * @param $request
@@ -62,4 +66,21 @@ class Appointment extends Model
         $item->save();
         return $item;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

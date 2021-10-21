@@ -6,11 +6,16 @@ use App\Http\Traits\ModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class AppointmentBook extends Model
 {
     use HasFactory;
     use ModelTrait;
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
 
     protected $guarded = [];
 
@@ -56,7 +61,9 @@ class AppointmentBook extends Model
                 'duration' => getMinutesDifference($request->start, $request->end)
             ]);
         } else {
+            $item->appointments()->update(['deleted_by_id'=>Auth::id()]);
             $item->appointments()->delete();
+            $item->appointmentBookItems()->update(['deleted_by_id'=>Auth::id()]);
             $item->appointmentBookItems()->delete();
             if (isset($request->services)) {
                     // $timeStart = date('H:i:s', strtotime($request->time_start));
@@ -119,4 +126,34 @@ class AppointmentBook extends Model
         }
         return $item;
     }
+
+    public function deleteAppointment($request)
+    {
+        // FIrst Delete AppointmentBookItems
+        // Second Delete Appointments
+        // Third Delete AppointmentBook
+        $apptBook = AppointmentBook::find($request->appointment);
+        // Delete AppointmentBookItems
+        $apptBook->appointmentBookItems()->update(['deleted_by_id'=>Auth::id()]);
+        $apptBook->appointmentBookItems->each->delete();  
+        //................................
+        // Delete Appointments............
+        $apptBook->appointments()->update(['deleted_by_id'=>Auth::id()]);
+        $apptBook->appointments->each->delete();
+        // ................................
+        $apptBook->mark_no_show = isset($request->mark_no_show)?1:0;
+        $apptBook->reason = isset($request->reason_for_cancelation)&& $request->reason_for_cancelation!=null?$request->reason_for_cancelation:0;
+        $apptBook->deleted_by_id = Auth::id();
+        $apptBook->save();
+        if($apptBook->delete())
+        {
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
 }

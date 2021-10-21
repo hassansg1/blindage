@@ -139,4 +139,24 @@ class AppointmentBookController extends BaseController
 
         return redirect(route($this->route . ".index"));
     }
+
+    public function cancalAppointment(Request $request)
+    {
+        
+        $result = $this->model->deleteAppointment($request);
+        if($result)
+        {
+            flashSuccess(getLang($this->heading . " Successfully Deleted."));
+            return redirect(route($this->route . ".index"));
+
+        }
+        
+        flashSuccess(getLang($this->heading . " Appointment Did Not Cancel."));
+        return redirect(route($this->route . ".index"));
+
+    }
+
+
+
+
 }
