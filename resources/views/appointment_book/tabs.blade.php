@@ -144,10 +144,10 @@
                                                                 <tr>
                                                                     <td></td>
                                                                     <td>
-                                                                        <label for="colorpicker-togglepaletteonly" class="form-label">Appt. Color</label>
-                            <input type="text" class="form-control spectrum with-add-on" name="color"
-                                   id="colorpicker-togglepaletteonly"
-                                   value="{{ isset($item) ? $item->color:old('color') ?? ''  }}">
+                                                                        <div>
+                                                                            <label class="form-label">Simple input field</label>
+                                                                            <input type="text" class="form-control" id="colorpicker-default" value="#50a5f1">
+                                                                        </div>
                                                                     </td>
                                                                 </tr>
                                                                
