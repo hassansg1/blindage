@@ -14,7 +14,8 @@
             <div class="client-summary-info">
                 <div class="client-pic-wrapper">
                     <div class="client-pic">
-                        AY
+                        {{-- AY --}}
+                        {{ isset($appt->client->first_name)?ucwords(substr($appt->client->first_name,0,1)):''}} {{ isset($appt->client->last_name)?ucwords(substr($appt->client->last_name,0,1)):''}}
                     </div>
                 </div>
                 <div class="client-info-detail">

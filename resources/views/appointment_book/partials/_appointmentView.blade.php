@@ -9,7 +9,9 @@
          <div class="client-summary-info">
             <div class="client-pic-wrapper">
                <div class="client-pic">
-                  AY
+                  {{-- AY --}}
+                  {{ isset($data->client->first_name)?ucwords(substr($data->client->first_name,0,1)):''}} {{ isset($data->client->last_name)?ucwords(substr($data->client->last_name,0,1)):''}}
+                  {{-- {{ echo substr("Hello world",0,1); }} --}}
                </div>
             </div>
             <div class="client-info-detail">
@@ -86,22 +88,30 @@
          </div>
           <div class="mt-3 text-center">
                <div class="btn btn-primary primary-alt" id="cancelApptBtn">Cancel Appt.</div>
-               <div class="btn btn-primary" data-bs-dismiss="modal">Schedule</div>
+               <div class="btn btn-primary" onclick="openScheduleDetailPopup('{{ $data->id }}','{{ $data->appointments->first()->start_time ?? '' }}','{{ $data->appointments->first()->getEndTimeAttribute() ?? '' }}')">Appt. Details</div>
+
+
+
             </div>
             </div>
-         <div class="client-cancel-info">
-             <h3 class="text-center">Cancel Appointment?</h3>
-             <div class="text-center"><i class="fa fa-times-circle cross-icon" aria-hidden="true"></i></div>
-             <p>This appointment will be canceled and removed from the appointment book.</p>
-             <div class="form-chec mb-3">
-                 <input class="form-check-input" type="checkbox" id="byMessage" name="marketing_mail" value="1" /> <label class="form-check-label" for="byMessage"> Mark as No Show (QWicQEzvCJ did not appear for this appointment) </label>
-             </div>
-             <textarea class="form-control" placeholder="Reason for Cancellation?"></textarea>
-             <div class="mt-3 text-center">
-               <div class="btn btn-primary primary-alt" id="backToCardBtn">Back to Card</div>
-               <div class="btn btn-primary" data-bs-dismiss="modal">Cancel Appointment</div>
+            <div class="client-cancel-info">
+               <form action="{{ route('appointment_book.cancalAppointment') }}" method="post">
+                      {{ csrf_field() }}
+                     <input type="hidden" name="appointment" value="{{ $data->id ?? '' }}">
+                   <h3 class="text-center">Cancel Appointment?</h3>
+                   <div class="text-center"><i class="fa fa-times-circle-o" aria-hidden="true"></i></div>
+                   <p>This appointment will be canceled and removed from the appointment book.</p>
+                   <div class="form-chec mb-3">
+                       <input class="form-check-input" type="checkbox" id="byMessage" name="mark_no_show" value="1" /> <label class="form-check-label" for="byMessage"> Mark as No Show (QWicQEzvCJ did not appear for this appointment) </label>
+                   </div>
+                   <textarea class="form-control" name="reason_for_cancelation" placeholder="Reason for Cancellation?"></textarea>
+                   <div class="mt-3 text-center">
+                     <button class="btn btn-primary primary-alt" id="backToCardBtn">Back to Card</button>
+                     <button class="btn btn-primary" type="submit">Cancel Appointment</button>
+                  </div>
+               </form>
+
             </div>
-         </div>
 
       </div>
    </div>
