@@ -1,10 +1,10 @@
 <button onclick="location.href='{{ route($route.".edit",$item->id) }}'" title="Edit" type="button"
-        class="btn btn-light btn-form btn-no-color dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true"
+        class="btn btn-form btn-info waves-effect" data-bs-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
     <i class="fas fa-edit"></i>
 </button>
 <button onclick="if(confirm('Are you sure you want to delete?')) $('#delete_'+{{ $item->id }}).submit()" title="Delete" type="button"
-        class="btn btn-light btn-form btn-no-color dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true"
+        class="btn btn-form btn-danger waves-effect" data-bs-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
     <i class="fas fa-trash-alt"></i>
 </button>
