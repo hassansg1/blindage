@@ -114,7 +114,7 @@ function listData() {
         },
         "processing": true,
         "serverSide": true,
-        "aaSorting": [0],
+        // "aaSorting": [0],
         "ajax": {
             "url": '{{ route('appointment_book.get_Appointment') }}',
             "dataType": "json",
@@ -124,7 +124,7 @@ function listData() {
         },
         "columns": [
             {"data": "id"},
-            // {"data": "Name"},
+            {"data": "clientName"},
             // {"data": "Email"},
             // {"data": "Role"},
             // {"data": "Location"},
