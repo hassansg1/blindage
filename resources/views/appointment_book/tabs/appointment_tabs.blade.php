@@ -53,33 +53,78 @@
                             </div>
                         </div>
                     </div>
+
+                           
                        <div class="custom_table_div">
-                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <table id="view-list" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
                                 <thead class="table-light custom_table_head">
                                 <tr>
                                     <th class="">ID</th>
-                                    <th>
-                                        Status
-                                    </th>
-                                    <th>Client Name</th>
+                                    {{-- <th>Client Name</th>
                                     <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Services</th>
+                                    <th>Service</th>
                                     <th>Employee</th>
                                     <th>Payment</th>
-                                    <th>Total</th>
+                                    <th>Total</th> --}}
                                 </tr>
                                 </thead>
                                 <tbody id="table_content_div_body">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+
+                                   {{--  @forelse(AppointmentHelper::get_appointmentBook() as $loop_variable) 
+                                        <tr>
+                                            <td>{{ $loop_variable->id ?? '' }}</td>
+                                            <td>{{ ucwords($loop_variable->client->first_name) ?? '' }}  {{ ucwords($loop_variable->client->last_name) ?? '' }}</td>
+                                            <td>{{  date('l, M d, Y',strtotime($loop_variable->activity_date)) }} </td>
+                                            <td>
+                                                @forelse($loop_variable->appointments as $loop_var)
+                                                    <div>{{ isset($loop_var->service)?$loop_var->service->name:'' }} (Regular Service) </div>
+                                                    <div>Duration : {{ isset($loop_var->service)?$loop_var->service->minutes:'' }} Min.</div>
+                                                @empty   
+                                                @endforelse
+                                                @forelse($loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class) as $app_book_items)
+                                                    @foreach($app_book_items->serviceitemable->service_items() as $loop_var)
+                                                        <div>{{ $loop_var->packageitemable->name }} (Package Service) </div>
+                                                        <div>{{ $loop_var->packageitemable->minutes }} Min.</div>
+                                                    @endforeach
+                                                @empty   
+                                                @endforelse
+                                            </td>
+                                            <td>
+                                                @forelse($loop_variable->appointments as $loop_var)
+                                                    @if(isset($loop_var->employee_type_id) && $loop_var->employee_type_id !=null)
+                                                
+                                                       <div><span>Employee: </span> <span>{{ $loop_var->employee->getFirstAndLastName() }}</span></div>
+                                                       <div> {{ $loop_var->duration}} Min. ({{ $loop_var->start_time}} - {{ $loop_var->getEndTimeAttribute()}})</div>
+                                                    @endif
+                                                @empty   
+                                                @endforelse
+                                            </td>
+                                            <td>
+                                                @forelse($loop_variable->appointments as $loop_var)
+                                                    @if(isset($loop_var->price) && $loop_var->price !=null)
+                                                        <div> {{ $loop_var->price}} (Service)</div>
+                                                    @endif
+                                                @empty   
+                                                @endforelse
+
+                                                @forelse($loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class) as $loop_var)
+                                                    @if(isset($loop_var->price) && $loop_var->price !=null)
+                                                        <div> {{ $loop_var->price}} (Package Service)</div>
+                                                    @endif
+                                                @empty   
+                                                @endforelse
+
+                                               
+                                                
+                                            </td>
+                                            <td>
+                                                {{ ($loop_variable->appointments->sum('price')) +  $loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class)->sum('price') }}
+                                            </td>
+
+                                        </tr>
+                                    @empty
+                                    @endforelse --}}
+          
                                 </tbody>
                             </table>
                         </div>

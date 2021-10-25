@@ -157,6 +157,57 @@ class AppointmentBookController extends BaseController
     }
 
 
+    public function get_Appointment(Request $request)
+    {
+        $obj = new AppointmentBook();
+     
+        $columns = array(
+            0 => 'id',
+            1 => 'name',
+        );
+        dd($request->input('order'));
+        $totalData = $obj->appointmentbook_count();
+        $totalFiltered = $totalData;
+
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+
+        if (empty($request->input('search.value'))) {
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir);
+        } else {
+            $search = $request->input('search.value');
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $search);
+            $totalFiltered = $obj->appointmentbook_count($search);
+        }
+        $data = array();
+        if (!empty($results)) {
+            $count = $start + 1;
+            foreach ($results as $result) {
+
+                $show = '';
+                // $edit = route('editUser', ['id' => $result->id]);
+                // $nestedData['DT_RowClass'] = "add_row";
+                $nestedData['id'] = $count++;
+                // $nestedData['Name'] = ucwords($result->last_name) .' , '. ucwords($result->first_name);
+                // $nestedData['Email'] = $result->email;
+                // $nestedData['Role'] = !empty($result->roles->first()->name)?$result->roles->first()->name:"";
+                // $nestedData['Location'] = \LocationHelper::getLocationNameById($result->location_id);
+                // $nestedData['Status'] = View::make('admin.user.status')->with(['result' => $result])->render();
+                // $nestedData['Options'] = View::make('admin.user.option_button')->with(['edit' => $edit, 'id' => $result->id])->render();
+                $data[] = $nestedData;
+            }
+        }
+        
+        return response()->json(['draw' => intval($request->input('draw')), 'recordsTotal' => intval($totalData), 'recordsFiltered' => intval($totalFiltered), 'data' => $data]);
+        
+        // $apptBook = new AppointmentBook;
+        
+        // $apptBook = $apptBook->get();
+        // return $apptBook;
+    }
+
 
 
 }

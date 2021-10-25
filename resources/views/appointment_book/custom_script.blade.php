@@ -98,3 +98,53 @@
 
 
 </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+    listData();
+});
+var t = '';
+function listData() {
+    t = $('#view-list').DataTable({
+        "dom": 'frtlip',
+        oLanguage: {
+            // sProcessing: '<i  class="fa fa-refresh" style="font-size:24px;margin-left:50%"></i>'
+            sProcessing: ''
+        },
+        "processing": true,
+        "serverSide": true,
+        "aaSorting": [0],
+        "ajax": {
+            "url": '{{ route('appointment_book.get_Appointment') }}',
+            "dataType": "json",
+            "type": "POST",
+            "data": {_token: '{{ csrf_token() }}'},
+            "timeout": 15000
+        },
+        "columns": [
+            {"data": "id"},
+            // {"data": "Name"},
+            // {"data": "Email"},
+            // {"data": "Role"},
+            // {"data": "Location"},
+            // {"data": "Status"},
+            // {"data": "Options"}
+        ],
+        "columnDefs": [{
+                // "targets": [0, 1, 2, 3, 4, 5, 6],
+                "sortable": false,
+                "orderable": false
+            }]
+    });
+
+    $.fn.dataTable.ext.errMode = 'throw';
+    // $('#search_data').on('click', function (e) {
+    //     var v = $("#search").val(); // getting search input value
+    //     if (v) {
+    //         t.search(v).draw();
+    //     }
+    // });
+    
+}
+    </script>
