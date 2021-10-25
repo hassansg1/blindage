@@ -376,14 +376,13 @@
          </ul>
       </div>
    </div>
-   <div class="end_date_calender">
-      <div class="repeat_on_text">Ends on<span class="text-red">*</span></div>
+   <div class="end_date_calender d-flex mt-3">
+      <div class="repeat_on_text" style="width: 156px;">Ends on<span class="text-red">*</span></div>
       <div class="input-group" id="datepicker1">
-                                                    <input type="text" class="form-control" placeholder="dd M, yyyy"
-                                                        data-date-format="dd M, yyyy" data-date-container='#datepicker1' data-provide="datepicker">
-
-                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                                </div><!-- input-group -->
+          <input type="text" class="form-control" placeholder="dd M, yyyy"
+              data-date-format="dd M, yyyy" data-date-container='#datepicker1' data-provide="datepicker">
+          <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+      </div><!-- input-group -->
    </div>
 
 </div>

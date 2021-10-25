@@ -70,12 +70,12 @@
                                 </thead>
                                 <tbody id="table_content_div_body">
 
-                                   {{--  @forelse(AppointmentHelper::get_appointmentBook() as $loop_variable) 
-                                        <tr>
-                                            <td>{{ $loop_variable->id ?? '' }}</td>
-                                            <td>{{ ucwords($loop_variable->client->first_name) ?? '' }}  {{ ucwords($loop_variable->client->last_name) ?? '' }}</td>
-                                            <td>{{  date('l, M d, Y',strtotime($loop_variable->activity_date)) }} </td>
-                                            <td>
+                                  {{--   @forelse(AppointmentHelper::get_appointmentBook() as $loop_variable) 
+                                        <tr> --}}
+                                            {{-- <td>{{ $loop_variable->id ?? '' }}</td> --}}
+                                            {{-- <td>{{ ucwords($loop_variable->client->first_name) ?? '' }}  {{ ucwords($loop_variable->client->last_name) ?? '' }}</td> --}}
+                                            {{-- <td>{{  date('l, M d, Y',strtotime($loop_variable->activity_date)) }} </td> --}}
+                                            {{-- <td>
                                                 @forelse($loop_variable->appointments as $loop_var)
                                                     <div>{{ isset($loop_var->service)?$loop_var->service->name:'' }} (Regular Service) </div>
                                                     <div>Duration : {{ isset($loop_var->service)?$loop_var->service->minutes:'' }} Min.</div>
@@ -88,8 +88,8 @@
                                                     @endforeach
                                                 @empty   
                                                 @endforelse
-                                            </td>
-                                            <td>
+                                            </td> --}}
+                                           {{--  <td>
                                                 @forelse($loop_variable->appointments as $loop_var)
                                                     @if(isset($loop_var->employee_type_id) && $loop_var->employee_type_id !=null)
                                                 
@@ -98,8 +98,8 @@
                                                     @endif
                                                 @empty   
                                                 @endforelse
-                                            </td>
-                                            <td>
+                                            </td> --}}
+                                           {{--  <td>
                                                 @forelse($loop_variable->appointments as $loop_var)
                                                     @if(isset($loop_var->price) && $loop_var->price !=null)
                                                         <div> {{ $loop_var->price}} (Service)</div>
@@ -116,12 +116,12 @@
 
                                                
                                                 
-                                            </td>
-                                            <td>
+                                            </td> --}}
+                                           {{--  <td>
                                                 {{ ($loop_variable->appointments->sum('price')) +  $loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class)->sum('price') }}
-                                            </td>
+                                            </td> --}}
 
-                                        </tr>
+                                {{--         </tr>
                                     @empty
                                     @endforelse --}}
           

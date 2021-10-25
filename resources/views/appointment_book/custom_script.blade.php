@@ -108,13 +108,9 @@ var t = '';
 function listData() {
     t = $('#view-list').DataTable({
         "dom": 'frtlip',
-        oLanguage: {
-            // sProcessing: '<i  class="fa fa-refresh" style="font-size:24px;margin-left:50%"></i>'
-            sProcessing: ''
-        },
         "processing": true,
         "serverSide": true,
-        // "aaSorting": [0],
+        "aaSorting": [0 ,'asc'],
         "ajax": {
             "url": '{{ route('appointment_book.get_Appointment') }}',
             "dataType": "json",
@@ -125,14 +121,14 @@ function listData() {
         "columns": [
             {"data": "id"},
             {"data": "clientName"},
-            // {"data": "Email"},
-            // {"data": "Role"},
-            // {"data": "Location"},
-            // {"data": "Status"},
-            // {"data": "Options"}
+            {"data": "dated"},
+            {"data": "services"},
+            {"data": "employee"},
+            {"data": "payment"},
+            {"data": "total"}
         ],
         "columnDefs": [{
-                // "targets": [0, 1, 2, 3, 4, 5, 6],
+                "targets": [0, 1, 2, 3, 4, 5, 6],
                 "sortable": false,
                 "orderable": false
             }]

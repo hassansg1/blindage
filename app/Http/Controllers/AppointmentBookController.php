@@ -165,9 +165,10 @@ class AppointmentBookController extends BaseController
      
         $columns = array(
             0 => 'id',
-            // 1 => 'name',
+            1 => 'clientName',
         );
 
+        // dd($request->all());
         $totalData = $obj->appointmentbook_count();
         $totalFiltered = $totalData;
 
@@ -192,12 +193,13 @@ class AppointmentBookController extends BaseController
                 // $edit = route('editUser', ['id' => $result->id]);
                 // $nestedData['DT_RowClass'] = "add_row";
                 $nestedData['id'] = $count++;
-                $nestedData['clientName'] = View::make('appointment_book.tabs.table._client_name.blade')->with(['loop_variable' => $result])->render();
-                // $nestedData['Email'] = $result->email;
-                // $nestedData['Role'] = !empty($result->roles->first()->name)?$result->roles->first()->name:"";
-                // $nestedData['Location'] = \LocationHelper::getLocationNameById($result->location_id);
-                // $nestedData['Status'] = View::make('admin.user.status')->with(['loop_variable' => $result])->render();
-                // $nestedData['Options'] = View::make('admin.user.option_button')->with(['edit' => $edit, 'id' => $result->id])->render();
+                $nestedData['clientName'] = view('appointment_book.tabs.table._client_name')->with(['loop_variable' => $result])->render();
+                $nestedData['dated'] = view('appointment_book.tabs.table._date')->with(['loop_variable' => $result])->render();
+                $nestedData['services'] = view('appointment_book.tabs.table._services')->with(['loop_variable' => $result])->render();
+                $nestedData['employee'] = view('appointment_book.tabs.table._employee')->with(['loop_variable' => $result])->render();
+                $nestedData['payment'] = view('appointment_book.tabs.table._payment')->with(['loop_variable' => $result])->render();
+                $nestedData['total'] = view('appointment_book.tabs.table._total')->with(['loop_variable' => $result])->render();
+
                 $data[] = $nestedData;
             }
         }
