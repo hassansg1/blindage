@@ -30,7 +30,6 @@ class EmployeeController extends BaseController
     public function index()
     {
         $data = $this->fetchData($this->model);
-
         return view($this->route . "/index")
             ->with(['items' => $data['items'], 'data' => $data, 'route' => $this->route, 'heading' => $this->heading]);
     }
@@ -68,7 +67,6 @@ class EmployeeController extends BaseController
     {
         $request->validate($this->model->rules);
         $this->model->saveFormData($this->model, $request);
-
         flashSuccess(getLang($this->heading . " Successfully Created."));
 
         if (isset($request->add_new)) return redirect(route($this->route . ".create"));
@@ -82,7 +80,7 @@ class EmployeeController extends BaseController
     public function show($item)
     {
         $item = $this->model->find($item);
-
+//        dd($item);
         return view($this->route . '.view')->with(['route' => $this->route, 'item' => $item, 'heading' => $this->heading, 'clone' => $request->clone ?? null]);
     }
 

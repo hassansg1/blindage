@@ -155,5 +155,27 @@ class AppointmentBook extends Model
 
 
 
+    public function appointmentbook_listing($limit, $start, $order, $dir, $search = false) {
+        $result = AppointmentBook::offset($start);
+        if ($search) {
+            // $result->orWhere('first_name', 'LIKE', "%{$search}%");
+            // $result->orWhere('last_name', 'LIKE', "%{$search}%");
+        }
+        $result->limit($limit);
+        $result->orderBy($order, $dir);
+        return $result->get();
+    }
+
+    public function appointmentbook_count($search = false) {
+        $result = new AppointmentBook();
+        if ($search) {
+            // $result->orWhere('first_name', 'LIKE', "%{$search}%");
+            // $result->orWhere('last_name', 'LIKE', "%{$search}%");
+        }
+        return $result->count();
+    }
+
+
+
 
 }

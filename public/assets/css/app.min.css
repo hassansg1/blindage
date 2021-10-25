@@ -2517,6 +2517,13 @@ input[switch="dark"]:checked + label:before {
     padding: 8px;
     z-index: 9999 !important;
 }
+.timepicker-orient-top {
+    top: calc(1.5em + .94rem + 2px)!important;
+}
+.bootstrap-timepicker-widget {
+    left: 0!important;
+    right: auto!important;
+}
 .datepicker table tr th {
     font-weight: 500;
 }
@@ -4313,4 +4320,67 @@ background: #eaeaea;
     display: flex;
     font-size: 18px;
  
+}
+.available_wrapper{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+}
+.checkbox_styling{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.checkbox_styling .form-check-input {
+    width: 1.5em;
+    height: 1.5em;}
+#available_modal .scheduled_times{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}  
+#weeks_data .repeat_every_data{
+    display: flex;gap:20px; align-items: center;
+}
+#weeks_data .repeat_every_data .repeat_text{
+    width: 200px;
+}
+#weeks_data .repeat_on_data{
+    display: flex;align-items: center;
+}
+#weeks_data .week_wrapper {
+    width: 100%;
+}
+#weeks_data .repeat_on_data .repeat_on_text{
+    width: 200px
+}
+#weeks_data .week_wrapper ul{
+display: flex;list-style: none; align-items: center;justify-content: space-between;padding-left:0;
+}
+#weeks_data .week_wrapper ul li button{
+    border-radius: 100%;border: 1px solid #ddd;height: 30px;width: 30px;line-height: 30px;text-align: center;
+}
+#weeks_data .week_wrapper ul li button.active{
+    background: #c9a200;color: #fff;border:1px solid #c9a200;
+}
+.scheduled_times-wrapper>.row:first-child .fa-times{
+    display: none;
+}
+.scheduled_times-wrapper.all_added>.row:first-child .fa-times{
+    display: block;
+}
+.scheduled_times-wrapper .row .plus_value{
+    display: none;
+}
+.scheduled_times-wrapper.all_added .row .plus_value{
+    display: none !important;
+}
+.scheduled_times-wrapper>.row:first-child .plus_value{
+    display: block;
+}
+
+
+.text-red{
+    color: red;
 }

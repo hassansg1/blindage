@@ -59,7 +59,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}email" class="form-label required">
                                 Email
                             </label>
-                            <input type="text" value="{{ isset($item) ? $item->email:old('email') ?? ''  }}"
+                            <input type="email" value="{{ isset($item) ? $item->email:old('email') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}email"
                                    name="email" required>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}mobile_no" class="form-label">Mobile
                                 Phone</label>
-                            <input type="text" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
+                            <input type="number" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}mobile_no"
                                    name="mobile_no">
                         </div>
@@ -80,7 +80,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}alt_mobile_no" class="form-label">
                                 Alternate Phone
                             </label>
-                            <input type="text"
+                            <input type="number"
                                    value="{{ isset($item) ? $item->alt_mobile_no:old('alt_mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}alt_mobile_no"
                                    name="alt_mobile_no"
@@ -136,7 +136,6 @@
                             <input type="text" value="{{ isset($item) ? $item->state:old('state') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}state"
                                    name="state">
-                            {{ dd($item) }}
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -144,7 +143,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}postal_code" class="form-label">
                                 Postal Code
                             </label>
-                            <input type="text" value="{{ isset($item) ? $item->postal_code:old('postal_code') ?? ''  }}"
+                            <input type="number" value="{{ isset($item) ? $item->postal_code:old('postal_code') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}postal_code"
                                    name="postal_code">
                         </div>

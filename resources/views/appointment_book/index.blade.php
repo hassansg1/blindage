@@ -16,7 +16,7 @@
         @slot('li_1') Skote @endslot
         @slot('title') Calendar @endslot
     @endcomponent
-    @include('appointment_book.tabs')
+    @include('appointment_book.tabs.appointment_tabs')
 @endsection
 
 @section('script')

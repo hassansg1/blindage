@@ -73,7 +73,7 @@
                      </div>
                   </div>
                </div>
-               @if(isset($data->employee_type_id) && $data->employee_type_id !=null)
+               @if(isset($data->first()->employee_type_id) && $data->first()->employee_type_id !=null)
                <div class="mb-3 box-wrapper">
                   <i class="fas fa-address-card"></i>
                   <div class="">
