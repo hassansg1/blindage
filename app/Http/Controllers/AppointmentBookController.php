@@ -163,9 +163,9 @@ class AppointmentBookController extends BaseController
      
         $columns = array(
             0 => 'id',
-            1 => 'name',
+            // 1 => 'name',
         );
-        dd($request->input('order'));
+
         $totalData = $obj->appointmentbook_count();
         $totalFiltered = $totalData;
 
@@ -190,11 +190,11 @@ class AppointmentBookController extends BaseController
                 // $edit = route('editUser', ['id' => $result->id]);
                 // $nestedData['DT_RowClass'] = "add_row";
                 $nestedData['id'] = $count++;
-                // $nestedData['Name'] = ucwords($result->last_name) .' , '. ucwords($result->first_name);
+                $nestedData['clientName'] = View::make('appointment_book.tabs.table._client_name.blade')->with(['loop_variable' => $result])->render();
                 // $nestedData['Email'] = $result->email;
                 // $nestedData['Role'] = !empty($result->roles->first()->name)?$result->roles->first()->name:"";
                 // $nestedData['Location'] = \LocationHelper::getLocationNameById($result->location_id);
-                // $nestedData['Status'] = View::make('admin.user.status')->with(['result' => $result])->render();
+                // $nestedData['Status'] = View::make('admin.user.status')->with(['loop_variable' => $result])->render();
                 // $nestedData['Options'] = View::make('admin.user.option_button')->with(['edit' => $edit, 'id' => $result->id])->render();
                 $data[] = $nestedData;
             }

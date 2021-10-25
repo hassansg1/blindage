@@ -59,13 +59,13 @@
                             <table id="view-list" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
                                 <thead class="table-light custom_table_head">
                                 <tr>
-                                    <th class="">ID</th>
-                                    {{-- <th>Client Name</th>
+                                    <th class="">id</th>
+                                    <th>Client Name</th>
                                     <th>Date</th>
                                     <th>Service</th>
                                     <th>Employee</th>
                                     <th>Payment</th>
-                                    <th>Total</th> --}}
+                                    <th>Total</th>
                                 </tr>
                                 </thead>
                                 <tbody id="table_content_div_body">
