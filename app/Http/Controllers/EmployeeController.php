@@ -98,8 +98,6 @@ class EmployeeController extends BaseController
                 $item = $this->model->find('id', $request->item);
         }
         $item = $this->model->find($item);
-
-
         if ($request->ajax) {
             return response()->json([
                 'status' => true,

@@ -136,6 +136,7 @@
                             <input type="text" value="{{ isset($item) ? $item->state:old('state') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}state"
                                    name="state">
+                            {{ dd($item) }}
                         </div>
                     </div>
                     <div class="col-lg-4">

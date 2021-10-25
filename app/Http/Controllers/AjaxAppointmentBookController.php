@@ -84,9 +84,4 @@ class AjaxAppointmentBookController extends Controller
         ]);
 
     }
-
-
-
-
-
 }

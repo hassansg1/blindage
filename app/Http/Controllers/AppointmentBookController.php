@@ -142,7 +142,7 @@ class AppointmentBookController extends BaseController
 
     public function cancalAppointment(Request $request)
     {
-        
+
         $result = $this->model->deleteAppointment($request);
         if($result)
         {
@@ -150,13 +150,9 @@ class AppointmentBookController extends BaseController
             return redirect(route($this->route . ".index"));
 
         }
-        
+
         flashSuccess(getLang($this->heading . " Appointment Did Not Cancel."));
         return redirect(route($this->route . ".index"));
 
     }
-
-
-
-
 }
