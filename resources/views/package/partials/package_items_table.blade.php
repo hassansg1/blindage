@@ -11,7 +11,8 @@
                 </tr>
                 </thead>
                 <tbody id="packageDetails">
-                {!! @$editView !!}
+                {{-- {{ dd($editView) }} --}}
+                {!!  @$editView !!}
                 </tbody>
             </table>
         </div>

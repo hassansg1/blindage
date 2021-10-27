@@ -80,8 +80,8 @@ class PackageController extends BaseController
     public function show($item)
     {
         $item = $this->model->find($item);
-
-        return view($this->route . '.view')->with(['route' => $this->route, 'item' => $item, 'heading' => $this->heading, 'clone' => $request->clone ?? null]);
+        $editView = \Illuminate\Support\Facades\View::make($this->route .'.partials.package_item_row_edit')->with('item',$item)->render();
+        return view($this->route . '.view')->with(['route' => $this->route, 'item' => $item,'editView' => $editView ,'heading' => $this->heading, 'clone' => $request->clone ?? null]);
     }
 
     /**
@@ -91,12 +91,14 @@ class PackageController extends BaseController
      */
     public function edit(Request $request, $item)
     {
+        // dd('s');
         if ($item == 0) {
             if (is_array($request->item))
                 $item = $this->model->find('id', $request->item);
         }
         $item = $this->model->find($item);
-        $editView = \Illuminate\Support\Facades\View::make($this->route .'.partials.package_item_row_edit')->with('data',$item)->render();
+        $editView = \Illuminate\Support\Facades\View::make($this->route .'.partials.package_item_row_edit')->with('item',$item)->render();
+        // dd($editView);
         if ($request->ajax) {
             return response()->json([
                 'status' => true,
