@@ -40,7 +40,7 @@ class Package extends Model
       if (isset($request->name)) $item->name = $request->name;
       if (isset($request->price)) $item->price = $request->price;
       if (isset($request->category)) $item->category = $request->category;
-      if (isset($request->active)) $item->active = $request->active;
+      if (isset($request->active)) $item->active = isset($request->active) ? $request->active:1;
 
       $item->save();
       $delete = PackageItems::where('package_id',$item->id)->delete();
