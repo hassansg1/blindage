@@ -20,7 +20,7 @@
                                                                                                type="checkbox" name=""
                                                                                                id="select_all"></th>
                                     @yield('table_header')
-                                    <th>
+                                    <th width="5%" class="text-center">
                                         Actions
                                     </th>
                                 </tr>

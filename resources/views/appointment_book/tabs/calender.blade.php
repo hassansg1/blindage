@@ -33,17 +33,17 @@
         <div class="card no-border m-2">
             <div class="">
                 <div class="row">
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion accordion-flush" id="accordionFlushExampleTwo">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button fw-medium" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                        aria-expanded="true" aria-controls="flush-collapseOne">
+                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                        aria-expanded="true" aria-controls="flush-collapseTwo">
                                     Move Appointment
                                 </button>
                             </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse show"
-                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample"
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse show"
+                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExampleTwo"
                                  style="">
                                 <div class="accordion-body text-muted">
                                     Nothing here
@@ -68,25 +68,25 @@
                                   class="d-sm-flex flex-wrap text-center text-sm-start justify-content-sm-between">
                                 <div class="d-sm-flex flex-wrap gap-1">
                                     <div class="btn-group mb-2" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary move-day" data-action="move-prev">
+                                        <button type="button" class="btn btn-info move-day" data-action="move-prev">
                                             <i class="calendar-icon ic-arrow-line-left mdi mdi-chevron-left"
                                                data-action="move-prev"></i>
                                         </button>
-                                        <button type="button" class="btn btn-primary move-day" data-action="move-next">
+                                        <button type="button" class="btn btn-info move-day" data-action="move-next">
                                             <i class="calendar-icon ic-arrow-line-right mdi mdi-chevron-right"
                                                data-action="move-next"></i>
                                         </button>
                                     </div>
 
 
-                                    <button type="button" class="btn btn-primary move-today mb-2"
+                                    <button type="button" class="btn btn-success move-today mb-2"
                                             data-action="move-today">Today</button>
                                 </div>
 
-                                <h4 id="renderRange" class="render-range fw-bold pt-1 mx-3"></h4>
+                                <h4 id="renderRange" class="render-range fw-bold"></h4>
 
                                 <div class="dropdown align-self-start mt-3 mt-sm-0 mb-2">
-                                    <button id="dropdownMenu-calendarType" class="btn btn-primary" type="button"
+                                    <button id="dropdownMenu-calendarType" class="btn btn-dark" type="button"
                                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                         <i id="calendarTypeIcon" class="calendar-icon ic_view_month"
                                            style="margin-right: 4px;"></i>

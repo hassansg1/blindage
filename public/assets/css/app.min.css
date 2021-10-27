@@ -4181,7 +4181,7 @@ width: 27%
     border-radius: 5px;
 }
 .top-nav-tabs-wrapper .nav-tabs-custom{
-    flex-basis: 700px;
+    flex-basis: 700px;gap:5px;
 }
 .top-nav-tabs-wrapper .nav-tabs .nav-item.show .nav-link, .top-nav-tabs-wrapper .nav-tabs .nav-link.active{
         background-color: #c9a200;color: #fff !important;
@@ -4193,7 +4193,8 @@ width: 27%
     background: #eef1fd;border-radius: 5px;
 }
 .left-side-bar-wrapper .accordion-button{
-    background: #ddd;
+   background: #2a3042;
+    color: #fff !important;
 }
 .left-side-bar-wrapper .accordion-item{
     border:none !important;
@@ -4398,4 +4399,36 @@ display: flex;list-style: none; align-items: center;justify-content: space-betwe
 }
 .table>:not(caption)>*>* {
     padding: .50rem;
+}
+.render-range{
+    background: #eef1fd;
+    width: 430px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.tui-full-calendar-dayname{
+    padding-left: 10px !important;
+}
+.tui-full-calendar-dayname.tui-full-calendar-today {
+    background: #ddd;
+}
+.tui-full-calendar-dayname-container{
+   border-bottom: none !important;padding-right: 16px;overflow:hidden; 
+}
+.tui-full-calendar-dayname-container{
+background: #eef1fd !important;
+}
+/*.btn{
+    border:none !important;
+}*/
+.accordion-button:after{
+    filter: brightness(0) invert(1);
+}
+.nav-tabs-custom .nav-item .nav-link {
+    border: none;
+    background: #2a3042;
+    color: #fff;
 }
