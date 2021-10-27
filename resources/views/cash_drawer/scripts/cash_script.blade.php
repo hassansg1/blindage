@@ -13,14 +13,16 @@
     }
     $('#grandTotal').val(parseFloat($('#billsTotal').val()) + parseFloat($('#coinsTotal').val()))
     }
-    function setTimeFields() {
+    function setTimeFields(param) {
        var check =  $('#customTime').is(':checked');
-       if(check){
+       if(check && param == 'time'){
            $('#allDays').prop('checked', false);
            $('#timeRange').css({
                display: 'inline-block',
            });
         }else{
+
+           $('#customTime').prop('checked', false);
            $('#allDays').prop('checked', true);
            $('#timeRange').css({
                display: 'none',

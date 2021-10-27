@@ -14,12 +14,12 @@
                             <label for="{{ isset($item) ? $item->id:'' }}branchId" class="form-label">Branch</label>
                             <select class="form-select form-select-input" name="branch_id"
                                     id="{{ isset($item) ? $item->id:'' }}branchId">
-{{--                                @foreach(getClientCategories() as $category)--}}
-                                    <option value="1">Salon</option>
-{{--                                    <option--}}
-{{--                                        {{ $category->id == (isset($item) ? $item->category:old('price') ?? '') ? 'selected' : ''  }}--}}
-{{--                                        value="{{ $category->id }}">{{ $category->name }}</option>--}}
-{{--                                @endforeach--}}
+                                @foreach(getBranches() as $branch)
+                                    <option value="">Select branch</option>
+                                    <option
+                                        {{ $branch->id == (isset($item) ? $item->branch_id:old('branch_id') ?? '') ? 'selected' : ''  }}
+                                        value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                             <div class="row" style="margin-top: 5px">
 
                                 <div class="form-check col-lg-6">
-                                    <input class="form-check-input" name="active" type="checkbox"
+                                    <input class="form-check-input" name="active" onclick="setTimeFields('days')" type="checkbox"
                                            {{ (isset($item) ? $item->is_time_selected:old('is_time_selected') ?? '') == '' ? 'checked' : '0' }}
                                            id="allDays" value="0">
                                     <label class="form-check-label" for="{{ isset($item) ? $item->id:'' }}allDays">
@@ -43,7 +43,7 @@
                                 <div class="form-check col-lg-6">
                                     <input class="form-check-input" name="is_time_selected" type="checkbox"
                                            {{ (isset($item) ? $item->is_time_selected:old('is_time_selected') ?? '') == '1' ? 'checked' : '' }}
-                                           id="customTime" value="1" onclick="setTimeFields()">
+                                           id="customTime" value="1" onclick="setTimeFields('time')">
                                     <label class="form-check-label" for="{{ isset($item) ? $item->id:'' }}customTime">
                                         Custom Time
                                     </label>
@@ -53,8 +53,7 @@
 
                     </div>
 
-                    <div class="col-lg-4" id="timeRange"
-                         style={{ (isset($item) ? $item->is_time_selected:old('is_time_selected') ?? '') == '' ? "display: none" : '' }} >
+                    <div class="col-lg-4" id="timeRange" style="display:{{ (isset($item) ? $item->is_time_selected:old('is_time_selected') ?? '') == '1' ?  'block' :' none' }}">
                         <div class="mb-3">
 
                             <label for="{{ isset($item) ? $item->id:'' }}timeRange"

@@ -155,14 +155,10 @@ class AppointmentBookController extends BaseController
         return redirect(route($this->route . ".index"));
 
     }
-<<<<<<< HEAD
-=======
-
-
     public function get_Appointment(Request $request)
     {
         $obj = new AppointmentBook();
-     
+
         $columns = array(
             0 => 'id',
             1 => 'clientName',
@@ -203,16 +199,12 @@ class AppointmentBookController extends BaseController
                 $data[] = $nestedData;
             }
         }
-        
+
         return response()->json(['draw' => intval($request->input('draw')), 'recordsTotal' => intval($totalData), 'recordsFiltered' => intval($totalFiltered), 'data' => $data]);
-        
+
         // $apptBook = new AppointmentBook;
-        
+
         // $apptBook = $apptBook->get();
         // return $apptBook;
     }
-
-
-
->>>>>>> f0e42524fad9520f8d606e8236e84a02472d3e78
 }

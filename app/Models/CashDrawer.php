@@ -27,13 +27,12 @@ class CashDrawer extends Model
      */
     public function saveFormData($item, $request)
     {
-dd($request->all());
         if (isset($request->branch_id)) $item->branch_id = $request->branch_id;
         if (isset($request->cash_date)) $item->cash_date = $request->cash_date;
         if (isset($request->time_from)) $item->time_from = $request->time_from;
         if (isset($request->time_to)) $item->time_to = $request->time_to;
         if (isset($request->comment)) $item->comment = $request->comment;
-        if (isset($request->is_time_selected)) $item->is_time_selected = $request->is_time_selected;
+        $item->is_time_selected = ($request->is_time_selected) ? $request->is_time_selected :'0';
         if (isset($request->total_amount)) $item->total_amount = $request->total_amount;
 
         $item->save();
