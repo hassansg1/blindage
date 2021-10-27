@@ -78,7 +78,7 @@ class Product extends Model
     public function saveFormData($item, $request)
     {
         if (isset($request->name)) $item->name = $request->name;
-        if (isset($request->backbar_item)) $item->backbar_item = $request->backbar_item;
+         $item->backbar_item = ($item->backbar_item)?'on':'0';
         if (isset($request->brand)) $item->brand = $request->brand;
         if (isset($request->category)) $item->category = $request->category;
         if (isset($request->size)) $item->size = $request->size;
