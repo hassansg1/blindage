@@ -23,10 +23,10 @@
                             <span id="menu-navi" class="d-sm-flex flex-wrap text-center text-sm-start justify-content-sm-between">
                                 <div class="d-sm-flex flex-wrap gap-1">
                                     <div class="btn-group mb-2" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary move-day" data-action="move-prev">
+                                        <button type="button" class="btn btn-info move-day" data-action="move-prev">
                                             <i class="calendar-icon ic-arrow-line-left mdi mdi-chevron-left" data-action="move-prev"></i>
                                         </button>
-                                        <button type="button" class="btn btn-primary move-day" data-action="move-next">
+                                        <button type="button" class="btn btn-info move-day" data-action="move-next">
                                             <i class="calendar-icon ic-arrow-line-right mdi mdi-chevron-right" data-action="move-next"></i>
                                         </button>
                                     </div>

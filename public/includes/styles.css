@@ -168,8 +168,8 @@ body[data-layout=horizontal] .page-content {
 }
 
 .page-item.active .page-link {
-    background-color: #c9a200 !important;
-    border-color: #c9a200 !important;
+   background-color: #2a3042 !important;
+    border-color: #2a3042 !important;
 }
 
 .btn-primary {
