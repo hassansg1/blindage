@@ -1,5 +1,5 @@
-@if(count($data->items))
-    @foreach($data->items as $data)
+@if(isset($item) && count($item->items))
+    @foreach($item->items as $data)
         <tr id="tableRow{{$data->id}}">
             <td>{{$data->packageitemable->name}}</td>
             <td>${{isset($data->packageitemable->price)?$data->packageitemable->price:$data->packageitemable->retail_price}}</td>
