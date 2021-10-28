@@ -103,7 +103,6 @@ class BranchController extends BaseController
         }
         $item = $this->model->find($item);
 
-
         if ($request->ajax) {
             return response()->json([
                 'status' => true,

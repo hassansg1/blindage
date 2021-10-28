@@ -4203,7 +4203,7 @@ width: 27%
     border:none !important;
 }
 .datepicker table tr td.day.focused, .datepicker table tr td.day:hover {
-    background: #c9a200 !important;
+    background: #2a3042 !important;
     cursor: pointer;color: #fff !important;
 }
 .left-side-bar-wrapper .accordion-button:not(.collapsed){
@@ -4430,5 +4430,11 @@ background: #eef1fd !important;
 .nav-tabs-custom .nav-item .nav-link {
     border: none;
     background: #2a3042;
-    color: #fff;
+    color: #fff;transition: all .3s;
+}
+.nav-tabs-custom .nav-item .nav-link:hover{
+    background: #414e70;
+}
+.accordion-body{
+    border:1px solid #ddd;
 }
