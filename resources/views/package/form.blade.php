@@ -45,10 +45,10 @@
                         <div class="mb-3">
                             <br>
                             <div class="form-check">
-                                <input type="hidden" name="active" value="1">
-                                <input class="form-check-input" name="active" type="checkbox"
+                                <input type="hidden" id="active" name="active" value="{{ isset($item) ? $item->active:'1' }}">
+                                <input class="form-check-input is_active" type="checkbox"
                                        {{ (isset($item) ? $item->active:old('active') ?? '') == 0 ? 'checked' : '' }}
-                                       id="{{ isset($item) ? $item->id:'' }}active" value="0">
+                                       id="{{ isset($item) ? $item->id:'' }}active" value="" onclick="this.checked ? $('#active').val(0) : $('#active').val(1)">
                                 <label class="form-check-label" for="{{ isset($item) ? $item->id:'' }}active">
                                     This package is no longer active
                                 </label>

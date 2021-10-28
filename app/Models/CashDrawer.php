@@ -58,4 +58,7 @@ class CashDrawer extends Model
         }
         return $item;
     }
+    public function branch(){
+        return $this->belongsTo(Branch::class, 'branch_id');
+    }
 }

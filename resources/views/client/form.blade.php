@@ -15,6 +15,9 @@
                             <input type="text" value="{{ isset($item) ? $item->first_name:old('first_name') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}first_name"
                                    name="first_name" required>
+                                   <div class="invalid-feedback">
+                                        Please Enter your First Name.
+                                    </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -24,6 +27,9 @@
                             <input type="text" value="{{ isset($item) ? $item->last_name:old('last_name') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}last_name" name="last_name"
                                    required>
+                                   <div class="invalid-feedback">
+                                        Please Enter your Last Name.
+                                    </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -42,12 +48,15 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="mb-3 ">
-                            <label for="{{ isset($item) ? $item->id:'' }}mobile_no" class="form-label">Mobile
-                                Phone</label>
+                        <div class="mb-3">
+                            <label for="{{ isset($item) ? $item->id:'' }}mobile_no" class="form-label required">Phone
+                                Number</label>
                             <input type="number" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}mobile_no"
-                                   name="mobile_no">
+                                   name="mobile_no" required>
+                            <div class="invalid-feedback">
+                                        Please Enter your Phone Number.
+                                    </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -64,7 +73,7 @@
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}dob" class="form-label">Birth Date</label>
-                            <input class="form-control" type="date" name="dob"
+                            <input class="form-control" type="date" name="dob" max="{{date('Y-m-d')}}"
                                    value="{{ isset($item) ? $item->dob:old('dob') ?? ''  }}"
                                    id="{{ isset($item) ? $item->id:'' }}dob">
                         </div>
@@ -73,12 +82,15 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="mb-3">
-                            <label for="{{ isset($item) ? $item->id:'' }}email" class="form-label">
+                            <label for="{{ isset($item) ? $item->id:'' }}email" class="form-label required">
                                 Email
                             </label>
                             <input type="email" value="{{ isset($item) ? $item->email:old('email') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}email"
-                                   name="email">
+                                   name="email" required>
+                                <div class="invalid-feedback">
+                                        Please Enter your Email.
+                                    </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -222,9 +234,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}comments" class="form-label">
                                 General Client Comments
                             </label>
-                            <textarea class="form-control" id="{{ isset($item) ? $item->id:'' }}comments"
-                                      name="comments">{{ isset($item) ? $item->comments:old('comments') ?? '' }}
-                            </textarea>
+                            <textarea rows="3" class="form-control" id="{{ isset($item) ? $item->id:'' }}comments" name="comments">{{ isset($item) ? $item->comments:old('comments') ?? '' }}</textarea>
                         </div>
                     </div>
                 </div>

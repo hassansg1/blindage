@@ -51,7 +51,7 @@
                             <input class="form-control" type="date"
                                    name="dob"
                                    value="{{ isset($item) ? $item->dob:old('dob') ?? ''  }}"
-                                   id="{{ isset($item) ? $item->id:'' }}dob">
+                                   id="{{ isset($item) ? $item->id:'' }}dob" max="{{date('Y-m-d')}}">
                         </div>
                     </div>
                     <div class="col-lg-4">
