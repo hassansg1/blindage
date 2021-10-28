@@ -20,13 +20,13 @@ class Branch extends Model
         static::addGlobalScope(new EmployeeScope(2));
     }
 
-
-    public $rules =
-        [
-            'first_name' => 'required | max:255',
-            'last_name' => 'required | max:255',
-            'email' => 'required | max:255',
-        ];
+//
+//    public $rules =
+//        [
+//            'first_name' => 'required | max:255',
+//            'last_name' => 'required | max:255',
+//            'email' => 'required | max:255 email|unique:users,email',
+//        ];
 
     protected $appends = ['initials', 'name'];
 

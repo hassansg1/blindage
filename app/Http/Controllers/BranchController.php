@@ -65,7 +65,12 @@ class BranchController extends BaseController
      */
     public function store(Request $request)
     {
-        $request->validate($this->model->rules);
+        $this->validate($request,[
+            'first_name' => 'required | max:255',
+            'last_name' => 'required | max:255',
+            'email' => 'required | max:255 email|unique:users,email',
+        ]);
+//        $request->validate($this->model->rules);
         $this->model->saveFormData($this->model, $request);
 
         flashSuccess(getLang($this->heading . " Successfully Created."));
@@ -114,8 +119,13 @@ class BranchController extends BaseController
      */
     public function update(Request $request, $item)
     {
-        $request->validate($this->model->rules);
+//        $request->validate($this->model->rules);
 
+        $this->validate($request,[
+            'first_name' => 'required | max:255',
+            'last_name' => 'required | max:255',
+            'email' => 'required | max:255 email|unique:users,email,'.$item,
+        ]);
         $item = $this->model->find($item);
         $this->model->saveFormData($item, $request);
 

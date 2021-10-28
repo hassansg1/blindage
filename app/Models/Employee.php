@@ -20,12 +20,12 @@ class Employee extends Model
         static::addGlobalScope(new EmployeeScope());
     }
 
-    public $rules =
-        [
-            'first_name' => 'required | max:255',
-            'last_name' => 'required | max:255',
-            'email' => 'required | max:255',
-        ];
+//    public $rules =
+//        [
+//            'first_name' => 'required | max:255',
+//            'last_name' => 'required | max:255',
+//            'email' => 'required | max:255',
+//        ];
 
     protected $appends = ['initials'];
 
