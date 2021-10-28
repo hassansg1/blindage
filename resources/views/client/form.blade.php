@@ -42,10 +42,10 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="mb-3">
+                        <div class="mb-3 ">
                             <label for="{{ isset($item) ? $item->id:'' }}mobile_no" class="form-label">Mobile
                                 Phone</label>
-                            <input type="text" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
+                            <input type="number" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}mobile_no"
                                    name="mobile_no">
                         </div>
@@ -55,11 +55,10 @@
                             <label for="{{ isset($item) ? $item->id:'' }}alt_mobile_no" class="form-label">
                                 Alternate Phone
                             </label>
-                            <input type="text"
+                            <input type="number"
                                    value="{{ isset($item) ? $item->alt_mobile_no:old('alt_mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}alt_mobile_no"
-                                   name="alt_mobile_no"
-                            >
+                                   name="alt_mobile_no">
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -77,7 +76,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}email" class="form-label">
                                 Email
                             </label>
-                            <input type="text" value="{{ isset($item) ? $item->email:old('email') ?? ''  }}"
+                            <input type="email" value="{{ isset($item) ? $item->email:old('email') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}email"
                                    name="email">
                         </div>
