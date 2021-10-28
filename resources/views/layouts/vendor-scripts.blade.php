@@ -16,6 +16,7 @@
 <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/jquery-repeater/jquery-repeater.min.js') }}"></script>
+<script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
 <script src="{{ URL::asset('/assets/js/pages/form-repeater.int.js') }}"></script>
 <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>

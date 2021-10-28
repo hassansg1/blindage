@@ -149,8 +149,10 @@ body[data-layout=horizontal] .page-content {
 }
 
 .card-title {
-    font-size: 20px !important;
+   font-size: 20px !important;
     font-weight: 500;
+    background: #ececec;
+    border-bottom: 1px solid #ddd;padding: 10px;
 }
 
 #toast-container {
