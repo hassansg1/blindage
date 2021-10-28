@@ -29,6 +29,7 @@
                                    class="form-label required">Date</label>
                             <input type="date" value="{{ isset($item) ? $item->cash_date:old('cash_date') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}cashDate" name="cash_date"
+                                   max="{{date('Y-m-d')}}"
                                    required>
                             <div class="row" style="margin-top: 5px">
 
