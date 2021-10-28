@@ -49,6 +49,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}dob" class="form-label">Birth Date</label>
                             <input class="form-control" type="date"
+                                   name="dob"
                                    value="{{ isset($item) ? $item->dob:old('dob') ?? ''  }}"
                                    id="{{ isset($item) ? $item->id:'' }}dob" max="{{date('Y-m-d')}}">
                         </div>

@@ -20,7 +20,7 @@
                         <div class="mt-3">
                             <br>
                             <div class="form-check">
-                                <input class="form-check-input" name="backbar_item"  {{(isset($item) ? $item->backbar_item:old('backbar_item')) == '1' ? 'checked' :''}} type="checkbox" id="backbar_item">
+                                <input class="form-check-input" name="backbar_item" value="1" {{(isset($item) ? $item->backbar_item:old('backbar_item')) == '1' ? 'checked' :''}} type="checkbox" id="backbar_item">
                                 <label class="form-check-label" for="backbar_item">
                                     Backbar item
                                 </label>

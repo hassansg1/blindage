@@ -56,7 +56,7 @@
                                    name="mobile_no" required>
                             <div class="invalid-feedback">
                                         Please Enter your Phone Number.
-                                    </div>       
+                                    </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -67,8 +67,7 @@
                             <input type="number"
                                    value="{{ isset($item) ? $item->alt_mobile_no:old('alt_mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}alt_mobile_no"
-                                   name="alt_mobile_no"
-                            >
+                                   name="alt_mobile_no">
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -91,7 +90,7 @@
                                    name="email" required>
                                 <div class="invalid-feedback">
                                         Please Enter your Email.
-                                    </div>                                   
+                                    </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
