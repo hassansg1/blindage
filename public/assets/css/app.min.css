@@ -1575,7 +1575,7 @@ body[data-layout="horizontal"][data-layout-size="boxed"] .navbar-header {
 }
 .form-check-label {
     cursor: pointer;
-    margin-bottom: 0;
+    margin-bottom: 0;margin-left:5px;
 }
 .form-switch-md {
     padding-left: 2.5rem;
@@ -4437,4 +4437,14 @@ background: #eef1fd !important;
 }
 .accordion-body{
     border:1px solid #ddd;
+}
+.form-check-input {
+    width: 1.3em;height: 1.3em;
+}
+.client-tabs-wrapper .nav-tabs-custom{
+gap:10px;
+}
+.client-tabs-wrapper .nav-tabs-custom .nav-item .nav-link.active{
+    background-color: #c9a200;
+    color: #fff !important;
 }
