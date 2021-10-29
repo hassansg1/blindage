@@ -98,20 +98,23 @@
                             <br>
                             <p class="mb-2">Send appointment notifications to this client by:</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
-                                       name="appointment_email"  value="1"
-                                       {{ (isset($item) ? $item->appointment_email:old('appointment_email') ?? '') == 1 ? 'checked' : '' }}
-                               id="byEmail">
-                                <label class="form-check-label" for="byEmail">
-                                    Email
-                                </label>
-                                <br>
-                                <input class="form-check-input" type="checkbox" id="byText" name="appointment_message"  value="1"
-                                    {{ (isset($item) ? $item->appointment_message:old('appointment_message') ?? '') == 1 ? 'checked' : '' }}
-                                >
-                                <label class="form-check-label" for="byText">
-                                    Text Message
-                                </label>
+                                <div class="mb-2">
+                                    <input class="form-check-input" type="checkbox"
+                                           name="appointment_email"  value="1"
+                                           {{ (isset($item) ? $item->appointment_email:old('appointment_email') ?? '') == 1 ? 'checked' : '' }}
+                                   id="byEmail">
+                                    <label class="form-check-label" for="byEmail">
+                                        Email
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" id="byText" name="appointment_message"  value="1"
+                                        {{ (isset($item) ? $item->appointment_message:old('appointment_message') ?? '') == 1 ? 'checked' : '' }}
+                                    >
+                                    <label class="form-check-label" for="byText">
+                                        Text Message
+                                    </label>
+                                </div>
                             </div>
                             <p class="mt-2">Messaging has not been enabled. Click here to enable messaging.</p>
                         </div>

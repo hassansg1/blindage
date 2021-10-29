@@ -18,10 +18,10 @@ class Product extends Model
             'name' => 'required | max:255',
         ];
 
-    public function setBackbarItemAttribute($value)
-    {
-        $this->attributes['backbar_item'] = $value == "on" ? 1 : 0;
-    }
+//    public function setBackbarItemAttribute($value)
+//    {
+//        $this->attributes['backbar_item'] = $value == "on" ? 1 : 0;
+//    }
 
     /**
      * @param $value
@@ -78,7 +78,7 @@ class Product extends Model
     public function saveFormData($item, $request)
     {
         if (isset($request->name)) $item->name = $request->name;
-         $item->backbar_item = ($item->backbar_item)?'on':'0';
+         $item->backbar_item = isset($request->backbar_item)?$request->backbar_item:0;
         if (isset($request->brand)) $item->brand = $request->brand;
         if (isset($request->category)) $item->category = $request->category;
         if (isset($request->size)) $item->size = $request->size;

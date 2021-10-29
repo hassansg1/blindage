@@ -100,7 +100,7 @@
                 <label class="form-label required">Package</label>
                 <select class="form-control select2 services_items_dropdown" name="services_items_dropdown">
                     <option>-- Select Package -- </option>
-                    @foreach(\App\Models\Package::all() as $package_loopVariable)
+                    @foreach(\App\Models\Package::where('active','1')->get() as $package_loopVariable)
                     <option value="{{ 'Package??'.$package_loopVariable->id ?? '' }}" >{{ $package_loopVariable->name ?? '' }}</option>
                     @endforeach
                 </select>

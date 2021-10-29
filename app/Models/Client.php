@@ -13,11 +13,11 @@ class Client extends Model
 
     protected $guarded = [];
 
-    public $rules =
-        [
-            'first_name' => 'required | max:255',
-            'last_name' => 'required | max:255',
-        ];
+//    public $rules =
+//        [
+//            'first_name' => 'required | max:255',
+//            'last_name' => 'required | max:255',
+//        ];
 
     /**
      * @var string[]
