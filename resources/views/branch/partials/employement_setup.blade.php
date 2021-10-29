@@ -1,3 +1,6 @@
+@include('components.form_errors')
+{{ csrf_field() }}
+<input type="hidden" name="id" value="{{ isset($clone) && $clone ? '' : (isset($item) ? $item->id : '') }}">
 <div class="card">
     <div class="card-body">
         <h4 class="card-heading">
@@ -7,7 +10,8 @@
             device.</p>
         <div class="col-xs-12">
             <div class="row">
-                <textarea placeholder="Insert a new note " name="" id="" cols="30" rows="5"></textarea>
+                <textarea placeholder="Insert a new note " name="" id="{{ isset($item) ? $item->id: '' }}setup" cols="30" rows="5">{{ isset($item) ? $item->setup:old('setup') ?? '' }}</textarea>
+
             </div>
         </div>
     </div>
