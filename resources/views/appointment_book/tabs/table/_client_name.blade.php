@@ -1,1 +1,1 @@
-<td>{{ ucwords($loop_variable->client->first_name) ?? '' }}  {{ ucwords($loop_variable->client->last_name) ?? '' }}</td>
+<td>{{ isset($loop_variable->client)? ucwords($loop_variable->client->first_name): '' }}  {{ isset($loop_variable->client) ? ucwords($loop_variable->client->last_name): '' }}</td>
