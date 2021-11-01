@@ -46,13 +46,15 @@ Route::group(['middleware' => ['auth']], function () {
         'appointment_book' => \App\Http\Controllers\AppointmentBookController::class,
         'cash_drawer' => \App\Http\Controllers\CashDrawerController::class,
     ]);
+    Route::put('/branch/{id}/edit', [App\Http\Controllers\BranchController::class,'emp_update'])->name('branch.emp_update');
+    Route::put('/employee/{id}/edit', [App\Http\Controllers\EmployeeController::class,'update_emp'])->name('employee.update_emp');
     // ............. Appointment
     Route::get('getBranchAppointments',[App\Http\Controllers\AppointmentController::class,'getBranchAppointments'])->name('appointment.getBranchAppointments');
     Route::get('getAppointmentView',[App\Http\Controllers\AppointmentController::class,'getAppointmentView'])->name('appointment.getAppointmentView');
     Route::post('cancalAppointment',[App\Http\Controllers\AppointmentBookController::class,'cancalAppointment'])->name('appointment_book.cancalAppointment');
 
     Route::post('getAppointment',[App\Http\Controllers\AppointmentBookController::class,'get_Appointment'])->name('appointment_book.get_Appointment');
-    
+
 
 
     Route::get('getAppointmentModal', [App\Http\Controllers\AjaxAppointmentBookController::class, 'getAppointmentModal'])->name('appointment_book.getAppointmentModal');

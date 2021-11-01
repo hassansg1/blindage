@@ -85,9 +85,10 @@ class Branch extends Model
         if (isset($request->address_line_2)) $item->address_line_2 = $request->address_line_2;
         if (isset($request->city)) $item->city = $request->city;
         if (isset($request->state)) $item->state = $request->state;
-        if (isset($request->postal_code)) $item->postal_code = $request->postal_code;
-        if (isset($request->postal_code)) $item->postal_code = $request->postal_code;
         if (isset($request->setup)) $item->setup = $request->setup;
+        if (isset($request->postal_code)) $item->postal_code = $request->postal_code;
+        if (isset($request->postal_code)) $item->postal_code = $request->postal_code;
+
         $item->save();
         return $item;
     }
