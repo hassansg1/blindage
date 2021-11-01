@@ -4448,3 +4448,18 @@ gap:10px;
     background-color: #c9a200;
     color: #fff !important;
 }
+.pr-0{
+    padding-right:0;
+}
+
+@media (min-width: 992px){
+ .main-schedule-wrapper .col-lg-2 {
+    width: 17.6666666667% !important;
+}
+}
+@media (min-width: 992px){
+ .main-schedule-wrapper .col-lg-10{
+       width: 82.3333333333% !important;
+
+    }
+}
