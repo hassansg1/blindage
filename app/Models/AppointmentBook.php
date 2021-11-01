@@ -23,6 +23,12 @@ class AppointmentBook extends Model
         [
         ];
 
+    const OPENED = 0;
+    const TIMEBLOCK = 1;
+    const CLOSED = 2;
+    const NOSHOW = 3;
+    const CANCELED = 4;
+    const VOIDED = 5;
 
     public function client()
     {
@@ -155,7 +161,8 @@ class AppointmentBook extends Model
 
 
 
-    public function appointmentbook_listing($limit, $start, $order, $dir, $search = false) {
+    public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$search = false) {
+        $today_date =  date('Y-m-d');
         $result = AppointmentBook::offset($start);
         if ($search) {
             $result->orWhere('id', 'LIKE', "%{$search}%");
@@ -164,19 +171,30 @@ class AppointmentBook extends Model
                 $query->orWhere('first_name', 'like', '%'.$search.'%');
             });
 
-           
-            // $result->orWhere('last_name', 'LIKE', "%{$search}%");
+        }
+        if($today == 1 || $today=='1')
+        {
+            $result->where('activity_date', '=',$today_date );
+
         }
         $result->limit($limit);
         $result->orderBy($order, $dir);
         return $result->get();
     }
 
-    public function appointmentbook_count($search = false) {
-        $result = new AppointmentBook();
+    public function appointmentbook_count($search = false ,$today = 0) {
+        $today_date =  date('Y-m-d');
+        $result = AppointmentBook::select();
         if ($search) {
             $result->orWhere('id', 'LIKE', "%{$search}%");
-            // $result->orWhere('last_name', 'LIKE', "%{$search}%");
+            $result->orwhereHas('client', function ($query) use ($search){
+                $query->where('last_name', 'like', '%'.$search.'%');
+                $query->orWhere('first_name', 'like', '%'.$search.'%');
+            });
+        }
+        if($today == 1 || $today=='1')
+        {
+            $result->where('activity_date', '=',$today_date);
         }
         return $result->count();
     }

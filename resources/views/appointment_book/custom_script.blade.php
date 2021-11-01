@@ -105,6 +105,7 @@
     listData();
 });
 var t = '';
+// var today_val = ;
 function listData() {
     t = $('#view-list').DataTable({
         "dom": 'frtlip',
@@ -115,7 +116,11 @@ function listData() {
             "url": '{{ route('appointment_book.get_Appointment') }}',
             "dataType": "json",
             "type": "POST",
-            "data": {_token: '{{ csrf_token() }}'},
+            // "data": {_token: '{{ csrf_token() }}', today: $("#appt_view_today").val() },
+            data: function(data) {
+                data._token = '{{ csrf_token() }}'; 
+                data.today = $("#appt_view_today").val();
+            },
             "timeout": 15000
         },
         "columns": [
@@ -135,12 +140,18 @@ function listData() {
     });
 
     $.fn.dataTable.ext.errMode = 'throw';
-    // $('#search_data').on('click', function (e) {
-    //     var v = $("#search").val(); // getting search input value
-    //     if (v) {
-    //         t.search(v).draw();
-    //     }
-    // });
+
+    $("#appt_view_today_label").on('click', function (e) {
+        console.log('s');
+        t.draw();
+    });
+
+    $('#search_data').on('click', function (e) {
+        var v = $("#search").val(); // getting search input value
+        if (v) {
+            t.search(v).draw();
+        }
+    });
     
 }
     </script>

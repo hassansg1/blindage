@@ -34,7 +34,16 @@
                    <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <button class="btn btn-outline-warning waves-effect waves-light">Today</button>
+                            {{-- <button class="btn btn-outline-warning waves-effect waves-light" >Today</button> --}}
+                            <input type="hidden" id="appt_view_today" name="appt_view_today" value="0">
+                            <input class="form-check-input" type="checkbox"
+                                       id="appt_view_today_label" value="" onclick="this.checked ? $('#appt_view_today').val(1) : $('#appt_view_today').val(0)">
+                            <label class="form-check-label" for="appt_view_today_label">
+                                Today
+                            </label>
+
+
+
                         </div>
                         <div class="d-flex">
                             <div>
