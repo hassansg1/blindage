@@ -131,7 +131,19 @@ class EmployeeController extends BaseController
 
         return redirect(route($this->route . ".index"));
     }
+    /**
+     * @param Request $request
+     * @param $item
+     */
+    public function update_emp(Request $request, $item)
+    {
+        $item = $this->model->find($item);
+        $this->model->saveFormData($item, $request);
 
+        flashSuccess(getLang($this->heading . " Successfully Updated."));
+
+        return redirect(route($this->route . ".index"));
+    }
     /**
      * @param $item
      */

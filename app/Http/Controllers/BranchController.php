@@ -134,6 +134,20 @@ class BranchController extends BaseController
     }
 
     /**
+     * @param Request $request
+     * @param $item
+     */
+    public function emp_update(Request $request, $item)
+    {
+        $item = $this->model->find($item);
+        $this->model->saveFormData($item, $request);
+
+        flashSuccess(getLang($this->heading . " Successfully Updated."));
+
+        return redirect(route($this->route . ".index"));
+    }
+
+    /**
      * @param $item
      */
     public function destroy($item)
