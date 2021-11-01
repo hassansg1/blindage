@@ -3,6 +3,6 @@
         @include($route.'.partials.personal_info')
     </div>
     <div class="tab-pane" id="employement-setup" role="tabpanel">
-        @include($route.'.partials.employement_setup')
+        @include($route.'.employement_edit')
     </div>
 </div>

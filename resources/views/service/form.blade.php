@@ -20,8 +20,11 @@
                         <div class="mt-3">
                             <br>
                             <div class="form-check">
-                                <input class="form-check-input" name="active" type="checkbox" id="active">
-                                <label class="form-check-label" for="active">
+                                <input type="hidden" id="active" name="active" value="{{ isset($item) ? $item->active:'1' }}">
+                                <input class="form-check-input is_active" type="checkbox"
+                                       {{ (isset($item) ? $item->active:old('active') ?? '') == 0 ? 'checked' : '' }}
+                                       id="{{ isset($item) ? $item->id:'' }}active" value="" onclick="this.checked ? $('#active').val(0) : $('#active').val(1)">
+                                <label class="form-check-label" for="{{ isset($item) ? $item->id:'' }}active">
                                     This service is no longer offered
                                 </label>
                             </div>
@@ -33,9 +36,9 @@
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}category" class="form-label">Category</label>
-                            <select class="form-select" name="category" id="{{ isset($item) ? $item->id:'' }}category">
+                            <select class="form-select select2" name="category" id="{{ isset($item) ? $item->id:'' }}category">
+                                <option value="">Select Category</option>
                                 @foreach(getClientCategories() as $category)
-                                    <option value=""></option>
                                     <option
                                         {{ $category->id == (isset($item) ? $item->category:old('last_name') ?? '') ? 'selected' : ''  }}
                                         value="{{ $category->id }}">{{ $category->name }}</option>
