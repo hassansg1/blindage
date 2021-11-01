@@ -4451,7 +4451,15 @@ gap:10px;
 .pr-0{
     padding-right:0;
 }
-
+table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+    vertical-align: middle;
+}
+.tui-full-calendar-weekday-schedule-title{
+    display: grid !important;
+}
+.tui-full-calendar-month-week-item{
+    height: 250px !important;
+}
 @media (min-width: 992px){
  .main-schedule-wrapper .col-lg-2 {
     width: 17.6666666667% !important;
