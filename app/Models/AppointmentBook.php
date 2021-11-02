@@ -35,6 +35,35 @@ class AppointmentBook extends Model
         return $this->belongsTo(Client::class);
     }
 
+    public function getStatusAttribute()
+    {
+        switch ($this->status_flag) {
+
+            case '1':
+                return 'TIMEBLOCK';
+                break;
+            case '2':
+                return 'CLOSED';
+                break;
+            case '3':
+                return 'NOSHOW';
+                break;
+            case '4':
+                return 'CANCELED';
+                break;
+            case '5':
+                return 'VOIDED';
+                break;
+
+            default:
+                return 'OPENED';
+                break;
+        }
+    
+    }
+
+
+
     public function appointments()
     {
         return $this->hasMany(Appointment::class, 'appointment_book_id');
@@ -161,7 +190,7 @@ class AppointmentBook extends Model
 
 
 
-    public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$search = false) {
+    public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$status_flag = 0 ,$search = false) {
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::offset($start);
         if ($search) {
@@ -172,17 +201,19 @@ class AppointmentBook extends Model
             });
 
         }
+        $result->where('status_flag', '=',$status_flag);
         if($today == 1 || $today=='1')
         {
             $result->where('activity_date', '=',$today_date );
 
         }
+
         $result->limit($limit);
         $result->orderBy($order, $dir);
         return $result->get();
     }
 
-    public function appointmentbook_count($search = false ,$today = 0) {
+    public function appointmentbook_count($search = false ,$today = 0 ,$status_flag = 0) {
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::select();
         if ($search) {
@@ -192,6 +223,7 @@ class AppointmentBook extends Model
                 $query->orWhere('first_name', 'like', '%'.$search.'%');
             });
         }
+        $result->where('status_flag', '=',$status_flag);
         if($today == 1 || $today=='1')
         {
             $result->where('activity_date', '=',$today_date);

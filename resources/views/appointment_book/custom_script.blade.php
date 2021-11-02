@@ -7,7 +7,7 @@
     $('.calendar_branch').on('change', function () {
         var branch_id = $(this).val();
         getBranchAppointments(branch_id);
-       
+
     });
 
     function resetCalender(items) {
@@ -118,8 +118,9 @@ function listData() {
             "type": "POST",
             // "data": {_token: '{{ csrf_token() }}', today: $("#appt_view_today").val() },
             data: function(data) {
-                data._token = '{{ csrf_token() }}'; 
+                data._token = '{{ csrf_token() }}';
                 data.today = $("#appt_view_today").val();
+                data.status_flag = $("#status_flag").val();
             },
             "timeout": 15000
         },
@@ -128,6 +129,7 @@ function listData() {
             {"data": "clientName"},
             {"data": "dated"},
             {"data": "services"},
+            {"data": "status"},
             {"data": "employee"},
             {"data": "payment"},
             {"data": "total"}
@@ -142,7 +144,10 @@ function listData() {
     $.fn.dataTable.ext.errMode = 'throw';
 
     $("#appt_view_today_label").on('click', function (e) {
-        console.log('s');
+        t.draw();
+    });
+
+    $("#status_flag").on('change', function (e) {
         t.draw();
     });
 
@@ -152,6 +157,6 @@ function listData() {
             t.search(v).draw();
         }
     });
-    
+
 }
     </script>

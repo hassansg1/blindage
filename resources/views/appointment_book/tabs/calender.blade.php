@@ -4,7 +4,7 @@
             <div class="left-side-bar-wrapper pb-2">
                 <label class="p-2">Calender</label>
                 <div data-provide="datepicker-inline" class="bootstrap-datepicker-inline"></div>
-            
+
             <div class="card no-border m-2">
                 <div class="">
                     <div class="row">
@@ -165,7 +165,7 @@
                                         New schedule
                                     </button>
                                 </div>
-                             
+
                             </div>
                         </div>
                         <div id="calendarList" class="lnb-calendars-d1 mt-4 mt-sm-0 me-sm-0 mb-4">

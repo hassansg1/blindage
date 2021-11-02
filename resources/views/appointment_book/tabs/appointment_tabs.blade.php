@@ -52,18 +52,19 @@
                                 </select>
                             </div>
                             <div>
-                                <select class="form-control">
-                                    <option>Time Block </option>
-                                    <option>Closed</option>
-                                    <option>No Show </option>
-                                    <option>Canceled </option>
-                                    <option>Voided </option>
+                                <select class="form-control" id="status_flag">
+                                    <option value='{{  App\Models\AppointmentBook::OPENED }}'>Opened </option>
+                                    <option value='{{  App\Models\AppointmentBook::TIMEBLOCK }}'>Time Block </option>
+                                    <option value='{{  App\Models\AppointmentBook::CLOSED }}'>Closed</option>
+                                    <option value='{{  App\Models\AppointmentBook::NOSHOW }}'>No Show </option>
+                                    <option value='{{  App\Models\AppointmentBook::CANCELED }}'>Canceled </option>
+                                    <option value='{{  App\Models\AppointmentBook::VOIDED }}'>Voided </option>
                                 </select>
                             </div>
                         </div>
                     </div>
 
-                           
+
                        <div class="custom_table_div">
                             <table id="view-list" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
                                 <thead class="table-light custom_table_head">
@@ -72,6 +73,7 @@
                                     <th>Client Name</th>
                                     <th>Date</th>
                                     <th>Service</th>
+                                    <th>Status</th>
                                     <th>Employee</th>
                                     <th>Payment</th>
                                     <th>Total</th>
@@ -79,61 +81,8 @@
                                 </thead>
                                 <tbody id="table_content_div_body">
 
-                                  {{--   @forelse(AppointmentHelper::get_appointmentBook() as $loop_variable) 
-                                        <tr> --}}
-                                            {{-- <td>{{ $loop_variable->id ?? '' }}</td> --}}
-                                            {{-- <td>{{ ucwords($loop_variable->client->first_name) ?? '' }}  {{ ucwords($loop_variable->client->last_name) ?? '' }}</td> --}}
-                                            {{-- <td>{{  date('l, M d, Y',strtotime($loop_variable->activity_date)) }} </td> --}}
-                                            {{-- <td>
-                                                @forelse($loop_variable->appointments as $loop_var)
-                                                    <div>{{ isset($loop_var->service)?$loop_var->service->name:'' }} (Regular Service) </div>
-                                                    <div>Duration : {{ isset($loop_var->service)?$loop_var->service->minutes:'' }} Min.</div>
-                                                @empty   
-                                                @endforelse
-                                                @forelse($loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class) as $app_book_items)
-                                                    @foreach($app_book_items->serviceitemable->service_items() as $loop_var)
-                                                        <div>{{ $loop_var->packageitemable->name }} (Package Service) </div>
-                                                        <div>{{ $loop_var->packageitemable->minutes }} Min.</div>
-                                                    @endforeach
-                                                @empty   
-                                                @endforelse
-                                            </td> --}}
-                                           {{--  <td>
-                                                @forelse($loop_variable->appointments as $loop_var)
-                                                    @if(isset($loop_var->employee_type_id) && $loop_var->employee_type_id !=null)
-                                                
-                                                       <div><span>Employee: </span> <span>{{ $loop_var->employee->getFirstAndLastName() }}</span></div>
-                                                       <div> {{ $loop_var->duration}} Min. ({{ $loop_var->start_time}} - {{ $loop_var->getEndTimeAttribute()}})</div>
-                                                    @endif
-                                                @empty   
-                                                @endforelse
-                                            </td> --}}
-                                           {{--  <td>
-                                                @forelse($loop_variable->appointments as $loop_var)
-                                                    @if(isset($loop_var->price) && $loop_var->price !=null)
-                                                        <div> {{ $loop_var->price}} (Service)</div>
-                                                    @endif
-                                                @empty   
-                                                @endforelse
+                                    {{-- //// Data Append With DataTable Ajax --}}
 
-                                                @forelse($loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class) as $loop_var)
-                                                    @if(isset($loop_var->price) && $loop_var->price !=null)
-                                                        <div> {{ $loop_var->price}} (Package Service)</div>
-                                                    @endif
-                                                @empty   
-                                                @endforelse
-
-                                               
-                                                
-                                            </td> --}}
-                                           {{--  <td>
-                                                {{ ($loop_variable->appointments->sum('price')) +  $loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class)->sum('price') }}
-                                            </td> --}}
-
-                                {{--         </tr>
-                                    @empty
-                                    @endforelse --}}
-          
                                 </tbody>
                             </table>
                         </div>
@@ -163,7 +112,7 @@
                                                          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                                 <a class="nav-link mb-2 active" id="v-pills-services-tab" data-bs-toggle="pill" href="#v-pills-services" role="tab" aria-controls="v-pills-services" aria-selected="true">Services</a>
                                                 <a class="nav-link mb-2" id="v-pills-appointment-tab" data-bs-toggle="pill" href="#v-pills-appointment" role="tab" aria-controls="v-pills-appointment" aria-selected="false">Apppintment Type</a>
-                                               
+
                                                 </div>
                                                     </div>
                                                 </div>
@@ -185,7 +134,7 @@
                                                        <div class="services-search-wrapper">
                                                            <div class="input-search col-md-5">
                                                                 <div class="mb-2 icon-wrapper">
-                                                                   <i class="fa fa-search icon"></i> 
+                                                                   <i class="fa fa-search icon"></i>
                                                                    <input class="form-control" type="text" name="" placeholder="Search Services /  Category">
                                                                 </div>
                                                            </div>
@@ -204,7 +153,7 @@
                                                                         </div>
                                                                     </td>
                                                                 </tr>
-                                                               
+
                                                            </table>
                                                        </div>
 
@@ -215,7 +164,7 @@
                                                        <div class="services-search-wrapper">
                                                            <div class="input-search col-md-5">
                                                                 <div class="mb-2 icon-wrapper">
-                                                                   <i class="fa fa-search icon"></i> 
+                                                                   <i class="fa fa-search icon"></i>
                                                                    <input class="form-control" type="text" name="" placeholder="Search Services /  Category">
                                                                 </div>
                                                            </div>
@@ -236,7 +185,7 @@
                                                                         </div>
                                                                     </td>
                                                                 </tr>
-                                                               
+
                                                            </table>
                                                        </div>
                                                     </div>
