@@ -4460,6 +4460,12 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
 .tui-full-calendar-month-week-item{
     height: 250px !important;
 }
+.actionBtn{
+    display: flex;justify-content: flex-end;
+}
+.actionBtn .actionSelectOption{
+    flex-basis:200px;
+}
 @media (min-width: 992px){
  .main-schedule-wrapper .col-lg-2 {
     width: 17.6666666667% !important;

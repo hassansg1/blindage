@@ -10,6 +10,14 @@
                 aria-label="Close"></button>
     </div>
     <div class="modal-body">
+        <div class="actionBtn">
+            <select class="form-select mb-2 actionSelectOption" id="">
+                  <option selected="">Action</option>
+                  <option value="1">Checkout</option>
+                  <option value="2">Cancel Appointment</option>
+                  <option value="3">Void Appointment</option>
+            </select>
+        </div>
         <div class="client-summary-wrapper mb-3">
             <div class="client-summary-info">
                 <div class="client-pic-wrapper">
