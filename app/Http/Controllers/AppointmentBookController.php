@@ -164,6 +164,9 @@ class AppointmentBookController extends BaseController
             1 => 'clientName',
         );
 
+        // dd($request->input('status_flag'));
+
+
         $totalData = $obj->appointmentbook_count();
         $totalFiltered = $totalData;
 
@@ -172,14 +175,14 @@ class AppointmentBookController extends BaseController
         $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
         $today = $request->input('today');
-
+        $status_flag = $request->input('status_flag');
 
         if (empty($request->input('search.value'))) {
-            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today);
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today,$status_flag);
         } else {
             $search = $request->input('search.value');
-            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today, $search);
-            $totalFiltered = $obj->appointmentbook_count($search,$today);
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today,$status_flag ,$search);
+            $totalFiltered = $obj->appointmentbook_count($search,$today , $status_flag);
         }
         $data = array();
         if (!empty($results)) {
@@ -193,6 +196,7 @@ class AppointmentBookController extends BaseController
                 $nestedData['clientName'] = view('appointment_book.tabs.table._client_name')->with(['loop_variable' => $result])->render();
                 $nestedData['dated'] = view('appointment_book.tabs.table._date')->with(['loop_variable' => $result])->render();
                 $nestedData['services'] = view('appointment_book.tabs.table._services')->with(['loop_variable' => $result])->render();
+                $nestedData['status'] = view('appointment_book.tabs.table._status')->with(['loop_variable' => $result])->render();
                 $nestedData['employee'] = view('appointment_book.tabs.table._employee')->with(['loop_variable' => $result])->render();
                 $nestedData['payment'] = view('appointment_book.tabs.table._payment')->with(['loop_variable' => $result])->render();
                 $nestedData['total'] = view('appointment_book.tabs.table._total')->with(['loop_variable' => $result])->render();
