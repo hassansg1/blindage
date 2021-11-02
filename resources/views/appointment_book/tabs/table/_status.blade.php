@@ -1,0 +1,1 @@
+<td>{{ $loop_variable->getStatusAttribute() }} </td>

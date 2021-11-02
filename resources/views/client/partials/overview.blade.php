@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div style="border-left: 1px solid" class="col-xl-6">
+            <div style="border-left: 1px solid #ddd" class="col-xl-6">
                 <div class="row">
                     <div style="margin-top: 50px" class="col-sm-12">
                         Balance: $0.00 Credit
