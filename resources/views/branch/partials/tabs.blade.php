@@ -1,4 +1,6 @@
-<ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+
+<div class="client-tabs-wrapper">
+    <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" data-bs-toggle="tab" href="#personal_info" role="tab"
            aria-selected="true">
@@ -14,5 +16,6 @@
         </a>
     </li>
 </ul>
+</div>
 <br>
 <br>
