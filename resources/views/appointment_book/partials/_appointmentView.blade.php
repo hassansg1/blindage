@@ -40,8 +40,8 @@
                         Session
                         <span>
                         {{ $loop_variable->start_time}}
-                        </span>  
-                        -  
+                        </span>
+                        -
                         <span>
                         {{$loop_variable->getEndTimeAttribute()}}
                         </span>
@@ -61,14 +61,14 @@
                         @forelse($data->appointments as $loop_variable)
                         <div>{{ isset($loop_variable->service)?$loop_variable->service->name:'' }} (Regular Service) </div>
                         <div>{{ isset($loop_variable->service)?$loop_variable->service->minutes:'' }} Min.</div>
-                        @empty   
+                        @empty
                         @endforelse
                         @forelse($data->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class) as $app_book_items)
                         @foreach($app_book_items->serviceitemable->service_items() as $loop_variable)
                         <div>{{ $loop_variable->packageitemable->name }} (Package Service) </div>
                         <div>{{ $loop_variable->packageitemable->minutes }} Min.</div>
                         @endforeach
-                        @empty   
+                        @empty
                         @endforelse
                      </div>
                   </div>
@@ -84,7 +84,7 @@
                @endif
             </div>
 
-            
+
          </div>
           <div class="mt-3 text-center">
                <div class="btn btn-primary primary-alt" id="cancelApptBtn">Cancel Appt.</div>
@@ -115,6 +115,6 @@
 
       </div>
    </div>
-   
+
 </div>
 @include('appointment_book.form_script')
