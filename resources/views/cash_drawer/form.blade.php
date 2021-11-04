@@ -31,6 +31,9 @@
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}cashDate" name="cash_date"
                                    max="{{date('Y-m-d')}}"
                                    required>
+                                   <div class="invalid-feedback">
+                                        Please Enter Date.
+                                    </div>
                             <div class="row" style="margin-top: 5px">
 
                                 <div class="form-check col-lg-6">
@@ -83,6 +86,9 @@
                             <input type="text" value="{{ isset($item) ? $item->comment:old('comment') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}comment" name="comment"
                                    required>
+                                    <div class="invalid-feedback">
+                                        Please Add Comment.
+                                    </div>
                         </div>
                     </div>
                 </div>
