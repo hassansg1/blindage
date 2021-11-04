@@ -176,7 +176,6 @@ class AppointmentBookController extends BaseController
         $dir = $request->input('order.0.dir');
         $today = $request->input('today');
         $status_flag = $request->input('status_flag');
-
         if (empty($request->input('search.value'))) {
             $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today,$status_flag);
         } else {

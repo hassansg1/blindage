@@ -41,16 +41,8 @@
                             <label class="form-check-label" for="appt_view_today_label">
                                 Today
                             </label>
-
-
-
                         </div>
                         <div class="d-flex">
-                            <div>
-                                <select class="form-control">
-                                    <option>1</option>
-                                </select>
-                            </div>
                             <div>
                                 <select class="form-control" id="status_flag">
                                     <option value='{{  App\Models\AppointmentBook::OPENED }}'>Opened </option>
@@ -82,7 +74,6 @@
                                 <tbody id="table_content_div_body">
 
                                     {{-- //// Data Append With DataTable Ajax --}}
-
                                 </tbody>
                             </table>
                         </div>

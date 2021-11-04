@@ -59,7 +59,7 @@ class AppointmentBook extends Model
                 return 'OPENED';
                 break;
         }
-    
+
     }
 
 
@@ -81,7 +81,7 @@ class AppointmentBook extends Model
      */
     public function saveFormData($item, $request, $new = false)
     {
-        
+
         if (isset($request->branch_id)) $item->branch_id = $request->branch_id;
         if (isset($request->client_id)) $item->client_id = $request->client_id;
         if (isset($request->activity_date)) $item->activity_date = $request->activity_date;
@@ -128,7 +128,7 @@ class AppointmentBook extends Model
             }
 
             if (isset($request->products)) {
-                for ($count = 0; $count < count($request['products']); $count++) 
+                for ($count = 0; $count < count($request['products']); $count++)
                 {
                     $apptBookItem = new AppointmentBookItems();
                     $apptBookItem->appointment_book_id = $request['appointment_book_id'];
@@ -142,7 +142,7 @@ class AppointmentBook extends Model
             }
 
             if (isset($request->packages)) {
-                for ($count = 0; $count < count($request['packages']); $count++) 
+                for ($count = 0; $count < count($request['packages']); $count++)
                 {
                     $apptBookItem = new AppointmentBookItems();
                     $apptBookItem->appointment_book_id = $request['appointment_book_id'];
@@ -170,7 +170,7 @@ class AppointmentBook extends Model
         $apptBook = AppointmentBook::find($request->appointment);
         // Delete AppointmentBookItems
         $apptBook->appointmentBookItems()->update(['deleted_by_id'=>Auth::id()]);
-        $apptBook->appointmentBookItems->each->delete();  
+        $apptBook->appointmentBookItems->each->delete();
         //................................
         // Delete Appointments............
         $apptBook->appointments()->update(['deleted_by_id'=>Auth::id()]);
