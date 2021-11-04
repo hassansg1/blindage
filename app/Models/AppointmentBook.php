@@ -205,7 +205,6 @@ class AppointmentBook extends Model
         if($today == 1 || $today=='1')
         {
             $result->where('activity_date', '=',$today_date );
-
         }
 
         $result->limit($limit);
