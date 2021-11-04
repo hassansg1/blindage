@@ -123,62 +123,110 @@
                                                        <h3>Service Color Codes</h3>
                                                        <p>Change the appointment block colors for services and categories.</p>
                                                        <div class="services-search-wrapper">
-                                                           <div class="input-search col-md-5">
-                                                                <div class="mb-2 icon-wrapper">
-                                                                   <i class="fa fa-search icon"></i>
-                                                                   <input class="form-control" type="text" name="" placeholder="Search Services /  Category">
+                                                            <div class="row">
+                                                                <div class="input-search col-md-5">
+                                                                    <div class="mb-2 icon-wrapper">
+                                                                       <i class="fa fa-search icon"></i>
+                                                                       <input class="form-control" type="text" name="" placeholder="Search Services /  Category">
+                                                                     </div>
                                                                 </div>
-                                                           </div>
-                                                           <table class="table">
-                                                                <tr>
-                                                                    <th>Name</th>
-                                                                    <th>Color</th>
-                                                                    <th></th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td></td>
-                                                                    <td>
-                                                                        <div>
-                                                                            <label class="form-label">Simple input field</label>
-                                                                            <input type="text" class="form-control" id="colorpicker-default" value="#50a5f1">
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-
-                                                           </table>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <table class="table">
+                                                                        <tr>
+                                                                            <th>Name</th>
+                                                                            <th>Color</th>
+                                                                            <th></th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>New</td>
+                                                                            <td>
+                                                                                <div>
+                                                                                    <input type="text" class="form-control" id="colorpicker-default" value="#50a5f1">
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                           
                                                        </div>
 
                                                     </div>
                                                     <div class="tab-pane fade" id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
-                                                       <h3>Service Color Codes</h3>
-                                                       <p>Change the appointment block colors for services and categories.</p>
+                                                       <h3>Appointment Type Color Codes</h3>
+                                                       <p>Add a secondary color to your calendar based on the selected appointment type.</p>
                                                        <div class="services-search-wrapper">
-                                                           <div class="input-search col-md-5">
-                                                                <div class="mb-2 icon-wrapper">
-                                                                   <i class="fa fa-search icon"></i>
-                                                                   <input class="form-control" type="text" name="" placeholder="Search Services /  Category">
+                                                        <form action="" method="">
+                                                            <div class="row">
+                                                               <div class="input-search col-md-5">
+                                                                    <div class="mb-2 icon-wrapper">
+                                                                       <i class="fa fa-search icon"></i>
+                                                                       <input class="form-control" type="text" name="" placeholder="Search Services /  Category">
+                                                                    </div>
+                                                               </div>
+                                                               </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-7">
+                                                                        <table class="table">
+                                                                            <tr>
+                                                                                <th>Name</th>
+                                                                                <th>Color</th>
+                                                                                <th></th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>New</td>
+                                                                                <td>
+                                                                                    <div>
+                                                                                        <input type="text" class="form-control" id="colorpicker-default-1" value="#50a5f1">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="#">Clear</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>New Request</td>
+                                                                                <td>
+                                                                                    <div>
+                                                                                        <input type="text" class="form-control" id="colorpicker-default-2" value="#50a5f1">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="#">Clear</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Request</td>
+                                                                                <td>
+                                                                                    <div>
+                                                                                        <input type="text" class="form-control" id="colorpicker-default-3" value="#50a5f1">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="#">Clear</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Transient</td>
+                                                                                <td>
+                                                                                    <div>
+                                                                                        <input type="text" class="form-control" id="colorpicker-default-4" value="#50a5f1">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="#">Clear</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <button class="btn btn-primary" type="submit">Save</button>
                                                                 </div>
                                                            </div>
-                                                           <table class="table">
-                                                                <tr>
-                                                                    <th>Name</th>
-                                                                    <th>Color</th>
-                                                                    <th></th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td></td>
-                                                                    <td>
-                                                                        <div class="mb-3">
-                                                                            <label for="colorpicker-togglepaletteonly" class="form-label">Appt. Color</label>
-                                                                            <input type="text" class="form-control spectrum with-add-on" name="color"
-                                                                                   id="colorpicker-togglepaletteonly"
-                                                                                   value="{{ isset($item) ? $item->color:old('color') ?? ''  }}">
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-
-                                                           </table>
-                                                       </div>
+                                                       </form>
                                                     </div>
                                                 </div>
                                             </div>

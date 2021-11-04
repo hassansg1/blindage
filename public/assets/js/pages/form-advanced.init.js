@@ -90,6 +90,10 @@ File: Form Advanced Js File
     }); //colorpicker start
 
     $("#colorpicker-default").spectrum();
+    $("#colorpicker-default-1").spectrum();
+    $("#colorpicker-default-2").spectrum();
+    $("#colorpicker-default-3").spectrum();
+    $("#colorpicker-default-4").spectrum();
     $("#colorpicker-showalpha").spectrum({
       showAlpha: true
     });
