@@ -217,7 +217,6 @@
     }
 
     function renderCalender(window, Calendar, items) {
-        console.log(items);
         var cal, resizeThrottled;
         var useCreationPopup = false;
         var useDetailPopup = false;
