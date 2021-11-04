@@ -1,10 +1,10 @@
 @foreach($items as $item)
     <tr id="{{ $item->id }}">
         <td colspan="1"><input type="checkbox" name="select_row" value="{{ $item->id }}" id="select_check_{{ $item->id }}" class= "select_row"></td>
-        <td  onclick="location.href='{{ route($route.'.show',$item->id) }}'">{{ $item->branch->name ?? '' }}</td>
-        <td  onclick="location.href='{{ route($route.'.show',$item->id) }}'">{{ $item->cash_date }}</td>
-        <td  onclick="location.href='{{ route($route.'.show',$item->id) }}'">{{ $item->total_amount }}</td>
-        <td  onclick="location.href='{{ route($route.'.show',$item->id) }}'">{{ $item->comment }}</td>
+        <td  onclick="location.href='{{ route($route.'.show',$item->id) }}'"><a href="javascript:void(0)">{{ $item->branch->name ?? '' }}</td>
+        <td  onclick="location.href='{{ route($route.'.show',$item->id) }}'"><a href="javascript:void(0)">{{ $item->cash_date }}</a></td>
+        <td  onclick="location.href='{{ route($route.'.show',$item->id) }}'"><a href="javascript:void(0)">{{ $item->total_amount }}</a></td>
+        <td  onclick="location.href='{{ route($route.'.show',$item->id) }}'"><a href="javascript:void(0)">{{ $item->comment }}</a></td>
         <td>
             @include('components.edit_delete_button')
         </td>

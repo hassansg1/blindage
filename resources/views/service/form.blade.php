@@ -14,6 +14,9 @@
                             <input type="text" value="{{ isset($item) ? $item->name:old('name') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}name"
                                    name="name" required>
+                                    <div class="invalid-feedback">
+                                        Please Enter your Name.
+                                    </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
