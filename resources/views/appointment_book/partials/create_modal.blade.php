@@ -18,7 +18,6 @@
                                    value="{{ $date ?? '' }}"
                                    data-date-format="yyyy-m-d" data-date-container='#datepicker1'
                                    data-provide="datepicker">
-
                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                         </div>
                     </div>
