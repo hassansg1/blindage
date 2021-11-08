@@ -4481,3 +4481,31 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
 .table>:not(caption)>*>*{
     vertical-align: middle;
 }
+.inline-collapse-btn{
+    display: flex;gap:10px;
+}
+.app-expansion-tab-content .accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.app-expansion-tab-content .accordion-button{
+    padding:10px;
+}
+.app-expansion-tab-content{
+    border:none;
+}
+.app-expansion-tab-content .btn{
+    background: none; border:1px solid #ddd;color: inherit !important;
+}
+.app-expansion-tab-content .accordion-button:after {
+    filter: brightness(0.5);
+}
+.app-expansion-tab-content .accordion-item{
+    border:none;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.mb-20{
+    margin-bottom: 20px;
+}
