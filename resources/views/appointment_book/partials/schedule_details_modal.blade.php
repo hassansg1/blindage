@@ -52,6 +52,80 @@
                 </div>
             </div>
         </div>
+        <div class="app-expansion-tab-content">
+            <div class="accordion" id="accordionExample">
+                <div class="inline-collapse-btn">
+                        <button class="btn btn-primary accordion-button btn-rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Notes
+                        </button>
+                        <button class="collapsed btn btn-primary accordion-button btn-rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Upcoming Appointments
+                        </button>
+                        <button class="collapsed btn btn-primary accordion-button btn-rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                         Recent Visits
+                        </button>
+                         <button class="collapsed btn btn-primary accordion-button btn-rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                          Photos
+                        </button>
+                </div>
+                <div class="mt-10 mb-20">
+                    <div class="accordion-item">
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div>
+                                    <h4>Client Comments</h4>
+                                    <p><i>No client comments found</i></p>
+                                    <h4 class="mt-20">Notes</h4>
+                                    <form action="" method="">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <textarea placeholder="Enter New Note..." class="form-control"></textarea>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="d-grid gap-2">
+                                                    <button class="btn btn-primary btn-block">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="Upcoming Appointments">
+                                    <h4>Client Comments</h4>
+                                    <p class="text-muted">No upcoming appointments found</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="text-muted">
+                                   <h4>Recent Visits</h4>
+                                    <p class="text-muted">No recent visits found</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="text-muted">
+                                    <strong class="text-dark">This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end accordion -->
+        </div>
 
         <div class="row mb-3">
             <div class="col-xl-6">

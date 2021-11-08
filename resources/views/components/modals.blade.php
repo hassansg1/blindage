@@ -125,7 +125,7 @@
 </div><!-- /.modal -->
 <div id="default_modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
      aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content" id="default_modal_content">
             <div class="modal-header">
                 <h5 class="modal-title" id="myLargeModalLabel">Large modal</h5>

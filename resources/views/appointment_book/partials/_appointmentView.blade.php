@@ -87,8 +87,11 @@
 
          </div>
           <div class="mt-3 text-center">
-               <div class="btn btn-primary primary-alt" id="cancelApptBtn">Cancel Appt.</div>
-               <div class="btn btn-primary" onclick="openScheduleDetailPopup('{{ $data->id }}','{{ $data->appointments->first()->start_time ?? '' }}','{{ $data->appointments->first()->getEndTimeAttribute() ?? '' }}')">Appt. Details</div>
+               <button class="btn btn-primary primary-alt" id="cancelApptBtn">No Show</button>
+               <button class="btn btn-primary" onclick="openScheduleDetailPopup('{{ $data->id }}','{{ $data->appointments->first()->start_time ?? '' }}','{{ $data->appointments->first()->getEndTimeAttribute() ?? '' }}')">Appt. Details</button>
+               <button class="btn btn-primary">
+                  Check Out
+               </button>
 
 
 
