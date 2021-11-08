@@ -11,8 +11,8 @@
 
                     <div class="col-lg-4">
                         <div class="mb-3">
-                            <label for="{{ isset($item) ? $item->id:'' }}branchId" class="form-label">Branch</label>
-                            <select class="form-select form-select-input" name="branch_id"
+                            <label for="{{ isset($item) ? $item->id:'' }}branchId" class="form-label required">Branch</label>
+                            <select required class="form-select" name="branch_id"
                                     id="{{ isset($item) ? $item->id:'' }}branchId">
                                 @foreach(getBranches() as $branch)
                                     <option value="">Select branch</option>
@@ -21,6 +21,9 @@
                                         value="{{ $branch->id }}">{{ $branch->name }}</option>
                                 @endforeach
                             </select>
+                            <div class="invalid-feedback">
+                                Please Select a Branch.
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -31,7 +34,7 @@
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}cashDate" name="cash_date"
                                    max="{{date('Y-m-d')}}"
                                    required>
-                                   <div class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         Please Enter Date.
                                     </div>
                             <div class="row" style="margin-top: 5px">
