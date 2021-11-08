@@ -150,7 +150,7 @@
                                                                     </table>
                                                                 </div>
                                                             </div>
-                                                           
+
                                                        </div>
 
                                                     </div>
@@ -173,7 +173,6 @@
                                                                             <tr>
                                                                                 <th>Name</th>
                                                                                 <th>Color</th>
-                                                                                <th></th>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>New</td>
@@ -186,39 +185,40 @@
                                                                                     <a href="#">Clear</a>
                                                                                 </td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td>New Request</td>
-                                                                                <td>
-                                                                                    <div>
-                                                                                        <input type="text" class="form-control" id="colorpicker-default-2" value="#50a5f1">
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <a href="#">Clear</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Request</td>
-                                                                                <td>
-                                                                                    <div>
-                                                                                        <input type="text" class="form-control" id="colorpicker-default-3" value="#50a5f1">
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <a href="#">Clear</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Transient</td>
-                                                                                <td>
-                                                                                    <div>
-                                                                                        <input type="text" class="form-control" id="colorpicker-default-4" value="#50a5f1">
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <a href="#">Clear</a>
-                                                                                </td>
-                                                                            </tr>
+
+{{--                                                                            <tr>--}}
+{{--                                                                                <td>New Request</td>--}}
+{{--                                                                                <td>--}}
+{{--                                                                                    <div>--}}
+{{--                                                                                        <input type="text" class="form-control" id="colorpicker-default-2" value="#50a5f1">--}}
+{{--                                                                                    </div>--}}
+{{--                                                                                </td>--}}
+{{--                                                                                <td>--}}
+{{--                                                                                    <a href="#">Clear</a>--}}
+{{--                                                                                </td>--}}
+{{--                                                                            </tr>--}}
+{{--                                                                            <tr>--}}
+{{--                                                                                <td>Request</td>--}}
+{{--                                                                                <td>--}}
+{{--                                                                                    <div>--}}
+{{--                                                                                        <input type="text" class="form-control" id="colorpicker-default-3" value="#50a5f1">--}}
+{{--                                                                                    </div>--}}
+{{--                                                                                </td>--}}
+{{--                                                                                <td>--}}
+{{--                                                                                    <a href="#">Clear</a>--}}
+{{--                                                                                </td>--}}
+{{--                                                                            </tr>--}}
+{{--                                                                            <tr>--}}
+{{--                                                                                <td>Transient</td>--}}
+{{--                                                                                <td>--}}
+{{--                                                                                    <div>--}}
+{{--                                                                                        <input type="text" class="form-control" id="colorpicker-default-4" value="#50a5f1">--}}
+{{--                                                                                    </div>--}}
+{{--                                                                                </td>--}}
+{{--                                                                                <td>--}}
+{{--                                                                                    <a href="#">Clear</a>--}}
+{{--                                                                                </td>--}}
+{{--                                                                            </tr>--}}
                                                                         </table>
                                                                     </div>
                                                                 </div>
@@ -241,3 +241,4 @@
 
     </div>
 </div>
+

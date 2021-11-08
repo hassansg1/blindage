@@ -64,7 +64,7 @@
                             <label for="colorpicker-togglepaletteonly" class="form-label">Appt. Color</label>
                             <input type="text" class="form-control spectrum with-add-on" name="color"
                                    id="colorpicker-togglepaletteonly"
-                                   value="{{ isset($item) ? $item->color:old('color') ?? ''  }}">
+                                   value="{{ isset($item) ? $item->color:old('color') ?? ''  }}">'
                         </div>
                     </div>
                 </div>
