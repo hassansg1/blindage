@@ -6,6 +6,9 @@
     <input type="hidden" id="duration_for_service" value="{{ $duration ?? '' }}">
     <div class="modal-header">
         <h5 class="modal-title">Appointment</h5>
+        <a href="">checkout</a>
+        <a href="">void</a>
+        <a href="">calncle</a>
         <button type="button" class="btn-close" data-bs-dismiss="modal"
                 aria-label="Close"></button>
     </div>
@@ -36,7 +39,7 @@
                     </div>
                     <div class="icon-wrapper">
                         <i class="fas fa-envelope icon"></i>
-                        <input class="form-control" type="email" name="" value="{{ isset($appt->client->email) && $appt->client->email!=null?$appt->client->email:'' }}" placeholder="E-mail" autocomplete="nope"> 
+                        <input class="form-control" type="email" name="" value="{{ isset($appt->client->email) && $appt->client->email!=null?$appt->client->email:'' }}" placeholder="E-mail" autocomplete="nope">
                     </div>
                 </div>
             </div>
@@ -49,7 +52,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row mb-3">
             <div class="col-xl-6">
                 <label for="when" class="form-label required">Which Client?</label>
@@ -84,7 +87,7 @@
             </div>
         </div>
 
-        
+
         <div class="row mb-3">
             <div class="col-lg-4">
                 <label class="form-label required">Service</label>
@@ -131,10 +134,10 @@
                         <option value="{{ 'Package??'.$package_loopVariable->id ?? '' }}" >{{ $package_loopVariable->name ?? '' }}</option>
                         @endforeach
                     </optgroup>
-                    
+
                 </select>
             </div> --}}
-           
+
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -149,7 +152,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title mb-4">
-                                            <a href="#" onclick="deleteRow()">{{ $appt_loopVariable->service->name ?? '' }} 
+                                            <a href="#" onclick="deleteRow()">{{ $appt_loopVariable->service->name ?? '' }}
                                                 <i class="fas fa-times pull-right close-btn"></i>
                                             </a>
                                         </h5>
@@ -189,7 +192,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>                        
+                                        </div>
 
                                         <div class="row">
                                             <div class="mb-3">
@@ -223,7 +226,7 @@
                                 <h5 class="card-title card-heading">
                                     <a href="#" onclick="deleteRow()">{{ $appt_loopVariable->serviceitemable->name ?? '' }} <i class="fas fa-times float-end close-btn"></i>
                                     </a>
-                                  
+
                                   </h5>
                                 <div class="card-body">
                                     <input type="hidden" name="products[]" value="{{  $appt_loopVariable->serviceitemable_id }}">
@@ -245,7 +248,7 @@
                                             <label for="when" class="form-label required">Price</label>
                                             <input class="form-control schedule_details_modal_submit" name="price[products][{{  $appt_loopVariable->serviceitemable_id }}]" value="{{  $appt_loopVariable->serviceitemable->retail_price }}" type="text" placeholder="Price">
                                         </div>
-                                    </div>                        
+                                    </div>
                                 </div>
                                 <!-- end card body -->
                             </div>
@@ -301,7 +304,7 @@
                                             @empty
 
                                             @endforelse
-                            
+
                                           </tbody>
                                         </table>
                                     </div>
@@ -318,24 +321,24 @@
                                               <td>{{ $loopVariable->packageitemable->name }}</td>
                                             </tr>
                                             @empty
-                                                
+
                                             @endforelse
-                                    
-                                           
+
+
                                           </tbody>
                                         </table>
                                     </div>
-                                </div>                       
+                                </div>
                             </div>
                             <!-- end card body -->
-                        </div> 
+                        </div>
                     </div>
 
                     @empty
                     @endforelse
 
                </div>
-               
+
 
                 <div class="row">
                     <div class="col-xl-12">

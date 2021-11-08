@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppointmentBook;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
@@ -210,5 +211,13 @@ class AppointmentBookController extends BaseController
 
         // $apptBook = $apptBook->get();
         // return $apptBook;
+    }
+    public function serviceColor(Request $request){
+        if($request->row){
+        foreach ($request->row as $data){
+            Service::where('id',$data['id'])->update(['color'=>$data['color']]);
+        }
+        }
+return redirect()->back();
     }
 }

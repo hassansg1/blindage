@@ -133,24 +133,23 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-7">
+                                                                    <form method="post" action="{{route('update.serviceColor')}}" id="service-form-id">
+                                                                        @csrf
                                                                     <table class="table">
                                                                         <tr>
                                                                             <th>Name</th>
                                                                             <th>Color</th>
                                                                             <th></th>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td>New</td>
-                                                                            <td>
-                                                                                <div>
-                                                                                    <input type="text" class="form-control" id="colorpicker-default" value="#50a5f1">
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
+                                                                        @include('appointment_book.tabs.rows._services')
+                                                                     </table>
+
+                                                                    <div>
+                                                                        <button class="btn btn-primary" type="submit">Save</button>
+                                                                    </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
-
                                                        </div>
 
                                                     </div>
@@ -225,7 +224,6 @@
                                                                 <div>
                                                                     <button class="btn btn-primary" type="submit">Save</button>
                                                                 </div>
-                                                           </div>
                                                        </form>
                                                     </div>
                                                 </div>
@@ -242,3 +240,9 @@
     </div>
 </div>
 
+<script>
+    // $('#service-form-id').on('submit',function (e) {
+    // e.preventDefault();
+    // console.log($(this).serialize())
+    // });
+</script>
