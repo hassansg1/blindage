@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppointmentBook;
+use App\Models\AppointmentType;
 use App\Models\Service;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class AppointmentBookController extends BaseController
 {
@@ -145,8 +146,7 @@ class AppointmentBookController extends BaseController
     {
 
         $result = $this->model->deleteAppointment($request);
-        if($result)
-        {
+        if ($result) {
             flashSuccess(getLang($this->heading . " Successfully Deleted."));
             return redirect(route($this->route . ".index"));
 
@@ -156,6 +156,7 @@ class AppointmentBookController extends BaseController
         return redirect(route($this->route . ".index"));
 
     }
+
     public function get_Appointment(Request $request)
     {
         $obj = new AppointmentBook();
@@ -178,11 +179,11 @@ class AppointmentBookController extends BaseController
         $today = $request->input('today');
         $status_flag = $request->input('status_flag');
         if (empty($request->input('search.value'))) {
-            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today,$status_flag);
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today, $status_flag);
         } else {
             $search = $request->input('search.value');
-            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today,$status_flag ,$search);
-            $totalFiltered = $obj->appointmentbook_count($search,$today , $status_flag);
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today, $status_flag, $search);
+            $totalFiltered = $obj->appointmentbook_count($search, $today, $status_flag);
         }
         $data = array();
         if (!empty($results)) {
@@ -212,12 +213,23 @@ class AppointmentBookController extends BaseController
         // $apptBook = $apptBook->get();
         // return $apptBook;
     }
-    public function serviceColor(Request $request){
-        if($request->row){
-        foreach ($request->row as $data){
-            Service::where('id',$data['id'])->update(['color'=>$data['color']]);
+
+    public function serviceColor(Request $request)
+    {
+        if ($request->row) {
+            foreach ($request->row as $data) {
+                Service::where('id', $data['id'])->update(['color' => $data['color']]);
+            }
         }
+        return redirect()->back();
+    }
+    public function appointmentColor(Request $request)
+    {
+        if ($request->row) {
+            foreach ($request->row as $data) {
+                AppointmentType::where('id', $data['id'])->update(['color' => $data['color']]);
+            }
         }
-return redirect()->back();
+        return redirect()->back();
     }
 }

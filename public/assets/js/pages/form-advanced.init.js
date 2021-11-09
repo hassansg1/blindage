@@ -94,6 +94,11 @@ File: Form Advanced Js File
     $("#colorpicker-default-2").spectrum();
     $("#colorpicker-default-3").spectrum();
     $("#colorpicker-default-4").spectrum();
+    $("#colorpicker-default-None").spectrum();
+    $("#colorpicker-default-Request").spectrum();
+    $("#colorpicker-default-Transient").spectrum();
+    $("#colorpicker-default-New").spectrum();
+    $("#colorpicker-default-New-Request").spectrum();
     $("#colorpicker-showalpha").spectrum({
       showAlpha: true
     });

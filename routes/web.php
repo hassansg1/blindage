@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('getAppointmentView',[App\Http\Controllers\AppointmentController::class,'getAppointmentView'])->name('appointment.getAppointmentView');
     Route::post('cancalAppointment',[App\Http\Controllers\AppointmentBookController::class,'cancalAppointment'])->name('appointment_book.cancalAppointment');
     Route::post('update/service/color',[App\Http\Controllers\AppointmentBookController::class,'serviceColor'])->name('update.serviceColor');
+    Route::post('update/appointment/color',[App\Http\Controllers\AppointmentBookController::class,'appointmentColor'])->name('update.appointmentColor');
 
     Route::post('getAppointment',[App\Http\Controllers\AppointmentBookController::class,'get_Appointment'])->name('appointment_book.get_Appointment');
 

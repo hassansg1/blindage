@@ -8,7 +8,4 @@
             </div>
         </td>
     </tr>
-    <script>
-        $("#colorpicker-default-{{$service->id}}").spectrum();
-    </script>
 @endforeach
