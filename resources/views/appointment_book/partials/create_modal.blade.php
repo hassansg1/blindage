@@ -44,13 +44,13 @@
                 </div>
                 <div class="row">
                     <div class="mb-3">
-                        <div class="d-flex justify-content-between"> 
+                        <div class="d-flex justify-content-between">
                             <label for="when" class="form-label required">Which Client?</label>
                             <a href="#">
                                 <i class="fa fa-plus mr-5"></i> <span> Add New Client</span>
                             </a>
                         </div>
-                        
+
                         <select id="select_client_drop_down" name="client_id" class="form-control select2">
                             <option value="">Select</option>
                             @foreach(\App\Models\Client::all() as $loopVariable)
@@ -73,12 +73,10 @@
                 <div class="row">
                     <div class="mb-3">
                         <label for="when" class="form-label required">Appointment Type?</label>
-                        <select id="" name="" class="form-control select2">
-                           <option>None</option>
-                           <option>Request</option>
-                           <option>Transient</option>
-                           <option>New</option>
-                           <option>New Request</option>
+                        <select id="" name="appointment_id" class="form-control select2">
+                         @foreach(getAppointmentType() as $type)
+                           <option value="{{$type->id}}">{{$type->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

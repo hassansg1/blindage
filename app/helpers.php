@@ -140,3 +140,10 @@ if (!function_exists('getMinutesDifference')) {
         return (int)round(abs($to_time - $from_time) / 60, 2);
     }
 }
+if (!function_exists('getAppointmentType')) {
+    function getAppointmentType()
+    {
+       $appointment = \App\Models\AppointmentType::get();
+       return $appointment;
+    }
+}

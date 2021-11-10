@@ -134,24 +134,23 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-7">
+                                                                    <form method="post" action="{{route('update.serviceColor')}}" id="service-form-id">
+                                                                        @csrf
                                                                     <table class="table">
                                                                         <tr>
                                                                             <th>Name</th>
                                                                             <th>Color</th>
                                                                             <th></th>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td>New</td>
-                                                                            <td>
-                                                                                <div>
-                                                                                    <input type="text" class="form-control" id="colorpicker-default" value="#50a5f1">
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
+                                                                        @include('appointment_book.tabs.rows._services')
+                                                                     </table>
+
+                                                                    <div>
+                                                                        <button class="btn btn-primary" type="submit">Save</button>
+                                                                    </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
-
                                                        </div>
 
                                                     </div>
@@ -159,7 +158,8 @@
                                                        <h3>Appointment Type Color Codes</h3>
                                                        <p>Add a secondary color to your calendar based on the selected appointment type.</p>
                                                        <div class="services-search-wrapper">
-                                                        <form action="" method="">
+                                                        <form action="{{route('update.appointmentColor')}}" method="post">
+                                                            @csrf
                                                             <div class="row">
                                                                <div class="input-search col-md-5">
                                                                     <div class="mb-2 icon-wrapper">
@@ -175,58 +175,15 @@
                                                                                 <th>Name</th>
                                                                                 <th>Color</th>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td>New</td>
-                                                                                <td>
-                                                                                    <div>
-                                                                                        <input type="text" class="form-control" id="colorpicker-default-1" value="#50a5f1">
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <a href="#">Clear</a>
-                                                                                </td>
-                                                                            </tr>
 
-{{--                                                                            <tr>--}}
-{{--                                                                                <td>New Request</td>--}}
-{{--                                                                                <td>--}}
-{{--                                                                                    <div>--}}
-{{--                                                                                        <input type="text" class="form-control" id="colorpicker-default-2" value="#50a5f1">--}}
-{{--                                                                                    </div>--}}
-{{--                                                                                </td>--}}
-{{--                                                                                <td>--}}
-{{--                                                                                    <a href="#">Clear</a>--}}
-{{--                                                                                </td>--}}
-{{--                                                                            </tr>--}}
-{{--                                                                            <tr>--}}
-{{--                                                                                <td>Request</td>--}}
-{{--                                                                                <td>--}}
-{{--                                                                                    <div>--}}
-{{--                                                                                        <input type="text" class="form-control" id="colorpicker-default-3" value="#50a5f1">--}}
-{{--                                                                                    </div>--}}
-{{--                                                                                </td>--}}
-{{--                                                                                <td>--}}
-{{--                                                                                    <a href="#">Clear</a>--}}
-{{--                                                                                </td>--}}
-{{--                                                                            </tr>--}}
-{{--                                                                            <tr>--}}
-{{--                                                                                <td>Transient</td>--}}
-{{--                                                                                <td>--}}
-{{--                                                                                    <div>--}}
-{{--                                                                                        <input type="text" class="form-control" id="colorpicker-default-4" value="#50a5f1">--}}
-{{--                                                                                    </div>--}}
-{{--                                                                                </td>--}}
-{{--                                                                                <td>--}}
-{{--                                                                                    <a href="#">Clear</a>--}}
-{{--                                                                                </td>--}}
-{{--                                                                            </tr>--}}
+                                                                            @include('appointment_book.tabs.rows._appoinment_type')
+
                                                                         </table>
                                                                     </div>
                                                                 </div>
                                                                 <div>
                                                                     <button class="btn btn-primary" type="submit">Save</button>
                                                                 </div>
-                                                           </div>
                                                        </form>
                                                     </div>
                                                 </div>
@@ -243,3 +200,9 @@
     </div>
 </div>
 
+<script>
+    // $('#service-form-id').on('submit',function (e) {
+    // e.preventDefault();
+    // console.log($(this).serialize())
+    // });
+</script>
