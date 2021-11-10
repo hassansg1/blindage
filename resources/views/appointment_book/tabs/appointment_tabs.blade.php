@@ -47,7 +47,7 @@
                                     <option value=""> All Appointments</option>
                                     <option value='{{  App\Models\AppointmentBook::OPENED }}'>Opened </option>
                                     <option value='{{  App\Models\AppointmentBook::TIMEBLOCK }}'>Time Block </option>
-                                    <option value='{{  App\Models\AppointmentBook::CLOSED }}'>Closed</option>
+                                    <option value='{{  App\Models\AppointmentBook::CHECKOUT }}'>Closed/CheckOut</option>
                                     <option value='{{  App\Models\AppointmentBook::NOSHOW }}'>No Show </option>
                                     <option value='{{  App\Models\AppointmentBook::CANCELED }}'>Canceled </option>
                                     <option value='{{  App\Models\AppointmentBook::VOIDED }}'>Voided </option>
