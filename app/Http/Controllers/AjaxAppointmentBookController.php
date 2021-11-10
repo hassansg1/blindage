@@ -90,7 +90,19 @@ class AjaxAppointmentBookController extends Controller
         $result = AppointmentBook::find($request->appointbook_id);
         if($result !=null)
         {
+            if($request->value == AppointmentBook::CHECKIN)
+            {
+                $result->checked_in = date('Y-m-d H:i:s');
+
+            }
+            if($request->value == AppointmentBook::CHECKOUT)
+            {
+                $result->checked_out = date('Y-m-d H:i:s');
+
+            }
             $result->status_flag = $request->value;
+         
+
             $result->save();
             return response()->json([
             'status' => true]);

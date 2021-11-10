@@ -21,7 +21,7 @@ class AppointmentBookParser
       	{
        		$data->join('appointment_books', 'appointment_books.id', '=', 'appointments.appointment_book_id')->where('branch_id',$request->branch_id);
        	}
-       	// not show cancel appointments
+       	// for not show cancel appointments in Calendar
        	$data->join('appointment_books', 'appointment_books.id', '=', 'appointments.appointment_book_id')->where('status_flag','!=',AppointmentBook::CANCELED);
         return $data->get();
     }

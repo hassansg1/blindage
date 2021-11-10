@@ -89,11 +89,16 @@
           <div class="mt-3 text-center">
                <button class="btn btn-primary primary-alt" id="cancelApptBtn">No Show</button>
                <button class="btn btn-primary" onclick="openScheduleDetailPopup('{{ $data->id }}','{{ $data->appointments->first()->start_time ?? '' }}','{{ $data->appointments->first()->getEndTimeAttribute() ?? '' }}')">Appt. Details</button>
-               <button class="btn btn-primary">
+               @if($data->activity_date == date('Y-m-d') && $data->status_flag != App\Models\AppointmentBook::CHECKOUT && $data->status_flag != App\Models\AppointmentBook::CHECKIN )
+               <button class="btn btn-primary" onclick="appointmentStatusUpdate('{{ $data->id??'' }}',{{ App\Models\AppointmentBook::CHECKIN }})">
                   Check In
                </button>
-
-
+               @endif
+               @if($data->activity_date == date('Y-m-d') && $data->status_flag == App\Models\AppointmentBook::CHECKIN)
+               <button class="btn btn-primary" onclick="appointmentStatusUpdate('{{ $data->id??'' }}',{{ App\Models\AppointmentBook::CHECKOUT }})">
+                  Check Out
+               </button>
+               @endif
 
             </div>
             </div>

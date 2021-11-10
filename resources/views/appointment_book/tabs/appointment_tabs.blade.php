@@ -46,6 +46,7 @@
                                 <select class="form-select mb-2 width-180" id="status_flag">
                                     <option value=""> All Appointments</option>
                                     <option value='{{  App\Models\AppointmentBook::OPENED }}'>Opened </option>
+                                    <option value='{{  App\Models\AppointmentBook::CHECKIN }}'>CheckedIn </option>
                                     <option value='{{  App\Models\AppointmentBook::TIMEBLOCK }}'>Time Block </option>
                                     <option value='{{  App\Models\AppointmentBook::CHECKOUT }}'>Closed/CheckOut</option>
                                     <option value='{{  App\Models\AppointmentBook::NOSHOW }}'>No Show </option>
