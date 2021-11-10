@@ -118,4 +118,30 @@
       });
     });
 
+    function appointmentStatusUpdate(appointbook_id , value) 
+    {
+        if(value!=null && value!="" && value!='')
+        {
+            console.log(value);
+            $.ajax({
+            type: "GET",
+            url: '{{ route('appointment_book.appointment_status_update') }}',
+            data: {
+                id: id,
+                value:value
+                
+            },
+            success: function (result) {
+                if (result.status) {
+                    
+                } else {
+                }
+            }
+        });
+
+        }
+    }
+
+
+
 </script>

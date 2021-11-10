@@ -84,4 +84,12 @@ class AjaxAppointmentBookController extends Controller
         ]);
 
     }
+
+    public function appointment_status_update(Request $request)
+    {
+        dd($request->all());
+    }
+
+
+
 }

@@ -1,4 +1,3 @@
-
 <div class="top-nav-tabs-wrapper d-flex mb-2">
             <h3 class="mb-0">Appointment Book</h3>
             <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">

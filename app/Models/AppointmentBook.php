@@ -29,6 +29,8 @@ class AppointmentBook extends Model
     const NOSHOW = 3;
     const CANCELED = 4;
     const VOIDED = 5;
+    const CHECKIN = 6;
+    const CHECKOUT = 7;
 
     public function client()
     {
@@ -201,7 +203,11 @@ class AppointmentBook extends Model
             });
 
         }
-        $result->where('status_flag', '=',$status_flag);
+        if($status_flag != 0)
+        {
+            $result->where('status_flag', '=',$status_flag);
+
+        }
         if($today == 1 || $today=='1')
         {
             $result->where('activity_date', '=',$today_date );
@@ -222,7 +228,12 @@ class AppointmentBook extends Model
                 $query->orWhere('first_name', 'like', '%'.$search.'%');
             });
         }
-        $result->where('status_flag', '=',$status_flag);
+        if($status_flag != 0)
+        {
+            $result->where('status_flag', '=',$status_flag);
+
+        }
+        
         if($today == 1 || $today=='1')
         {
             $result->where('activity_date', '=',$today_date);
