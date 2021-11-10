@@ -122,8 +122,6 @@
     {
         if(value!=null && value!="" && value!='')
         {
-            console.log(value);
-            console.log(appointbook_id);
             $.ajax({
             type: "GET",
             url: '{{ route('appointment_book.appointment_status_update') }}',

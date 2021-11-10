@@ -93,13 +93,13 @@ class AjaxAppointmentBookController extends Controller
             $result->status_flag = $request->value;
             $result->save();
             return response()->json([
-            'status' => true,'message'=>'Successfully Update']);
+            'status' => true]);
         }
         else
         {
             return response()->json([
-            'status' => false,
-            'message'=>'No Record Found']);
+            'status' => false
+            ]);
         }
 
         // dd($request->all());
