@@ -36,7 +36,7 @@
                         <div>
                             {{-- <button class="btn btn-outline-warning waves-effect waves-light" >Today</button> --}}
                             <input type="hidden" id="appt_view_today" name="appt_view_today" value="0">
-                            <input class="form-check-input" type="checkbox"
+                            <input class="form-check-input mt-0" type="checkbox"
                                        id="appt_view_today_label" value="" onclick="this.checked ? $('#appt_view_today').val(1) : $('#appt_view_today').val(0)">
                             <label class="form-check-label" for="appt_view_today_label">
                                 Today
@@ -44,7 +44,8 @@
                         </div>
                         <div class="d-flex">
                             <div>
-                                <select class="form-control" id="status_flag">
+                                <select class="form-select mb-2 width-180" id="status_flag">
+                                    <option value=""> All Appointments</option>
                                     <option value='{{  App\Models\AppointmentBook::OPENED }}'>Opened </option>
                                     <option value='{{  App\Models\AppointmentBook::TIMEBLOCK }}'>Time Block </option>
                                     <option value='{{  App\Models\AppointmentBook::CLOSED }}'>Closed</option>
