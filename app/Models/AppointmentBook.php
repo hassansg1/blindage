@@ -29,6 +29,8 @@ class AppointmentBook extends Model
     const NOSHOW = 3;
     const CANCELED = 4;
     const VOIDED = 5;
+    const CHECKIN = 6;
+    const CHECKOUT = 7;
 
     public function client()
     {
@@ -39,23 +41,29 @@ class AppointmentBook extends Model
     {
         switch ($this->status_flag) {
 
-            case '1':
+            case AppointmentBook::TIMEBLOCK:
                 return 'TIMEBLOCK';
                 break;
-            case '2':
+            case AppointmentBook::CLOSED:
                 return 'CLOSED';
                 break;
-            case '3':
+            case AppointmentBook::NOSHOW:
                 return 'NOSHOW';
                 break;
-            case '4':
+            case AppointmentBook::CANCELED:
                 return 'CANCELED';
                 break;
-            case '5':
+            case AppointmentBook::VOIDED:
                 return 'VOIDED';
                 break;
+            case AppointmentBook::CHECKIN:
+                return 'CHECKIN';
+                break;
+            case AppointmentBook::CHECKOUT:
+                return 'CLOSED/CHECKOUT';
+                break;
 
-            default:
+             case AppointmentBook::OPENED:
                 return 'OPENED';
                 break;
         }
@@ -189,10 +197,22 @@ class AppointmentBook extends Model
         return false;
     }
 
+    public function cancelAppointment($request)
+    {
+
+        $apptBook = AppointmentBook::find($request->appointment);
+        $apptBook->mark_no_show = isset($request->mark_no_show)?1:0;
+        $apptBook->reason = isset($request->reason_for_cancelation)&& $request->reason_for_cancelation!=null?$request->reason_for_cancelation:0;
+        $apptBook->status_flag = AppointmentBook::CANCELED;
+        if($apptBook->save())
+        {
+            return true;
+        }
+        return false;
+    } 
 
 
-
-    public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$status_flag = 0 ,$search = false) {
+    public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$status_flag = null ,$search = false) {
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::offset($start);
         if ($search) {
@@ -203,7 +223,12 @@ class AppointmentBook extends Model
             });
 
         }
-        $result->where('status_flag', '=',$status_flag);
+
+        if($status_flag != null)
+        {
+            $result->where('status_flag', '=',$status_flag);
+
+        }
         if($today == 1 || $today=='1')
         {
             $result->where('activity_date', '=',$today_date );
@@ -214,7 +239,7 @@ class AppointmentBook extends Model
         return $result->get();
     }
 
-    public function appointmentbook_count($search = false ,$today = 0 ,$status_flag = 0) {
+    public function appointmentbook_count($search = false ,$today = 0 ,$status_flag = null) {
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::select();
         if ($search) {
@@ -224,7 +249,12 @@ class AppointmentBook extends Model
                 $query->orWhere('first_name', 'like', '%'.$search.'%');
             });
         }
-        $result->where('status_flag', '=',$status_flag);
+        if($status_flag != null)
+        {
+            $result->where('status_flag', '=',$status_flag);
+
+        }
+        
         if($today == 1 || $today=='1')
         {
             $result->where('activity_date', '=',$today_date);

@@ -121,4 +121,30 @@
       });
     });
 
+    function appointmentStatusUpdate(appointbook_id , value) 
+    {
+        if(value!=null && value!="" && value!='')
+        {
+            $.ajax({
+            type: "GET",
+            url: '{{ route('appointment_book.appointment_status_update') }}',
+            data: {
+                appointbook_id: appointbook_id,
+                value:value
+                
+            },
+            success: function (result) {
+                if (result.status) {
+                    doSuccessToast('Successfully Update...');
+                } else {
+                    doSuccessToast('Something Wrong...');
+                }
+            }
+        });
+
+        }
+    }
+
+
+
 </script>
