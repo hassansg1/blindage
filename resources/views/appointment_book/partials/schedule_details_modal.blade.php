@@ -35,11 +35,11 @@
                     </div>
                     <div class="mb-2 icon-wrapper">
                         <i class="fas fa-phone-alt icon"></i>
-                        <input class="form-control" type="number" name="" value="{{ isset($appt->client->mobile_no) && $appt->client->mobile_no!=null?$appt->client->mobile_no:'' }}" placeholder="Phone Number" autocomplete="nope">
+                        <input class="form-control" type="number" id="mobile_no" name="mobile_no" value="{{ isset($appt->client->mobile_no) && $appt->client->mobile_no!=null?$appt->client->mobile_no:'' }}" placeholder="Phone Number" autocomplete="nope">
                     </div>
                     <div class="icon-wrapper">
                         <i class="fas fa-envelope icon"></i>
-                        <input class="form-control" type="email" name="" value="{{ isset($appt->client->email) && $appt->client->email!=null?$appt->client->email:'' }}" placeholder="E-mail" autocomplete="nope">
+                        <input class="form-control" type="email" name="clientEmail" id="clientEmail" value="{{ isset($appt->client->email) && $appt->client->email!=null?$appt->client->email:'' }}" placeholder="E-mail" autocomplete="nope">
                     </div>
                 </div>
             </div>

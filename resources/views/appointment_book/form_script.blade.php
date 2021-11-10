@@ -1,12 +1,15 @@
 <script>
 
-    $('#select_service_drop_down').on('change', function () {
+    $('#mobile_no').on('change', function () {
+        resubmitForm();
+    });
+    $('#clientEmail').on('change', function () {
         resubmitForm();
     });
 
     $('#select_client_drop_down').on('change', function () {
         resubmitForm();
-    });    
+    });
 
     $('.schedule_details_modal_submit').on('change', function () {
         console.log('run');
@@ -23,7 +26,7 @@
 
     });
 
-    function deleteRow() 
+    function deleteRow()
     {
         $(event.target).closest('.deleteRow').remove();
         //console.log('run');
@@ -95,7 +98,7 @@
                         default:
                             doWarningToast("Record Not Found...");
                             return false;
-                    } 
+                    }
 
 
 
@@ -103,7 +106,7 @@
                 }
             }
         });
-        
+
     }
 
     $(document).ready(function(){

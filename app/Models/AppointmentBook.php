@@ -98,24 +98,21 @@ class AppointmentBook extends Model
         } else {
             $item->appointments()->update(['deleted_by_id'=>Auth::id()]);
             $item->appointments()->delete();
-            $item->appointmentBookItems()->update(['deleted_by_id'=>Auth::id()]);
+            $item->appointmentBookItems()->update(['deleted_by_id' => Auth::id()]);
             $item->appointmentBookItems()->delete();
             if (isset($request->services)) {
-                    // $timeStart = date('H:i:s', strtotime($request->time_start));
+                // $timeStart = date('H:i:s', strtotime($request->time_start));
                 for ($count = 0; $count < count($request->services); $count++) {
                     $currentService = $request->services[$count];
                     $service = Service::find($currentService);
-                    if(isset($request->time_start[$currentService]))
-                    {
+                    if (isset($request->time_start[$currentService])) {
                         $timeStart = $request->time_start[$currentService];
-                    }
-                    else
-                    {
+                    } else {
                         $timeStart = $request->time_start[0];
                     }
                     $item->appointments()->create([
                         'service_id' => $currentService,
-                        'employee_type_id'=> isset($request->employee_type_id[$currentService]) ? $request->employee_type_id[$currentService] : null,
+                        'employee_type_id' => isset($request->employee_type_id[$currentService]) ? $request->employee_type_id[$currentService] : null,
                         'start_time' => $timeStart,
                         'duration' => isset($request->minutes[$currentService]) ? $request->minutes[$currentService] : $service->minutes,
                         'quantity' => isset($request->quantity[$currentService]) ? $request->quantity[$currentService] : 0,
@@ -128,8 +125,7 @@ class AppointmentBook extends Model
             }
 
             if (isset($request->products)) {
-                for ($count = 0; $count < count($request['products']); $count++)
-                {
+                for ($count = 0; $count < count($request['products']); $count++) {
                     $apptBookItem = new AppointmentBookItems();
                     $apptBookItem->appointment_book_id = $request['appointment_book_id'];
                     $apptBookItem->serviceitemable_id = $request['products'][$count];
@@ -142,8 +138,7 @@ class AppointmentBook extends Model
             }
 
             if (isset($request->packages)) {
-                for ($count = 0; $count < count($request['packages']); $count++)
-                {
+                for ($count = 0; $count < count($request['packages']); $count++) {
                     $apptBookItem = new AppointmentBookItems();
                     $apptBookItem->appointment_book_id = $request['appointment_book_id'];
                     $apptBookItem->serviceitemable_id = $request['packages'][$count];
@@ -154,7 +149,14 @@ class AppointmentBook extends Model
                     $product_Obj->appointmentBookItem()->save($apptBookItem);
                 }
             }
-
+            if ($request->client_id) {
+                if (isset($request->mobile_no)) {
+                    Client::where('id',$request->client_id)->update(['mobile_no'=>$request->mobile_no]);
+            }
+            if (isset($request->clientEmail)) {
+                Client::where('id',$request->client_id)->update(['email'=>$request->clientEmail]);
+            }
+        }
 
             // dd($request->all());
 
