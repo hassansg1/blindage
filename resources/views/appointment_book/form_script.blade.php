@@ -123,18 +123,20 @@
         if(value!=null && value!="" && value!='')
         {
             console.log(value);
+            console.log(appointbook_id);
             $.ajax({
             type: "GET",
             url: '{{ route('appointment_book.appointment_status_update') }}',
             data: {
-                id: id,
+                appointbook_id: appointbook_id,
                 value:value
                 
             },
             success: function (result) {
                 if (result.status) {
-                    
+                    doSuccessToast('Successfully Update...');
                 } else {
+                    doSuccessToast('Something Wrong...');
                 }
             }
         });

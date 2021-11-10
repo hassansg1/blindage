@@ -87,7 +87,22 @@ class AjaxAppointmentBookController extends Controller
 
     public function appointment_status_update(Request $request)
     {
-        dd($request->all());
+        $result = AppointmentBook::find($request->appointbook_id);
+        if($result !=null)
+        {
+            $result->status_flag = $request->value;
+            $result->save();
+            return response()->json([
+            'status' => true,'message'=>'Successfully Update']);
+        }
+        else
+        {
+            return response()->json([
+            'status' => false,
+            'message'=>'No Record Found']);
+        }
+
+        // dd($request->all());
     }
 
 

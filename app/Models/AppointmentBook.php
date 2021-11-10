@@ -189,7 +189,19 @@ class AppointmentBook extends Model
         return false;
     }
 
+    public function cancelAppointment($request)
+    {
 
+        $apptBook = AppointmentBook::find($request->appointment);
+        $apptBook->mark_no_show = isset($request->mark_no_show)?1:0;
+        $apptBook->reason = isset($request->reason_for_cancelation)&& $request->reason_for_cancelation!=null?$request->reason_for_cancelation:0;
+        $apptBook->status_flag = AppointmentBook::CANCELED;
+        if($apptBook->save())
+        {
+            return true;
+        }
+        return false;
+    } 
 
 
     public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$status_flag = 0 ,$search = false) {

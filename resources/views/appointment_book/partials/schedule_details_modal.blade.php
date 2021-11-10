@@ -13,9 +13,9 @@
         <div class="actionBtn">
             <select class="form-select mb-2 actionSelectOption" onchange="appointmentStatusUpdate('{{ $appt->id??'' }}',this.value)">
                   <option selected="" value="">Action</option>
-                  <option value="{{ App\Models\AppointmentBook::CHECKOUT }}">Checkout</option>
-                  <option value="{{ App\Models\AppointmentBook::CANCELED }}">Cancel Appointment</option>
-                  <option value="{{ App\Models\AppointmentBook::VOIDED }}">Void Appointment</option>
+                  <option @if(App\Models\AppointmentBook::CHECKOUT == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::CHECKOUT }}">Checkout</option>
+                  <option @if(App\Models\AppointmentBook::CANCELED == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::CANCELED }}">Cancel Appointment</option>
+                  <option @if(App\Models\AppointmentBook::VOIDED == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::VOIDED }}">Void Appointment</option>
             </select>
         </div>
         <div class="client-summary-wrapper mb-3">
