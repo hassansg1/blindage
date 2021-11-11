@@ -8,6 +8,12 @@
     });
 
     $('#select_client_drop_down').on('change', function () {
+        console.log('client');
+        resubmitForm();
+    });    
+
+    $('#select_branch_drop_down').on('change', function () {
+        console.log('branch');
         resubmitForm();
     });
 
@@ -16,6 +22,11 @@
         resubmitForm();
     });
 
+    $('#select_service_drop_down').on('change', function () {
+        console.log('service');
+
+        resubmitForm();
+    });
 
     $('.services_items_dropdown').on('change', function () {
        let start =  $('#start_for_service').val();

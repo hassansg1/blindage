@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="mb-3">
                         <label for="when" class="form-label required">Which Branch?</label>
-                        <select class="form-control select2" name="branch_id">
+                        <select class="form-control select2" name="branch_id" id="select_branch_drop_down">
                             <option value="">Select</option>
                             @foreach(\App\Models\Branch::all() as $branch)
                                 <option value="{{ $branch->id ?? '' }}">{{ $branch->name ?? '' }}</option>
