@@ -85,9 +85,35 @@ class AjaxAppointmentBookController extends Controller
 
     }
 
-    public function appointment_status_update(Request $request)
+  public function appointment_status_update(Request $request)
     {
-        dd($request->all());
+        $result = AppointmentBook::find($request->appointbook_id);
+        if($result !=null)
+        {
+            if($request->value == AppointmentBook::CHECKIN)
+            {
+                $result->checked_in = date('Y-m-d H:i:s');
+
+            }
+            if($request->value == AppointmentBook::CHECKOUT)
+            {
+                $result->checked_out = date('Y-m-d H:i:s');
+
+            }
+            $result->status_flag = $request->value;
+         
+            return response()->json([
+            'status' => true,
+            'html' => view('appointment_book.partials._appointmentView')->with(['data' => $result])->render()]);
+        }
+        else
+        {
+            return response()->json([
+            'status' => false
+            ]);
+        }
+
+        // dd($request->all());
     }
 
 

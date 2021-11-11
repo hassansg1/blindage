@@ -46,8 +46,8 @@
                     <div class="mb-3">
                         <div class="d-flex justify-content-between">
                             <label for="when" class="form-label required">Which Client?</label>
-                            <a href="#">
-                                <i class="fa fa-plus mr-5"></i> <span> Add New Client</span>
+                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".addNewClientModal">
+                                <i class="fa fa-plus mr-5"></i> <span class="addNewClient"> Add New Client</span>
                             </a>
                         </div>
 
@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="mb-3">
                         <label for="when" class="form-label required">Appointment Type?</label>
-                        <select id="" name="appointment_id" class="form-control select2">
+                        <select id="" name="appointment_id" class="form-select">
                          @foreach(getAppointmentType() as $type)
                            <option value="{{$type->id}}">{{$type->name}}</option>
                             @endforeach
@@ -88,4 +88,30 @@
         <div class="btn btn-primary" data-bs-dismiss="modal">Schedule</div>
     </div>
 </form>
+  <!--  Add New Client Modal Starts Here -->
+                                            <div class="modal fade addNewClientModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                <div class="modal-dialog modal-xl modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="">Extra large modal</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Cras mattis consectetur purus sit amet fermentum.
+                                                                Cras justo odio, dapibus ac facilisis in,
+                                                                egestas eget quam. Morbi leo risus, porta ac
+                                                                consectetur ac, vestibulum at eros.</p>
+                                                            <p>Praesent commodo cursus magna, vel scelerisque
+                                                                nisl consectetur et. Vivamus sagittis lacus vel
+                                                                augue laoreet rutrum faucibus dolor auctor.</p>
+                                                            <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur.
+                                                                Praesent commodo cursus magna, vel scelerisque
+                                                                nisl consectetur et. Donec sed odio dui. Donec
+                                                                ullamcorper nulla non metus auctor
+                                                                fringilla.</p>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
+                                            <!-- Add New Client Modal Ends Here -->
 @include('appointment_book.form_script')

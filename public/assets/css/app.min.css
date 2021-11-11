@@ -2517,13 +2517,13 @@ input[switch="dark"]:checked + label:before {
     padding: 8px;
     z-index: 9999 !important;
 }
-.timepicker-orient-top {
+/*.timepicker-orient-top {
     top: calc(1.5em + .94rem + 2px)!important;
 }
 .bootstrap-timepicker-widget {
     left: 0!important;
     right: auto!important;
-}
+}*/
 .datepicker table tr th {
     font-weight: 500;
 }
@@ -4508,4 +4508,21 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
 }
 .mb-20{
     margin-bottom: 20px;
+}
+
+
+.glyphicon-chevron-up::before {
+    content: "\F0143";
+}
+.glyphicon, .glyphicon:before {
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-chevron-down::before {
+    content: "\F0140";
 }

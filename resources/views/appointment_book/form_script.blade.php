@@ -126,16 +126,24 @@
             $.ajax({
             type: "GET",
             url: '{{ route('appointment_book.appointment_status_update') }}',
-            data: {
-                id: id,
+              data: {
+                appointbook_id: appointbook_id,
                 value:value
                 
             },
             success: function (result) {
+ 
                 if (result.status) {
-                    
+                    if(typeof result.html !== 'undefined')
+                    {
+                        $("#div_id_clientInfoModal_content").html(result.html);
+                    }
+                    doSuccessToast('Successfully Update...');
                 } else {
+                    doSuccessToast('Something Wrong...');
                 }
+      
+
             }
         });
 

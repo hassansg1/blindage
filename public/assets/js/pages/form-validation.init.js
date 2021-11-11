@@ -31,8 +31,8 @@ File: Form validation Js File
 })(); // parsley validation
 
 
-$(document).ready(function () {
-  $('.custom-validation').parsley();
-});
+// $(document).ready(function () {
+//   $('.custom-validation').parsley();
+// });
 /******/ })()
 ;

@@ -137,6 +137,13 @@ File: Form Advanced Js File
       },
       appendWidgetTo: "#timepicker-input-group5"
     });
+    $('#timepicker6').timepicker({
+      icons: {
+        up: 'mdi mdi-chevron-up',
+        down: 'mdi mdi-chevron-down'
+      },
+      appendWidgetTo: "#timepicker-input-group6"
+    });
     $('#timepicker2').timepicker({
       showMeridian: false,
       icons: {
