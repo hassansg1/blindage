@@ -1,12 +1,15 @@
 <script>
 
-    $('#select_service_drop_down').on('change', function () {
+    $('#mobile_no').on('change', function () {
+        resubmitForm();
+    });
+    $('#clientEmail').on('change', function () {
         resubmitForm();
     });
 
     $('#select_client_drop_down').on('change', function () {
         resubmitForm();
-    });    
+    });
 
     $('.schedule_details_modal_submit').on('change', function () {
         console.log('run');
@@ -23,7 +26,7 @@
 
     });
 
-    function deleteRow() 
+    function deleteRow()
     {
         $(event.target).closest('.deleteRow').remove();
         //console.log('run');
@@ -95,7 +98,7 @@
                         default:
                             doWarningToast("Record Not Found...");
                             return false;
-                    } 
+                    }
 
 
 
@@ -103,7 +106,7 @@
                 }
             }
         });
-        
+
     }
 
     $(document).ready(function(){
@@ -122,14 +125,13 @@
     {
         if(value!=null && value!="" && value!='')
         {
-            console.log(value);
             $.ajax({
             type: "GET",
             url: '{{ route('appointment_book.appointment_status_update') }}',
-              data: {
+            data: {
                 appointbook_id: appointbook_id,
                 value:value
-                
+ 
             },
             success: function (result) {
  
@@ -138,6 +140,7 @@
                     {
                         $("#div_id_clientInfoModal_content").html(result.html);
                     }
+
                     doSuccessToast('Successfully Update...');
                 } else {
                     doSuccessToast('Something Wrong...');

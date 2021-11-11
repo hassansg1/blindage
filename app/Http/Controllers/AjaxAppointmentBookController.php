@@ -102,9 +102,12 @@ class AjaxAppointmentBookController extends Controller
             }
             $result->status_flag = $request->value;
          
+
+            $result->save();
             return response()->json([
             'status' => true,
             'html' => view('appointment_book.partials._appointmentView')->with(['data' => $result])->render()]);
+
         }
         else
         {

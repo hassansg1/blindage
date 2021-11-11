@@ -13,9 +13,9 @@
         <div class="actionBtn">
             <select class="form-select mb-2 actionSelectOption" onchange="appointmentStatusUpdate('{{ $appt->id??'' }}',this.value)">
                   <option selected="" value="">Action</option>
-                  <option value="{{ App\Models\AppointmentBook::CHECKOUT }}">Checkout</option>
-                  <option value="{{ App\Models\AppointmentBook::CANCELED }}">Cancel Appointment</option>
-                  <option value="{{ App\Models\AppointmentBook::VOIDED }}">Void Appointment</option>
+                  <option @if(App\Models\AppointmentBook::CHECKOUT == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::CHECKOUT }}">Checkout</option>
+                  <option @if(App\Models\AppointmentBook::CANCELED == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::CANCELED }}">Cancel Appointment</option>
+                  <option @if(App\Models\AppointmentBook::VOIDED == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::VOIDED }}">Void Appointment</option>
             </select>
         </div>
         <div class="client-summary-wrapper mb-3">
@@ -32,11 +32,11 @@
                     </div>
                     <div class="mb-2 icon-wrapper">
                         <i class="fas fa-phone-alt icon"></i>
-                        <input class="form-control" type="number" name="" value="{{ isset($appt->client->mobile_no) && $appt->client->mobile_no!=null?$appt->client->mobile_no:'' }}" placeholder="Phone Number" autocomplete="nope">
+                        <input class="form-control" type="number" id="mobile_no" name="mobile_no" value="{{ isset($appt->client->mobile_no) && $appt->client->mobile_no!=null?$appt->client->mobile_no:'' }}" placeholder="Phone Number" autocomplete="nope">
                     </div>
                     <div class="icon-wrapper">
                         <i class="fas fa-envelope icon"></i>
-                        <input class="form-control" type="email" name="" value="{{ isset($appt->client->email) && $appt->client->email!=null?$appt->client->email:'' }}" placeholder="E-mail" autocomplete="nope">
+                        <input class="form-control" type="email" name="clientEmail" id="clientEmail" value="{{ isset($appt->client->email) && $appt->client->email!=null?$appt->client->email:'' }}" placeholder="E-mail" autocomplete="nope">
                     </div>
                 </div>
             </div>
