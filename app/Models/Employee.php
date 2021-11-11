@@ -62,7 +62,13 @@ class Employee extends Model
         if (isset($request->state)) $item->state = $request->state;
         if (isset($request->setup)) $item->setup = $request->setup;
         if (isset($request->postal_code)) $item->postal_code = $request->postal_code;
-
+        if ($request->file('avatar')) {
+            $file = $request->file('avatar');
+            $name = time() . $file->getClientOriginalName();
+            $destinationPath = public_path('images/employees');
+            $file->move($destinationPath, $name);
+            if (isset($request->avatar)) $item->avatar = $name;
+        }
         $item->save();
         return $item;
     }

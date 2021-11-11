@@ -97,6 +97,20 @@
                             >
                         </div>
                     </div>
+
+                    <div class="col-lg-4">
+                        <div class="mb-3">
+                            <label for="{{ isset($item) ? $item->id:'' }}avatar" class="form-label required">
+                                Profile picture
+                            </label>
+                            <input type="file"
+                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}avatar"
+                                   name="avatar" required>
+                            <div class="invalid-feedback">
+                                Please Select Image.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

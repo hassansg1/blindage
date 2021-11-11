@@ -88,8 +88,21 @@
                             <input type="email" value="{{ isset($item) ? $item->email:old('email') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}email"
                                    name="email" required>
+                            <div class="invalid-feedback">
+                                Please Enter your Email.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="mb-3">
+                            <label for="{{ isset($item) ? $item->id:'' }}image" class="form-label required">
+                                Profile picture
+                            </label>
+                            <input type="file"
+                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}image"
+                                   name="image" required>
                                 <div class="invalid-feedback">
-                                        Please Enter your Email.
+                                        Please Select Image.
                                     </div>
                         </div>
                     </div>

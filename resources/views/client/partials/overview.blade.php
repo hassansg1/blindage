@@ -4,8 +4,8 @@
             <div class="col-xl-6">
                 <div class="row">
                     <div class="col-sm-3">
-                        <div class="initials_circle profile-user-wid mb-4">
-                            {{ $item->initials }}
+                        <div >
+                            <img class="initials_circle profile-user-wid mb-4" src="{{ asset('images/client') }}/{{$item->image}}" height="100" width="100" >
                         </div>
                     </div>
                     <div class="col-sm-9">
