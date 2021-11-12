@@ -150,6 +150,7 @@
                     if(typeof result.html !== 'undefined')
                     {
                         $("#div_id_clientInfoModal_content").html(result.html);
+
                     }
 
                     doSuccessToast('Successfully Update...');
