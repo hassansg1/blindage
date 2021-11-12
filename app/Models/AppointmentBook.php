@@ -89,7 +89,7 @@ class AppointmentBook extends Model
      */
     public function saveFormData($item, $request, $new = false)
     {
-
+        // dd($request->all());
         if (isset($request->branch_id)) $item->branch_id = $request->branch_id;
         if (isset($request->client_id)) $item->client_id = $request->client_id;
         if (isset($request->activity_date)) $item->activity_date = $request->activity_date;
