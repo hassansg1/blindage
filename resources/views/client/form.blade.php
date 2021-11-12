@@ -51,7 +51,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}mobile_no" class="form-label required">Phone
                                 Number</label>
-                            <input type="number" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
+                            <input type="text" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}mobile_no"
                                    name="mobile_no" required>
                             <div class="invalid-feedback">
@@ -64,7 +64,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}alt_mobile_no" class="form-label">
                                 Alternate Phone
                             </label>
-                            <input type="number"
+                            <input type="text"
                                    value="{{ isset($item) ? $item->alt_mobile_no:old('alt_mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}alt_mobile_no"
                                    name="alt_mobile_no">
@@ -88,8 +88,21 @@
                             <input type="email" value="{{ isset($item) ? $item->email:old('email') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}email"
                                    name="email" required>
+                            <div class="invalid-feedback">
+                                Please Enter your Email.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="mb-3">
+                            <label for="{{ isset($item) ? $item->id:'' }}image" class="form-label required">
+                                Profile picture
+                            </label>
+                            <input type="file"
+                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}image"
+                                   name="image" required>
                                 <div class="invalid-feedback">
-                                        Please Enter your Email.
+                                        Please Select Image.
                                     </div>
                         </div>
                     </div>

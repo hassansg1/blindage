@@ -163,7 +163,12 @@
 
         }
     }
+        $('.addNewClient').click(function(){
+            $('.bs-example-modal-center').modal('hide');
+        });
 
+     
 
+        
 
 </script>

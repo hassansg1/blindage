@@ -31,8 +31,14 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
+    public function render($request, Throwable $exception)
+    {
+        return response()->view('errors.500', compact('exception') );
+    }
+
     public function register()
     {
+
         $this->reportable(function (Throwable $e) {
             //
         });

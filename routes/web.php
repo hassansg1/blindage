@@ -64,3 +64,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('getItemsDataView', [App\Http\Controllers\AjaxAppointmentBookController::class, 'getItemsDataView'])->name('appointment_book.getItemsDataView');
     Route::post('unit/filter', [App\Http\Controllers\UnitController::class, 'filter'])->name('unit.filter');
 });
+Route::get('errors/detail',function (){
+    return view('errors.500');
+});

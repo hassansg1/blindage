@@ -80,7 +80,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}mobile_no" class="form-label">Mobile
                                 Phone</label>
-                            <input type="number" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
+                            <input type="text" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}mobile_no"
                                    name="mobile_no">
                         </div>
@@ -90,11 +90,25 @@
                             <label for="{{ isset($item) ? $item->id:'' }}alt_mobile_no" class="form-label">
                                 Alternate Phone
                             </label>
-                            <input type="number"
+                            <input type="text"
                                    value="{{ isset($item) ? $item->alt_mobile_no:old('alt_mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}alt_mobile_no"
                                    name="alt_mobile_no"
                             >
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="mb-3">
+                            <label for="{{ isset($item) ? $item->id:'' }}avatar" class="form-label required">
+                                Profile picture
+                            </label>
+                            <input type="file"
+                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}avatar"
+                                   name="avatar" required>
+                            <div class="invalid-feedback">
+                                Please Select Image.
+                            </div>
                         </div>
                     </div>
                 </div>

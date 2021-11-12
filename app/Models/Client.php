@@ -101,7 +101,13 @@ class Client extends Model
         if (isset($request->postal_code)) $item->postal_code = $request->postal_code;
         if (isset($request->referral)) $item->referral = $request->referral;
         if (isset($request->comments)) $item->comments = $request->comments;
-
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $name = time() . $file->getClientOriginalName();
+            $destinationPath = public_path('images/client');
+            $file->move($destinationPath, $name);
+            if (isset($request->image)) $item->image = $name;
+        }
         $item->save();
         return $item;
     }

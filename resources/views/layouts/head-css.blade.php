@@ -4,11 +4,7 @@
 <link href="{{ asset('/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css"/>
 <!-- Icons Css -->
 <link href="{{ asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
-<!-- App Css-->
-<link href="{{ asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css"/>
-
 <link href="{{ asset('/includes/styles.css') }}" id="app-style" rel="stylesheet" type="text/css"/>
-
 <link href="{{ asset('/assets/libs/dropzone/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
 {{-- <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" /> --}}
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -20,3 +16,5 @@
 <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ URL::asset('/assets/libs/magnific-popup/magnific-popup.min.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<!-- App Css-->
+<link href="{{ asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css"/>
