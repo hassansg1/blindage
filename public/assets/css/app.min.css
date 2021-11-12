@@ -4495,7 +4495,11 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
     border:none;
 }
 .app-expansion-tab-content .btn{
-    background: none; border:1px solid #ddd;color: inherit !important;
+    background: none; border:1px solid #ddd;color: inherit !important;background: #f7f7f7;transition: all .3s;
+}
+.app-expansion-tab-content .btn.btn-primary:hover{
+    background-color: #fff1b5;
+    border-color: #cabb78;
 }
 .app-expansion-tab-content .accordion-button:after {
     filter: brightness(0.5);
@@ -4526,3 +4530,17 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
 .glyphicon-chevron-down::before {
     content: "\F0140";
 }
+.app-expansion-tab-content .accordion-button:not(.collapsed) {
+    color: #4d63cf;
+    background-color: #fee26e;
+    border-color: #deb80f;
+}
+.app-expansion-tab-content .comment-save-btn{
+    color: #fff !important;
+    background-color: #c9a200 !important;
+    border-color: #c9a200 !important;
+}
+
+
+
+

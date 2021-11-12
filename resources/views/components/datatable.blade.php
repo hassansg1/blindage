@@ -16,9 +16,9 @@
                             <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
                                 <thead class="table-light custom_table_head">
                                 <tr>
-                                    <th class="select_all_checkbox" style="width: 10px"><input onclick="toggleSelectAll()"
+                                   {{--  <th class="select_all_checkbox" style="width: 10px"><input onclick="toggleSelectAll()"
                                                                                                type="checkbox" name=""
-                                                                                               id="select_all"></th>
+                                                                                               id="select_all"></th> --}}
                                     @yield('table_header')
                                     <th width="5%" class="text-center">
                                         Actions

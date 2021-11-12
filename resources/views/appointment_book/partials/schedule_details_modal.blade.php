@@ -80,7 +80,7 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="d-grid gap-2">
-                                                    <button class="btn btn-primary btn-block">Save</button>
+                                                    <button class="btn btn-primary btn-block comment-save-btn">Save</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -112,9 +112,18 @@
                     <div class="accordion-item">
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <div class="text-muted">
-                                    <strong class="text-dark">This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-
+                                <div>
+                                    <form action="#" class="dropzone">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple="multiple">
+                                        </div>
+                                        <div class="dz-message needsclick">
+                                            <div class="mb-3">
+                                                <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                            </div>
+                                            <h4>Drop files here or click to upload.</h4>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -161,8 +170,8 @@
 
         <div class="row mb-3">
             <div class="col-lg-4">
-                <label class="form-label required">Service</label>
-                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown">
+                <label class="form-label required">Service sdsfd</label>
+                <select class="form-control services_items_dropdown" name="services_items_dropdown">
                      <option>-- Select Service -- </option>
                     @foreach(\App\Models\Service::all() as $service_loopVariable)
                     <option  value="{{ 'Service??'.$service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
@@ -171,7 +180,7 @@
             </div>
             <div class="col-lg-4">
                 <label class="form-label required">Product</label>
-                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown">
+                <select class="form-control services_items_dropdown" name="services_items_dropdown">
                     <option>-- Select Product -- </option>
                     @foreach(\App\Models\Product::all() as $product_loopVariable)
                     <option value="{{ 'Product??'.$product_loopVariable->id ?? '' }}" >{{ $product_loopVariable->name ?? '' }}</option>
@@ -180,7 +189,7 @@
             </div>
             <div class="col-lg-4">
                 <label class="form-label required">Package</label>
-                <select class="form-control select2 services_items_dropdown" name="services_items_dropdown">
+                <select class="form-control services_items_dropdown" name="services_items_dropdown">
                     <option>-- Select Package -- </option>
                     @foreach(\App\Models\Package::where('active','1')->get() as $package_loopVariable)
                     <option value="{{ 'Package??'.$package_loopVariable->id ?? '' }}" >{{ $package_loopVariable->name ?? '' }}</option>
