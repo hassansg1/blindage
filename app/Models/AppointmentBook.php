@@ -164,22 +164,20 @@ class AppointmentBook extends Model
             if (isset($request->clientEmail)) {
                 Client::where('id',$request->client_id)->update(['email'=>$request->clientEmail]);
             }
-                $image = $request->file('clientImage');
+
+            }
+            $image = $request->file('file');
             if($image) {
                 $imageName = $image->getClientOriginalName();
                 $name = time() . $imageName;
-                $image->move(public_path('images'), $name);
+                $image->move(public_path('images/files'), $name);
 
                 $imageUpload = new File();
-                $imageUpload->filesable_type = "App\Models\Client";
-                $imageUpload->filesable_id = $request->client_id;
+                $imageUpload->filesable_type = "App\Models\AppointmentBook";
+                $imageUpload->filesable_id = $request->appointment_book_id;
                 $imageUpload->filename = $name;
-                return dd($imageUpload);
                 $imageUpload->save();
             }
-            }
-
-            // dd($request->all());
 
         }
         return $item;

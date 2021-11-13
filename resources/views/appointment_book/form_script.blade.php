@@ -9,7 +9,7 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            data: {'notes':$('#notes').val(),'appointment_book_id':$('appointment_book_id').val()},
+            data: {'notes':$('#notes').val(),'appointment_book_id':$('#appointment_book_id').val()},
             url: '{{ route('appointment_book.store') }}',
             success: function (result) {
                 if (result.status) {
@@ -19,16 +19,19 @@
         });
     });
     $('#clientImage').on('change', function (e) {
-        var imgname  =  $('input[type=file]').val();
-        
+        var form_data = new FormData();
+        form_data.append("file", document.getElementById('clientImage').files[0]);
+        form_data.append("appointment_book_id", $('#appointment_book_id').val());
         $.ajax({
             type: "POST",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            enctype: 'multipart/form-data',
-            data: {'image':imgname,'appointment_book_id':$('appointment_book_id').val()},
             url: '{{ route('appointment_book.store') }}',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
             success: function (result) {
                 if (result.status) {
                     getAllAppointments();
