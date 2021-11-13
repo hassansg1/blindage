@@ -164,7 +164,20 @@ class AppointmentBook extends Model
             if (isset($request->clientEmail)) {
                 Client::where('id',$request->client_id)->update(['email'=>$request->clientEmail]);
             }
-        }
+                $image = $request->file('clientImage');
+            if($image) {
+                $imageName = $image->getClientOriginalName();
+                $name = time() . $imageName;
+                $image->move(public_path('images'), $name);
+
+                $imageUpload = new File();
+                $imageUpload->filesable_type = "App\Models\Client";
+                $imageUpload->filesable_id = $request->client_id;
+                $imageUpload->filename = $name;
+                return dd($imageUpload);
+                $imageUpload->save();
+            }
+            }
 
             // dd($request->all());
 
@@ -209,7 +222,7 @@ class AppointmentBook extends Model
             return true;
         }
         return false;
-    } 
+    }
 
 
     public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$status_flag = null ,$search = false) {
@@ -254,7 +267,7 @@ class AppointmentBook extends Model
             $result->where('status_flag', '=',$status_flag);
 
         }
-        
+
         if($today == 1 || $today=='1')
         {
             $result->where('activity_date', '=',$today_date);

@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta content="Premium Multipurpose Admin & Dashboard Template" name="description"/>
       <meta content="Themesbrand" name="author"/>
+       <meta name="csrf-token" content="{{ csrf_token() }}">
       <!-- App favicon -->
       <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
       @include('layouts.head-css')
@@ -54,7 +55,8 @@
                   <h5 class="modal-title">Add New Client</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
-               <form class="needs-validation" novalidate method="posts">
+               <form class="needs-validation" id="addNewClientModal" novalidate method="post">
+                   @csrf
                   <div class="modal-body">
                      <h3 class="mb-4">General Info</h3>
                      <div class="row">
@@ -75,7 +77,7 @@
                               <label for="last_name" class="form-label required">Last
                               Name</label>
                               <input type="text" value=""
-                                 class="form-control" id="" name=""
+                                 class="form-control" id="" name="last_name"
                                  required>
                               <div class="invalid-feedback">
                                  Please Enter your Last Name.
@@ -84,9 +86,11 @@
                         </div>
                         <div class="col-md-4">
                            <label for="category" class="form-label">Category</label>
-                           <select class="form-select" name="">
+                           <select class="form-select" name="category">
                               <option value="">--Select Category--</option>
-                              <option value="">VIP</option>
+                               @foreach(getClientCategories() as $category)
+                              <option value="{{$category->id}}">{{$category->name}}</option>
+                               @endforeach
                            </select>
                         </div>
                      </div>
@@ -96,7 +100,7 @@
                               <label for="first_name" class="form-label">Mobile Phone</label>
                               <input type="text" value=""
                                  class="form-control" id=""
-                                 name="">
+                                 name="mobile_no">
                            </div>
                         </div>
                         <div class="col-md-4">
@@ -104,16 +108,14 @@
                               <label for="first_name" class="form-label">Alternative Phone</label>
                               <input type="text" value=""
                                  class="form-control" id=""
-                                 name="">
+                                 name="alt_mobile_no">
                            </div>
                         </div>
                         <div class="col-md-4">
                            <div class="mb-3">
                               <label for="when" class="form-label">Date of Birth</label>
                                  <div class="input-group" id="datepicker2">
-                                     <input type="text" class="form-control" placeholder="dd M, yyyy"
-                                         data-date-format="dd M, yyyy" data-date-container='#datepicker2' data-provide="datepicker">
-                                     <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                     <input class="form-control" type="date" name="dob" max="{{date('Y-m-d')}}">
                                  </div><!-- input-group -->
                            </div>
                         </div>
@@ -124,7 +126,7 @@
                               <label for="" class="form-label">Email</label>
                               <input type="email" value=""
                                  class="form-control" id=""
-                                 name="">
+                                 name="email">
                            </div>
                         </div>
                         <div class="col-md-8">
@@ -145,7 +147,7 @@
                                        <div class="col-md-6">
                                           <div class="form-check">
                                                <div class="mb-2">
-                                                   <input class="form-check-input mt-0" type="checkbox" name="appointment_email" value="1" id="2">
+                                                   <input class="form-check-input mt-0" type="checkbox" name="appointment_message" value="1" id="2">
                                                    <label class="form-check-label" for="2">
                                                        Text Message
                                                    </label>
@@ -160,19 +162,9 @@
                                        <div class="col-md-6">
                                           <div class="form-check">
                                                <div class="mb-2">
-                                                   <input class="form-check-input mt-0" type="checkbox" name="appointment_email" value="1" id="3">
+                                                   <input class="form-check-input mt-0" type="checkbox" name="marketing_mail" value="1" id="3">
                                                    <label class="form-check-label" for="3">
                                                        Email
-                                                   </label>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       <div class="col-md-6">
-                                          <div class="form-check">
-                                               <div class="mb-2">
-                                                   <input class="form-check-input mt-0" type="checkbox" name="appointment_email" value="1" id="4">
-                                                   <label class="form-check-label" for="4">
-                                                       Text Message
                                                    </label>
                                                </div>
                                            </div>
@@ -184,13 +176,13 @@
                      </div>
                      <div class="row">
                         <div class="col-md-12 text-center">
-                           <p class="mb-0">Messaging has not been enabled. Click here to enable messaging.</p>
+{{--                           <p class="mb-0">Messaging has not been enabled. Click here to enable messaging.</p>--}}
                         </div>
                      </div>
                   </div>
                   <div class="modal-footer">
                      <div class="btn btn-primary primary-alt" data-bs-dismiss="modal">Close</div>
-                     <div class="btn btn-primary" type="submit">Save</div>
+                     <div class="btn btn-primary" id="submitFormClient" type="submit">Save</div>
                   </div>
                </form>
             </div>

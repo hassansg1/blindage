@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppointmentBook;
+use App\Models\Client;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Service;
@@ -101,7 +102,7 @@ class AjaxAppointmentBookController extends Controller
 
             }
             $result->status_flag = $request->value;
-         
+
 
             $result->save();
             return response()->json([
@@ -118,7 +119,22 @@ class AjaxAppointmentBookController extends Controller
 
         // dd($request->all());
     }
-
-
-
+    public function addNewController(Request $request){
+        $item = new Client();
+         $item->first_name = $request->first_name;
+         $item->last_name = $request->last_name;
+         $item->category = $request->category;
+         $item->mobile_no = $request->mobile_no;
+         $item->alt_mobile_no = $request->alt_mobile_no;
+         $item->dob = $request->dob;
+         $item->email = $request->email;
+         $item->active = $request->active;
+         $item->appointment_email = $request->appointment_email;
+         $item->marketing_mail = $request->marketing_mail;
+         $item->appointment_message = $request->appointment_message;
+         $item->active = 1;
+         $item->save();
+        return response()->json([
+            'status' => true
+        ]);    }
 }
