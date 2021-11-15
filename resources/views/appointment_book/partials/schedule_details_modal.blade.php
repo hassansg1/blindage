@@ -116,7 +116,10 @@
 {{--                                    <form action="{{url('store/file/compliance')}}" method="post" class="dropzone" id="file_upload_form" enctype="multipart/form-data">--}}
 {{--                                        <input type="hidden" name="compliance_data_id" value="1">--}}
                                         <div class="fallback">
-                                            <input name="clientImage" type="file" id="clientImage"  >
+                                            <input name="clientImage" type="file" id="clientImage">
+                                            <img src="images/9276063avatar-1.jpg" alt="">
+                                            <img src="images/9276063avatar-1.jpg" alt="">
+                                            <img src="images/9276063avatar-1.jpg" alt="">
 {{--                                            <div class="dz-message needsclick">--}}
 {{--                                                <div class="mb-3">--}}
 {{--                                                    <i class="display-4 text-muted bx bxs-cloud-upload"></i>--}}

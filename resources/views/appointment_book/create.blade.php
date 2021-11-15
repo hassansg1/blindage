@@ -95,8 +95,6 @@
                                 New schedule</button>
                         </div>
                         <div id="calendarList" class="lnb-calendars-d1 mt-4 mt-sm-0 me-sm-0 mb-4"></div>
-
-
                         <div id="calendar" style="height: 800px;"></div>
 
                     </div>
