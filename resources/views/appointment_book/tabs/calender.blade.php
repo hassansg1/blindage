@@ -124,6 +124,8 @@
                                         @endforeach
                                     </select>
                                     <button type="button" class="btn btn-primary lnb-new-schedule-btn width-180" data-bs-toggle="modal" data-bs-target=".newScheduleModal">
+                                        New Schedule
+                                    </button>
 
                                 </div>
                             </div>
