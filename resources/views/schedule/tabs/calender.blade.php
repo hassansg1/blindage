@@ -351,7 +351,7 @@
 </div>
 </div>
 </div>
-<div id="weeks_data">
+<div class="weeks_data" id="weeks_data">
    <div class="repeat_every_data mt-3">
       <div class="repeat_text">Repeat every</div>
       <div>

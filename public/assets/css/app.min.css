@@ -4341,28 +4341,28 @@ background: #eaeaea;
     align-items: center;
     gap: 10px;
 }  
-#weeks_data .repeat_every_data{
+.weeks_data .repeat_every_data{
     display: flex;gap:20px; align-items: center;
 }
-#weeks_data .repeat_every_data .repeat_text{
+.weeks_data .repeat_every_data .repeat_text{
     width: 200px;
 }
-#weeks_data .repeat_on_data{
+.weeks_data .repeat_on_data{
     display: flex;align-items: center;
 }
-#weeks_data .week_wrapper {
+.weeks_data .week_wrapper {
     width: 100%;
 }
-#weeks_data .repeat_on_data .repeat_on_text{
+.weeks_data .repeat_on_data .repeat_on_text{
     width: 156px
 }
-#weeks_data .week_wrapper ul{
+.weeks_data .week_wrapper ul{
 display: flex;list-style: none; align-items: center;justify-content: space-between;padding-left:0;
 }
-#weeks_data .week_wrapper ul li button{
+.weeks_data .week_wrapper ul li button{
     border-radius: 100%;border: 1px solid #ddd;height: 30px;width: 30px;line-height: 30px;text-align: center;
 }
-#weeks_data .week_wrapper ul li button.active{
+.weeks_data .week_wrapper ul li button.active{
     background: #c9a200;color: #fff;border:1px solid #c9a200;
 }
 .scheduled_times-wrapper>.row:first-child .fa-times{
