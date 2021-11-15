@@ -123,19 +123,7 @@
                                         <option value="{{ $branch->id ?? '' }}">{{ $branch->name ?? '' }}</option>
                                         @endforeach
                                     </select>
-<<<<<<< HEAD
                                     <button type="button" class="btn btn-primary lnb-new-schedule-btn width-180" data-bs-toggle="modal" data-bs-target=".newScheduleModal">
-=======
-                                    {{-- <button id="btn-new-schedule" type="button" class="btn btn-primary lnb-new-schedule-btn width-180"
-                                            data-toggle="modal" data-bs-target="#new_schedule_modal">
->>>>>>> ddf4b8ff18bc9d338d306d2168fad80e76f5b7df
-                                        New schedule
-                                    </button> --}}
-
-                           
-                                      {{--  <button type="button" class="btn btn-primary lnb-new-schedule-btn width-180" data-bs-toggle="modal" data-bs-target="#new_schedule_modal">
-                                        New schedule
-                                    </button> --}}
 
                                 </div>
                             </div>
