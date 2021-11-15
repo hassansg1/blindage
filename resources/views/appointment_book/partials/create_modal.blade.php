@@ -17,16 +17,16 @@
                             <input type="text" class="form-control" name="activity_date" placeholder="y-m-d"
                                    value="{{ $date ?? '' }}"
                                    data-date-format="yyyy-m-d" data-date-container='#datepicker1'
-                                   data-provide="datepicker">
+                                   data-provide="datepicker" readonly>
                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <label class="form-label">Time Start</label>
                         <div class="input-group" id="timepicker-input-group1">
-                            <input id="timepicker" type="text" name="time_start[]" class="form-control"
+                            <input id="text" type="text" name="time_start[]" class="form-control"
                                    value="{{ $start ?? '' }}"
-                                   data-provide="timepicker">
+                                    readonly>
                                    <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
                         </div>
                     </div>

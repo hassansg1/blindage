@@ -3,6 +3,42 @@
     $('#mobile_no').on('change', function () {
         resubmitForm();
     });
+    $('#notes').on('change', function () {
+        $.ajax({
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {'notes':$('#notes').val(),'appointment_book_id':$('#appointment_book_id').val()},
+            url: '{{ route('appointment_book.store') }}',
+            success: function (result) {
+                if (result.status) {
+                    getAllAppointments();
+                }
+            },
+        });
+    });
+    $('#clientImage').on('change', function (e) {
+        var form_data = new FormData();
+        form_data.append("file", document.getElementById('clientImage').files[0]);
+        form_data.append("appointment_book_id", $('#appointment_book_id').val());
+        $.ajax({
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '{{ route('appointment_book.store') }}',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+                if (result.status) {
+                    getAllAppointments();
+                }
+            },
+        });
+    });
     $('#clientEmail').on('change', function () {
         resubmitForm();
     });
@@ -10,7 +46,7 @@
     $('#select_client_drop_down').on('change', function () {
         console.log('client');
         resubmitForm();
-    });    
+    });
 
     $('#select_branch_drop_down').on('change', function () {
         console.log('branch');
@@ -56,6 +92,16 @@
             },
         });
     }
+    $('#submitFormClient').on('click', function () {
+        $.ajax({
+            type: "POST",
+            url: '{{ route('addNewController') }}',
+            data: $('#addNewClientModal').serialize(),
+            success: function (result) {
+                getAllAppointments();
+            },
+        });
+    });
 
     function openScheduleDetailPopup(id,start=null,end=null) {
         $.ajax({
@@ -132,7 +178,7 @@
       });
     });
 
-    function appointmentStatusUpdate(appointbook_id , value) 
+    function appointmentStatusUpdate(appointbook_id , value)
     {
         if(value!=null && value!="" && value!='')
         {
@@ -142,21 +188,22 @@
             data: {
                 appointbook_id: appointbook_id,
                 value:value
- 
+
             },
             success: function (result) {
- 
+
                 if (result.status) {
                     if(typeof result.html !== 'undefined')
                     {
                         $("#div_id_clientInfoModal_content").html(result.html);
+
                     }
 
                     doSuccessToast('Successfully Update...');
                 } else {
                     doSuccessToast('Something Wrong...');
                 }
-      
+
 
             }
         });
@@ -167,8 +214,8 @@
             $('.bs-example-modal-center').modal('hide');
         });
 
-     
 
-        
+
+
 
 </script>

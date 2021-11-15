@@ -1,6 +1,6 @@
-<form action="" id="appointment_form" name="appointment_form">
+<form action="" id="appointment_form" name="appointment_form" enctype="multipart/form-data">
     {{ csrf_field() }}
-    <input type="hidden" name="appointment_book_id" value="{{ $appt->id }}">
+    <input type="hidden" name="appointment_book_id" id="appointment_book_id" value="{{ $appt->id }}">
     <input type="hidden" id="start_for_service" value="{{ $start ?? '' }}">
     <input type="hidden" id="end_for_service" value="{{ $end ?? '' }}">
     <input type="hidden" id="duration_for_service" value="{{ $duration ?? '' }}">
@@ -73,18 +73,18 @@
                                     <h4>Client Comments</h4>
                                     <p><i>No client comments found</i></p>
                                     <h4 class="mt-20">Notes</h4>
-                                    <form action="" method="">
+{{--                                    <form action="" method="">--}}
                                         <div class="row">
                                             <div class="col-md-10">
-                                                <textarea placeholder="Enter New Note..." class="form-control"></textarea>
+                                                <textarea name="notes" id="notes" placeholder="Enter New Note..." class="form-control"></textarea>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="d-grid gap-2">
-                                                    <button class="btn btn-primary btn-block comment-save-btn">Save</button>
+{{--                                                    <button class="btn btn-primary btn-block comment-save-btn">Save</button>--}}
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+{{--                                    </form>--}}
                                 </div>
                             </div>
                         </div>
@@ -113,17 +113,19 @@
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div>
-                                    <form action="#" class="dropzone">
+{{--                                    <form action="{{url('store/file/compliance')}}" method="post" class="dropzone" id="file_upload_form" enctype="multipart/form-data">--}}
+{{--                                        <input type="hidden" name="compliance_data_id" value="1">--}}
                                         <div class="fallback">
-                                            <input name="file" type="file" multiple="multiple">
+                                            <input name="clientImage" type="file" id="clientImage"  >
+{{--                                            <div class="dz-message needsclick">--}}
+{{--                                                <div class="mb-3">--}}
+{{--                                                    <i class="display-4 text-muted bx bxs-cloud-upload"></i>--}}
+{{--                                                </div>--}}
+
+{{--                                                <h4>Drop files here or click to upload.</h4>--}}
+{{--                                            </div>--}}
                                         </div>
-                                        <div class="dz-message needsclick">
-                                            <div class="mb-3">
-                                                <i class="display-4 text-muted bx bxs-cloud-upload"></i>
-                                            </div>
-                                            <h4>Drop files here or click to upload.</h4>
-                                        </div>
-                                    </form>
+{{--                                    </form>--}}
                                 </div>
                             </div>
                         </div>
