@@ -15,11 +15,8 @@
             <div class="card">
                 <div class="card-body">
                     <div id="lnb">
-
-
                         <div id="right">
                             <div id="menu" class="mb-3">
-
                             <span id="menu-navi" class="d-sm-flex flex-wrap text-center text-sm-start justify-content-sm-between">
                                 <div class="d-sm-flex flex-wrap gap-1">
                                     <div class="btn-group mb-2" role="group" aria-label="Basic example">
@@ -30,8 +27,6 @@
                                             <i class="calendar-icon ic-arrow-line-right mdi mdi-chevron-right" data-action="move-next"></i>
                                         </button>
                                     </div>
-
-
                                     <button type="button" class="btn btn-primary move-today mb-2" data-action="move-today">Today</button>
                                 </div>
 
