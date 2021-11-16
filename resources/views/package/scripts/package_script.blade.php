@@ -1,4 +1,12 @@
 <script>
+    function valid_numbers(e)
+    {
+        var key=e.which || e.KeyCode;
+        if  ( key >=48 && key <= 57)
+            // to check whether pressed key is number or not
+            return true;
+        else return false;
+    }
     // .. Global Varible Define
     (function(global) {
 
@@ -16,8 +24,8 @@
             // console.log("is in array");
             doWarningToast('Item Already In Bucket !');
             return false;
-        } 
-        
+        }
+
         items_bucket.push(item_class+id);
 
         $.ajax({

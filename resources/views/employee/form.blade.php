@@ -14,7 +14,7 @@
                                 Name</label>
                             <input type="text" value="{{ isset($item) ? $item->first_name:old('first_name') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}first_name"
-                                   name="first_name" required>
+                                   name="first_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required>
                                    <div class="invalid-feedback">
                                         Please Enter your First Name.
                                     </div>
@@ -25,7 +25,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}last_name" class="form-label required">Last
                                 Name</label>
                             <input type="text" value="{{ isset($item) ? $item->last_name:old('last_name') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}last_name" name="last_name"
+                                   class="form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" id="{{ isset($item) ? $item->id:'' }}last_name" name="last_name"
                                    required>
                                    <div class="invalid-feedback">
                                         Please Enter your Last Name.
@@ -37,7 +37,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}nick_name" class="form-label">Nick
                                 Name</label>
                             <input type="text" value="{{ isset($item) ? $item->nick_name:old('nick_name') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}nick_name"
+                                   class="form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" id="{{ isset($item) ? $item->id:'' }}nick_name"
                                    name="nick_name">
                         </div>
                     </div>
@@ -80,8 +80,8 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}mobile_no" class="form-label">Mobile
                                 Phone</label>
-                            <input type="text" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}mobile_no"
+                            <input type="number" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
+                                   class="form-control" onkeypress=" return isNumberOnly(this)" id="{{ isset($item) ? $item->id:'' }}mobile_no"
                                    name="mobile_no">
                         </div>
                     </div>
@@ -90,9 +90,9 @@
                             <label for="{{ isset($item) ? $item->id:'' }}alt_mobile_no" class="form-label">
                                 Alternate Phone
                             </label>
-                            <input type="text"
+                            <input type="number"
                                    value="{{ isset($item) ? $item->alt_mobile_no:old('alt_mobile_no') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}alt_mobile_no"
+                                   class="form-control" onkeypress=" return isNumberOnly(this)" id="{{ isset($item) ? $item->id:'' }}alt_mobile_no"
                                    name="alt_mobile_no"
                             >
                         </div>
@@ -125,7 +125,7 @@
                             </label>
                             <input type="text"
                                    value="{{ isset($item) ? $item->address_line_1:old('address_line_1') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}address_line_1"
+                                   class="form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" id="{{ isset($item) ? $item->id:'' }}address_line_1"
                                    name="address_line_1">
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                             </label>
                             <input type="text"
                                    value="{{ isset($item) ? $item->address_line_2:old('address_line_2') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}address_line_2"
+                                   class="form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" id="{{ isset($item) ? $item->id:'' }}address_line_2"
                                    name="address_line_2">
                         </div>
                     </div>
@@ -167,8 +167,8 @@
                             <label for="{{ isset($item) ? $item->id:'' }}postal_code" class="form-label">
                                 Postal Code
                             </label>
-                            <input type="text" value="{{ isset($item) ? $item->postal_code:old('postal_code') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}postal_code"
+                            <input type="number" value="{{ isset($item) ? $item->postal_code:old('postal_code') ?? ''  }}"
+                                   class="form-control" onkeypress=" return isNumberOnly(this)" id="{{ isset($item) ? $item->id:'' }}postal_code"
                                    name="postal_code">
                         </div>
                     </div>
