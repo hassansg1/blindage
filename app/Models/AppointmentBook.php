@@ -5,8 +5,8 @@ namespace App\Models;
 use App\Http\Traits\ModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 
 class AppointmentBook extends Model
@@ -92,15 +92,12 @@ class AppointmentBook extends Model
 
         $image = $request->file('file');
         if($image) {
-            $imageName = $image->getClientOriginalName();
-            $name = time() . $imageName;
-            $image->move(public_path('images/files'), $name);
-
-            $imageUpload = new File();
-            $imageUpload->filesable_type = "App\Models\AppointmentBook";
-            $imageUpload->filesable_id = $request->appointment_book_id;
-            $imageUpload->filename = $name;
-            $imageUpload->save();
+            $this->addFiles($image,$request);
+            return $item;
+        }
+        $clientNotes = $request->clientNotes;
+        if($clientNotes) {
+            $this->addClientNotes($clientNotes,$request);
             return $item;
         }
         // dd($request->all());
@@ -186,6 +183,29 @@ class AppointmentBook extends Model
         return $item;
     }
 
+    public function addFiles($image, $request){
+        $imageName = $image->getClientOriginalName();
+        $name = time() . $imageName;
+        $image->move(public_path('images/files'), $name);
+
+        $imageUpload = new File();
+        $imageUpload->filesable_type = "App\Models\AppointmentBook";
+        $imageUpload->filesable_id = $request->appointment_book_id;
+        $imageUpload->filename = $name;
+        $imageUpload->save();
+        return true;
+
+    }
+    public function addClientNotes($note, $request){
+        $imageUpload = new Notes();
+        $imageUpload->notesable_type = "App\Models\AppointmentBook";
+        $imageUpload->notesable_id = $request->appointment_book_id;
+        $imageUpload->notes_content = $note;
+        $imageUpload->created_by = Auth::id();
+        $imageUpload->save();
+        return true;
+
+    }
     public function saveFormData_create_new_schedule($item, $request, $new = false)
     {
         dd($request->all());
@@ -379,6 +399,10 @@ class AppointmentBook extends Model
     public function appointmentBookImages(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
         return $this->morphMany(File::class, 'filesable')->orderBy('id','desc');
+    }
+    public function appointmentBookNotes(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Notes::class, 'notesable')->orderBy('id','desc');
     }
 
     public function appointmentType()

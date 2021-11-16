@@ -3,8 +3,10 @@
     $('#mobile_no').on('change', function () {
         resubmitForm();
     });
-    $('#notes').on('change', function () {
+    $('#clientNotes').on('change', function () {
         resubmitForm()
+         $('#clientCommentData').append($('#clientNotes').val())
+        $('#clientNotes').html('')
     });
     $('#clientImage').on('change', function (e) {
         var form_data = new FormData();
