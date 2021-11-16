@@ -225,9 +225,6 @@ function listData() {
 
     function create_new_appointment_save()
     {
-
-
-        return false;
         $.ajax({
             type: "POST",
             url: '{{ route('appointmentBook.create_new_store') }}',
