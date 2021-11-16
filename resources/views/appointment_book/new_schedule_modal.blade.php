@@ -41,6 +41,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3">
+                                 <label
+                            class="form-label">Date </label>
                                 <div class="input-group" id="datepicker2">
                                      <input type="text" class="form-control" name="create_new_activity_date" placeholder="y-m-d"
                                        value=""  data-date-format="yyyy-m-d" data-date-container='#datepicker2'
@@ -60,26 +62,23 @@
                             </div>
                         </div>     
                          
-                        <div class="col-md-2">
+                       {{--  <div class="col-md-2">
                             <div class="form-check form-check-warning mb-3 checkbox_styling">
                                 <input class="form-check-input" type="checkbox" id="reapeat_checkbox" />
                                 <label class="form-check-label" for="reapeat_checkbox">
                                     Recurring
                                 </label>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-center gap-3 justify-content-end">
-                                <div>
-                                    Appointment Type
-                                </div>
-                                <div>
+                        </div> --}}
+                        <div class="col-md-4">
+                            <div class="">
+                                  <label
+                            class="form-label"> Appointment Type </label>
                                     <select id="create_new_appointment_type_id" name="create_new_appointment_type_id" class="form-select">
                                      @foreach(getAppointmentType() as $type)
                                        <option value="{{$type->id}}">{{$type->name}}</option>
                                         @endforeach
                                     </select>
-                                </div>
                             </div>
                         </div>
                     </div>
