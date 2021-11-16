@@ -209,9 +209,9 @@ body[data-layout="horizontal"] .page-content {
         margin-top: 15px;
     }
 }
-.page-title-box {
+/*.page-title-box {
     padding-bottom: 24px;
-}
+}*/
 .page-title-box .breadcrumb {
     background-color: transparent;
     padding: 0;
