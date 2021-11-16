@@ -51,7 +51,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}mobile_no" class="form-label required">Phone
                                 Number</label>
-                            <input type="number" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
+                            <input type="text" value="{{ isset($item) ? $item->mobile_no:old('mobile_no') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}mobile_no"
                                    name="mobile_no" onkeypress=" return isNumberOnly(this)" required>
                             <div class="invalid-feedback">
@@ -218,7 +218,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}postal_code" class="form-label">
                                 Postal Code
                             </label>
-                            <input type="number" value="{{ isset($item) ? $item->postal_code:old('postal_code') ?? ''  }}"
+                            <input type="text" value="{{ isset($item) ? $item->postal_code:old('postal_code') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}postal_code"
                                    name="postal_code">
                         </div>

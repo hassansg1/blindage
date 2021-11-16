@@ -197,9 +197,9 @@ body[data-sidebar="dark"] .logo-light {
         display: none;
     }
 }
-body[data-layout="horizontal"] .navbar-brand-box {
+/*body[data-layout="horizontal"] .navbar-brand-box {
     width: auto;
-}
+}*/
 body[data-layout="horizontal"] .page-content {
     margin-top: 70px;
     padding: 80px 3px 60px;

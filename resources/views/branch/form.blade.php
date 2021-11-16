@@ -152,7 +152,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}postal_code" class="form-label">
                                 Postal Code
                             </label>
-                            <input type="number" value="{{ isset($item) ? $item->postal_code:old('postal_code') ?? ''  }}"
+                            <input type="text" value="{{ isset($item) ? $item->postal_code:old('postal_code') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}postal_code"
                                    name="postal_code">
                         </div>

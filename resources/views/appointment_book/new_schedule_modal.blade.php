@@ -20,6 +20,17 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="input-search col-md-5">
+                            <h4>Select Branch</h4>
+                            <div class="mb-2 icon-wrapper">
+                               <select  name="create_new_branch_id" class="form-control select2">
+                                    <option value="">-- Select --</option>
+                                    @foreach(\App\Models\Branch::all() as $branch)
+                                        <option value="{{ $branch->id ?? '' }}">{{ $branch->name ?? '' }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                        {{--  <div class="col-md-2">
                             <div class="d-flex justify-content-between">
                                 <a class="addNewClient" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".addNewClientModal"> <i class="fa fa-plus mr-5"></i> <span> Add New Client</span> </a>
@@ -31,7 +42,7 @@
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <div class="input-group" id="datepicker2">
-                                     <input type="text" class="form-control" name="create_new_client_id" placeholder="y-m-d"
+                                     <input type="text" class="form-control" name="create_new_activity_date" placeholder="y-m-d"
                                        value=""  data-date-format="yyyy-m-d" data-date-container='#datepicker2'
                                        data-provide="datepicker" >
                                     <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
