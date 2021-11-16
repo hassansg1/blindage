@@ -77,6 +77,7 @@
                                         <p><i id="clientCommentData">
                                                 @forelse($appt->appointmentBookNotes as $note)
                                                     {{$note->notes_content ?? ''}}
+                                                    <br>
                                                 @empty
                                                 No data found
                                                 @endforelse
@@ -130,9 +131,8 @@
 {{--                                        <input type="hidden" name="compliance_data_id" value="1">--}}
                                         <div  class="fallback">
                                             <input name="clientImage" type="file" id="clientImage">
-                                            <div >
-                                                {!! getAppointementImages($appt->id) !!}
-                                                <img id="imageRecordCall" src="#"  widht="100px" height="100px" style="display: none" alt="your image" />
+                                            {!! getAppointementImages($appt->id) !!}
+                                            <div id="imageRecordCall" >
                                             </div>
 {{--                                            <div class="dz-message needsclick">--}}
 {{--                                                <div class="mb-3">--}}
