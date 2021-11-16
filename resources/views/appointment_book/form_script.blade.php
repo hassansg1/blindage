@@ -8,10 +8,12 @@
          $('#clientCommentData').append($('#clientNotes').val())
         $('#clientNotes').html('')
     });
+    var multiImages = [];
     $('#clientImage').on('change', function (e) {
         var form_data = new FormData();
         form_data.append("file", document.getElementById('clientImage').files[0]);
         form_data.append("appointment_book_id", $('#appointment_book_id').val());
+        multiImages.push(URL.createObjectURL(document.getElementById('clientImage').files[0]));
         $.ajax({
             type: "POST",
             headers: {
@@ -24,9 +26,12 @@
             processData: false,
             success: function (result) {
                 if (result.status) {
-                    document.getElementById('imageRecordCall').style.display = 'block';
                     getAllAppointments();
-                    imageRecordCall.src = URL.createObjectURL(document.getElementById('clientImage').files[0])
+                    $('#imageRecordCall').html('')
+                    for(var i=0; i < multiImages.length; i++){
+                       var imageData =  '<img src="'+ multiImages[i] +'" widht="100px" height="100px" >';
+                        $('#imageRecordCall').append(imageData)
+                    }
                 }
             },
         });
