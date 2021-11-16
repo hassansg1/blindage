@@ -85,7 +85,9 @@ if (!function_exists('getClientCategories')) {
 if (!function_exists('getAppointementImages')) {
     function getAppointementImages($id)
     {
-        return \App\Models\AppointmentBook::where('id',$id)->first();
+        $appointment =  \App\Models\AppointmentBook::where('id','=',$id)->first();
+        $view = \Illuminate\Support\Facades\View::make('appointment_book.tabs.rows._images')->with(['data' => $appointment->appointmentBookImages])->render();
+        return $view;
     }
 }
 if (!function_exists('getProductCategories')) {

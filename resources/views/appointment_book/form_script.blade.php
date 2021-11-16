@@ -4,19 +4,7 @@
         resubmitForm();
     });
     $('#notes').on('change', function () {
-        $.ajax({
-            type: "POST",
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {'notes':$('#notes').val(),'appointment_book_id':$('#appointment_book_id').val()},
-            url: '{{ route('appointment_book.store') }}',
-            success: function (result) {
-                if (result.status) {
-                    getAllAppointments();
-                }
-            },
-        });
+        resubmitForm()
     });
     $('#clientImage').on('change', function (e) {
         var form_data = new FormData();
@@ -34,7 +22,9 @@
             processData: false,
             success: function (result) {
                 if (result.status) {
+                    document.getElementById('imageRecordCall').style.display = 'block';
                     getAllAppointments();
+                    imageRecordCall.src = URL.createObjectURL(document.getElementById('clientImage').files[0])
                 }
             },
         });

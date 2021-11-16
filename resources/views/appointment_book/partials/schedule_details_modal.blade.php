@@ -71,12 +71,12 @@
                             <div class="accordion-body">
                                 <div>
                                     <h4>Client Comments</h4>
-                                    <p><i>No client comments found</i></p>
+{{--                                    <p><i id="clientCommentData"></i></p>--}}
                                     <h4 class="mt-20">Notes</h4>
 {{--                                    <form action="" method="">--}}
                                         <div class="row">
                                             <div class="col-md-10">
-                                                <textarea name="notes" id="notes" placeholder="Enter New Note..." class="form-control"></textarea>
+                                                <textarea name="notes" id="notes" placeholder="Enter New Note..." class="form-control">{{$appt->notes ?? ''}}</textarea>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="d-grid gap-2">
@@ -115,11 +115,12 @@
                                 <div>
 {{--                                    <form action="{{url('store/file/compliance')}}" method="post" class="dropzone" id="file_upload_form" enctype="multipart/form-data">--}}
 {{--                                        <input type="hidden" name="compliance_data_id" value="1">--}}
-                                        <div class="fallback">
+                                        <div  class="fallback">
                                             <input name="clientImage" type="file" id="clientImage">
-                                            <img src="images/9276063avatar-1.jpg" alt="">
-                                            <img src="images/9276063avatar-1.jpg" alt="">
-                                            <img src="images/9276063avatar-1.jpg" alt="">
+                                            <div >
+                                                {!! getAppointementImages($appt->id) !!}
+                                                <img id="imageRecordCall" src="#"  widht="100px" height="100px" style="display: none" alt="your image" />
+                                            </div>
 {{--                                            <div class="dz-message needsclick">--}}
 {{--                                                <div class="mb-3">--}}
 {{--                                                    <i class="display-4 text-muted bx bxs-cloud-upload"></i>--}}
@@ -425,19 +426,19 @@
                </div>
 
 
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="row">
-                            <div class="mb-3">
-                                <label for="when" class="form-label required">Notes</label>
-                                <div class="input-group" id="datepicker1">
-                                    <input type="text" class="form-control schedule_details_modal_submit" name="notes" placeholder="Notes"
-                                           value="{{ $appt->notes ?? '' }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="row">--}}
+{{--                    <div class="col-xl-12">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="mb-3">--}}
+{{--                                <label for="when" class="form-label required">Notes</label>--}}
+{{--                                <div class="input-group" id="datepicker1">--}}
+{{--                                    <input type="text" class="form-control schedule_details_modal_submit" name="notes" placeholder="Notes"--}}
+{{--                                           value="{{ $appt->notes ?? '' }}">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <!-- end card -->
             </div>

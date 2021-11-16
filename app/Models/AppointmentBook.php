@@ -89,6 +89,20 @@ class AppointmentBook extends Model
      */
     public function saveFormData($item, $request, $new = false)
     {
+
+        $image = $request->file('file');
+        if($image) {
+            $imageName = $image->getClientOriginalName();
+            $name = time() . $imageName;
+            $image->move(public_path('images/files'), $name);
+
+            $imageUpload = new File();
+            $imageUpload->filesable_type = "App\Models\AppointmentBook";
+            $imageUpload->filesable_id = $request->appointment_book_id;
+            $imageUpload->filename = $name;
+            $imageUpload->save();
+            return $item;
+        }
         // dd($request->all());
         if (isset($request->branch_id)) $item->branch_id = $request->branch_id;
         if (isset($request->client_id)) $item->client_id = $request->client_id;
@@ -166,18 +180,6 @@ class AppointmentBook extends Model
                 Client::where('id',$request->client_id)->update(['email'=>$request->clientEmail]);
             }
 
-            }
-            $image = $request->file('file');
-            if($image) {
-                $imageName = $image->getClientOriginalName();
-                $name = time() . $imageName;
-                $image->move(public_path('images/files'), $name);
-
-                $imageUpload = new File();
-                $imageUpload->filesable_type = "App\Models\AppointmentBook";
-                $imageUpload->filesable_id = $request->appointment_book_id;
-                $imageUpload->filename = $name;
-                $imageUpload->save();
             }
 
         }
@@ -276,7 +278,7 @@ class AppointmentBook extends Model
 
     public function appointmentBookImages(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
-        return $this->morphMany(File::class, 'filesable_type')->orderBy('id','desc');
+        return $this->morphMany(File::class, 'filesable')->orderBy('id','desc');
     }
 
     public function appointmentType()
