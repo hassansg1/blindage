@@ -160,11 +160,84 @@ function listData() {
 
 }
     </script>
-    <script type="text/javascript">
-        
-        function test()
-        {
-            alert();
-        }
+<script>
+        // ...............   Funtion For New Schdeule Appointment
 
-    </script>
+    $('.create_new_services_items_dropdown').on('change', function () {
+       let start =  $('#start_for_service').val();
+       let end =  $('#end_for_service').val();
+       let duration =  $('#duration_for_service').val();
+
+       create_new_updateServicesItems(this.value,start,end,duration);
+
+    });
+
+
+    function create_new_updateServicesItems(value,start=null,end=null,duration=null) {
+
+        $.ajax({
+            type: "GET",
+            url: '{{ route('appointment_book.getItemsDataView') }}',
+            data: {
+                value: value,
+                start: start,
+                end: end,
+                duration: duration
+            },
+            success: function (result) {
+                    // console.log('get');
+                    // console.log(result);
+                if (result.status) {
+                    switch(result.modal_name) {
+                        case 'Product':
+                            $("#create_new_products_items_append_div").append(result.html);
+                            doSuccessToast('Successfully Added in Bucket...');
+                                   
+                            break;
+                        case 'Service':
+                            $("#create_new_services_items_append_div").append(result.html);
+                            doSuccessToast('Successfully Added in Bucket...');
+                                   
+                            break;
+                        case 'Package':
+                            $("#create_new_packages_items_append_div").append(result.html);
+                            doSuccessToast('Success Fully Added In Bucket...');
+                                   
+                            break;
+                        default:
+                            doWarningToast("Record Not Found...");
+                            return false;
+                    }
+
+
+
+                } else {
+                }
+            }
+        });
+
+    }
+    function deleteRow()
+    {
+        $(event.target).closest('.deleteRow').remove();
+        //console.log('run');
+    }
+
+    function create_new_appointment_save()
+    {
+        $.ajax({
+            type: "POST",
+            url: '{{ route('appointmentBook.create_new_store') }}',
+            data: $('#create_new_schedule_form').serialize(),
+            success: function (result) {
+                if (result.status) {
+                    openCustomCreateSchedulePopup(start, end, result.id);
+                } else {
+                }
+            },
+        });
+        // 
+        alert();
+    }
+
+</script>
