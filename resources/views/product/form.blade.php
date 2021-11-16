@@ -92,7 +92,7 @@
                                    class="form-label">Wholesale </label>
                             <input name="wholesale_price" data-toggle="touchspin"
                                    id="{{ isset($item) ? $item->id:'' }}wholesale_price"
-                                   type="number"
+                                   type="text" onkeypress=" return isNumberOnly(this)"
                                    data-bts-prefix="$"
                                    value="{{ isset($item) ? $item->wholesale_price:old('wholesale_price') ?? ''  }}">
                         </div>
@@ -103,7 +103,7 @@
                                    class="form-label">Retail </label>
                             <input name="retail_price" data-toggle="touchspin"
                                    id="{{ isset($item) ? $item->id:'' }}retail_price"
-                                   type="number"
+                                   type="text" onkeypress=" return isNumberOnly(this)"
                                    data-bts-prefix="$"
                                    value="{{ isset($item) ? $item->retail_price:old('retail_price') ?? ''  }}">
                         </div>
@@ -120,7 +120,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}count" class="form-label">Stock
                                 Count</label>
                             <input name="count" data-toggle="touchspin" id="{{ isset($item) ? $item->id:'' }}count"
-                                   type="number"
+                                   type="text" onkeypress=" return isNumberOnly(this)"
                                    value="{{ isset($item) ? $item->count:old('count') ?? ''  }}">
                         </div>
                     </div>
