@@ -225,19 +225,26 @@ function listData() {
 
     function create_new_appointment_save()
     {
+
+
+        return false;
         $.ajax({
             type: "POST",
             url: '{{ route('appointmentBook.create_new_store') }}',
             data: $('#create_new_schedule_form').serialize(),
             success: function (result) {
                 if (result.status) {
-                    openCustomCreateSchedulePopup(start, end, result.id);
+                    $(".newScheduleModal").modal('hide');
+                    doSuccessToast('Appointment SuccessFully Added...');
+                    setInterval(function() {
+                       location.reload();
+                    }, 1000);
+                    // getAllAppointments();
                 } else {
+                    doWarningToast("Something Wrong Please Check...");
                 }
             },
         });
-        // 
-        alert();
     }
 
 </script>
