@@ -16,13 +16,13 @@ class AppointmentBookParser
 {
     public static function parse($request=null)
     {
-        $data = Appointment::with(['appointmentBook.client', 'service'])->whereNotNull('start_time')->whereNotNull('duration');
+        $data = Appointment::with(['appointmentBook.client', 'appointmentBook.appointmentType', 'service'])->whereNotNull('start_time')->whereNotNull('duration');
         $data->join('appointment_books', 'appointment_books.id', '=', 'appointments.appointment_book_id');
       	if($request!=null && isset($request->branch_id))
       	{
        		$data->where('branch_id',$request->branch_id);
        	}
-      	
+
         // for not show cancel appointments in Calendar
        	$data->where('status_flag','!=',AppointmentBook::CANCELED);
         return $data->get();

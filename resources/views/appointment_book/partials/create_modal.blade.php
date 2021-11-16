@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="mb-3">
                         <label for="when" class="form-label required">Appointment Type?</label>
-                        <select id="" name="appointment_id" class="form-select">
+                        <select id="appointment_type_id" name="appointment_type_id" class="form-select">
                          @foreach(getAppointmentType() as $type)
                            <option value="{{$type->id}}">{{$type->name}}</option>
                             @endforeach
@@ -88,5 +88,5 @@
         <div class="btn btn-primary" data-bs-dismiss="modal">Schedule</div>
     </div>
 </form>
-  
+
 @include('appointment_book.form_script')
