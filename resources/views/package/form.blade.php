@@ -13,7 +13,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}name" class="form-label required">Name</label>
                             <input type="text" value="{{ isset($item) ? $item->name:old('name') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}name"
-                                   name="name" required>
+                                   name="name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required>
                                    <div class="invalid-feedback">
                                         Please Enter your Name.
                                     </div>
@@ -25,7 +25,7 @@
                                    class="form-label required">Price</label>
                             <input type="text" value="{{ isset($item) ? $item->price:old('price') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}price" name="price"
-                                   required onkeypress=" return isNumberOnly(this)">
+                                   onkeypress=" return isNumberOnly(this)" required>
                                    <div class="invalid-feedback">
                                         Please Enter your Price.
                                     </div>
