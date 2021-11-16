@@ -82,18 +82,14 @@ class AppointmentBookController extends BaseController
 
     public function create_new_store(Request $request)
     {
-        dd($request->all());
         $request->validate($this->model->rules);
-        $result = $this->model->saveFormData($item, $request);
+        $item = $this->model;
+        $result = $this->model->saveFormData_create_new_schedule($item, $request);
 
         return response()->json([
-            'status' => true,
-            'id' => $result->id
+            'status' => $result
         ]);
     }
-
-
-
 
     /**
      * @param $item
