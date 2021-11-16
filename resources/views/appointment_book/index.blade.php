@@ -17,6 +17,7 @@
         @slot('title') Calendar @endslot
     @endcomponent
     @include('appointment_book.tabs.appointment_tabs')
+    @include('appointment_book.new_schedule_modal')
 @endsection
 
 @section('script')
