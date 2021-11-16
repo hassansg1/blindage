@@ -11,8 +11,12 @@
                         <div class="input-search col-md-5">
                             <h4>Select Client</h4>
                             <div class="mb-2 icon-wrapper">
-                                <i class="fa fa-search icon"></i>
-                                <input class="form-control" type="text" name="" placeholder="Search for an existing client or add a new client..." />
+                                <select id="" name="create_client_id" class="form-control select2">
+                                    <option value="">Select</option>
+                                    @foreach(\App\Models\Client::all() as $loopVariable)
+                                        <option value="{{ $loopVariable->id ?? '' }}">{{ $loopVariable->name ?? '' }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -46,7 +50,7 @@
                                     Appointment Type
                                 </div>
                                 <div>
-                                    <select class="form-select" name="">
+                                    <select class="form-select" name="" onchange="test()">
                                         <option value="">None</option>
                                         <option value="">Request</option>
                                         <option value="">Transient</option>
