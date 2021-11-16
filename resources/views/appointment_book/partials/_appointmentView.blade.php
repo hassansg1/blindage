@@ -65,7 +65,7 @@
                         @endforelse
                         @forelse($data->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class) as $app_book_items)
                         @foreach($app_book_items->serviceitemable->service_items() as $loop_variable)
-                        <div>{{ $loop_variable->packageitemable->name }} (Package Service) </div>
+                        <div>{{ $loop_variable->packageitemable->name }} (Package Service)</div>
                         <div>{{ $loop_variable->packageitemable->minutes }} Min.</div>
                         @endforeach
                         @empty
