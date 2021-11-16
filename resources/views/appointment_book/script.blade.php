@@ -205,7 +205,7 @@
                 schedule.color = '#ffffff';
                 schedule.bgColor = color;
                 schedule.dragBgColor = color;
-                schedule.borderColor = color;
+                schedule.borderColor = item.appointment_book.appointment_type.color;
                 ScheduleList.push(schedule);
             }
         });

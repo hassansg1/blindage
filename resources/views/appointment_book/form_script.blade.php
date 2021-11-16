@@ -57,6 +57,9 @@
         console.log('run');
         resubmitForm();
     });
+    $('#appointment_type_id').on('change', function () {
+        resubmitForm();
+    });
 
     $('#select_service_drop_down').on('change', function () {
         console.log('service');

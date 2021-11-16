@@ -82,6 +82,12 @@ if (!function_exists('getClientCategories')) {
         return \App\Models\Category::all();
     }
 }
+if (!function_exists('getAppointementImages')) {
+    function getAppointementImages($id)
+    {
+        return \App\Models\AppointmentBook::where('id',$id)->first();
+    }
+}
 if (!function_exists('getProductCategories')) {
     function getProductCategories()
     {
