@@ -80,6 +80,21 @@ class AppointmentBookController extends BaseController
         ]);
     }
 
+    public function create_new_store(Request $request)
+    {
+        dd($request->all());
+        $request->validate($this->model->rules);
+        $result = $this->model->saveFormData($item, $request);
+
+        return response()->json([
+            'status' => true,
+            'id' => $result->id
+        ]);
+    }
+
+
+
+
     /**
      * @param $item
      */

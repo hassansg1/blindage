@@ -1,41 +1,54 @@
- <div class="modal fade newScheduleModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade newScheduleModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Create Appointment</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form id="create_new_schedule_form" action="#" method="post">
+                {{ csrf_field() }}
             <div class="modal-body">
-                <form action=" method">
                     <div class="row">
                         <div class="input-search col-md-5">
                             <h4>Select Client</h4>
                             <div class="mb-2 icon-wrapper">
-                                <select id="" name="create_client_id" class="form-control select2">
-                                    <option value="">Select</option>
+                               <select  name="create_new_client_id" class="form-control select2">
+                                    <option value="">-- Select --</option>
                                     @foreach(\App\Models\Client::all() as $loopVariable)
                                         <option value="{{ $loopVariable->id ?? '' }}">{{ $loopVariable->name ?? '' }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                       {{--  <div class="col-md-2">
                             <div class="d-flex justify-content-between">
                                 <a class="addNewClient" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".addNewClientModal"> <i class="fa fa-plus mr-5"></i> <span> Add New Client</span> </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <div class="input-group" id="datepicker2">
-                                    <input type="text" class="form-control" placeholder="dd M, yyyy" data-date-format="dd M, yyyy" data-date-container="#datepicker2" data-provide="datepicker" />
+                                     <input type="text" class="form-control" name="create_new_client_id" placeholder="y-m-d"
+                                       value=""  data-date-format="yyyy-m-d" data-date-container='#datepicker2'
+                                       data-provide="datepicker" >
                                     <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                 </div>
-                                <!-- input-group -->
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label
+                            class="form-label">Time Start </label>
+                            <div class="input-group" id="timepicker-input-group1">
+                                <input id="timepicker" type="text" name="create_new_time_start" class="form-control" value=""
+                                       data-provide="timepicker">
+
+                                <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                            </div>
+                        </div>     
+                         
                         <div class="col-md-2">
                             <div class="form-check form-check-warning mb-3 checkbox_styling">
                                 <input class="form-check-input" type="checkbox" id="reapeat_checkbox" />
@@ -50,12 +63,10 @@
                                     Appointment Type
                                 </div>
                                 <div>
-                                    <select class="form-select" name="" onchange="test()">
-                                        <option value="">None</option>
-                                        <option value="">Request</option>
-                                        <option value="">Transient</option>
-                                        <option value="">New</option>
-                                        <option value="">New Request</option>
+                                    <select id="create_new_appointment_type_id" name="create_new_appointment_type_id" class="form-select">
+                                     @foreach(getAppointmentType() as $type)
+                                       <option value="{{$type->id}}">{{$type->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -112,7 +123,7 @@
                     <div class="row mb-3">
                         <div class="col-lg-4">
                             <label class="form-label required">Service sdsfd</label>
-                            <select class="form-control services_items_dropdown" name="services_items_dropdown">
+                            <select class="form-control create_new_services_items_dropdown" >
                                 <option>-- Select Service -- </option>
                                 @foreach(\App\Models\Service::all() as $service_loopVariable)
                                 <option value="{{ 'Service??'.$service_loopVariable->id ?? '' }}">{{ $service_loopVariable->name ?? '' }}</option>
@@ -121,7 +132,7 @@
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label required">Product</label>
-                            <select class="form-control services_items_dropdown" name="services_items_dropdown">
+                            <select class="form-control create_new_services_items_dropdown" >
                                 <option>-- Select Product -- </option>
                                 @foreach(\App\Models\Product::all() as $product_loopVariable)
                                 <option value="{{ 'Product??'.$product_loopVariable->id ?? '' }}">{{ $product_loopVariable->name ?? '' }}</option>
@@ -130,7 +141,7 @@
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label required">Package</label>
-                            <select class="form-control services_items_dropdown" name="services_items_dropdown">
+                            <select class="form-control create_new_services_items_dropdown">
                                 <option>-- Select Package -- </option>
                                 @foreach(\App\Models\Package::where('active','1')->get() as $package_loopVariable)
                                 <option value="{{ 'Package??'.$package_loopVariable->id ?? '' }}">{{ $package_loopVariable->name ?? '' }}</option>
@@ -140,20 +151,18 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            {{--
-                            <div id="services_items_append_div"></div>
-                            --}}
-                            <div id="services_items_append_div">
+
+                            <div id="create_new_services_items_append_div">
                                 <h3 class="heading-style">
                                     Services:
                                 </h3>
                             </div>
-                            <div id="products_items_append_div">
+                            <div id="create_new_products_items_append_div">
                                 <h3 class="heading-style">
                                     Products:
                                 </h3>
                             </div>
-                            <div id="packages_items_append_div">
+                            <div id="create_new_packages_items_append_div">
                                 <h3 class="heading-style">
                                     Packages:
                                 </h3>
@@ -169,15 +178,16 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <h4>Appointment Notes <i></i></h4>
-                            <textarea placeholder="Enter Appointment notes..." class="form-control"></textarea>
+                            <textarea name="create_new_appointment_note" placeholder="Enter Appointment notes..." class="form-control"></textarea>
                         </div>
                     </div>
                     <!--Appointment Notes Section End-->
                     <div class="text-left">
-                        <button class="btn btn-primary">Schedule</button>
+                        <button type="button" class="btn btn-primary" onclick="create_new_appointment_save()">Schedule</button>
                     </div>
-                </form>
+     
             </div>
+            </form>
         </div>
     </div>
 </div>
