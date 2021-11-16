@@ -73,7 +73,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}minutes" class="form-label">Duration</label>
                             <input name="minutes" data-toggle="touchspin" id="{{ isset($item) ? $item->id:'' }}minutes"
-                                   type="number"
+                                   type="text" onkeypress=" return isNumberOnly(this)"
                                    value="{{ isset($item) ? $item->minutes:old('minutes') ?? ''  }}">
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}price" class="form-label">Price </label>
                             <input name="price" data-toggle="touchspin" id="{{ isset($item) ? $item->id:'' }}price"
-                                   type="number"
+                                   type="text" onkeypress=" return isNumberOnly(this)"
                                    data-bts-prefix="$"
                                    value="{{ isset($item) ? $item->price:old('price') ?? ''  }}">
                         </div>
