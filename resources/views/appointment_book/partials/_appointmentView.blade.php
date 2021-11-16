@@ -102,9 +102,9 @@
                @if($data->status_flag != App\Models\AppointmentBook::CHECKIN)
                   <button class="btn btn-primary primary-alt" id="cancelApptBtn">No Show</button>
                @endif
-                  
+
                <button class="btn btn-primary" onclick="openScheduleDetailPopup('{{ $data->id }}','{{ $data->appointments->first()->start_time ?? '' }}','{{ $data->appointments->first()->getEndTimeAttribute() ?? '' }}')">Appt. Details</button>
-               
+
                @if($data->activity_date == date('Y-m-d') && $data->status_flag != App\Models\AppointmentBook::CHECKOUT && $data->status_flag != App\Models\AppointmentBook::CHECKIN )
                   <button class="btn btn-primary" onclick="appointmentStatusUpdate('{{ $data->id??'' }}',{{ App\Models\AppointmentBook::CHECKIN }})">
                      Check In
