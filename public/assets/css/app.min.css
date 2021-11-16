@@ -42,6 +42,9 @@
 .app-search {
     padding: 16px 0;
 }
+a{
+    color: #495057;
+}
 .app-search .form-control {
     border: none;
     height: 38px;
@@ -4175,7 +4178,7 @@ width: 27%
 .top-nav-tabs-wrapper{
         width: 100%;
     justify-content: space-between;
-    background: #eef1fd;
+    /*background: #eef1fd;*/
     align-items: center;
     padding: 5px 10px;
     border-radius: 5px;
@@ -4540,7 +4543,12 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
     background-color: #c9a200 !important;
     border-color: #c9a200 !important;
 }
-
+#calendarList{
+    display: none;
+}
+#calendar{
+    margin-top:10px;
+}
 
 
 
