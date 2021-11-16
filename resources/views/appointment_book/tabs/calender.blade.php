@@ -133,7 +133,7 @@
                         <div id="calendarList" class="lnb-calendars-d1 mt-4 mt-sm-0 me-sm-0 mb-4"></div>
                         <div id="calendar" style="height: 800px;"></div>
                         <!--New Schedule Modal Start-->
-                        {{-- @include('appointment_book.new_schedule_modal') --}}
+               
                     </div>
                     <!--New Schedule Modal End-->
                 </div>
@@ -141,6 +141,3 @@
         </div>
     </div>
 </div>
-@section('script')
-{{-- @include('appointment_book.form_script') --}}
-@endsection

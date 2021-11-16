@@ -95,6 +95,7 @@ class AppointmentBook extends Model
         if (isset($request->activity_date)) $item->activity_date = $request->activity_date;
         if (isset($request->notes)) $item->notes = $request->notes;
         if (isset($request->status)) $item->status = $request->status;
+        if (isset($request->appointment_type_id)) $item->appointment_type_id = $request->appointment_type_id;
         $item->created_by = Auth::user()->id ?? 0;
 
         $item->save();
@@ -182,6 +183,106 @@ class AppointmentBook extends Model
         }
         return $item;
     }
+
+    public function saveFormData_create_new_schedule($item, $request, $new = false)
+    {
+        dd($request->all());
+        if (isset($request->branch_id)) $item->branch_id = $request->branch_id;
+        if (isset($request->client_id)) $item->client_id = $request->client_id;
+        if (isset($request->activity_date)) $item->activity_date = $request->activity_date;
+        if (isset($request->notes)) $item->notes = $request->notes;
+        if (isset($request->status)) $item->status = $request->status;
+        if (isset($request->appointment_type_id)) $item->appointment_type_id = $request->appointment_type_id;
+        $item->created_by = Auth::user()->id ?? 0;
+
+        $item->save();
+        if ($new) {
+            $item->appointments()->create([
+                'start_time' => $request->start,
+                'duration' => getMinutesDifference($request->start, $request->end)
+            ]);
+        } else {
+            $item->appointments()->update(['deleted_by_id'=>Auth::id()]);
+            $item->appointments()->delete();
+            $item->appointmentBookItems()->update(['deleted_by_id' => Auth::id()]);
+            $item->appointmentBookItems()->delete();
+            if (isset($request->services)) {
+                // $timeStart = date('H:i:s', strtotime($request->time_start));
+                for ($count = 0; $count < count($request->services); $count++) {
+                    $currentService = $request->services[$count];
+                    $service = Service::find($currentService);
+                    if (isset($request->time_start[$currentService])) {
+                        $timeStart = $request->time_start[$currentService];
+                    } else {
+                        $timeStart = $request->time_start[0];
+                    }
+                    $item->appointments()->create([
+                        'service_id' => $currentService,
+                        'employee_type_id' => isset($request->employee_type_id[$currentService]) ? $request->employee_type_id[$currentService] : null,
+                        'start_time' => $timeStart,
+                        'duration' => isset($request->minutes[$currentService]) ? $request->minutes[$currentService] : $service->minutes,
+                        'quantity' => isset($request->quantity[$currentService]) ? $request->quantity[$currentService] : 0,
+                        'price' => isset($request->price[$currentService]) ? $request->price[$currentService] : $service->price,
+                    ]);
+                    if (isset($request->basic_form)) {
+                        $timeStart = date("H:i:s", strtotime('+' . $service->minutes . ' minutes', strtotime($timeStart)));
+                    }
+                }
+            }
+
+            if (isset($request->products)) {
+                for ($count = 0; $count < count($request['products']); $count++) {
+                    $apptBookItem = new AppointmentBookItems();
+                    $apptBookItem->appointment_book_id = $request['appointment_book_id'];
+                    $apptBookItem->serviceitemable_id = $request['products'][$count];
+                    $apptBookItem->quantity = $request['quantity']['products'][$request['products'][$count]];
+                    $apptBookItem->price = $request['price']['products'][$request['products'][$count]];
+
+                    $product_Obj = Product::find($request['products'][$count]);
+                    $product_Obj->appointmentBookItem()->save($apptBookItem);
+                }
+            }
+
+            if (isset($request->packages)) {
+                for ($count = 0; $count < count($request['packages']); $count++) {
+                    $apptBookItem = new AppointmentBookItems();
+                    $apptBookItem->appointment_book_id = $request['appointment_book_id'];
+                    $apptBookItem->serviceitemable_id = $request['packages'][$count];
+                    $apptBookItem->quantity = $request['quantity']['packages'][$request['packages'][$count]];
+                    $apptBookItem->price = $request['price']['packages'][$request['packages'][$count]];
+
+                    $product_Obj = Package::find($request['packages'][$count]);
+                    $product_Obj->appointmentBookItem()->save($apptBookItem);
+                }
+            }
+            if ($request->client_id) {
+                if (isset($request->mobile_no)) {
+                    Client::where('id',$request->client_id)->update(['mobile_no'=>$request->mobile_no]);
+            }
+            if (isset($request->clientEmail)) {
+                Client::where('id',$request->client_id)->update(['email'=>$request->clientEmail]);
+            }
+
+            }
+            $image = $request->file('file');
+            if($image) {
+                $imageName = $image->getClientOriginalName();
+                $name = time() . $imageName;
+                $image->move(public_path('images/files'), $name);
+
+                $imageUpload = new File();
+                $imageUpload->filesable_type = "App\Models\AppointmentBook";
+                $imageUpload->filesable_id = $request->appointment_book_id;
+                $imageUpload->filename = $name;
+                $imageUpload->save();
+            }
+
+        }
+        return $item;
+    }
+
+
+
 
     public function deleteAppointment($request)
     {
@@ -273,7 +374,15 @@ class AppointmentBook extends Model
         return $result->count();
     }
 
+    public function appointmentBookImages(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(File::class, 'filesable_type')->orderBy('id','desc');
+    }
 
+    public function appointmentType()
+    {
+        return $this->belongsTo(AppointmentType::class, 'appointment_type_id');
+    }
 
 
 }
