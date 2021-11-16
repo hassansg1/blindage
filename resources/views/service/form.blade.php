@@ -12,7 +12,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}name" class="form-label required">Name</label>
                             <input type="text" value="{{ isset($item) ? $item->name:old('name') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}name"
+                                   class="form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" id="{{ isset($item) ? $item->id:'' }}name"
                                    name="name" required>
                                     <div class="invalid-feedback">
                                         Please Enter your Name.
@@ -54,7 +54,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}service_id" class="form-label">
                                 ID
                             </label>
-                            <input type="text" value="{{ isset($item) ? $item->service_id:old('service_id') ?? ''  }}"
+                            <input type="number" value="{{ isset($item) ? $item->service_id:old('service_id') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}service_id"
                                    name="service_id">
                         </div>
@@ -62,7 +62,7 @@
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="colorpicker-togglepaletteonly" class="form-label">Appt. Color</label>
-                            <input type="text" class="form-control spectrum with-add-on" name="color"
+                            <input type="number" class="form-control spectrum with-add-on" name="color"
                                    id="colorpicker-togglepaletteonly"
                                    value="{{ isset($item) ? $item->color:old('color') ?? ''  }}">'
                         </div>
@@ -73,7 +73,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}minutes" class="form-label">Duration</label>
                             <input name="minutes" data-toggle="touchspin" id="{{ isset($item) ? $item->id:'' }}minutes"
-                                   type="text"
+                                   type="number"
                                    value="{{ isset($item) ? $item->minutes:old('minutes') ?? ''  }}">
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}price" class="form-label">Price </label>
                             <input name="price" data-toggle="touchspin" id="{{ isset($item) ? $item->id:'' }}price"
-                                   type="text"
+                                   type="number"
                                    data-bts-prefix="$"
                                    value="{{ isset($item) ? $item->price:old('price') ?? ''  }}">
                         </div>

@@ -11,7 +11,7 @@
                     <div class="col-lg-3">
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}name" class="form-label required">Name</label>
-                            <input type="text" value="{{ isset($item) ? $item->name:old('name') ?? ''  }}"
+                            <input type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" value="{{ isset($item) ? $item->name:old('name') ?? ''  }}"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}name"
                                    name="name" required>
                         </div>

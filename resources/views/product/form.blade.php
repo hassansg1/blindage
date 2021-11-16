@@ -12,7 +12,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}name" class="form-label required">Name</label>
                             <input type="text" value="{{ isset($item) ? $item->name:old('name') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}name"
+                                   class="form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" id="{{ isset($item) ? $item->id:'' }}name"
                                    name="name" required>
                                     <div class="invalid-feedback">
                                         Please Enter your Name.
@@ -67,7 +67,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}size" class="form-label">Size</label>
                             <input type="text" value="{{ isset($item) ? $item->size:old('size') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}size"
+                                   class="form-control" onkeypress=" return isNumberOnly(this)" id="{{ isset($item) ? $item->id:'' }}size"
                                    name="size">
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}sku" class="form-label">SKU</label>
                             <input type="text" value="{{ isset($item) ? $item->sku:old('sku') ?? ''  }}"
-                                   class="form-control" id="{{ isset($item) ? $item->id:'' }}sku"
+                                   class="form-control" onkeypress=" return isNumberOnly(this)" id="{{ isset($item) ? $item->id:'' }}sku"
                                    name="sku">
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                                    class="form-label">Wholesale </label>
                             <input name="wholesale_price" data-toggle="touchspin"
                                    id="{{ isset($item) ? $item->id:'' }}wholesale_price"
-                                   type="text"
+                                   type="number"
                                    data-bts-prefix="$"
                                    value="{{ isset($item) ? $item->wholesale_price:old('wholesale_price') ?? ''  }}">
                         </div>
@@ -103,7 +103,7 @@
                                    class="form-label">Retail </label>
                             <input name="retail_price" data-toggle="touchspin"
                                    id="{{ isset($item) ? $item->id:'' }}retail_price"
-                                   type="text"
+                                   type="number"
                                    data-bts-prefix="$"
                                    value="{{ isset($item) ? $item->retail_price:old('retail_price') ?? ''  }}">
                         </div>
@@ -120,7 +120,7 @@
                             <label for="{{ isset($item) ? $item->id:'' }}count" class="form-label">Stock
                                 Count</label>
                             <input name="count" data-toggle="touchspin" id="{{ isset($item) ? $item->id:'' }}count"
-                                   type="text"
+                                   type="number"
                                    value="{{ isset($item) ? $item->count:old('count') ?? ''  }}">
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                             <div class="mb-3">
                                 <label for="{{ isset($item) ? $item->id:'' }}count" class="form-label">{{ $branch->name }}</label>
                                 <input name="inventory[{{ $branch->id }}]" data-toggle="touchspin" id="{{ isset($item) ? $branch->id:'' }}count"
-                                       type="text"
+                                       type="number"
                                        value="{{ isset($item) ? $branch->getInventory($item->id):old('count') ?? '' }}">
                             </div>
                         </div>
