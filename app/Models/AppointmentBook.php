@@ -95,6 +95,7 @@ class AppointmentBook extends Model
         if (isset($request->activity_date)) $item->activity_date = $request->activity_date;
         if (isset($request->notes)) $item->notes = $request->notes;
         if (isset($request->status)) $item->status = $request->status;
+        if (isset($request->appointment_type_id)) $item->appointment_type_id = $request->appointment_type_id;
         $item->created_by = Auth::user()->id ?? 0;
 
         $item->save();
@@ -273,7 +274,15 @@ class AppointmentBook extends Model
         return $result->count();
     }
 
+    public function appointmentBookImages(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(File::class, 'filesable_type')->orderBy('id','desc');
+    }
 
+    public function appointmentType()
+    {
+        return $this->belongsTo(AppointmentType::class, 'appointment_type_id');
+    }
 
 
 }
