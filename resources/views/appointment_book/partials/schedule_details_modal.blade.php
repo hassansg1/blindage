@@ -192,7 +192,7 @@
 
         <div class="row mb-3">
             <div class="col-lg-4">
-                <label class="form-label required">Service sdsfd</label>
+                <label class="form-label required">Service</label>
                 <select class="form-control services_items_dropdown" name="services_items_dropdown">
                      <option>-- Select Service -- </option>
                     @foreach(\App\Models\Service::all() as $service_loopVariable)
