@@ -87,6 +87,16 @@
                 </button>
             </div>
 
+            <div class="dropdown d-none d-lg-inline-block ml-1">
+                <button onclick="location.href='{{ route('schedule.index') }}'" type="button"
+                        class="btn {{ str_contains(url()->current(), '/schedule') ? 'selected_btn' : '' }} header-item noti-icon top_nav_btns waves-effect">
+                    <i class="fas fa-clock menu_item_icon"></i>
+                    <br>
+                    <span>Schdeuler</span>
+                </button>
+            </div>
+
+
 
             {{--            <!-- App Search-->--}}
             {{--            <form class="app-search d-none d-lg-block">--}}
