@@ -6,18 +6,21 @@
     <input type="hidden" id="duration_for_service" value="{{ $duration ?? '' }}">
     <div class="modal-header">
         <h5 class="modal-title">Appointment</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
         <div class="actionBtn">
             <select class="form-select mb-2 actionSelectOption" onchange="appointmentStatusUpdate('{{ $appt->id??'' }}',this.value)">
                   <option selected="" value="">Action</option>
+                  @if($appt->status_flag == App\Models\AppointmentBook::CHECKIN)
                   <option @if(App\Models\AppointmentBook::CHECKOUT == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::CHECKOUT }}">Checkout</option>
+                  @endif
                   <option @if(App\Models\AppointmentBook::CANCELED == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::CANCELED }}">Cancel Appointment</option>
                   <option @if(App\Models\AppointmentBook::VOIDED == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::VOIDED }}">Void Appointment</option>
             </select>
         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        
         <div class="client-summary-wrapper mb-3">
             <div class="client-summary-info">
                 <div class="client-pic-wrapper">
