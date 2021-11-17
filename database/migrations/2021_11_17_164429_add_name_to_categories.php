@@ -14,7 +14,7 @@ class AddNameToCategories extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('name',255)->after('id')->nullable();
+            $table->string('name')->after('id')->nullable();
         });
     }
 

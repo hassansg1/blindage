@@ -14,8 +14,8 @@ class AddFirstNameToClients extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->string('first_name', 255)->after('id')->nullable();
-            $table->string('last_name', 255)->after('first_name')->nullable();
+            $table->string('first_name')->after('id')->nullable();
+            $table->string('last_name')->after('first_name')->nullable();
         });
     }
 
