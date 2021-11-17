@@ -6,18 +6,21 @@
     <input type="hidden" id="duration_for_service" value="{{ $duration ?? '' }}">
     <div class="modal-header">
         <h5 class="modal-title">Appointment</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
         <div class="actionBtn">
             <select class="form-select mb-2 actionSelectOption" onchange="appointmentStatusUpdate('{{ $appt->id??'' }}',this.value)">
                   <option selected="" value="">Action</option>
+                  @if($appt->status_flag == App\Models\AppointmentBook::CHECKIN)
                   <option @if(App\Models\AppointmentBook::CHECKOUT == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::CHECKOUT }}">Checkout</option>
+                  @endif
                   <option @if(App\Models\AppointmentBook::CANCELED == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::CANCELED }}">Cancel Appointment</option>
                   <option @if(App\Models\AppointmentBook::VOIDED == $appt->status_flag) selected @endif value="{{ App\Models\AppointmentBook::VOIDED }}">Void Appointment</option>
             </select>
         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        
         <div class="client-summary-wrapper mb-3">
             <div class="client-summary-info">
                 <div class="client-pic-wrapper">
@@ -77,6 +80,7 @@
                                         <p><i id="clientCommentData">
                                                 @forelse($appt->appointmentBookNotes as $note)
                                                     {{$note->notes_content ?? ''}}
+                                                    <br>
                                                 @empty
                                                 No data found
                                                 @endforelse
@@ -130,9 +134,8 @@
 {{--                                        <input type="hidden" name="compliance_data_id" value="1">--}}
                                         <div  class="fallback">
                                             <input name="clientImage" type="file" id="clientImage">
-                                            <div >
-                                                {!! getAppointementImages($appt->id) !!}
-                                                <img id="imageRecordCall" src="#"  widht="100px" height="100px" style="display: none" alt="your image" />
+                                            {!! getAppointementImages($appt->id) !!}
+                                            <div id="imageRecordCall" >
                                             </div>
 {{--                                            <div class="dz-message needsclick">--}}
 {{--                                                <div class="mb-3">--}}
@@ -189,7 +192,7 @@
 
         <div class="row mb-3">
             <div class="col-lg-4">
-                <label class="form-label required">Service sdsfd</label>
+                <label class="form-label required">Service</label>
                 <select class="form-control services_items_dropdown" name="services_items_dropdown">
                      <option>-- Select Service -- </option>
                     @foreach(\App\Models\Service::all() as $service_loopVariable)

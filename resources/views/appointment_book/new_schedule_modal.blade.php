@@ -9,9 +9,9 @@
                 {{ csrf_field() }}
             <div class="modal-body">
                     <div class="row">
-                        <div class="input-search col-md-5">
-                            <h4>Select Client</h4>
-                            <div class="mb-2 icon-wrapper">
+                        <div class="input-search col-md-4 mb-2">
+                            <label>Select Client</label>
+                            <div class="icon-wrapper">
                                <select  name="create_new_client_id" class="form-control select2">
                                     <option value="">-- Select --</option>
                                     @foreach(\App\Models\Client::all() as $loopVariable)
@@ -20,9 +20,9 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="input-search col-md-5">
-                            <h4>Select Branch</h4>
-                            <div class="mb-2 icon-wrapper">
+                        <div class="input-search col-md-4 mb-2">
+                            <label>Select Branch</label>
+                            <div class="icon-wrapper">
                                <select  name="create_new_branch_id" class="form-control select2">
                                     <option value="">-- Select --</option>
                                     @foreach(\App\Models\Branch::all() as $branch)
@@ -37,49 +37,42 @@
                             </div>
                         </div> --}}
                     </div>
-                    <hr />
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <div class="input-group" id="datepicker2">
-                                     <input type="text" class="form-control" name="create_new_activity_date" placeholder="y-m-d"
-                                       value=""  data-date-format="yyyy-m-d" data-date-container='#datepicker2'
-                                       data-provide="datepicker" >
-                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                </div>
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Date </label>
+                            <div class="input-group" id="datepicker2">
+                                 <input type="text" class="form-control" name="create_new_activity_date" placeholder="y-m-d"
+                                   value="{{ date('Y-m-d') }}"  data-date-format="yyyy-m-d" data-date-container='#datepicker2'
+                                   data-provide="datepicker" data-date-autoclose="true">
+                                <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <label
-                            class="form-label">Time Start </label>
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Time Start </label>
                             <div class="input-group" id="timepicker-input-group1">
                                 <input id="timepicker" type="text" name="create_new_time_start" class="form-control" value=""
                                        data-provide="timepicker">
-
                                 <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
                             </div>
                         </div>     
                          
-                        <div class="col-md-2">
+                       {{--  <div class="col-md-2">
                             <div class="form-check form-check-warning mb-3 checkbox_styling">
                                 <input class="form-check-input" type="checkbox" id="reapeat_checkbox" />
                                 <label class="form-check-label" for="reapeat_checkbox">
                                     Recurring
                                 </label>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-center gap-3 justify-content-end">
-                                <div>
-                                    Appointment Type
-                                </div>
-                                <div>
+                        </div> --}}
+                        <div class="col-md-4 mb-2">
+                            <div class="">
+                                  <label
+                            class="form-label"> Appointment Type </label>
                                     <select id="create_new_appointment_type_id" name="create_new_appointment_type_id" class="form-select">
                                      @foreach(getAppointmentType() as $type)
                                        <option value="{{$type->id}}">{{$type->name}}</option>
                                         @endforeach
                                     </select>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -131,9 +124,9 @@
                     </div>
                     --}}
                     <!--Recurring Box Section End-->
-                    <div class="row mb-3">
-                        <div class="col-lg-4">
-                            <label class="form-label required">Service sdsfd</label>
+                    <div class="row">
+                        <div class="col-lg-4 mb-2">
+                            <label class="form-label required">Service</label>
                             <select class="form-control create_new_services_items_dropdown" >
                                 <option>-- Select Service -- </option>
                                 @foreach(\App\Models\Service::all() as $service_loopVariable)
@@ -141,7 +134,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 mb-2">
                             <label class="form-label required">Product</label>
                             <select class="form-control create_new_services_items_dropdown" >
                                 <option>-- Select Product -- </option>
@@ -150,7 +143,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 mb-2">
                             <label class="form-label required">Package</label>
                             <select class="form-control create_new_services_items_dropdown">
                                 <option>-- Select Package -- </option>
@@ -160,9 +153,8 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-lg-12">
-
                             <div id="create_new_services_items_append_div">
                                 <h3 class="heading-style">
                                     Services:
@@ -183,17 +175,15 @@
                         </div>
                         <!-- end col -->
                     </div>
-                    <hr />
-
                     <!--Appointment Notes Section Start-->
-                    <div class="row mb-3">
+                    <div class="row mb-3m mt-2">
                         <div class="col-md-12">
-                            <h4>Appointment Notes <i></i></h4>
+                            <h5>Appointment Notes <i></i></h5>
                             <textarea name="create_new_appointment_note" placeholder="Enter Appointment notes..." class="form-control"></textarea>
                         </div>
                     </div>
                     <!--Appointment Notes Section End-->
-                    <div class="text-left">
+                    <div class="text-end mt-2">
                         <button type="button" class="btn btn-primary" onclick="create_new_appointment_save()">Schedule</button>
                     </div>
      
