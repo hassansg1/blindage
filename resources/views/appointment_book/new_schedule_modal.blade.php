@@ -49,8 +49,8 @@
                         </div>
                         <div class="col-md-4 mb-2">
                             <label class="form-label">Time Start </label>
-                            <div class="input-group" id="timepicker-input-group1">
-                                <input id="timepicker" type="text" name="create_new_time_start" class="form-control" value=""
+                            <div class="input-group" id="timepicker-input-group7">
+                                <input id="timepicker7" type="text" name="create_new_time_start" class="form-control" value=""
                                        data-provide="timepicker">
                                 <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
                             </div>

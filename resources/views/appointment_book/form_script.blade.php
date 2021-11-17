@@ -4,9 +4,9 @@
         resubmitForm();
     });
     $('#clientNotes').on('change', function () {
-        resubmitForm()
-         $('#clientCommentData').append($('#clientNotes').val())
-        $('#clientNotes').html('')
+        resubmitForm();
+         $('#clientCommentData').append($('#clientNotes').val());
+        $('#clientNotes').html('');
     });
     var multiImages = [];
     $('#clientImage').on('change', function (e) {
@@ -43,25 +43,30 @@
     $('#select_client_drop_down').on('change', function () {
         console.log('client');
         resubmitForm();
+        doSuccessToast('Successfully Change...');
     });
 
     $('#select_branch_drop_down').on('change', function () {
         console.log('branch');
         resubmitForm();
+        doSuccessToast('Successfully Change...');
     });
 
     $('.schedule_details_modal_submit').on('change', function () {
         console.log('run');
         resubmitForm();
+        doSuccessToast('Successfully Change...');
     });
     $('#appointment_type_id').on('change', function () {
         resubmitForm();
+        doSuccessToast('Successfully Change...');
     });
 
     $('#select_service_drop_down').on('change', function () {
         console.log('service');
 
         resubmitForm();
+        doSuccessToast('Successfully Change...');
     });
 
     $('.services_items_dropdown').on('change', function () {

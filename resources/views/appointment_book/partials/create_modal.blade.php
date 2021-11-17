@@ -17,7 +17,7 @@
                             <input type="text" class="form-control" name="activity_date" placeholder="y-m-d"
                                    value="{{ $date ?? '' }}"
                                    data-date-format="yyyy-m-d" data-date-container='#datepicker1'
-                                   data-provide="datepicker" readonly>
+                                   data-provide="datepicker" readonly data-date-autoclose="true">
                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="mb-3">
                         <div class="d-flex justify-content-between">
-                            <label for="when" class="form-label required">Which Client?</label>
+                            <label for="when" class="form-label required">Which Clientsds?</label>
                             <a class="addNewClient" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".addNewClientModal">
                                 <i class="fa fa-plus mr-5"></i> <span> Add New Client</span>
                             </a>
