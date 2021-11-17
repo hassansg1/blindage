@@ -4467,7 +4467,11 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
     height: 250px !important;
 }
 .actionBtn{
-    display: flex;justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+    position: absolute;
+    right: 44px;top: 6px;
 }
 .actionBtn .actionSelectOption{
     flex-basis:200px;
