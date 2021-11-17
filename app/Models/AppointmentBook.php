@@ -126,9 +126,9 @@ class AppointmentBook extends Model
                     $currentService = $request->services[$count];
                     $service = Service::find($currentService);
                     if (isset($request->time_start[$currentService])) {
-                        $timeStart = $request->time_start[$currentService];
+                        $timeStart = date("H:i:s",strtotime($request->time_start[$currentService]));
                     } else {
-                        $timeStart = $request->time_start[0];
+                        $timeStart = date("H:i:s",strtotime($request->time_start[0]));
                     }
                     $item->appointments()->create([
                         'service_id' => $currentService,
