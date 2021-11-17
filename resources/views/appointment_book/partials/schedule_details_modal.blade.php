@@ -192,7 +192,7 @@
 
         <div class="row mb-3">
             <div class="col-lg-4">
-                <label class="form-label required">Service sdsfd</label>
+                <label class="form-label required">Service</label>
                 <select class="form-control services_items_dropdown" name="services_items_dropdown">
                      <option>-- Select Service -- </option>
                     @foreach(\App\Models\Service::all() as $service_loopVariable)
@@ -290,7 +290,7 @@
                                                 <select id="select_client_drop_down" name="employee_type_id[{{ $appt_loopVariable->service_id }}]" class="form-control select2 schedule_details_modal_submit">
                                                     <option value="">Select</option>
                                                     @foreach(\App\Models\Employee::all() as $loopVariable)
-                                                        <option value="{{ $loopVariable->id ?? '' }}">{{ $loopVariable->first_name ?? '' }} {{ $loopVariable->last_name ?? '' }}</option>
+                                                        <option value="{{ $loopVariable->id ?? '' }}" {{ $loopVariable->id == $appt_loopVariable->employee_type_id ? 'SELECTED':'' }}>{{ $loopVariable->first_name ?? '' }} {{ $loopVariable->last_name ?? '' }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -333,15 +333,15 @@
                                 <div class="card-body">
                                     <input type="hidden" name="products[]" value="{{  $appt_loopVariable->serviceitemable_id }}">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        {{-- <div class="col-lg-6">
                                             <label for="when" class="form-label required">Employee Type</label>
                                             <select id="select_client_drop_down" name="employee_type_id[products][{{  $appt_loopVariable->serviceitemable_id }}]" class="form-control select2 schedule_details_modal_submit">
                                                 <option value="">Select</option>
                                                 @foreach(\App\Models\Employee::all() as $loopVariable)
-                                                    <option value="{{ $loopVariable->id ?? '' }}">{{ $loopVariable->first_name ?? '' }} {{ $loopVariable->last_name ?? '' }}</option>
+                                                    <option value="{{ $loopVariable->id ?? '' }}" >{{ $loopVariable->first_name ?? '' }} {{ $loopVariable->last_name ?? '' }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-lg-3">
                                             <label for="when" class="form-label required">Quantity</label>
                                             <input class="form-control schedule_details_modal_submit" name="quantity[products][{{  $appt_loopVariable->serviceitemable_id }}]" value="1" type="text" placeholder="Quantity">
@@ -372,7 +372,7 @@
                             <div class="card-body">
                                 <input type="hidden" name="packages[]" value="{{ $appt_loopVariable->serviceitemable_id }}">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    {{-- <div class="col-lg-6">
                                         <label for="when" class="form-label required">Employee Type</label>
                                         <select id="select_client_drop_down" name="employee_type_id[packages][{{ $appt_loopVariable->serviceitemable_id }}]" class="form-control select2 schedule_details_modal_submit">
                                             <option value="">Select</option>
@@ -380,7 +380,7 @@
                                                 <option value="{{ $loopVariable->id ?? '' }}" >{{ $loopVariable->first_name ?? '' }} {{ $loopVariable->last_name ?? '' }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-lg-3">
                                         <label for="when" class="form-label required">Quantity</label>
                                         <input class="form-control schedule_details_modal_submit" name="quantity[packages][{{ $appt_loopVariable->serviceitemable_id }}]" value="{{ $appt_loopVariable->quantity }}" type="text" placeholder="Quantity">
