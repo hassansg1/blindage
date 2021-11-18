@@ -192,17 +192,17 @@ function listData() {
                         case 'Product':
                             $("#create_new_products_items_append_div").append(result.html);
                             doSuccessToast('Successfully Added in Bucket...');
-                                   
+
                             break;
                         case 'Service':
                             $("#create_new_services_items_append_div").append(result.html);
                             doSuccessToast('Successfully Added in Bucket...');
-                                   
+
                             break;
                         case 'Package':
                             $("#create_new_packages_items_append_div").append(result.html);
                             doSuccessToast('Success Fully Added In Bucket...');
-                                   
+
                             break;
                         default:
                             doWarningToast("Record Not Found...");

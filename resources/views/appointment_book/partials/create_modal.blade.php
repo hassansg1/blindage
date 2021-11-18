@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="mb-3">
                         <div class="d-flex justify-content-between">
-                            <label for="when" class="form-label required">Which Clientsds?</label>
+                            <label for="when" class="form-label required">Which Client?</label>
                             <a class="addNewClient" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".addNewClientModal">
                                 <i class="fa fa-plus mr-5"></i> <span> Add New Client</span>
                             </a>
