@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('getAppointmentDetailModal', [App\Http\Controllers\AjaxAppointmentBookController::class, 'getAppointmentDetailModal'])->name('appointment_book.getAppointmentDetailModal');
     Route::get('getItemsDataView', [App\Http\Controllers\AjaxAppointmentBookController::class, 'getItemsDataView'])->name('appointment_book.getItemsDataView');
     Route::post('unit/filter', [App\Http\Controllers\UnitController::class, 'filter'])->name('unit.filter');
-    Route::post('addNewController', [App\Http\Controllers\AjaxAppointmentBookController::class, 'addNewController'])->name('addNewController');
+    Route::post('addNewClient', [App\Http\Controllers\AjaxAppointmentBookController::class, 'addNewClient'])->name('addNewClient');
 });
 Route::get('errors/detail',function (){
     return view('errors.500');

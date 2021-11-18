@@ -20,7 +20,7 @@
                 aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        
+
         <div class="client-summary-wrapper mb-3">
             <div class="client-summary-info">
                 <div class="client-pic-wrapper">
@@ -116,6 +116,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="accordion-item">
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
