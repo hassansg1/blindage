@@ -4460,9 +4460,9 @@ gap:10px;
 table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
     vertical-align: middle;
 }
-.tui-full-calendar-weekday-schedule-title{
+/*.tui-full-calendar-weekday-schedule-title{
     display: grid !important;
-}
+}*/
 .tui-full-calendar-month-week-item{
     height: 250px !important;
 }
@@ -4574,6 +4574,10 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
 .welcomeTextWrapper{
     background: rgba(0,0,0,.3);padding: 5px;
 }
+.tui-full-calendar-weekday-schedule-title{
+    display: flex;gap:7px;
+}
+
 
 
 
