@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Product;
 use App\Models\Package;
+use Illuminate\Support\Facades\View;
 
 class AjaxAppointmentBookController extends Controller
 {
@@ -119,7 +120,7 @@ class AjaxAppointmentBookController extends Controller
 
         // dd($request->all());
     }
-    public function addNewController(Request $request){
+    public function addNewClient(Request $request){
         $item = new Client();
          $item->first_name = $request->first_name;
          $item->last_name = $request->last_name;
@@ -134,7 +135,9 @@ class AjaxAppointmentBookController extends Controller
          $item->appointment_message = $request->appointment_message;
          $item->active = 1;
          $item->save();
+        $clients = View::make('appointment_book.tabs.rows._clients_dropDown')->render();
         return response()->json([
-            'status' => true
+            'status' => true,
+            'clients' => $clients,
         ]);    }
 }

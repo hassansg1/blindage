@@ -102,7 +102,7 @@ class AppointmentBook extends Model
         }
         // dd($request->all());
         if (isset($request->branch_id)) $item->branch_id = $request->branch_id;
-        if (isset($request->client_id)) $item->client_id = $request->client_id;
+        if (isset($request->client_id)) $item->client_id = $request->client_id; else  $item->client_id = null;
         if (isset($request->activity_date)) $item->activity_date = $request->activity_date;
         if (isset($request->notes)) $item->notes = $request->notes;
         if (isset($request->status)) $item->status = $request->status;

@@ -100,10 +100,14 @@
     $('#submitFormClient').on('click', function () {
         $.ajax({
             type: "POST",
-            url: '{{ route('addNewController') }}',
+            url: '{{ route('addNewClient') }}',
             data: $('#addNewClientModal').serialize(),
             success: function (result) {
                 getAllAppointments();
+                $('.addNewClientModal').modal('hide');
+                if(result.clients){
+                    $('#select_client_drop_down').html(result.clients);
+                }
             },
         });
     });
@@ -215,9 +219,9 @@
 
         }
     }
-        $('.addNewClient').click(function(){
-            $('.bs-example-modal-center').modal('hide');
-        });
+        // $('.addNewClient').click(function(){
+        //     $('.bs-example-modal-center').modal('hide');
+        // });
 
 
 
