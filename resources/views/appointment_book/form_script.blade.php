@@ -5,9 +5,48 @@
     });
     $('#clientNotes').on('change', function () {
         resubmitForm();
-         $('#clientCommentData').append($('#clientNotes').val());
-        $('#clientNotes').html('');
+
+        var data = '<div class="col-lg-4 deleteRowClientNote"><div class="card border border-success"><div class="card-header bg-transparent border-success d-flex justify-content-between"><h5 class="my-0 text-success"><i class="mdi mdi-check-all me-3"></i>Note:</h5><a href="#" class="removeClientNote" data-note_id=""><i class="fas fa-trash text-red"></i></a></div><div class="card-body"><p class="card-text">'+ $('#clientNotes').val(); +'</p></div></div></div>';
+
+        $('#clientNotes').val('');
+
+        $('#clientCommentData').append(data);
+
+
+
     });
+
+    $(document).on('click','.removeClientNote',function(e){
+        e.preventDefault();
+        
+        var note_id = $(this).attr('data-note_id');
+        
+        if(note_id!=null && note_id!="" && note_id!='')
+        {
+            $.ajax({
+                type: "POST",
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ route('appointment_book.note_delete') }}',
+                data: {note_id:note_id},
+                success: function (result) {
+                    if (result.status) {
+                        doSuccessToast('Successfully Delete...');
+                    }
+                },
+            });
+        }
+        
+        $(this).parent().closest('.deleteRowClientNote').remove();
+
+        e.stopImmediatePropagation();
+      
+    });
+    
+    
+
+
     var multiImages = [];
     $('#clientImage').on('change', function (e) {
         var form_data = new FormData();

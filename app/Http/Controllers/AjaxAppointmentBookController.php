@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppointmentBook;
+use App\Models\Notes;
 use App\Models\Client;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -120,6 +121,7 @@ class AjaxAppointmentBookController extends Controller
 
         // dd($request->all());
     }
+    
     public function addNewClient(Request $request){
         $item = new Client();
          $item->first_name = $request->first_name;
@@ -139,5 +141,20 @@ class AjaxAppointmentBookController extends Controller
         return response()->json([
             'status' => true,
             'clients' => $clients,
-        ]);    }
+        ]);    
+    }
+
+    public function deleteAppointmentNote(Request $request)
+    {
+        if(Notes::find($request->note_id)->delete())
+        {
+            return response()->json(['status' => true]);  
+        }
+        return response()->json(['status' => false]); 
+
+    }
+
+
+
+
 }

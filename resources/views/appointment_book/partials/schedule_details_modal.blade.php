@@ -76,17 +76,27 @@
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div>
-                                    <h4>Client Comments</h4>
-                                        <p><i id="clientCommentData">
+                                    <h4>Client Commentssss</h4>
+                                        <div class="row" id="clientCommentData">
                                                 @forelse($appt->appointmentBookNotes as $note)
-                                                    {{$note->notes_content ?? ''}}
-                                                    <br>
-                                                @empty
-                                                No data found
-                                                @endforelse
-                                            </i></p>
+                                                    
+                                                        <div class="col-lg-4 deleteRowClientNote">
+                                                            <div class="card border border-success">
+                                                                <div class="card-header bg-transparent border-success d-flex justify-content-between">
+                                                                    <h5 class="my-0 text-success"><i class="mdi mdi-check-all me-3"></i>Note:</h5>
+                                                                    <a href="javascript:void(0)" class="removeClientNote" data-note_id="{{ $note->id }}"><i class="fas fa-trash text-red"></i></a>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <p class="card-text">{{$note->notes_content ?? ''}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                        <p><i id="clientCommentData"></i></p>
+                                                    
+                                                @empty
+                                                {{-- No data found --}}
+                                                @endforelse
+                                            </div>
 
                                     <h4 class="mt-20">Notes</h4>
                                     {{--                                    <form action="" method="">--}}
