@@ -183,10 +183,10 @@
                 var schedule = new ScheduleInfo();
                 schedule.id = chance.guid();
                 schedule.calendarId = calendar.id;
-                schedule.title = "<br><span>" + client + "</span><br>";
+                schedule.title = "<div>" + client + "</div>";
                 if (item.duration != -1)
-                    schedule.title += "<span>" + service_name + " - " + item.duration + "Mins</span><br>";
-                schedule.title += "<span>" + getTimeStampFromDate(item.start_time) + " - " + getTimeStampFromDate(item.end_time) + "</span>";
+                    schedule.title += "<div>" + service_name + " - " + item.duration + "Mins</div>";
+                schedule.title += "<div>" + getTimeStampFromDate(item.start_time) + " - " + getTimeStampFromDate(item.end_time) + "</div>";
                 schedule.body = "Body";
                 schedule.isReadOnly = false;
                 schedule.isAllday = false;
@@ -458,8 +458,8 @@
             var calendarNameElement = document.getElementById('calendarName');
             var calendar = findCalendar(calendarId);
             var html = [];
-            html.push('<span class="calendar-bar" style="background-color: ' + calendar.bgColor + '; border-color:' + calendar.borderColor + ';"></span>');
-            html.push('<span class="calendar-name">' + calendar.name + '</span>');
+            html.push('<div class="calendar-bar" style="background-color: ' + calendar.bgColor + '; border-color:' + calendar.borderColor + ';"></div>');
+            html.push('<div class="calendar-name">' + calendar.name + '</div>');
             calendarNameElement.innerHTML = html.join('');
             selectedCalendar = calendar;
         }
@@ -640,8 +640,9 @@
         var calendarList = document.getElementById('calendarList');
         var html = [];
         CalendarList.forEach(function (calendar) {
-            html.push('<div class="lnb-calendars-item"><label>' + '<input type="checkbox" class="tui-full-calendar-checkbox-round" value="' + calendar.id + '" checked>' + '<span style="border-color: ' + calendar.borderColor + '; background-color: ' + calendar.borderColor + ';"></span>' + '<span>' + calendar.name + '</span>' + '</label></div>');
+            html.push('<div class="lnb-calendars-item"><label>' + '<input type="checkbox" class="tui-full-calendar-checkbox-round" value="' + calendar.id + '" checked>' + '<div style="border-color: ' + calendar.borderColor + '; background-color: ' + calendar.borderColor + ';"></div>' + '<div>' + calendar.name + '</div>' + '</label></div>');
         });
         calendarList.innerHTML = html.join('\n');
     })();
+    
 </script>
