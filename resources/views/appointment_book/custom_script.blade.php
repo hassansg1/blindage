@@ -121,6 +121,7 @@ function listData() {
                 data._token = '{{ csrf_token() }}';
                 data.today = $("#appt_view_today").val();
                 data.status_flag = $("#status_flag").val();
+                data.date_range = $("#dateRange_appointmentList").val();
             },
             "timeout": 15000
         },
@@ -151,6 +152,11 @@ function listData() {
         t.draw();
     });
 
+    $("#dateRange_appointmentList").on('change',function(e){
+        t.draw();
+    });
+
+
     $('#search_data').on('click', function (e) {
         var v = $("#search").val(); // getting search input value
         if (v) {
@@ -159,6 +165,23 @@ function listData() {
     });
 
 }
+
+$(function() {
+  $('input[id="dateRange_appointmentList"]').daterangepicker({
+    opens: 'left',
+    alwaysShowCalendars:true,
+    ranges: {
+       'Today': [moment(), moment()],
+       'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+       'This Week': [moment().startOf('isoWeek'), moment()],
+       'Last 7 Days': [moment().subtract('days', 6), moment()],
+       'This Month': [moment().startOf('month'), moment().endOf('month')],
+       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    },
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
     </script>
 <script>
         // ...............   Funtion For New Schdeule Appointment

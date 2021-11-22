@@ -344,6 +344,9 @@
                 case 'toggle-daily':
                     viewName = 'day';
                     break;
+                case 'toggle-3_days':
+                    viewName = '3_days';
+                    break;
 
                 case 'toggle-weekly':
                     viewName = 'week';

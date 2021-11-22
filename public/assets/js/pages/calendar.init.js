@@ -455,7 +455,9 @@ function generateSchedule(viewName, renderStart, renderEnd) {
       case 'toggle-daily':
         viewName = 'day';
         break;
-
+      case 'toggle-3_days':
+        viewName = '3_days';
+        break;
       case 'toggle-weekly':
         viewName = 'week';
         break;
@@ -679,6 +681,12 @@ function generateSchedule(viewName, renderStart, renderEnd) {
     if (type === 'day') {
       type = 'Daily';
       iconClassName = 'calendar-icon ic_view_day';
+
+    }
+    else if(type === '3 days')
+    {
+      type = '3 days';
+      iconClassName = 'calendar-icon ic_view_3_days';
     } else if (type === 'week') {
       type = 'Weekly';
       iconClassName = 'calendar-icon ic_view_week';

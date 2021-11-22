@@ -45,6 +45,11 @@
                                             </a>
                                         </li>
                                         <li role="presentation">
+                                            <a class="dropdown-item" role="menuitem" data-action="toggle-3_days">
+                                                <i class="calendar-icon ic_view_3_days"></i>3 Days
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
                                             <a class="dropdown-item" role="menuitem" data-action="toggle-weekly">
                                                 <i class="calendar-icon ic_view_week"></i>Weekly
                                             </a>

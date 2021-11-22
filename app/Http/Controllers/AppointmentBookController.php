@@ -180,6 +180,7 @@ class AppointmentBookController extends BaseController
 
         // dd($request->input('status_flag'));
 
+        // dd($date_Range);
 
         $totalData = $obj->appointmentbook_count();
         $totalFiltered = $totalData;
@@ -190,12 +191,16 @@ class AppointmentBookController extends BaseController
         $dir = $request->input('order.0.dir');
         $today = $request->input('today');
         $status_flag = $request->input('status_flag');
+
+        $date_Range = $request->date_range;
+
+
         if (empty($request->input('search.value'))) {
-            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today, $status_flag);
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today, $status_flag, $date_Range);
         } else {
             $search = $request->input('search.value');
-            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today, $status_flag, $search);
-            $totalFiltered = $obj->appointmentbook_count($search, $today, $status_flag);
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today, $status_flag, $date_Range, $search);
+            $totalFiltered = $obj->appointmentbook_count($search, $today, $status_flag, $date_Range);
         }
         $data = array();
         if (!empty($results)) {

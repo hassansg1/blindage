@@ -55,6 +55,11 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="">
+                            <div>
+                                <input type="text" id="dateRange_appointmentList">
+                            </div>
+                        </div>
                     </div>
 
                        <div class="custom_table_div">

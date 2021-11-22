@@ -262,6 +262,7 @@
                 var changes = e.changes;
                 console.log('beforeUpdateSchedule', e);
                 cal.updateSchedule(schedule.id, schedule.calendarId, changes);
+                doSuccessToast('SuccessFully Update...');
                 refreshScheduleVisibility();
             },
             'beforeDeleteSchedule': function beforeDeleteSchedule(e) {
@@ -339,7 +340,9 @@
                 case 'toggle-daily':
                     viewName = 'day';
                     break;
-
+                case 'toggle-3_days':
+                    viewName = '3_days';
+                    break;
                 case 'toggle-weekly':
                     viewName = 'week';
                     break;
@@ -558,12 +561,22 @@
             var calendarTypeIcon = document.getElementById('calendarTypeIcon');
             var options = cal.getOptions();
             var type = cal.getViewName();
+            console.log('runssss');
+            console.log(type);
+            // console.log(type);
+
             var iconClassName;
 
             if (type === 'day') {
                 type = 'Daily';
                 iconClassName = 'calendar-icon ic_view_day';
-            } else if (type === 'week') {
+            }
+            else if(type === '3 days')
+            {
+                type = '3 days';
+                iconClassName = 'calendar-icon ic_view_3_days';
+            } 
+            else if (type === 'week') {
                 type = 'Weekly';
                 iconClassName = 'calendar-icon ic_view_week';
             } else if (options.month.visibleWeeksCount === 2) {

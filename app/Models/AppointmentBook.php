@@ -315,7 +315,7 @@ class AppointmentBook extends Model
     }
 
 
-    public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$status_flag = null ,$search = false) {
+    public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$status_flag = null , $dateRange = null , $search = false) {
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::offset($start);
         if ($search) {
@@ -336,13 +336,22 @@ class AppointmentBook extends Model
         {
             $result->where('activity_date', '=',$today_date );
         }
+        else if($dateRange !=null)
+        {
+            $explode = explode("-",$dateRange);
+            $startDate = date('Y-m-d',strtotime($explode[0])); 
+            $endDate = date('Y-m-d',strtotime($explode[1]));
+
+            $result->whereBetween('activity_date', [$startDate, $endDate]);
+        }
 
         $result->limit($limit);
         $result->orderBy($order, $dir);
         return $result->get();
     }
 
-    public function appointmentbook_count($search = false ,$today = 0 ,$status_flag = null) {
+    public function appointmentbook_count($search = false ,$today = 0 ,$status_flag = null , $dateRange = null) {
+        
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::select();
         if ($search) {
@@ -362,6 +371,16 @@ class AppointmentBook extends Model
         {
             $result->where('activity_date', '=',$today_date);
         }
+        else if($dateRange !=null)
+        {
+            $explode = explode("-",$dateRange);
+            $startDate = date('Y-m-d',strtotime($explode[0])); 
+            $endDate = date('Y-m-d',strtotime($explode[1]));
+
+            $result->whereBetween('activity_date', [$startDate, $endDate]);
+
+        }
+
         return $result->count();
     }
 
