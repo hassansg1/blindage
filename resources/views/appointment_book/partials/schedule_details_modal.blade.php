@@ -50,6 +50,29 @@
                 <div>
                     <span>Balance:</span> <b>$0.00 Credit</b>
                 </div>
+                
+                <div>
+                    <label>Confirmation Type : </label>
+                    <select class="form-select mb-2 actionSelectOption" onchange="appointmentComfirmationStatusUpdate('{{ $appt->id??'' }}',this.value)">
+                        <option selected="" value="">None</option>
+                          
+                        <option @if(App\Models\AppointmentBook::PHONE_DIRECT == $appt->confirmation_status_flag) selected @endif value="{{ App\Models\AppointmentBook::PHONE_DIRECT }}">Phone (Direct)</option>
+                        <option @if(App\Models\AppointmentBook::PHONE_ANSWER_MACHINE == $appt->confirmation_status_flag) selected @endif value="{{ App\Models\AppointmentBook::PHONE_ANSWER_MACHINE }}">Phone (Answer Machine)</option>
+
+                        <option @if(App\Models\AppointmentBook::IN_PERSON == $appt->confirmation_status_flag) selected @endif value="{{ App\Models\AppointmentBook::IN_PERSON }}">In Person</option>
+                        <option @if(App\Models\AppointmentBook::EMAIL == $appt->confirmation_status_flag) selected @endif value="{{ App\Models\AppointmentBook::EMAIL }}">E-mail</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="when" class="form-label required">Appointment Type :</label>
+                        <select id="appointment_type_id" name="appointment_type_id" class="form-select">
+                            @foreach(getAppointmentType() as $type)
+                                <option {{ isset($appt->appointment_type_id)&& $appt->appointment_type_id !=null && $appt->appointment_type_id==$type->id ?'Selected':'' }} value="{{$type->id}}">{{$type->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="app-expansion-tab-content">
@@ -76,7 +99,7 @@
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div>
-                                    <h4>Client Commentssss</h4>
+                                    <h4>Client Comment</h4>
                                         <div class="row" id="clientCommentData">
                                                 @forelse($appt->appointmentBookNotes as $note)
                                                     

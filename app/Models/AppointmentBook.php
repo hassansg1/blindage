@@ -23,6 +23,8 @@ class AppointmentBook extends Model
         [
         ];
 
+
+    ////... Actions...................
     const OPENED = 0;
     const TIMEBLOCK = 1;
     const CLOSED = 2;
@@ -31,6 +33,15 @@ class AppointmentBook extends Model
     const VOIDED = 5;
     const CHECKIN = 6;
     const CHECKOUT = 7;
+
+    ///.............Confirmation Status Flag
+
+    const PHONE_DIRECT = 1;
+    const PHONE_ANSWER_MACHINE = 2;
+    const IN_PERSON = 3;
+    const EMAIL = 4;
+    ////............................
+
 
     public function client()
     {
@@ -66,6 +77,27 @@ class AppointmentBook extends Model
              case AppointmentBook::OPENED:
                 return 'OPENED';
                 break;
+        }
+
+    }
+
+    public function getConfirmationStatusAttribute()
+    {
+        switch ($this->confirmation_status_flag) {
+
+            case AppointmentBook::PHONE_DIRECT:
+                return 'Phone ( Direct )';
+                break;
+            case AppointmentBook::PHONE_ANSWER_MACHINE:
+                return 'Phone ( Answer Machine )';
+                break;
+            case AppointmentBook::IN_PERSON:
+                return 'In-Person';
+                break;
+            case AppointmentBook::EMAIL:
+                return 'E-mail';
+                break;
+          
         }
 
     }

@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('getAppointment',[App\Http\Controllers\AppointmentBookController::class,'get_Appointment'])->name('appointment_book.get_Appointment');
 
     Route::get('appointment/status/update',[App\Http\Controllers\AjaxAppointmentBookController::class,'appointment_status_update'])->name('appointment_book.appointment_status_update');
+    Route::get('appointment/confirmation/status/update',[App\Http\Controllers\AjaxAppointmentBookController::class,'appointment_confirmation_status_update'])->name('appointment_book.appointment_confirmation_status_update');
 
     Route::post('appointment/note/delete',[App\Http\Controllers\AjaxAppointmentBookController::class,'deleteAppointmentNote'])->name('appointment_book.note_delete');
 

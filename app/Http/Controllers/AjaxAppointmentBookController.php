@@ -88,7 +88,7 @@ class AjaxAppointmentBookController extends Controller
 
     }
 
-  public function appointment_status_update(Request $request)
+    public function appointment_status_update(Request $request)
     {
         $result = AppointmentBook::find($request->appointbook_id);
         if($result !=null)
@@ -122,6 +122,28 @@ class AjaxAppointmentBookController extends Controller
         // dd($request->all());
     }
     
+    public function appointment_confirmation_status_update(Request $request)
+    {
+        $result = AppointmentBook::find($request->appointbook_id);
+        if($result !=null)
+        {
+            
+            $result->confirmation_status_flag = $request->value;
+            $result->save();
+            return response()->json([
+            'status' => true]);
+        }
+        else
+        {
+            return response()->json([
+            'status' => false
+            ]);
+        }
+
+        // dd($request->all());
+    }
+
+
     public function addNewClient(Request $request){
         $item = new Client();
          $item->first_name = $request->first_name;
