@@ -176,7 +176,37 @@ class AjaxAppointmentBookController extends Controller
 
     }
 
+    public function addClientImage(Request $request)
+    {
+        // dd($request->all());
+        $pathName = 'clientImages';
+        
+        if (!empty($request->old_image)) {
+            $path = public_path() . '/' . $pathName . '/' . $request->old_image;
+            if (file_exists($path)) 
+            {
+            
+                unlink($path);
+            }
+        }
 
+        $image = $request->file('user_profile');
+        $input = 'user_profile'.date('Ymd').time() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('/' . $pathName);
+        $image->move($destinationPath, $input);
+
+        $client = Client::find($request->user_id);
+        $client->image = $input;
+        if($client->save())
+        {
+            return response()->json(['status' => true,'newFileName'=>$input]); 
+
+        }
+        
+        return response()->json(['status' => false]); 
+
+
+    }
 
 
 }
