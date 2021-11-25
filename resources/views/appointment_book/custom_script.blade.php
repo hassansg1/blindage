@@ -267,14 +267,10 @@ $(function() {
         });
     }
     function updateAppointWhenDrag(value) {
-        console.log('run..updateAppointWhenDrag');
-        console.log(value);
 
         var time =  value.changes.start._date.getHours() + ":"  
             + value.changes.start._date.getMinutes() + ":" 
             + value.changes.start._date.getSeconds();
-
-        console.log(time);
 
         var id = value.schedule.isPrivate;
 
