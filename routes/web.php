@@ -72,6 +72,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('unit/filter', [App\Http\Controllers\UnitController::class, 'filter'])->name('unit.filter');
     Route::post('addNewClient', [App\Http\Controllers\AjaxAppointmentBookController::class, 'addNewClient'])->name('addNewClient');
     Route::post('addClientImage', [App\Http\Controllers\AjaxAppointmentBookController::class, 'addClientImage'])->name('addClientImage');
+
+    Route::post('appointmentBook/updateAppointWhenDrag',[App\Http\Controllers\AjaxAppointmentBookController::class,'updateAppointWhenDrag'])->name('appointment_book.updateAppointWhenDrag');
+
 });
 Route::get('errors/detail',function (){
     return view('errors.500');
