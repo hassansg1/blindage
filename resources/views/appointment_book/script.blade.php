@@ -262,8 +262,11 @@
                 var changes = e.changes;
                 console.log('beforeUpdateSchedule', e);
                 cal.updateSchedule(schedule.id, schedule.calendarId, changes);
+
+
                 doSuccessToast('SuccessFully Update...');
                 refreshScheduleVisibility();
+                updateAppointWhenDrag(e);
             },
             'beforeDeleteSchedule': function beforeDeleteSchedule(e) {
                 console.log('beforeDeleteSchedule', e);
@@ -658,4 +661,8 @@
         calendarList.innerHTML = html.join('\n');
     })();
     
+
+
+
+
 </script>
