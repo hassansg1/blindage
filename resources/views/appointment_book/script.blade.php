@@ -299,7 +299,7 @@
          * @returns {string}
          */
 
-        function getTimeTemplate(schedule, isAllDay) {
+         function getTimeTemplate(schedule, isAllDay) {
             var html = [];
             var start = moment(schedule.start.toUTCString());
 
@@ -328,7 +328,7 @@
          */
 
 
-        function onClickMenu(e) {
+         function onClickMenu(e) {
             var target = $(e.target).closest('a[role="menuitem"]')[0];
             var action = getDataAction(target);
             var options = cal.getOptions();
@@ -338,53 +338,53 @@
 
             switch (action) {
                 case 'toggle-daily':
-                    viewName = 'day';
-                    break;
+                viewName = 'day';
+                break;
                 case 'toggle-3_days':
-                    viewName = '3_days';
-                    break;
+                viewName = '3_days';
+                break;
                 case 'toggle-weekly':
-                    viewName = 'week';
-                    break;
+                viewName = 'week';
+                break;
 
                 case 'toggle-monthly':
-                    options.month.visibleWeeksCount = 0;
-                    viewName = 'month';
-                    break;
+                options.month.visibleWeeksCount = 0;
+                viewName = 'month';
+                break;
 
                 case 'toggle-weeks2':
-                    options.month.visibleWeeksCount = 2;
-                    viewName = 'month';
-                    break;
+                options.month.visibleWeeksCount = 2;
+                viewName = 'month';
+                break;
 
                 case 'toggle-weeks3':
-                    options.month.visibleWeeksCount = 3;
-                    viewName = 'month';
-                    break;
+                options.month.visibleWeeksCount = 3;
+                viewName = 'month';
+                break;
 
                 case 'toggle-narrow-weekend':
-                    options.month.narrowWeekend = !options.month.narrowWeekend;
-                    options.week.narrowWeekend = !options.week.narrowWeekend;
-                    viewName = cal.getViewName();
-                    target.querySelector('input').checked = options.month.narrowWeekend;
-                    break;
+                options.month.narrowWeekend = !options.month.narrowWeekend;
+                options.week.narrowWeekend = !options.week.narrowWeekend;
+                viewName = cal.getViewName();
+                target.querySelector('input').checked = options.month.narrowWeekend;
+                break;
 
                 case 'toggle-start-day-1':
-                    options.month.startDayOfWeek = options.month.startDayOfWeek ? 0 : 1;
-                    options.week.startDayOfWeek = options.week.startDayOfWeek ? 0 : 1;
-                    viewName = cal.getViewName();
-                    target.querySelector('input').checked = options.month.startDayOfWeek;
-                    break;
+                options.month.startDayOfWeek = options.month.startDayOfWeek ? 0 : 1;
+                options.week.startDayOfWeek = options.week.startDayOfWeek ? 0 : 1;
+                viewName = cal.getViewName();
+                target.querySelector('input').checked = options.month.startDayOfWeek;
+                break;
 
                 case 'toggle-workweek':
-                    options.month.workweek = !options.month.workweek;
-                    options.week.workweek = !options.week.workweek;
-                    viewName = cal.getViewName();
-                    target.querySelector('input').checked = !options.month.workweek;
-                    break;
+                options.month.workweek = !options.month.workweek;
+                options.week.workweek = !options.week.workweek;
+                viewName = cal.getViewName();
+                target.querySelector('input').checked = !options.month.workweek;
+                break;
 
                 default:
-                    break;
+                break;
             }
 
             cal.setOptions(options, true);
@@ -399,19 +399,19 @@
 
             switch (action) {
                 case 'move-prev':
-                    cal.prev();
-                    break;
+                cal.prev();
+                break;
 
                 case 'move-next':
-                    cal.next();
-                    break;
+                cal.next();
+                break;
 
                 case 'move-today':
-                    cal.today();
-                    break;
+                cal.today();
+                break;
 
                 default:
-                    return;
+                return;
             }
 
             setRenderRangeText();
