@@ -178,14 +178,11 @@ class AjaxAppointmentBookController extends Controller
 
     public function addClientImage(Request $request)
     {
-        // dd($request->all());
         $pathName = 'clientImages';
-        
         if (!empty($request->old_image)) {
             $path = public_path() . '/' . $pathName . '/' . $request->old_image;
             if (file_exists($path)) 
             {
-            
                 unlink($path);
             }
         }
@@ -200,13 +197,32 @@ class AjaxAppointmentBookController extends Controller
         if($client->save())
         {
             return response()->json(['status' => true,'newFileName'=>$input]); 
-
         }
         
         return response()->json(['status' => false]); 
+    }
 
+    public function updateAppointWhenDrag(Request $request)
+    {
+        $startDate = date('Y-m-d',strtotime($request->start_date));
+        $endDate = date('Y-m-d',strtotime($request->end_date));
+        $time = date('H:i:s',strtotime($request->time));
+
+        $appt_obj = AppointmentBook::find($request->appt_id);
+        $appt_obj->activity_date = $endDate;
+
+        $appt_obj->appointments()->update(['start_time' => $time]);
+
+        if($appt_obj->save());
+        {
+            return response()->json(['status' => true]); 
+        }
+
+        return response()->json(['status' => false]); 
 
     }
+
+
 
 
 }

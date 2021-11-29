@@ -93,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                   {{--  <div class="col-lg-4">
                         <div class="mb-3">
                             <label for="{{ isset($item) ? $item->id:'' }}image" class="form-label required">
                                 Profile picture
@@ -105,7 +105,7 @@
                                         Please Select Image.
                                     </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-4">
                         <div class="mb-3">
                             <br>

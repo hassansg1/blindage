@@ -266,5 +266,33 @@ $(function() {
             },
         });
     }
+    function updateAppointWhenDrag(value) {
 
+        var time =  value.changes.start._date.getHours() + ":"  
+            + value.changes.start._date.getMinutes() + ":" 
+            + value.changes.start._date.getSeconds();
+
+        var id = value.schedule.isPrivate;
+
+        var start_date = value.changes.start._date.getDate() + "-"
+            + (value.changes.start._date.getMonth()+1)  + "-" 
+            + value.changes.start._date.getFullYear();
+
+        var end_date = value.changes.end._date.getDate() + "-"
+            + (value.changes.end._date.getMonth()+1)  + "-" 
+            + value.changes.end._date.getFullYear();
+
+        $.ajax({
+            type: "POST",
+            url: '{{ route('appointment_book.updateAppointWhenDrag') }}',
+            data: {'_token': '{{ csrf_token() }}',appt_id:id,start_date:start_date,end_date:end_date,time:time },
+            success: function (result) {
+                if (result.status) {
+                    console.log(result);
+                    
+                } else {
+                }
+            },
+        });
+    }
 </script>
