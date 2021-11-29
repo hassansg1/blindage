@@ -18,9 +18,9 @@
 
     $(document).on('click','.removeClientNote',function(e){
         e.preventDefault();
-        
+
         var note_id = $(this).attr('data-note_id');
-        
+
         if(note_id!=null && note_id!="" && note_id!='')
         {
             $.ajax({
@@ -37,14 +37,14 @@
                 },
             });
         }
-        
+
         $(this).parent().closest('.deleteRowClientNote').remove();
 
         e.stopImmediatePropagation();
-      
+
     });
-    
-    
+
+
 
 
     var multiImages = [];
@@ -147,6 +147,7 @@
                 if(result.clients){
                     $('#select_client_drop_down').html(result.clients);
                 }
+                $('#addNewClientModal').reset();
             },
         });
     });
@@ -273,11 +274,11 @@
             },
             success: function (result) {
 
-                if (result.status) 
+                if (result.status)
                 {
                     doSuccessToast('Successfully Update...');
-                } 
-                else 
+                }
+                else
                 {
                     doSuccessToast('Something Wrong...');
                 }

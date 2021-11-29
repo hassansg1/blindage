@@ -97,7 +97,7 @@ class AppointmentBook extends Model
             case AppointmentBook::EMAIL:
                 return 'E-mail';
                 break;
-          
+
         }
 
     }
@@ -247,8 +247,8 @@ class AppointmentBook extends Model
         if (isset($request->create_new_appointment_note)) $item->notes = $request->create_new_appointment_note;
         if (isset($request->create_new_appointment_type_id)) $item->appointment_type_id = $request->create_new_appointment_type_id;
         $item->created_by = Auth::user()->id ?? 0;
-       
-        if ($item->save()) 
+
+        if ($item->save())
         {
             if (isset($request->services)) {
                 for ($count = 0; $count < count($request->services); $count++) {
@@ -299,7 +299,7 @@ class AppointmentBook extends Model
         else
         {
             return false;
-        } 
+        }
 
         return true;
     }
@@ -371,7 +371,7 @@ class AppointmentBook extends Model
         else if($dateRange !=null)
         {
             $explode = explode("-",$dateRange);
-            $startDate = date('Y-m-d',strtotime($explode[0])); 
+            $startDate = date('Y-m-d',strtotime($explode[0]));
             $endDate = date('Y-m-d',strtotime($explode[1]));
 
             $result->whereBetween('activity_date', [$startDate, $endDate]);
@@ -383,7 +383,7 @@ class AppointmentBook extends Model
     }
 
     public function appointmentbook_count($search = false ,$today = 0 ,$status_flag = null , $dateRange = null) {
-        
+
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::select();
         if ($search) {
@@ -406,7 +406,7 @@ class AppointmentBook extends Model
         else if($dateRange !=null)
         {
             $explode = explode("-",$dateRange);
-            $startDate = date('Y-m-d',strtotime($explode[0])); 
+            $startDate = date('Y-m-d',strtotime($explode[0]));
             $endDate = date('Y-m-d',strtotime($explode[1]));
 
             $result->whereBetween('activity_date', [$startDate, $endDate]);
