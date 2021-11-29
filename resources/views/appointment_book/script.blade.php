@@ -264,9 +264,9 @@
                 cal.updateSchedule(schedule.id, schedule.calendarId, changes);
 
 
-                doSuccessToast('SuccessFully Update...');
                 refreshScheduleVisibility();
                 updateAppointWhenDrag(e);
+                doSuccessToast('SuccessFully Update...');
             },
             'beforeDeleteSchedule': function beforeDeleteSchedule(e) {
                 console.log('beforeDeleteSchedule', e);
