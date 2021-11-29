@@ -107,8 +107,9 @@
 var t = '';
 // var today_val = ;
 function listData() {
-    t = $('#view-list').DataTable({
-        "dom": 'frtlip',
+    t = $('#view-List').DataTable({
+        "lengthChange": false, 
+        "dom": 'Btipr',
         "processing": true,
         "serverSide": true,
         "aaSorting": [0 ,'asc'],
@@ -116,12 +117,12 @@ function listData() {
             "url": '{{ route('appointment_book.get_Appointment') }}',
             "dataType": "json",
             "type": "POST",
-            // "data": {_token: '{{ csrf_token() }}', today: $("#appt_view_today").val() },
             data: function(data) {
                 data._token = '{{ csrf_token() }}';
                 data.today = $("#appt_view_today").val();
                 data.status_flag = $("#status_flag").val();
                 data.date_range = $("#dateRange_appointmentList").val();
+                data.branch_id = $("#branch_id_search").val();
             },
             "timeout": 15000
         },
@@ -156,6 +157,10 @@ function listData() {
         t.draw();
     });
 
+    $("#branch_id_search").on('change',function(e){
+        t.draw();
+    });
+
 
     $('#search_data').on('click', function (e) {
         var v = $("#search").val(); // getting search input value
@@ -165,6 +170,12 @@ function listData() {
     });
 
 }
+
+    //Buttons examples
+
+
+
+
 
 $(function() {
   $('input[id="dateRange_appointmentList"]').daterangepicker({

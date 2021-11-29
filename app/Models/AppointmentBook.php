@@ -347,7 +347,7 @@ class AppointmentBook extends Model
     }
 
 
-    public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$status_flag = null , $dateRange = null , $search = false) {
+    public function appointmentbook_listing($limit, $start, $order, $dir,$branch_id=null,$today = 0 ,$status_flag = null , $dateRange = null , $search = false) {
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::offset($start);
         if ($search) {
@@ -358,7 +358,10 @@ class AppointmentBook extends Model
             });
 
         }
-
+        if($branch_id!=null && $branch_id!="")
+        {
+            $result->where('branch_id', '=',$branch_id);
+        }
         if($status_flag != null)
         {
             $result->where('status_flag', '=',$status_flag);
@@ -382,7 +385,7 @@ class AppointmentBook extends Model
         return $result->get();
     }
 
-    public function appointmentbook_count($search = false ,$today = 0 ,$status_flag = null , $dateRange = null) {
+    public function appointmentbook_count($search = false ,$branch_id=null ,$today = 0 ,$status_flag = null , $dateRange = null) {
 
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::select();
@@ -393,6 +396,11 @@ class AppointmentBook extends Model
                 $query->orWhere('first_name', 'like', '%'.$search.'%');
             });
         }
+        if($branch_id!=null && $branch_id!="")
+        {
+            $result->where('branch_id', '=',$branch_id);
+        }
+
         if($status_flag != null)
         {
             $result->where('status_flag', '=',$status_flag);
