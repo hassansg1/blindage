@@ -266,6 +266,8 @@
 
                 refreshScheduleVisibility();
                 updateAppointWhenDrag(e);
+
+                
                 doSuccessToast('SuccessFully Update...');
             },
             'beforeDeleteSchedule': function beforeDeleteSchedule(e) {
