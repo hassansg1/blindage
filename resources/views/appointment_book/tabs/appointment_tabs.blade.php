@@ -256,6 +256,16 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="d-flex">
+                            <div>
+                                <select class="form-select mb-2 width-180" id="branch_id_search">
+                                    <option value=""> All Branch</option>
+                                    @foreach(\App\Models\Branch::all() as $branch)
+                                        <option value="{{ $branch->id ?? '' }}">{{ $branch->name ?? '' }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="">
                             <div>
                                 <input type="text" id="dateRange_appointmentList">
@@ -266,7 +276,7 @@
                        <div class="custom_table_div">
                         @include('filters.export')
 
-                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <table id="view-List" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
 
                                 <thead class="table-light custom_table_head">
                                 <tr>
