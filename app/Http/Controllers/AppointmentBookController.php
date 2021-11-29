@@ -31,7 +31,6 @@ class AppointmentBookController extends BaseController
     public function index()
     {
         $data = $this->fetchData($this->model);
-
         return view($this->route . "/index")
             ->with(['items' => $data['items'], 'data' => $data, 'route' => $this->route, 'heading' => $this->heading]);
     }

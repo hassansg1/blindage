@@ -31,8 +31,6 @@ class AppointmentController extends BaseController
     public function index()
     {
         $data = AppointmentBookParser::parse();
-
-
         return response()->json([
             'status' => true,
             'items' => $data

@@ -65,7 +65,7 @@
                        <div class="custom_table_div">
                         @include('filters.export')
 
-                            <table id="view-list" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
 
                                 <thead class="table-light custom_table_head">
                                 <tr>
