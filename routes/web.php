@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/schedule/get/date', [App\Http\Controllers\ScheduleController::class,'getDateRange'])->name('schedule.get_date');
     Route::get('/schedule/get/branch/time', [App\Http\Controllers\ScheduleController::class,'getBranchTime'])->name('schedule.get_branch_time');
     Route::post('/schedule/set/branch/time', [App\Http\Controllers\ScheduleController::class,'setBranchTime'])->name('schedule.set_branch_time');
+    Route::post('/schedule/set/general/time', [App\Http\Controllers\ScheduleController::class,'setBranchGeneralTime'])->name('schedule.set_branch_general_time');
     Route::put('/branch/{id}/edit', [App\Http\Controllers\BranchController::class,'emp_update'])->name('branch.emp_update');
     Route::put('/employee/{id}/edit', [App\Http\Controllers\EmployeeController::class,'update_emp'])->name('employee.update_emp');
     // ............. Appointment

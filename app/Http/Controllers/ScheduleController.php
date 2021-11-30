@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GeneralSchedule;
 use App\Models\Schedule;
 use App\Models\ScheduleTime;
 use Illuminate\Contracts\Foundation\Application;
@@ -267,5 +268,34 @@ class ScheduleController extends BaseController
             }
         }
 
+    }
+    public function setBranchGeneralTime(Request $request){
+//        return $request->all();
+        foreach ($request->row as $data){
+            $schedule = GeneralSchedule::find($data['id']);
+                $schedule->start_time = isset($data['start_time'])? date('H:i:s',strtotime($data['start_time'])) : null;
+                $schedule->end_time = isset($data['end_time'])?date('H:i:s',strtotime($data['end_time'])): null;
+            $schedule->is_open = isset($data['is_open'])?1 : 0;
+            $schedule->save();
+        }
+        $data = $this ->currentGeneralData();
+        return [
+          'status'=>1,
+          'result'=>$data,
+        ];
+    }
+    public function currentGeneralData(){
+
+        $period = new \DatePeriod(
+            new \DateTime(date('Y-m-d')),
+            new \DateInterval('P1D'),
+            new \DateTime(date("Y-m-d", strtotime("+1 week")))
+
+        );
+        \Carbon\Carbon::parse(now())->addWeek();
+        $branchTime = GeneralSchedule::all();
+
+        $dateData = \Illuminate\Support\Facades\View::make('schedule/partials/date_rang')->with(['period'=>$period,'branchTime'=>$branchTime])->render();
+        return $dateData;
     }
 }
