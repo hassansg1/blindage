@@ -4175,6 +4175,9 @@ width: 27%
 .width-400{
     width: 400px;
 }
+.width-300{
+    width: 400px;
+}
 .top-nav-tabs-wrapper{
         width: 100%;
     justify-content: space-between;
@@ -4625,6 +4628,13 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
 }
 .tui-full-calendar-time-schedule-content , .tui-full-calendar-time-schedule{
     overflow: visible;
+}
+.waitlistModal .select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    cursor: default;
+    padding-left: 14px;
+}
+.align-items-center{
+    align-items: center;
 }
 
 

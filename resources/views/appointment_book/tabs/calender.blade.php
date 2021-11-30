@@ -172,6 +172,63 @@
                             </a>
                         </div>
                    </div>
+                   <hr>
+                   <div class="row mb-3">
+                       <div class="col-md-4">
+                           <div class="input-group" id="datepicker1">
+                            <input type="text" class="form-control" name=""
+                                   value="{{ date('Y-m-d') }}"
+                                   data-date-format="yyyy-m-d" data-date-container='#datepicker1'
+                                   data-provide="datepicker" readonly data-date-autoclose="true">
+                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                        </div>
+                       </div>
+                       <div class="col-md-4">
+                           <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose One ...">
+                            <optgroup label="Any Time">
+                                <option value="HI">Morning</option>
+                                <option value="HI">Afternoon</option>
+                                <option value="HI">Evening</option>
+                            </optgroup>
+                                
+                            </select>
+                       </div>
+                       <div class="col-md-4">
+                           <div class="d-flex">
+                               <div class="d-flex width-300 align-middle align-items-center">
+                                   Preferred Employee
+                               </div>
+                                <select class="form-select">
+                                    <option selected="" value="">First Available</option>
+                                    <option value="1">Ali</option>
+                                </select>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row mb-3">
+                       <div class="col-md-6">
+                            <label class="form-label required">Service</label>
+                            <select class="form-control services_items_dropdown" name="services_items_dropdown">
+                                 <option>-- Select Service -- </option>
+                                @foreach(\App\Models\Service::all() as $service_loopVariable)
+                                <option  value="{{ 'Service??'.$service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
+                                @endforeach
+                            </select>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-12">
+                            <h5 class="mt-20">Comments</h5>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea name="clientNotes" id="clientNotes" placeholder="Add Comment..." class="form-control"></textarea>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn btn-primary" id="" type="submit">Save</div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
