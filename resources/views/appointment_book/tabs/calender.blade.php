@@ -15,8 +15,52 @@
                                         </button>
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" style="">
-                                        <div class="accordion-body text-muted d-grid">
-                                            <button type="button" class="btn btn-primary primary-alt btn-block" data-bs-toggle="modal" data-bs-target=".waitlistModal">Add to Waitlist</button>
+                                        <div class="accordion-body text-mute">
+                                            <div class="waitlistWrapper">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li>
+                                                        <b class="text-black">Fahad Amin</b>
+                                                    </li>
+                                                    <li>
+                                                         1234567890 
+                                                    </li>
+                                                    <li>
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                Miscellaneous Service
+                                                            </div>
+                                                            <div>-</div>
+                                                            <div>Rs 0.00</div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <span>With</span> <span class="text-black">First Available</span>
+                                                    </li>
+                                                    <li>
+                                                        <div class="item-date-time">
+                                                            <div class="item-request-dateTime">
+                                                                <div>
+                                                                    Any Time
+                                                                </div>
+                                                                <div>
+                                                                    343 4341 (+1)
+                                                                </div>
+                                                            </div>
+                                                            <div class="item-create-dateTime">
+                                                                <div class="text-black">
+                                                                    Since
+                                                                </div>
+                                                                <div class="text-black">
+                                                                    30/11/2021
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class=" d-grid">
+                                                <button type="button" class="btn btn-primary primary-alt btn-block" data-bs-toggle="modal" data-bs-target=".waitlistModal">Add to Waitlist</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
