@@ -198,6 +198,12 @@ if (!function_exists('getStartTime')){
 
     }
 }
+if (!function_exists('generalSchedule')){
+    function generalSchedule(){
+        return \App\Models\GeneralSchedule::all();
+
+    }
+}
 //if (!function_exists('addAppointmentLog')) {
 //    function addAppointmentLog($id)
 //    {

@@ -17,7 +17,7 @@
                     Business Hours
                 </div>
                 <div class="businessHoursEdit">
-                    <a href="#">Edit</a>
+                    <a data-bs-toggle="modal" data-bs-target=".businessHoursModal">Edit</a>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
             </div>
             <div class="employeeName">
 {{--                {{auth()->name}}--}}
-                Atique Yousaf
+                {{\Illuminate\Support\Facades\Auth::user()->first_name}} {{\Illuminate\Support\Facades\Auth::user()->last_name}}
             </div>
         </div>
     </td>
@@ -66,46 +66,3 @@
     </td>
     @endforeach
 </tr>
-
-
-
-
-{{--<td class="businessHoursClosed">--}}
-{{--    <div class="closedText">--}}
-{{--        <div></div>--}}
-{{--    </div>--}}
-{{--</td>--}}
-{{--<td class="businessHoursClosed">--}}
-{{--    <div class="closedText">--}}
-{{--        <div></div>--}}
-{{--    </div>--}}
-{{--</td>--}}
-{{--<td class="businessHoursOpen available">--}}
-{{--    <a class="available_wrapper" href="#" onclick="getModalData()"--}}
-{{--        --}}{{--           data-bs-toggle="modal" data-bs-target="#available_modal"--}}
-{{--    >--}}
-{{--        <div class="timing">--}}
-{{--            9:00am - 7:00pm--}}
-{{--        </div>--}}
-{{--    </a>--}}
-{{--</td>--}}
-{{--<td class="businessHoursOpen available">--}}
-{{--    <div class="timing">--}}
-{{--        9:00am - 7:00pm--}}
-{{--    </div>--}}
-{{--</td>--}}
-{{--<td class="businessHoursOpen available">--}}
-{{--    <div class="timing">--}}
-{{--        9:00am - 7:00pm--}}
-{{--    </div>--}}
-{{--</td>--}}
-{{--<td class="businessHoursOpen available">--}}
-{{--    <div class="timing">--}}
-{{--        9:00am - 7:00pm--}}
-{{--    </div>--}}
-{{--</td>--}}
-{{--<td class="businessHoursOpen available">--}}
-{{--    <div class="timing">--}}
-{{--        9:00am - 7:00pm--}}
-{{--    </div>--}}
-{{--</td>--}}
