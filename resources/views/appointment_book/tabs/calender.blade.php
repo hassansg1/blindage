@@ -15,8 +15,8 @@
                                         </button>
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" style="">
-                                        <div class="accordion-body text-muted">
-                                            Nothing here
+                                        <div class="accordion-body text-muted d-grid">
+                                            <button type="button" class="btn btn-primary primary-alt btn-block" data-bs-toggle="modal" data-bs-target=".waitlistModal">Add to Waitlist</button>
                                         </div>
                                     </div>
                                 </div>
@@ -146,3 +146,35 @@
         </div>
     </div>
 </div>
+
+<!--  Wait List Modal Starts Here -->
+    <div class="modal fade waitlistModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myExtraLargeModalLabel">Add to Waitlist</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                   <div class="row">
+                       <div class="col-xl-6">
+                            <label for="when" class="form-label required">Which Client?</label>
+                            <select id="select_client_drop_down" name="client_id" class="form-control select2 schedule_details_modal_submit">
+                                <option value="">Select</option>
+                                @foreach(\App\Models\Client::all() as $loopVariable)
+                                    <option value="{{ $loopVariable->id ?? '' }}" {{ isset($appt->client_id) && $appt->client_id==$loopVariable->id ?'selected':''  }}>{{ $loopVariable->name ?? '' }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-xl-2">
+                            <a class="addNewClient mt-4 d-inline-block" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".addNewClientModal">
+                                <i class="fa fa-plus mr-5"></i> <span> Add New Client</span>
+                            </a>
+                        </div>
+                   </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--  Wait List Modal Ends Here -->
+
