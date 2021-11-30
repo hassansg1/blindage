@@ -34,5 +34,18 @@
     <script src="{{ URL::asset('/assets/js/pages/calendars.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/schedules.js') }}"></script>
 {{--    @include('schedule.script')--}}
+    <script>
+    function setDaySchedule(checkData,scheduleId){
+        if ($(checkData).is(':checked')){
+            $('#businessHoursTP'+scheduleId).show();
+            $('#closedHours'+scheduleId).hide();
+        }else{
+            $('#businessHoursTP'+scheduleId).hide();
+            $('#closedHours'+scheduleId).show();
+        }
+    }
+
+    </script>
+
     @include('schedule.form_script')
 @endsection
