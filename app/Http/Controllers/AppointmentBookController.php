@@ -74,21 +74,21 @@ class AppointmentBookController extends BaseController
             $item = $this->model;
         $result = $this->model->saveFormData($item, $request);
 
-        $log = new \App\Models\AppointmentLog();
-        $appointItem = new AppointmentBookItems();
-        $created = $this->model->wasRecentlyCreated;
-        $log->old = json_encode($this->model->getOriginal());
-        $log->new = json_encode($this->model->getAttributes());
-        $log->updated = json_encode($this->model->getChanges());
-        $log->oldItem = json_encode($appointItem->getOriginal());
-        $log->newItem = json_encode($appointItem->getAttributes());
-        $log->status = 'created';
-            $log->updatedItem = json_encode($appointItem->getChanges());
-//        $log->save();
+        // $log = new \App\Models\AppointmentLog();
+        // $appointItem = new AppointmentBookItems();
+        // $created = $this->model->wasRecentlyCreated;
+        // $log->old = json_encode($this->model->getOriginal());
+        // $log->new = json_encode($this->model->getAttributes());
+        // $log->updated = json_encode($this->model->getChanges());
+        // $log->oldItem = json_encode($appointItem->getOriginal());
+        // $log->newItem = json_encode($appointItem->getAttributes());
+        // $log->status = 'created';
+        //     $log->updatedItem = json_encode($appointItem->getChanges());
+
         return response()->json([
             'status' => true,
             'id' => $result->id,
-            'log' => $log
+            // 'log' => $log
         ]);
     }
 
