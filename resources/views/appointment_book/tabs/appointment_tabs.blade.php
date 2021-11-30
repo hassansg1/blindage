@@ -275,6 +275,7 @@
                             <div>
                                 <input style="height: 25px;" type="text" class="form-control" name="search" id="search" placeholder="Search">
                                 <button class="btn btn-primary" id="search_data" name="search_data">Search</button>
+                                <button class="btn btn-info" id="clear_data" name="clear_data">Clear</button>
                             </div>
                         </div>
                     </div>
