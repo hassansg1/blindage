@@ -35,28 +35,29 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <form id="generalScheduleForm" method="post">
                         @if(generalSchedule())
                         @foreach(generalSchedule() as $key => $scheduleData)
                         <tr>
                             <td>
-                                <input type="hidden" name="row[{{$key}}][id]">
+                                <input type="hidden" name="row[{{$key}}][id]" value="{{$scheduleData->id}}">
                                 <div class="form-check">
                                     <input class="form-check-input" onclick="setDaySchedule(this,'{{$scheduleData->id}}')" type="checkbox" {{$scheduleData->is_open == '1' ? 'checked' : ''}} name="row[{{$key}}][is_open]" value="1">
                                 </div>
                             </td>
-                            <td>{{$scheduleData->day}}</td>
+                            <td>{{date('l', strtotime($scheduleData->day))}}</td>
                             <td>
                                 <span class="closedHours" id="closeHours{{$scheduleData->id}}" style="display: none">Closed</span>
-                                <div class="d-flex gap-3 align-middle businessHoursTP" id="businessHoursTP{{$scheduleData->id}}" disabled="ture">
+                                <div class="d-flex gap-3 align-middle" id="businessHoursTP{{$scheduleData->id}}" >
                                     <div class="input-group" id="timepicker-input-group10">
-                                        <input id="timepicker10" type="text" class="form-control"
-                                               data-provide="timepicker" value="{{$scheduleData->start_time}}" name="row[{{$key}}][start_time]">
+                                        <input id="timeStart{{$scheduleData->id}}" type="text" class="form-control" {{$scheduleData->is_open == '1' ? 'false' : 'disabled'}}
+                                               data-provide="timepicker" @if($scheduleData->start_time != null)  value="{{date('h:i A', strtotime($scheduleData->start_time))}}" @endif name="row[{{$key}}][start_time]">
                                         <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
                                     </div>
                                     <span class="d-flex align-middle">-</span>
                                     <div class="input-group" id="timepicker-input-group11">
-                                        <input id="timepicker11" type="text" class="form-control"
-                                               data-provide="timepicker" value="{{$scheduleData->start_time}}" name="row[{{$key}}][end_time]">
+                                        <input id="timeEnd{{$scheduleData->id}}" type="text" class="form-control"  {{$scheduleData->is_open == '1' ? 'false' : 'disabled'}}
+                                               data-provide="timepicker" @if($scheduleData->end_time != null) value="{{date('h:i A', strtotime($scheduleData->end_time))}}" @endif name="row[{{$key}}][end_time]">
                                         <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
                                     </div>
                                 </div>
@@ -65,11 +66,12 @@
                         @endforeach
                             @endif
                         </tbody>
+                        </form>
                     </table>
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="btn btn-primary">Save</div>
+                <div class="btn btn-primary" onclick="setGeneralSchedule()">Save</div>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

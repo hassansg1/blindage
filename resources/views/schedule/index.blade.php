@@ -37,11 +37,11 @@
     <script>
     function setDaySchedule(checkData,scheduleId){
         if ($(checkData).is(':checked')){
-            $('#businessHoursTP'+scheduleId).show();
-            $('#closedHours'+scheduleId).hide();
+            $('#timeEnd'+scheduleId).prop( "disabled", false );
+            $('#timeStart'+scheduleId).prop( "disabled", false );
         }else{
-            $('#businessHoursTP'+scheduleId).hide();
-            $('#closedHours'+scheduleId).show();
+            $('#timeEnd'+scheduleId).prop( "disabled", true );
+            $('#timeStart'+scheduleId).prop( "disabled", true );
         }
     }
 

@@ -9,7 +9,7 @@
     </th>
         @endforeach
 </tr>
-<tr>
+<tr id="businessHoursGeneral">
     <td>
         <div class="businessHours">
             <div>
@@ -31,7 +31,7 @@
                 {{--           data-bs-toggle="modal" data-bs-target="#available_modal"--}}
             >
                 <div class="@if($data->start_time != null) timing @else closedText @endif">
-                    @if($data->start_time != null)    {{date('H:m a', strtotime($data->start_time))}} - {{date('H:m a', strtotime($data->end_time))}}
+                    @if($data->start_time != null)    {{date('h:i a', strtotime($data->start_time))}} - {{date('h:i a', strtotime($data->end_time))}}
                     @else
                         Closed
                     @endif
