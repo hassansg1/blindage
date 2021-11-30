@@ -163,6 +163,7 @@
 
     function generateScheduleEntries(calendar, renderStart, renderEnd, items) {
         items.forEach(function (item) {
+            // console.log(item.notes);
             var activityDate = item.appointment_book.activity_date;
             var color = '';
             var service_name = '';
@@ -183,7 +184,16 @@
                 var schedule = new ScheduleInfo();
                 schedule.id = chance.guid();
                 schedule.calendarId = calendar.id;
-                schedule.title = "<div>" + client + "<div class='client-comment'><div class='tooltipCustom'><i class='fas fa-comment-alt'></i><span class='tooltiptext'>Hello</span></div></div></div>";
+                if(item.notes!=null)
+                {
+                    schedule.title = "<div>" + client + "<div class='client-comment'><div class='tooltipCustom'><i class='fas fa-comment-alt'></i><span class='tooltiptext'>"+item.notes+"</span></div></div></div>";
+
+                }
+                else
+                {
+
+                    schedule.title = "<div>" + client + "</div>";
+                }
                 if (item.duration != -1)
                     schedule.title += "<div>" + service_name + " - " + item.duration + "Mins</div>";
                 schedule.title += "<div>" + getTimeStampFromDate(item.start_time) + " - " + getTimeStampFromDate(item.end_time) + "</div>";
