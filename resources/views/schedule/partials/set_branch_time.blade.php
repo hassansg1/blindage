@@ -31,10 +31,10 @@
     <label>Why?</label>
     <select class="form-select" id="inlineFormSelectPref" name="reason">
         <option selected=""></option>
-        <option value="1">Day Off</option>
-        <option value="2">Vocation</option>
-        <option value="3">Illness</option>
-        <option value="3">Personal Business Day</option>
+        <option value="Day Off">Day Off</option>
+        <option value="Vocation">Vocation</option>
+        <option value="Illness">Illness</option>
+        <option value="Personal Business Day">Personal Business Day</option>
     </select>
 </div>
 <div class="scheduled_times-wrapper">

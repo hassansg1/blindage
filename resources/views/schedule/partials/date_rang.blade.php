@@ -26,12 +26,12 @@
     @foreach ($period as $key => $value)
 
         @php($data = $branchTime->where('day','=',$value->format('D'))->first())
-        <td class="@if($data->start_time != null) businessHoursOpen @else businessHoursClosed @endif">
+        <td class="@if($data->is_open == 1) businessHoursOpen @else businessHoursClosed @endif">
             <a class="available_wrapper" href="#" onclick="getModalData()"
                 {{--           data-bs-toggle="modal" data-bs-target="#available_modal"--}}
             >
-                <div class="@if($data->start_time != null) timing @else closedText @endif">
-                    @if($data->start_time != null)    {{date('h:i a', strtotime($data->start_time))}} - {{date('h:i a', strtotime($data->end_time))}}
+                <div class="@if($data->is_open == 1) timing @else closedText @endif">
+                    @if($data->is_open == 1)    {{date('h:i a', strtotime($data->start_time))}} - {{date('h:i a', strtotime($data->end_time))}}
                     @else
                         Closed
                     @endif
@@ -43,13 +43,14 @@
 
 <tr id="branchDataId">
     <td>
+        @php($authuser = \Illuminate\Support\Facades\Auth::user())
         <div class="employeeInfo">
             <div class="employeeCircle">
-                AY
+                {{$authuser->first_name[0]}}
+                {{$authuser->last_name[0]}}
             </div>
             <div class="employeeName">
-{{--                {{auth()->name}}--}}
-                {{\Illuminate\Support\Facades\Auth::user()->first_name}} {{\Illuminate\Support\Facades\Auth::user()->last_name}}
+                {{$authuser->first_name}} {{$authuser->last_name}}
             </div>
         </div>
     </td>
