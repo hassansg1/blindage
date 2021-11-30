@@ -172,6 +172,24 @@
                             </a>
                         </div>
                    </div>
+                   <hr>
+                   <div class="row">
+                       <div class="col-md-4">
+                           <div class="input-group" id="datepicker1">
+                            <input type="text" class="form-control" name="activity_date" placeholder="y-m-d"
+                                   value=""
+                                   data-date-format="yyyy-m-d" data-date-container='#datepicker1'
+                                   data-provide="datepicker" readonly data-date-autoclose="true">
+                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                        </div>
+                       </div>
+                       <div class="col-md-4">
+                           
+                       </div>
+                       <div class="col-md-4">
+                           
+                       </div>
+                   </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
