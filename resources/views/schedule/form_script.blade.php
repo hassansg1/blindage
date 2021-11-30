@@ -58,4 +58,21 @@
             },
         });
     }
+    function setGeneralSchedule() {
+        $.ajax({
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '{{ route('schedule.set_branch_general_time') }}',
+            data: $('#generalScheduleForm').serialize(),
+            success: function (result) {
+                if (result.status == 1) {
+                $('.businessHoursModal').modal('hide');
+                $('#calenderTable').html(result.result);
+
+                 }
+            },
+        });
+    }
 </script>
