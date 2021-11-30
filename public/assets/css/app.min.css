@@ -4665,3 +4665,36 @@ display: flex;
 .height-37{
     height: 37px;
 }
+.week_wrapper input[type="checkbox"]:not(:checked), 
+.week_wrapper input[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999%;
+}
+
+.week_wrapper input[type="checkbox"] + label {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.week_wrapper input[type="checkbox"]:checked + label {
+  border: 1px solid white;
+  color: white;
+  background-color: black;
+}
+.week_wrapper ul {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.week_wrapper li{
+  list-style-type: none;
+  list-style-position: outside;
+  padding: 10px;
+  float: left;
+}
