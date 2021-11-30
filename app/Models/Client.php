@@ -48,9 +48,24 @@ class Client extends Model
         return $this->morphMany(Notes::class, 'notesable')->orderBy('id','desc');
     }
 
-    /**
-     * @return string
-     */
+    public function appointmentBook()
+    {
+        return $this->hasMany(AppointmentBook::class,'client_id','id');
+    } 
+
+
+    public function appointments()
+    {
+        return $this->hasManyThrough(Appointment::class, AppointmentBook::class,'client_id','appointment_book_id');
+    }
+
+    public function appointmentBookItems()
+    {
+        return $this->hasManyThrough(AppointmentBookItems::class, AppointmentBook::class,'client_id','appointment_book_id');
+    }
+
+
+
     public function getInitialsAttribute(): string
     {
         return ucfirst(substr($this->first_name, 0, 1)) . ucfirst(substr($this->last_name, 0, 1));
