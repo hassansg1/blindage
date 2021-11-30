@@ -99,7 +99,7 @@
                             </label>
                             <input type="file"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}image"
-                                   name="image" required>
+                                   name="image" >
                                 <div class="invalid-feedback">
                                         Please Select Image.
                                     </div>

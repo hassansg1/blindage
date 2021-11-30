@@ -167,6 +167,13 @@ function listData() {
         if (v) {
             t.search(v).draw();
         }
+    });    
+
+    $('#clear_data').on('click', function (e) {
+        $("#search").val(''); // getting search input value
+        var v = $("#search").val(); // getting search input value
+        t.search(v).draw();
+     
     });
 
 }
