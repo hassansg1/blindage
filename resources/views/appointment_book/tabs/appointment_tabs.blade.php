@@ -33,53 +33,62 @@
             <div class="tab-pane" id="appointment-list" role="tabpanel">
                <div class="card">
                    <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            {{-- <button class="btn btn-outline-warning waves-effect waves-light" >Today</button> --}}
-                            <input type="hidden" id="appt_view_today" name="appt_view_today" value="0">
-                            <input class="form-check-input mt-0" type="checkbox"
-                                       id="appt_view_today_label" value="" onclick="this.checked ? $('#appt_view_today').val(1) : $('#appt_view_today').val(0)">
-                            <label class="form-check-label" for="appt_view_today_label">
-                                Today
-                            </label>
-                        </div>
-                        <div class="d-flex">
-                            <div>
-                                <select class="form-select mb-2 width-180" id="status_flag">
-                                    <option value=""> All Appointments</option>
-                                    <option value='{{  App\Models\AppointmentBook::OPENED }}'>Opened </option>
-                                    <option value='{{  App\Models\AppointmentBook::CHECKIN }}'>CheckedIn </option>
-                                    <option value='{{  App\Models\AppointmentBook::TIMEBLOCK }}'>Time Block </option>
-                                    <option value='{{  App\Models\AppointmentBook::CHECKOUT }}'>Closed/CheckOut</option>
-                                    <option value='{{  App\Models\AppointmentBook::NOSHOW }}'>No Show </option>
-                                    <option value='{{  App\Models\AppointmentBook::CANCELED }}'>Canceled </option>
-                                    <option value='{{  App\Models\AppointmentBook::VOIDED }}'>Voided </option>
-                                </select>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="d-flex gap-5">
+                                <div>
+                                    {{-- <button class="btn btn-outline-warning waves-effect waves-light" >Today</button> --}}
+                                    <input type="hidden" id="appt_view_today" name="appt_view_today" value="0">
+                                    <input class="form-check-input mt-0" type="checkbox"
+                                               id="appt_view_today_label" value="" onclick="this.checked ? $('#appt_view_today').val(1) : $('#appt_view_today').val(0)">
+                                    <label class="form-check-label" for="appt_view_today_label">
+                                        Today
+                                    </label>
+                                </div>
+                                <div class="icon-wrapper">
+                                    <i class="far fa-calendar-alt icon" style="top: 4px;"></i>
+                                    <input class="no-border" type="text" id="dateRange_appointmentList">
+                                </div>
                             </div>
                         </div>
-                        <div class="d-flex">
-                            <div>
-                                <select class="form-select mb-2 width-180" id="branch_id_search">
-                                    <option value=""> All Branch</option>
-                                    @foreach(\App\Models\Branch::all() as $branch)
-                                        <option value="{{ $branch->id ?? '' }}">{{ $branch->name ?? '' }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                         <div class="">
-                            <div>
-                                <input type="text" id="dateRange_appointmentList">
-                            </div>
-                        </div>
-                        <div class="">
-                            <div>
-                                <input style="height: 25px;" type="text" class="form-control" name="search" id="search" placeholder="Search">
-                                <button class="btn btn-primary" id="search_data" name="search_data">Search</button>
-                                <button class="btn btn-info" id="clear_data" name="clear_data">Clear</button>
+                        <div class="col-md-7">
+                            <div class="d-flex gap-3 justify-content-end">
+                                <div class="d-flex gap-2">
+                                    <div class="input-search">
+                                        <div class="icon-wrapper">   
+                                            <i class="fa fa-search icon"></i>
+                                            <input type="text" class="form-control" name="search" id="search" placeholder="Search">
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="btn btn-primary height-37" id="search_data" name="search_data">Search</button>
+                                    <button class="btn btn-info height-37" id="clear_data" name="clear_data">Clear</button>
+                                </div>
+                                <div>
+                                    <select class="form-select mb-2 width-180" id="status_flag">
+                                        <option value=""> All Appointments</option>
+                                        <option value='{{  App\Models\AppointmentBook::OPENED }}'>Opened </option>
+                                        <option value='{{  App\Models\AppointmentBook::CHECKIN }}'>CheckedIn </option>
+                                        <option value='{{  App\Models\AppointmentBook::TIMEBLOCK }}'>Time Block </option>
+                                        <option value='{{  App\Models\AppointmentBook::CHECKOUT }}'>Closed/CheckOut</option>
+                                        <option value='{{  App\Models\AppointmentBook::NOSHOW }}'>No Show </option>
+                                        <option value='{{  App\Models\AppointmentBook::CANCELED }}'>Canceled </option>
+                                        <option value='{{  App\Models\AppointmentBook::VOIDED }}'>Voided </option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select class="form-select mb-2 width-180" id="branch_id_search">
+                                        <option value=""> All Branch</option>
+                                        @foreach(\App\Models\Branch::all() as $branch)
+                                            <option value="{{ $branch->id ?? '' }}">{{ $branch->name ?? '' }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
+                    
 
                        <div class="custom_table_div">
                         @include('filters.export')

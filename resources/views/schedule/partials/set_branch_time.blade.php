@@ -112,13 +112,27 @@
         <div class="repeat_on_text">Repeat on<span class="text-red">*</span></div>
         <div class="week_wrapper">
             <ul>
-                <li>S<input type="checkbox" name="repeatWeek[]" value="Sun"></li>
-                <li>M<input type="checkbox" name="repeatWeek[]"  value="Mon"></li>
-                <li>T<input type="checkbox" name="repeatWeek[]"  value="Tue"></li>
-                <li>W<input type="checkbox" name="repeatWeek[]"  value="Wed"></li>
-                <li>T<input type="checkbox" name="repeatWeek[]"  value="Thu"></li>
-                <li>F<input type="checkbox" name="repeatWeek[]"  value="Fri"></li>
-                <li>S<input type="checkbox" name="repeatWeek[]"  value="Sat"></li>
+                <li><input type="checkbox" name="repeatWeek[]" value="Sun" id="sunday">
+                <label for="sunday">S</label>
+                </li>
+                <li><input type="checkbox" name="repeatWeek[]"  value="Mon" id="monday">
+                    <label for="monday">M</label>
+                </li>
+                <li><input type="checkbox" name="repeatWeek[]"  value="Tue" id="tuesday">
+                <label for="tuesday">T</label>
+                </li>
+                <li><input type="checkbox" name="repeatWeek[]"  value="Wed" id="wednesday">
+                <label for="wednesday">W</label>
+                </li>
+                <li><input type="checkbox" name="repeatWeek[]"  value="Thu" id="thursday">
+                     <label for="thursday">T</label>
+                </li>
+                <li><input type="checkbox" name="repeatWeek[]"  value="Fri" id="friday">
+                    <label for="friday">F</label>
+                </li>
+                <li><input type="checkbox" name="repeatWeek[]"  value="Sat" id="saturday">
+
+                    <label for="saturday">S</label></li>
 {{--                <li><button>M</button></li>--}}
 {{--                <li><button>T</button></li>--}}
 {{--                <li><button>W</button></li>--}}
