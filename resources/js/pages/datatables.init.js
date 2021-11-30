@@ -1,9 +1,9 @@
 /*
 Template Name: Skote - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
+Author: Themesbrandcom
 File: Datatables Js File
+Website: https://themesbrand.com/
+Contact: themesbrand@gmail.
 */
 
 $(document).ready(function() {

@@ -65,8 +65,8 @@
                        <div class="custom_table_div">
                         @include('filters.export')
 
-                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-
+                            <table id="view-list" class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                                <!-- datatable-buttons,  view-list -->
                                 <thead class="table-light custom_table_head">
                                 <tr>
                                     <th class="">id</th>
@@ -206,10 +206,3 @@
 
     </div>
 </div>
-
-<script>
-    // $('#service-form-id').on('submit',function (e) {
-    // e.preventDefault();
-    // console.log($(this).serialize())
-    // });
-</script>

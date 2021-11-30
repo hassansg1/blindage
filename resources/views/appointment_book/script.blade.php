@@ -399,8 +399,8 @@
 
         function onClickNavi(e) {
             var action = getDataAction(e.target);
-
-            switch (action) {
+            if (action) {
+             switch (action) {
                 case 'move-prev':
                 cal.prev();
                 break;
@@ -416,156 +416,168 @@
                 default:
                 return;
             }
+        }
+        else{
 
-            setRenderRangeText();
-            setSchedules();
+            var selecetdDate =e.format();
+           $('#bootstrap_calender_selecetd_value').val(selecetdDate);
+           if(selecetdDate){
+            getAppointmentsByDate(selecetdDate);
+        }
+            // console.log(e.date.getDate())
+            // console.log(e.format())
+            // resetCalender();
         }
 
-        function onNewSchedule() {
-            var title = $('#new-schedule-title').val();
-            var location = $('#new-schedule-location').val();
-            var isAllDay = document.getElementById('new-schedule-allday').checked;
-            var start = datePicker.getStartDate();
-            var end = datePicker.getEndDate();
-            var calendar = selectedCalendar ? selectedCalendar : CalendarList[0];
+        setRenderRangeText();
+        setSchedules();
+    }
 
-            if (!title) {
-                return;
-            }
+    function onNewSchedule() {
+        var title = $('#new-schedule-title').val();
+        var location = $('#new-schedule-location').val();
+        var isAllDay = document.getElementById('new-schedule-allday').checked;
+        var start = datePicker.getStartDate();
+        var end = datePicker.getEndDate();
+        var calendar = selectedCalendar ? selectedCalendar : CalendarList[0];
 
-            cal.createSchedules([{
-                id: String(chance.guid()),
-                calendarId: calendar.id,
-                title: title,
-                isAllDay: isAllDay,
+        if (!title) {
+            return;
+        }
+
+        cal.createSchedules([{
+            id: String(chance.guid()),
+            calendarId: calendar.id,
+            title: title,
+            isAllDay: isAllDay,
+            start: start,
+            end: end,
+            category: 'time',
+            dueDateClass: '',
+            color: calendar.color,
+            bgColor: calendar.bgColor,
+            dragBgColor: calendar.bgColor,
+            borderColor: calendar.borderColor,
+            raw: {
+                location: location
+            },
+            state: 'Busy'
+        }]);
+        $('#modal-new-schedule').modal('hide');
+    }
+
+    function onChangeNewScheduleCalendar(e) {
+        var target = $(e.target).closest('a[role="menuitem"]')[0];
+        var calendarId = getDataAction(target);
+        changeNewScheduleCalendar(calendarId);
+    }
+
+    function changeNewScheduleCalendar(calendarId) {
+        var calendarNameElement = document.getElementById('calendarName');
+        var calendar = findCalendar(calendarId);
+        var html = [];
+        html.push('<div class="calendar-bar" style="background-color: ' + calendar.bgColor + '; border-color:' + calendar.borderColor + ';"></div>');
+        html.push('<div class="calendar-name">' + calendar.name + '</div>');
+        calendarNameElement.innerHTML = html.join('');
+        selectedCalendar = calendar;
+    }
+
+    function createNewSchedule(event) {
+        var start = event.start ? new Date(event.start.getTime()) : new Date();
+        var end = event.end ? new Date(event.end.getTime()) : moment().add(1, 'hours').toDate();
+
+        if (useCreationPopup) {
+            cal.openCreationPopup({
                 start: start,
-                end: end,
-                category: 'time',
-                dueDateClass: '',
-                color: calendar.color,
-                bgColor: calendar.bgColor,
-                dragBgColor: calendar.bgColor,
-                borderColor: calendar.borderColor,
-                raw: {
-                    location: location
-                },
-                state: 'Busy'
-            }]);
-            $('#modal-new-schedule').modal('hide');
-        }
-
-        function onChangeNewScheduleCalendar(e) {
-            var target = $(e.target).closest('a[role="menuitem"]')[0];
-            var calendarId = getDataAction(target);
-            changeNewScheduleCalendar(calendarId);
-        }
-
-        function changeNewScheduleCalendar(calendarId) {
-            var calendarNameElement = document.getElementById('calendarName');
-            var calendar = findCalendar(calendarId);
-            var html = [];
-            html.push('<div class="calendar-bar" style="background-color: ' + calendar.bgColor + '; border-color:' + calendar.borderColor + ';"></div>');
-            html.push('<div class="calendar-name">' + calendar.name + '</div>');
-            calendarNameElement.innerHTML = html.join('');
-            selectedCalendar = calendar;
-        }
-
-        function createNewSchedule(event) {
-            var start = event.start ? new Date(event.start.getTime()) : new Date();
-            var end = event.end ? new Date(event.end.getTime()) : moment().add(1, 'hours').toDate();
-
-            if (useCreationPopup) {
-                cal.openCreationPopup({
-                    start: start,
-                    end: end
-                });
-            }
-        }
-
-        function saveNewSchedule(scheduleData) {
-            var calendar = scheduleData.calendar || findCalendar(scheduleData.calendarId);
-            var schedule = {
-                id: String(chance.guid()),
-                title: scheduleData.title,
-                isAllDay: scheduleData.isAllDay,
-                start: scheduleData.start,
-                end: scheduleData.end,
-                category: 'time',
-                dueDateClass: '',
-                color: calendar.color,
-                bgColor: calendar.bgColor,
-                dragBgColor: calendar.bgColor,
-                borderColor: calendar.borderColor,
-                location: scheduleData.location,
-                raw: {
-                    "class": scheduleData.raw['class']
-                },
-                state: scheduleData.state
-            };
-
-            if (calendar) {
-                schedule.calendarId = calendar.id;
-                schedule.color = calendar.color;
-                schedule.bgColor = calendar.bgColor;
-                schedule.borderColor = calendar.borderColor;
-            }
-
-            cal.createSchedules([schedule]);
-            refreshScheduleVisibility();
-        }
-
-        function onChangeCalendars(e) {
-            var calendarId = e.target.value;
-            var checked = e.target.checked;
-            var viewAll = document.querySelector('.lnb-calendars-item input');
-            var calendarElements = Array.prototype.slice.call(document.querySelectorAll('#calendarList input'));
-            var allCheckedCalendars = true;
-
-            if (calendarId === 'all') {
-                allCheckedCalendars = checked;
-                calendarElements.forEach(function (input) {
-                    var span = input.parentNode;
-                    input.checked = checked;
-                    span.style.backgroundColor = checked ? span.style.borderColor : 'transparent';
-                });
-                CalendarList.forEach(function (calendar) {
-                    calendar.checked = checked;
-                });
-            } else {
-                findCalendar(calendarId).checked = checked;
-                allCheckedCalendars = calendarElements.every(function (input) {
-                    return input.checked;
-                });
-
-                if (allCheckedCalendars) {
-                    viewAll.checked = true;
-                } else {
-                    viewAll.checked = false;
-                }
-            }
-
-            refreshScheduleVisibility();
-        }
-
-        function refreshScheduleVisibility() {
-            var calendarElements = Array.prototype.slice.call(document.querySelectorAll('#calendarList input'));
-            CalendarList.forEach(function (calendar) {
-                cal.toggleSchedules(calendar.id, !calendar.checked, false);
+                end: end
             });
-            cal.render(true);
+        }
+    }
+
+    function saveNewSchedule(scheduleData) {
+        var calendar = scheduleData.calendar || findCalendar(scheduleData.calendarId);
+        var schedule = {
+            id: String(chance.guid()),
+            title: scheduleData.title,
+            isAllDay: scheduleData.isAllDay,
+            start: scheduleData.start,
+            end: scheduleData.end,
+            category: 'time',
+            dueDateClass: '',
+            color: calendar.color,
+            bgColor: calendar.bgColor,
+            dragBgColor: calendar.bgColor,
+            borderColor: calendar.borderColor,
+            location: scheduleData.location,
+            raw: {
+                "class": scheduleData.raw['class']
+            },
+            state: scheduleData.state
+        };
+
+        if (calendar) {
+            schedule.calendarId = calendar.id;
+            schedule.color = calendar.color;
+            schedule.bgColor = calendar.bgColor;
+            schedule.borderColor = calendar.borderColor;
+        }
+
+        cal.createSchedules([schedule]);
+        refreshScheduleVisibility();
+    }
+
+    function onChangeCalendars(e) {
+        var calendarId = e.target.value;
+        var checked = e.target.checked;
+        var viewAll = document.querySelector('.lnb-calendars-item input');
+        var calendarElements = Array.prototype.slice.call(document.querySelectorAll('#calendarList input'));
+        var allCheckedCalendars = true;
+
+        if (calendarId === 'all') {
+            allCheckedCalendars = checked;
             calendarElements.forEach(function (input) {
-                var span = input.nextElementSibling;
-                span.style.backgroundColor = input.checked ? span.style.borderColor : 'transparent';
+                var span = input.parentNode;
+                input.checked = checked;
+                span.style.backgroundColor = checked ? span.style.borderColor : 'transparent';
             });
+            CalendarList.forEach(function (calendar) {
+                calendar.checked = checked;
+            });
+        } else {
+            findCalendar(calendarId).checked = checked;
+            allCheckedCalendars = calendarElements.every(function (input) {
+                return input.checked;
+            });
+
+            if (allCheckedCalendars) {
+                viewAll.checked = true;
+            } else {
+                viewAll.checked = false;
+            }
         }
 
-        function setDropdownCalendarType() {
-            var calendarTypeName = document.getElementById('calendarTypeName');
-            var calendarTypeIcon = document.getElementById('calendarTypeIcon');
-            var options = cal.getOptions();
-            var type = cal.getViewName();
-            console.log('runssss');
-            console.log(type);
+        refreshScheduleVisibility();
+    }
+
+    function refreshScheduleVisibility() {
+        var calendarElements = Array.prototype.slice.call(document.querySelectorAll('#calendarList input'));
+        CalendarList.forEach(function (calendar) {
+            cal.toggleSchedules(calendar.id, !calendar.checked, false);
+        });
+        cal.render(true);
+        calendarElements.forEach(function (input) {
+            var span = input.nextElementSibling;
+            span.style.backgroundColor = input.checked ? span.style.borderColor : 'transparent';
+        });
+    }
+
+    function setDropdownCalendarType() {
+        var calendarTypeName = document.getElementById('calendarTypeName');
+        var calendarTypeIcon = document.getElementById('calendarTypeIcon');
+        var options = cal.getOptions();
+        var type = cal.getViewName();
+        console.log('runssss');
+        console.log(type);
             // console.log(type);
 
             var iconClassName;
@@ -630,6 +642,13 @@
 
         function setEventListener() {
             $('#menu-navi').on('click', onClickNavi);
+            $('#calenderValue').datepicker({
+                format: 'mm/dd/yyyy',
+            }).on('changeDate', onClickNavi)
+            // {
+            //     var currentDate = e.date.getDate();
+            //     console.log(currentDate);
+            // });
             $('.dropdown-menu a[role="menuitem"]').on('click', onClickMenu);
             $('#lnb-calendars').on('change', onChangeCalendars);
             $('#btn-save-schedule').on('click', onNewSchedule);
@@ -660,7 +679,7 @@
         });
         calendarList.innerHTML = html.join('\n');
     })();
-    
+
 
 
 

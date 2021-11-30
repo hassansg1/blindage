@@ -42,6 +42,18 @@
             }
         });
     }
+    function getAppointmentsByDate(date) {
+        $.ajax({
+            type: "GET",
+            url: '{{ route('appointment.getDateWiseAppointments') }}',
+            data: {date: date},
+            success: function (result) {
+                if (result.status) {
+                    resetCalender(result.items);
+                }
+            }
+        });
+    }
 
     function openCustomCreateSchedulePopup(start, end, id) {
         $.ajax({
@@ -108,7 +120,7 @@ var t = '';
 // var today_val = ;
 function listData() {
     t = $('#view-list').DataTable({
-        "dom": 'frtlip',
+        dom: 'Bfrtip',
         "processing": true,
         "serverSide": true,
         "aaSorting": [0 ,'asc'],

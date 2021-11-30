@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/employee/{id}/edit', [App\Http\Controllers\EmployeeController::class,'update_emp'])->name('employee.update_emp');
     // ............. Appointment
     Route::get('getBranchAppointments',[App\Http\Controllers\AppointmentController::class,'getBranchAppointments'])->name('appointment.getBranchAppointments');
+    Route::get('getDateWiseAppointments',[App\Http\Controllers\AppointmentController::class,'getDateWiseAppointments'])->name('appointment.getDateWiseAppointments');
     Route::get('getAppointmentView',[App\Http\Controllers\AppointmentController::class,'getAppointmentView'])->name('appointment.getAppointmentView');
     Route::post('cancalAppointment',[App\Http\Controllers\AppointmentBookController::class,'cancalAppointment'])->name('appointment_book.cancalAppointment');
     Route::post('update/service/color',[App\Http\Controllers\AppointmentBookController::class,'serviceColor'])->name('update.serviceColor');

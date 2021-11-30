@@ -26,7 +26,7 @@
             $.ajax({
                 type: "POST",
                 headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 url: '{{ route('appointment_book.note_delete') }}',
                 data: {note_id:note_id},
@@ -41,7 +41,7 @@
         $(this).parent().closest('.deleteRowClientNote').remove();
 
         e.stopImmediatePropagation();
-      
+
     });
     
     
@@ -68,12 +68,12 @@
                     getAllAppointments();
                     $('#imageRecordCall').html('')
                     for(var i=0; i < multiImages.length; i++){
-                       var imageData =  '<img src="'+ multiImages[i] +'" widht="100px" height="100px" >';
-                        $('#imageRecordCall').append(imageData)
-                    }
-                }
-            },
-        });
+                     var imageData =  '<img src="'+ multiImages[i] +'" widht="100px" height="100px" >';
+                     $('#imageRecordCall').append(imageData)
+                 }
+             }
+         },
+     });
     });
     $('#clientEmail').on('change', function () {
         resubmitForm();
@@ -109,13 +109,13 @@
     });
 
     $('.services_items_dropdown').on('change', function () {
-       let start =  $('#start_for_service').val();
-       let end =  $('#end_for_service').val();
-       let duration =  $('#duration_for_service').val();
+     let start =  $('#start_for_service').val();
+     let end =  $('#end_for_service').val();
+     let duration =  $('#duration_for_service').val();
 
-       updateServicesItems(this.value,start,end,duration);
+     updateServicesItems(this.value,start,end,duration);
 
-    });
+ });
 
     function deleteRow()
     {
@@ -183,78 +183,78 @@
             success: function (result) {
                     // console.log('get');
                     // console.log(result);
-                if (result.status) {
-                    switch(result.modal_name) {
-                        case 'Product':
+                    if (result.status) {
+                        switch(result.modal_name) {
+                            case 'Product':
                             $("#products_items_append_div").append(result.html);
                             doSuccessToast('Successfully Added in Bucket...');
-                                    resubmitForm();
+                            resubmitForm();
                             break;
-                        case 'Service':
+                            case 'Service':
                             $("#services_items_append_div").append(result.html);
                             doSuccessToast('Successfully Added in Bucket...');
-                                    resubmitForm();
+                            resubmitForm();
                             break;
-                        case 'Package':
+                            case 'Package':
                             $("#packages_items_append_div").append(result.html);
                             doSuccessToast('Success Fully Added In Bucket...');
-                                    resubmitForm();
+                            resubmitForm();
                             break;
-                        default:
+                            default:
                             doWarningToast("Record Not Found...");
                             return false;
+                        }
+
+
+
+                    } else {
                     }
-
-
-
-                } else {
                 }
-            }
-        });
+            });
 
     }
 
     $(document).ready(function(){
       $('.client-cancel-info').hide();
       $('#cancelApptBtn').click(function(){
-         $('.client-cancel-info').show();
-         $('.client-summary-info-main-wrapper').hide();
-      });
+       $('.client-cancel-info').show();
+       $('.client-summary-info-main-wrapper').hide();
+   });
       $('#backToCardBtn').click(function(){
         $('.client-cancel-info').hide();
         $('.client-summary-info-main-wrapper').show();
-      });
     });
+  });
 
     function appointmentStatusUpdate(appointbook_id , value)
     {
         if(value!=null && value!="" && value!='')
         {
             $.ajax({
-            type: "GET",
-            url: '{{ route('appointment_book.appointment_status_update') }}',
-            data: {
-                appointbook_id: appointbook_id,
-                value:value
+                type: "GET",
+                url: '{{ route('appointment_book.appointment_status_update') }}',
+                data: {
+                    appointbook_id: appointbook_id,
+                    value:value
 
-            },
-            success: function (result) {
+                },
+                success: function (result) {
 
-                if (result.status) {
-                    if(typeof result.html !== 'undefined')
-                    {
-                        $("#div_id_clientInfoModal_content").html(result.html);
+                    if (result.status) {
+                        if(typeof result.html !== 'undefined')
+                        {
+                            $("#div_id_clientInfoModal_content").html(result.html);
 
+                        }
+
+                        doSuccessToast('Successfully Update...');
+                    } else {
+                        doSuccessToast('Something Wrong...');
                     }
 
-                    doSuccessToast('Successfully Update...');
-                } else {
-                    doSuccessToast('Something Wrong...');
+
                 }
-
-
-            }
-        });
+            });
 
         }
     }
@@ -264,27 +264,27 @@
         if(value!=null && value!="" && value!='')
         {
             $.ajax({
-            type: "GET",
-            url: '{{ route('appointment_book.appointment_confirmation_status_update') }}',
-            data: {
-                appointbook_id: appointbook_id,
-                value:value
+                type: "GET",
+                url: '{{ route('appointment_book.appointment_confirmation_status_update') }}',
+                data: {
+                    appointbook_id: appointbook_id,
+                    value:value
 
-            },
-            success: function (result) {
+                },
+                success: function (result) {
 
-                if (result.status) 
-                {
-                    doSuccessToast('Successfully Update...');
-                } 
-                else 
-                {
-                    doSuccessToast('Something Wrong...');
+                    if (result.status) 
+                    {
+                        doSuccessToast('Successfully Update...');
+                    } 
+                    else 
+                    {
+                        doSuccessToast('Something Wrong...');
+                    }
+
+
                 }
-
-
-            }
-        });
+            });
 
         }
     }
@@ -297,4 +297,4 @@
 
 
 
-</script>
+    </script>

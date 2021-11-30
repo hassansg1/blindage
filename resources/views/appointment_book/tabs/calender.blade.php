@@ -3,7 +3,8 @@
         <div class="col-lg-2 pr-0 custom-width">
             <div class="left-side-bar-wrapper pb-2">
                 <label class="p-2">Calender</label>
-                <div data-provide="datepicker-inline" class="bootstrap-datepicker-inline"></div>
+                <div data-provide="datepicker-inline" class="bootstrap-datepicker-inline" id="calenderValue"></div>
+                <input type="hidden" name="bootstrap_calender_selecetd_value" id="bootstrap_calender_selecetd_value">
                 <div class="card no-border m-2">
                     <div class="">
                         <div class="row">
@@ -79,9 +80,9 @@
                                                 <a class="dropdown-item" role="menuitem" data-action="toggle-daily"> <i class="calendar-icon ic_view_day"></i>Daily </a>
                                             </li>
                                             {{-- <li role="presentation">
-                                            <a class="dropdown-item" role="menuitem" data-action="toggle-3_days">
-                                                <i class="calendar-icon ic_view_3_days"></i>3 Days
-                                            </a>
+                                                <a class="dropdown-item" role="menuitem" data-action="toggle-3_days">
+                                                    <i class="calendar-icon ic_view_3_days"></i>3 Days
+                                                </a>
                                             </li> --}}
                                             <li role="presentation">
                                                 <a class="dropdown-item" role="menuitem" data-action="toggle-weekly"> <i class="calendar-icon ic_view_week"></i>Weekly </a>
@@ -138,7 +139,7 @@
                         <div id="calendarList" class="lnb-calendars-d1 mt-4 mt-sm-0 me-sm-0 mb-4"></div>
                         <div id="calendar" style="height: 800px;"></div>
                         <!--New Schedule Modal Start-->
-               
+
                     </div>
                     <!--New Schedule Modal End-->
                 </div>
