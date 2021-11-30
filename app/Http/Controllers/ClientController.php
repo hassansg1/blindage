@@ -87,7 +87,7 @@ class ClientController extends BaseController
     public function show($item)
     {
         $item = $this->model->find($item);
-
+        // dd($item->appointmentBook->where('status_flag',App\Models\AppointmentBook::NOSHOW));
         return view($this->route . '.view')->with(['route' => $this->route, 'item' => $item, 'heading' => $this->heading, 'clone' => $request->clone ?? null]);
     }
 
