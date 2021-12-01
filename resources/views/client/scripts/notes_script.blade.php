@@ -64,20 +64,22 @@
     }
 
 
-    function getAppointmentData(user_id,search_with_respect_id)
+    function getAppointmentData(client_id,search_with_respect_id)
     {
         $.ajax({
             type: "GET",
-            url: route,
+            url: "{{ route('client.getClientHistoryData') }}",
+            data:{client_id:client_id,search_with_respect_id:search_with_respect_id},
             success: function (result) {
                 if (result.status) {
-                    showModal(centerModal, result.html);
+                    $("#table_appended_id").html(result.html);
+                    // showModal(centerModal, result.html);
                 } else {
-                    doSomethingWentWrongToast();
+                    // doSomethingWentWrongToast();
                 }
             },
         });
-        alert(id);
+
     }
 
 

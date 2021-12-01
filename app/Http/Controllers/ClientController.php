@@ -8,6 +8,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
 
+use App\Models\AppointmentBook;
+
 class ClientController extends BaseController
 {
     protected $model;
@@ -147,4 +149,63 @@ class ClientController extends BaseController
 
         return redirect(route($this->route . ".index"));
     }
+
+
+    public function getClientHistoryData(Request $request)
+    {
+        // dd($request->all());
+        if(isset($request->search_with_respect_id) && $request->search_with_respect_id!=null && isset($request->client_id) && $request->client_id!=null)
+        {
+            $html = "Somehing Wrong";
+            $status = false;
+
+            switch ($request->search_with_respect_id) {
+                case AppointmentBook::UPCOMMING_APPT:
+                    $status=true;
+
+                    $data = AppointmentBook::whereDate('activity_date', '>=', date('Y-m-d'))->get();
+                    // dd($data);
+                    $html =  view('client.partials.history_tab.table')->with(['data'=>$data])->render();
+                    break;
+
+                case AppointmentBook::PREVIOUS_SERVICES:
+                    $status = true;
+                    $html =  view('client.partials.history_tab.table')->render();
+                    break;
+                
+                case AppointmentBook::PURCHASED_PRODUCT:
+                    $status = true;
+                    $html =  view('client.partials.history_tab.table')->render();
+                    break;
+
+                case AppointmentBook::CANCELED:
+                    $status = true;
+                    $html =  view('client.partials.history_tab.table')->render();
+                    break;
+
+                case AppointmentBook::OTHER_PURCHASES:
+                    $status = true;
+                    $html =  view('client.partials.history_tab.table')->render();
+                    break;
+                
+                default:
+                    
+                    break;
+
+
+            }
+
+            return response()->json(['status' => $status,'html' => $html]);
+
+        }
+        return false; 
+    }
+
+
+
+
+
+
+
+
 }

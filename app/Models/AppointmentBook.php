@@ -43,10 +43,10 @@ class AppointmentBook extends Model
     const EMAIL = 4;
     ////............................
 
-    const UPCOMMING_APPT = 1;
-    const PREVIOUS_SERVICES = 2;
-    const PURCHASED_PRODUCT = 3;
-    const OTHER_PURCHASES = 4;
+    const UPCOMMING_APPT = 9;
+    const PREVIOUS_SERVICES = 10;
+    const PURCHASED_PRODUCT = 11;
+    const OTHER_PURCHASES = 12;
 
 
 
