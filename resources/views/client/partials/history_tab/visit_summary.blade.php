@@ -11,11 +11,14 @@
                 <div class="row">
                     <div class="col-sm-6 text-center">
                         <p>Total Amount of Money Spent</p>
-                        <h4>$0.00</h4>
+                        @php 
+                        $total = $item->appointments->sum('price') + $item->appointmentBookItems->sum('price') ;
+                        @endphp
+                        <h4>$ {{ number_format($total,2) }} </h4>
                     </div>
                     <div class="col-sm-6 text-center left-line">
                         <p>Total # of Visits</p>
-                        <h4>0</h4>
+                        <h4>{{ count($item->appointments) }}</h4>
                     </div>
                 </div>
             </div>
@@ -27,19 +30,19 @@
                 <div class="row">
                     <div class="col-sm-3 text-center">
                         <p>First Visit</p>
-                        <h4>N/A</h4>
+                        <h4>{{ count($item->appointments)>0 ? date('l, M d, Y',strtotime($item->appointmentBook->first()->activity_date)) :'N/A' }}</h4>
                     </div>
                     <div class="col-sm-3 text-center left-line">
                         <p>Last Visit</p>
-                        <h4>N/A</h4>
+                        <h4>{{ count($item->appointments)>0 ? date('l, M d, Y',strtotime($item->appointmentBook->last()->activity_date)) :'N/A' }}</h4>
                     </div>
                     <div class="col-sm-3 text-center left-line">
                         <p>No Shows</p>
-                        <h4>0</h4>
+                        <h4>{{ count($item->appointmentBook->where('status_flag',App\Models\AppointmentBook::NOSHOW))>0 ? count($item->appointmentBook->where('status_flag',App\Models\AppointmentBook::NOSHOW)):'0' }}</h4>
                     </div>
                     <div class="col-sm-3 text-center left-line">
                         <p>Cancelled</p>
-                        <h4>0</h4>
+                        <h4>{{ count($item->appointmentBook->where('status_flag',App\Models\AppointmentBook::CANCELED))>0 ? count($item->appointmentBook->where('status_flag',App\Models\AppointmentBook::CANCELED)):'0' }}</h4>
                     </div>
                 </div>
             </div>

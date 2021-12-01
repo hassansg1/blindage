@@ -97,7 +97,7 @@ class AppointmentBook extends Model
             case AppointmentBook::EMAIL:
                 return 'E-mail';
                 break;
-          
+
         }
 
     }
@@ -247,8 +247,8 @@ class AppointmentBook extends Model
         if (isset($request->create_new_appointment_note)) $item->notes = $request->create_new_appointment_note;
         if (isset($request->create_new_appointment_type_id)) $item->appointment_type_id = $request->create_new_appointment_type_id;
         $item->created_by = Auth::user()->id ?? 0;
-       
-        if ($item->save()) 
+
+        if ($item->save())
         {
             if (isset($request->services)) {
                 for ($count = 0; $count < count($request->services); $count++) {
@@ -299,7 +299,7 @@ class AppointmentBook extends Model
         else
         {
             return false;
-        } 
+        }
 
         return true;
     }
@@ -347,7 +347,7 @@ class AppointmentBook extends Model
     }
 
 
-    public function appointmentbook_listing($limit, $start, $order, $dir,$today = 0 ,$status_flag = null , $dateRange = null , $search = false) {
+    public function appointmentbook_listing($limit, $start, $order, $dir,$branch_id=null,$today = 0 ,$status_flag = null , $dateRange = null , $search = false) {
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::offset($start);
         if ($search) {
@@ -358,7 +358,10 @@ class AppointmentBook extends Model
             });
 
         }
-
+        if($branch_id!=null && $branch_id!="")
+        {
+            $result->where('branch_id', '=',$branch_id);
+        }
         if($status_flag != null)
         {
             $result->where('status_flag', '=',$status_flag);
@@ -371,7 +374,7 @@ class AppointmentBook extends Model
         else if($dateRange !=null)
         {
             $explode = explode("-",$dateRange);
-            $startDate = date('Y-m-d',strtotime($explode[0])); 
+            $startDate = date('Y-m-d',strtotime($explode[0]));
             $endDate = date('Y-m-d',strtotime($explode[1]));
 
             $result->whereBetween('activity_date', [$startDate, $endDate]);
@@ -382,8 +385,8 @@ class AppointmentBook extends Model
         return $result->get();
     }
 
-    public function appointmentbook_count($search = false ,$today = 0 ,$status_flag = null , $dateRange = null) {
-        
+    public function appointmentbook_count($search = false ,$branch_id=null ,$today = 0 ,$status_flag = null , $dateRange = null) {
+
         $today_date =  date('Y-m-d');
         $result = AppointmentBook::select();
         if ($search) {
@@ -393,6 +396,11 @@ class AppointmentBook extends Model
                 $query->orWhere('first_name', 'like', '%'.$search.'%');
             });
         }
+        if($branch_id!=null && $branch_id!="")
+        {
+            $result->where('branch_id', '=',$branch_id);
+        }
+
         if($status_flag != null)
         {
             $result->where('status_flag', '=',$status_flag);
@@ -406,7 +414,7 @@ class AppointmentBook extends Model
         else if($dateRange !=null)
         {
             $explode = explode("-",$dateRange);
-            $startDate = date('Y-m-d',strtotime($explode[0])); 
+            $startDate = date('Y-m-d',strtotime($explode[0]));
             $endDate = date('Y-m-d',strtotime($explode[1]));
 
             $result->whereBetween('activity_date', [$startDate, $endDate]);

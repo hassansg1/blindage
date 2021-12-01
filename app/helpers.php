@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Session;
+use App\Models\AppointmentBook;
+use App\Models\AppointmentType;
 
 if (!function_exists('getLang')) {
     function getLang($key)
@@ -155,3 +157,78 @@ if (!function_exists('getAppointmentType')) {
        return $appointment;
     }
 }
+
+
+if (!function_exists('getCurrentWeek')) {
+    function getCurrentWeek()
+    {
+        $period = new DatePeriod(
+            new DateTime(date('Y-m-d')),
+            new DateInterval('P1D'),
+            new DateTime(date("Y-m-d", strtotime("+1 week")))
+
+        );
+        \Carbon\Carbon::parse(now())->addWeek();
+        $branchTime = \App\Models\GeneralSchedule::all();
+
+        $dateData = \Illuminate\Support\Facades\View::make('schedule/partials/date_rang')->with(['period'=>$period,'branchTime'=>$branchTime])->render();
+        return $dateData;
+    }
+    }
+if (!function_exists('getBranchTime')){
+    function getBranchTime( $scheduleDate){
+       $schedule =  \App\Models\Schedule::with('scheduleTime')->where('branch_id','=',\Illuminate\Support\Facades\Auth::id())->where('start_date','=',$scheduleDate)->first();
+       $data = '';
+       if ($schedule != null){
+       foreach ($schedule->scheduleTime as $time){
+        $data.=date('h:i a',strtotime($time->start_time)) .' - '. date('h:i a',strtotime($time->end_time)) .'<br/>';
+       }
+       }
+       return $data;
+
+    }
+}
+//if (!function_exists('getStartTime')){
+//    function getStartTime( $scheduleDate){
+//       $schedule =  \App\Models\Schedule::with('scheduleTime')->where('branch_id','=',\Illuminate\Support\Facades\Auth::id())->where('start_date','=',$scheduleDate)->first();
+//       if ($schedule != null){
+//           return 1;
+//       }
+//       return 0;
+//
+//    }
+//}
+if (!function_exists('generalSchedule')){
+    function generalSchedule(){
+        return \App\Models\GeneralSchedule::all();
+
+    }
+}
+if (!function_exists('checkBranchOpen')){
+    function checkBranchOpen($scheduleDate){
+        return \App\Models\Schedule::where('branch_id','=',\Illuminate\Support\Facades\Auth::id())->where('start_date','=',$scheduleDate)->first();
+
+    }
+}
+//if (!function_exists('addAppointmentLog')) {
+//    function addAppointmentLog($id)
+//    {
+//
+//        $appointment= new AppointmentBook();
+//        $AppointementItem= new \App\Models\AppointmentBookItems();
+//       $appointmentStatus = $appointment->wasRecentlyCreated;
+//        $appointmentItemStatus =  $AppointementItem->wasRecentlyCreated;
+//        $log = new \App\Models\AppointmentLog();
+//        $log->old = $appointment->getOriginal();
+//        $log->new = $appointment->getAttributes();
+//        $log->updated = $appointment->getChanges();
+//        return $log;
+//        dd($log);
+//        $log->save();
+
+//       $oldItem = $AppointementItem->getOriginal();
+//       $newItem = $AppointementItem->getAttributes();
+//       $updatedItem = $AppointementItem->getChanges();
+
+//    }
+//}

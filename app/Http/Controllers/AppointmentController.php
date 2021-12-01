@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
-use Carbon\Carbon;
 
 class AppointmentController extends BaseController
 {
@@ -38,26 +37,6 @@ class AppointmentController extends BaseController
         ]);
     }
 
-    public function getDateWiseAppointments(Request $request){
-        $date = $request->date;
-        $date = explode("/",$date);
-        $formatedDate = $date[2].'-'.$date[0].'-'.$date[1];
-       $data = Appointment::with(['appointmentBook.client', 'appointmentBook.appointmentType', 'service'])->whereNotNull('start_time')->whereNotNull('client_id')->whereNotNull('duration');
-       $data->join('appointment_books', 'appointment_books.id', '=', 'appointments.appointment_book_id');
-       if($request!=null && isset($request->date))
-       {
-        $data->where('appointment_books.activity_date',$formatedDate);
-    }
-
-        // for not show cancel appointments in Calendar
-    $data->where('status_flag','!=',AppointmentBook::CANCELED);
-    $data->get();
-    return response()->json([
-        'status' => true,
-        'items' => $data
-    ]);
-}
-
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -69,7 +48,7 @@ class AppointmentController extends BaseController
         return response()->json([
             'status' => true,
             'html' => view($this->route . "/form_rows")
-            ->with(['items' => $data['items'], 'data' => $data, 'route' => $this->route, 'heading' => $this->heading])->render(),
+                ->with(['items' => $data['items'], 'data' => $data, 'route' => $this->route, 'heading' => $this->heading])->render(),
             'data' => $data
         ]);
     }
@@ -81,7 +60,7 @@ class AppointmentController extends BaseController
     {
         dd('dss');
         return view($this->route . "/create")
-        ->with(['route' => $this->route, 'heading' => $this->heading]);
+            ->with(['route' => $this->route, 'heading' => $this->heading]);
     }
 
     /**
@@ -128,7 +107,7 @@ class AppointmentController extends BaseController
                 'html' => view($this->route . '.edit_modal')->with(['route' => $this->route, 'item' => $item, 'clone' => $request->clone ?? null])->render()
             ]);
         } else
-        return view($this->route . '.edit')->with(['route' => $this->route, 'item' => $item, 'heading' => $this->heading, 'clone' => $request->clone ?? null]);
+            return view($this->route . '.edit')->with(['route' => $this->route, 'item' => $item, 'heading' => $this->heading, 'clone' => $request->clone ?? null]);
     }
 
     /**

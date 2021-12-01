@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppointmentBook;
+use App\Models\AppointmentBookItems;
 use App\Models\AppointmentType;
 use App\Models\Service;
 use Illuminate\Contracts\Foundation\Application;
@@ -73,9 +74,21 @@ class AppointmentBookController extends BaseController
             $item = $this->model;
         $result = $this->model->saveFormData($item, $request);
 
+        // $log = new \App\Models\AppointmentLog();
+        // $appointItem = new AppointmentBookItems();
+        // $created = $this->model->wasRecentlyCreated;
+        // $log->old = json_encode($this->model->getOriginal());
+        // $log->new = json_encode($this->model->getAttributes());
+        // $log->updated = json_encode($this->model->getChanges());
+        // $log->oldItem = json_encode($appointItem->getOriginal());
+        // $log->newItem = json_encode($appointItem->getAttributes());
+        // $log->status = 'created';
+        //     $log->updatedItem = json_encode($appointItem->getChanges());
+
         return response()->json([
             'status' => true,
-            'id' => $result->id
+            'id' => $result->id,
+            // 'log' => $log
         ]);
     }
 
@@ -190,16 +203,17 @@ class AppointmentBookController extends BaseController
         $dir = $request->input('order.0.dir');
         $today = $request->input('today');
         $status_flag = $request->input('status_flag');
+        $branch_id = $request->input('branch_id');
 
         $date_Range = $request->date_range;
 
 
         if (empty($request->input('search.value'))) {
-            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today, $status_flag, $date_Range);
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir,$branch_id ,$today, $status_flag, $date_Range);
         } else {
             $search = $request->input('search.value');
-            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir, $today, $status_flag, $date_Range, $search);
-            $totalFiltered = $obj->appointmentbook_count($search, $today, $status_flag, $date_Range);
+            $results = $obj->appointmentbook_listing($limit, $start, $order, $dir,$branch_id, $today, $status_flag, $date_Range, $search);
+            $totalFiltered = $obj->appointmentbook_count($search,$branch_id,$today, $status_flag, $date_Range);
         }
         $data = array();
         if (!empty($results)) {

@@ -1,7 +1,6 @@
 @include('components.form_errors')
 {{ csrf_field() }}
 <input type="hidden" name="id" value="{{ isset($clone) && $clone ? '' : (isset($item) ? $item->id : '') }}">
-
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
@@ -100,7 +99,7 @@
                             </label>
                             <input type="file"
                                    class="form-control" id="{{ isset($item) ? $item->id:'' }}image"
-                                   name="image" required>
+                                   name="image" >
                                 <div class="invalid-feedback">
                                         Please Select Image.
                                     </div>

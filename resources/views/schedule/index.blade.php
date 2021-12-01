@@ -33,6 +33,19 @@
 
     <script src="{{ URL::asset('/assets/js/pages/calendars.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/schedules.js') }}"></script>
-    @include('schedule.script')
-    @include('schedule.custom_script')
+{{--    @include('schedule.script')--}}
+    <script>
+    function setDaySchedule(checkData,scheduleId){
+        if ($(checkData).is(':checked')){
+            $('#timeEnd'+scheduleId).prop( "disabled", false );
+            $('#timeStart'+scheduleId).prop( "disabled", false );
+        }else{
+            $('#timeEnd'+scheduleId).prop( "disabled", true );
+            $('#timeStart'+scheduleId).prop( "disabled", true );
+        }
+    }
+
+    </script>
+
+    @include('schedule.form_script')
 @endsection

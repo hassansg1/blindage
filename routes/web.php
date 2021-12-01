@@ -49,11 +49,14 @@ Route::group(['middleware' => ['auth']], function () {
         'appointment_book' => \App\Http\Controllers\AppointmentBookController::class,
         'cash_drawer' => \App\Http\Controllers\CashDrawerController::class,
     ]);
+    Route::get('/schedule/get/date', [App\Http\Controllers\ScheduleController::class,'getDateRange'])->name('schedule.get_date');
+    Route::get('/schedule/get/branch/time', [App\Http\Controllers\ScheduleController::class,'getBranchTime'])->name('schedule.get_branch_time');
+    Route::post('/schedule/set/branch/time', [App\Http\Controllers\ScheduleController::class,'setBranchTime'])->name('schedule.set_branch_time');
+    Route::post('/schedule/set/general/time', [App\Http\Controllers\ScheduleController::class,'setBranchGeneralTime'])->name('schedule.set_branch_general_time');
     Route::put('/branch/{id}/edit', [App\Http\Controllers\BranchController::class,'emp_update'])->name('branch.emp_update');
     Route::put('/employee/{id}/edit', [App\Http\Controllers\EmployeeController::class,'update_emp'])->name('employee.update_emp');
     // ............. Appointment
     Route::get('getBranchAppointments',[App\Http\Controllers\AppointmentController::class,'getBranchAppointments'])->name('appointment.getBranchAppointments');
-    Route::get('getDateWiseAppointments',[App\Http\Controllers\AppointmentController::class,'getDateWiseAppointments'])->name('appointment.getDateWiseAppointments');
     Route::get('getAppointmentView',[App\Http\Controllers\AppointmentController::class,'getAppointmentView'])->name('appointment.getAppointmentView');
     Route::post('cancalAppointment',[App\Http\Controllers\AppointmentBookController::class,'cancalAppointment'])->name('appointment_book.cancalAppointment');
     Route::post('update/service/color',[App\Http\Controllers\AppointmentBookController::class,'serviceColor'])->name('update.serviceColor');

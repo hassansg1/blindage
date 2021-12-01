@@ -42,18 +42,6 @@
             }
         });
     }
-    function getAppointmentsByDate(date) {
-        $.ajax({
-            type: "GET",
-            url: '{{ route('appointment.getDateWiseAppointments') }}',
-            data: {date: date},
-            success: function (result) {
-                if (result.status) {
-                    resetCalender(result.items);
-                }
-            }
-        });
-    }
 
     function openCustomCreateSchedulePopup(start, end, id) {
         $.ajax({
@@ -119,8 +107,9 @@
 var t = '';
 // var today_val = ;
 function listData() {
-    t = $('#view-list').DataTable({
-        dom: 'Bfrtip',
+    t = $('#view-List').DataTable({
+        "lengthChange": false, 
+        "dom": 'Btipr',
         "processing": true,
         "serverSide": true,
         "aaSorting": [0 ,'asc'],
@@ -128,12 +117,12 @@ function listData() {
             "url": '{{ route('appointment_book.get_Appointment') }}',
             "dataType": "json",
             "type": "POST",
-            // "data": {_token: '{{ csrf_token() }}', today: $("#appt_view_today").val() },
             data: function(data) {
                 data._token = '{{ csrf_token() }}';
                 data.today = $("#appt_view_today").val();
                 data.status_flag = $("#status_flag").val();
                 data.date_range = $("#dateRange_appointmentList").val();
+                data.branch_id = $("#branch_id_search").val();
             },
             "timeout": 15000
         },
@@ -168,15 +157,32 @@ function listData() {
         t.draw();
     });
 
+    $("#branch_id_search").on('change',function(e){
+        t.draw();
+    });
+
 
     $('#search_data').on('click', function (e) {
         var v = $("#search").val(); // getting search input value
         if (v) {
             t.search(v).draw();
         }
+    });    
+
+    $('#clear_data').on('click', function (e) {
+        $("#search").val(''); // getting search input value
+        var v = $("#search").val(); // getting search input value
+        t.search(v).draw();
+     
     });
 
 }
+
+    //Buttons examples
+
+
+
+
 
 $(function() {
   $('input[id="dateRange_appointmentList"]').daterangepicker({

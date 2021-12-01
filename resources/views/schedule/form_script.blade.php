@@ -1,109 +1,78 @@
 <script>
-
-    $('#select_service_drop_down').on('change', function () {
-        resubmitForm();
-    });
-
-    $('#select_client_drop_down').on('change', function () {
-        resubmitForm();
-    });    
-
-    $('.schedule_details_modal_submit').on('change', function () {
-        console.log('run');
-        resubmitForm();
-    });
-
-
-    $('.services_items_dropdown').on('change', function () {
-       let start =  $('#start_for_service').val();
-       let end =  $('#end_for_service').val();
-       let duration =  $('#duration_for_service').val();
-
-       updateServicesItems(this.value,start,end,duration);
-
-    });
-
-    function deleteRow() 
-    {
-        $(event.target).closest('.deleteRow').remove();
-        //console.log('run');
+    var i = 1;
+    function getDateRange(dateType) {
+        if(dateType == 'next'){
+            i++
+        }  if(dateType == 'pre'){
+            i--
+        }
+        $.ajax({
+            type: "GET",
+            url: '{{ route('schedule.get_date') }}',
+            data: {incDec:i,dateType:dateType,lastDate:$('#lastDate').val(),},
+            success: function (result) {
+                if (result.status == 1) {
+                    $('#lastDate').val(result.lastDate);
+                    $('#dateRangeValue').html(result.result);
+                    $('#calenderTable').html(result.dateData);
+                }
+            },
+        });
     }
+    function getModalData(dateValue,keyValue) {
+        $.ajax({
+            type: "GET",
+            url: '{{ route('schedule.get_branch_time') }}',
+            data: {dateValue:dateValue},
+            success: function (result) {
+                if (result.status == 1) {
+                    $('#modalData').html(result.result);
+                    $('#keyValue').val(keyValue);
+                    $('#time_schedule_modal').modal('show');
 
-
-    function resubmitForm() {
+                }
+            },
+        });
+    }
+    function setBranchTime() {
         $.ajax({
             type: "POST",
-            url: '{{ route('appointment_book.store') }}',
-            data: $('#appointment_form').serialize(),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '{{ route('schedule.set_branch_time') }}',
+            data: $('#branchDataForm').serialize(),
             success: function (result) {
-                if (result.status) {
-                    getAllAppointments();
-                }
+                if (result.status == 1) {
+                $('#time_schedule_modal').modal('hide');
+
+                    if (result.repeat == 1) {
+                        for (var i=  0; i< result.dateArray.length; i ++){
+                            $(`#${result.dateArray[i]}`).html(result.data[result.dateArray[i]])
+                        }
+                    }
+                    if (result.repeat == 2) {
+                        $(`#${result.dateValue}`).html(result.data);
+                    }
+                 }
             },
         });
     }
-
-    function openScheduleDetailPopup(id,start=null,end=null) {
+    function setGeneralSchedule() {
         $.ajax({
-            type: "GET",
-            url: '{{ route('appointment_book.getAppointmentDetailModal') }}',
-            data: {
-                id: id,
-                start_time:start,
-                end_time:end
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
+            url: '{{ route('schedule.set_branch_general_time') }}',
+            data: $('#generalScheduleForm').serialize(),
             success: function (result) {
-                if (result.status) {
-                    showModal(defaultModal, result.html);
-                } else {
-                }
-            }
+                if (result.status == 1) {
+                $('.businessHoursModal').modal('hide');
+                $('#calenderTable').html(result.result);
+
+                 }
+            },
         });
     }
-
-
-    function updateServicesItems(value,start=null,end=null,duration=null) {
-        $.ajax({
-            type: "GET",
-            url: '{{ route('appointment_book.getItemsDataView') }}',
-            data: {
-                value: value,
-                start: start,
-                end: end,
-                duration: duration
-            },
-            success: function (result) {
-                    // console.log('get');
-                    // console.log(result);
-                if (result.status) {
-                    switch(result.modal_name) {
-                        case 'Product':
-                            $("#products_items_append_div").append(result.html);
-                            doSuccessToast('Successfully Added in Bucket...');
-                                    resubmitForm();
-                            break;
-                        case 'Service':
-                            $("#services_items_append_div").append(result.html);
-                            doSuccessToast('Successfully Added in Bucket...');
-                                    resubmitForm();
-                            break;
-                        case 'Package':
-                            $("#packages_items_append_div").append(result.html);
-                            doSuccessToast('Success Fully Added In Bucket...');
-                                    resubmitForm();
-                            break;
-                        default:
-                            doWarningToast("Record Not Found...");
-                            return false;
-                    } 
-
-
-
-                } else {
-                }
-            }
-        });
-        
-    }
-
 </script>

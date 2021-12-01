@@ -6,25 +6,69 @@
                 <div data-provide="datepicker-inline" class="bootstrap-datepicker-inline" id="calenderValue"></div>
                 <div id="selectWeek">
                     <span>+</span>
-                   @for ($i = 1; $i < 9; $i++)
-                   <span style="padding: 6px;cursor: pointer;" name="{{$i}}-week">{{ $i }}</span>
-                   @endfor
-                   <span>Weeks</span>
-               </div>
-               <input type="hidden" name="bootstrap_calender_selecetd_value" id="bootstrap_calender_selecetd_value">
-               <div class="card no-border m-2">
-                <div class="">
-                    <div class="row">
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
-                                        Waitlist(0)
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" style="">
-                                    <div class="accordion-body text-muted">
-                                        Nothing here
+                    @for ($i = 1; $i < 9; $i++)
+                    <span style="padding: 6px;cursor: pointer;" name="{{$i}}-week">{{ $i }}</span>
+                    @endfor
+                    <span>Weeks</span>
+                </div>
+
+                <div class="card no-border m-2">
+                    <div class="">
+                        <div class="row">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+                                            Waitlist(0)
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" style="">
+                                        <div class="accordion-body text-mute">
+                                            <div class="waitlistWrapper">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li>
+                                                        <b class="text-black">Fahad Amin</b>
+                                                    </li>
+                                                    <li>
+                                                       1234567890 
+                                                   </li>
+                                                   <li>
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            Miscellaneous Service
+                                                        </div>
+                                                        <div>-</div>
+                                                        <div>Rs 0.00</div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span>With</span> <span class="text-black">First Available</span>
+                                                </li>
+                                                <li>
+                                                    <div class="item-date-time">
+                                                        <div class="item-request-dateTime">
+                                                            <div>
+                                                                Any Time
+                                                            </div>
+                                                            <div>
+                                                                343 4341 (+1)
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-create-dateTime">
+                                                            <div class="text-black">
+                                                                Since
+                                                            </div>
+                                                            <div class="text-black">
+                                                                30/11/2021
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class=" d-grid">
+                                            <button type="button" class="btn btn-primary primary-alt btn-block" data-bs-toggle="modal" data-bs-target=".waitlistModal">Add to Waitlist</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -154,3 +198,92 @@
     </div>
 </div>
 </div>
+
+<!--  Wait List Modal Starts Here -->
+<div class="modal fade waitlistModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myExtraLargeModalLabel">Add to Waitlist</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             <div class="row">
+                 <div class="col-xl-6">
+                    <label for="when" class="form-label required">Which Client?</label>
+                    <select id="select_client_drop_down" name="client_id" class="form-control select2 schedule_details_modal_submit">
+                        <option value="">Select</option>
+                        @foreach(\App\Models\Client::all() as $loopVariable)
+                        <option value="{{ $loopVariable->id ?? '' }}" {{ isset($appt->client_id) && $appt->client_id==$loopVariable->id ?'selected':''  }}>{{ $loopVariable->name ?? '' }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-xl-2">
+                    <a class="addNewClient mt-4 d-inline-block" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".addNewClientModal">
+                        <i class="fa fa-plus mr-5"></i> <span> Add New Client</span>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+             <div class="col-md-4">
+                 <div class="input-group" id="datepicker1">
+                    <input type="text" class="form-control" name=""
+                    value="{{ date('Y-m-d') }}"
+                    data-date-format="yyyy-m-d" data-date-container='#datepicker1'
+                    data-provide="datepicker" readonly data-date-autoclose="true">
+                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+             <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose One ...">
+                <optgroup label="Any Time">
+                    <option value="HI">Morning</option>
+                    <option value="HI">Afternoon</option>
+                    <option value="HI">Evening</option>
+                </optgroup>
+
+            </select>
+        </div>
+        <div class="col-md-4">
+         <div class="d-flex">
+             <div class="d-flex width-300 align-middle align-items-center">
+                 Preferred Employee
+             </div>
+             <select class="form-select">
+                <option selected="" value="">First Available</option>
+                <option value="1">Ali</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+ <div class="col-md-6">
+    <label class="form-label required">Service</label>
+    <select class="form-control services_items_dropdown" name="services_items_dropdown">
+       <option>-- Select Service -- </option>
+       @foreach(\App\Models\Service::all() as $service_loopVariable)
+       <option  value="{{ 'Service??'.$service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
+       @endforeach
+   </select>
+</div>
+</div>
+<div class="row">
+ <div class="col-md-12">
+    <h5 class="mt-20">Comments</h5>
+    <div class="row">
+        <div class="col-md-12">
+            <textarea name="clientNotes" id="clientNotes" placeholder="Add Comment..." class="form-control"></textarea>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+    <div class="btn btn-primary" id="" type="submit">Save</div>
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--  Wait List Modal Ends Here -->
+
