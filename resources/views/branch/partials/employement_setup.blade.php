@@ -10,7 +10,7 @@
             device.</p>
         <div class="col-xs-12">
             <div class="row">
-                <textarea placeholder="Insert a new note " name="setup" id="{{ isset($item) ? $item->id: '' }}setup" cols="30" rows="5">{{ isset($item) ? $item->setup:old('setup') ?? '' }}</textarea>
+                <textarea class="form-control" placeholder="Insert a new note " name="setup" id="{{ isset($item) ? $item->id: '' }}setup" cols="30" rows="5">{{ isset($item) ? $item->setup:old('setup') ?? '' }}</textarea>
             </div>
         </div>
     </div>

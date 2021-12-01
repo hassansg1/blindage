@@ -1,4 +1,4 @@
-<div class="tab-content p-3 text-muted">
+<div class="tab-content text-muted">
     <div class="tab-pane active" id="overview" role="tabpanel">
         @include('client.partials.overview')
     </div>

@@ -2,12 +2,12 @@
       <div class="col-md-12">
          <div class="scheduleTopBarWrapper mb-2">
             <div class="">
-               <div class="icon-wrapper">
+               <div class="icon-wrapper d-flex verticaly-align-items">
 {{--                  <i class="fa fa-calendar icon" aria-hidden="true"></i>--}}
-                   <i class="fa fa-less-than" onclick="getDateRange('pre')"></i>
+                   <i class="fas fa-angle-left font-size-16 pr-10 cursor-pointer" onclick="getDateRange('pre')"></i>
                    <input class="form-control" type="hidden" id="lastDate" value="{{date("Y-m-d", strtotime("+1 week"))}}" />
                    <span id="dateRangeValue">{{date("Y-m-d") .' - '. date("Y-m-d", strtotime("+1 week"))}}</span>
-                   <i class="fa fa-greater-than" onclick="getDateRange('next')"></i>
+                   <i class="fas fa-angle-right font-size-16 pl-10 cursor-pointer" onclick="getDateRange('next')"></i>
                </div>
             </div>
             <div class="searchEmployee">

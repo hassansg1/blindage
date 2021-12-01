@@ -25,7 +25,7 @@
             <div class="dropdown d-none d-lg-inline-block ml-1">
                 <button style="width: 90px !important;" onclick="location.href='{{ route('appointment_book.index') }}'" type="button"
                         class="btn {{ str_contains(url()->current(), '/appointment_book') ? 'selected_btn' : '' }} header-item noti-icon top_nav_btns waves-effect">
-                    <i class="fas fa-tachometer-alt"></i>
+                    <i class="fas fa-calendar-alt menu_item_icon"></i>
                     <br>
                     <span>Appt Book</span>
                 </button>
@@ -41,7 +41,7 @@
             <div class="dropdown d-none d-lg-inline-block ml-1">
                 <button onclick="location.href='{{ route('branch.index') }}'" type="button"
                         class="btn {{ str_contains(url()->current(), '/branch') ? 'selected_btn' : '' }} header-item noti-icon top_nav_btns waves-effect">
-                    <i class="fas fa-user menu_item_icon"></i>
+                   <i class="fas fa-map-marked menu_item_icon"></i>
                     <br>
                     <span>Branches</span>
                 </button>
@@ -98,7 +98,7 @@
             <div class="dropdown d-none d-lg-inline-block ml-1">
                 <button onclick="location.href=''" type="button"
                         class="btn {{ str_contains(url()->current(), '/schedule') ? 'selected_btn' : '' }} header-item noti-icon top_nav_btns waves-effect">
-                    <i class="fas fa-clock menu_item_icon"></i>
+                    <i class="fas fa-user menu_item_icon"></i>
                     <br>
                     <span>Rescue</span>
                 </button>
