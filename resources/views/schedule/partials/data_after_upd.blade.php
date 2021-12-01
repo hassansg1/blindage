@@ -11,7 +11,8 @@
 
 @foreach ($period as $key => $value)
 
-    <td class="businessHoursOpen @if(getStartTime($value->format('Y-m-d')) == 1) available @endif">
+    @php($branchData = checkBranchOpen($value->format('Y-m-d')))
+    <td class="businessHoursOpen @if(isset($branchData->is_open)?$branchData->is_open:'0' == 1) available @endif">
         <a class="available_wrapper" href="#" onclick="getModalData('{{$value->format('Y-m-d')}}')"
         >
             <div class="timing" id="{{$value->format('Ymd')}}">

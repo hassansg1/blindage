@@ -188,19 +188,25 @@ if (!function_exists('getBranchTime')){
 
     }
 }
-if (!function_exists('getStartTime')){
-    function getStartTime( $scheduleDate){
-       $schedule =  \App\Models\Schedule::with('scheduleTime')->where('branch_id','=',\Illuminate\Support\Facades\Auth::id())->where('start_date','=',$scheduleDate)->first();
-       if ($schedule != null){
-           return 1;
-       }
-       return 0;
-
-    }
-}
+//if (!function_exists('getStartTime')){
+//    function getStartTime( $scheduleDate){
+//       $schedule =  \App\Models\Schedule::with('scheduleTime')->where('branch_id','=',\Illuminate\Support\Facades\Auth::id())->where('start_date','=',$scheduleDate)->first();
+//       if ($schedule != null){
+//           return 1;
+//       }
+//       return 0;
+//
+//    }
+//}
 if (!function_exists('generalSchedule')){
     function generalSchedule(){
         return \App\Models\GeneralSchedule::all();
+
+    }
+}
+if (!function_exists('checkBranchOpen')){
+    function checkBranchOpen($scheduleDate){
+        return \App\Models\Schedule::where('branch_id','=',\Illuminate\Support\Facades\Auth::id())->where('start_date','=',$scheduleDate)->first();
 
     }
 }

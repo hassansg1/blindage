@@ -252,7 +252,8 @@ class ScheduleController extends BaseController
         $schedule = new Schedule();
         $schedule->branch_id = Auth::id();
         $schedule->start_date = date('Y-m-d', strtotime($activityDate));
-        $schedule->is_open = $request->is_open;
+        $schedule->is_open = isset($request->is_open)?$request->is_open:'0';
+        $schedule->reason = $request->reason;
         $schedule->save();
        ScheduleTime::where('schedule_id',$scheduleId)->delete();
        if($scheduleId != null){

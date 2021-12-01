@@ -14,12 +14,12 @@
 @foreach ($period as $key => $value)
 
     @php($data = $branchTime->where('day','=',$value->format('D'))->first())
-    <td class="@if($data->start_time != null) businessHoursOpen @else businessHoursClosed @endif">
+    <td class="@if($data->is_open == 1) businessHoursOpen @else businessHoursClosed @endif">
         <a class="available_wrapper" href="#" onclick="getModalData()"
             {{--           data-bs-toggle="modal" data-bs-target="#available_modal"--}}
         >
-            <div class="@if($data->start_time != null) timing @else closedText @endif">
-                @if($data->start_time != null)    {{date('H:m a', strtotime($data->start_time))}} - {{date('H:m a', strtotime($data->end_time))}}
+            <div class="@if($data->is_open == 1) timing @else closedText @endif">
+                @if($data->is_open == 1)    {{date('H:m a', strtotime($data->start_time))}} - {{date('H:m a', strtotime($data->end_time))}}
                 @else
                     Closed
                 @endif
