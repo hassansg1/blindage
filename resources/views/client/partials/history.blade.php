@@ -7,9 +7,11 @@
                     @include('client.partials.history_tab.visit_summary')
                     <div class="tab-pane fade" id="v-pills-upcoming-appts" role="tabpanel"
                          aria-labelledby="v-pills-upcoming-appts-appts">
-                        @include('client.partials.history_tab.table')
+                        <div id="table_appended_id">
+                            @include('client.partials.history_tab.table')
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-previous-services" role="tabpanel"
+                    {{-- <div class="tab-pane fade" id="v-pills-previous-services" role="tabpanel"
                          aria-labelledby="v-pills-previous-services-tab">
                         @include('client.partials.history_tab.table')
                     </div>
@@ -24,7 +26,7 @@
                     <div class="tab-pane fade" id="v-pills-other-purchases" role="tabpanel"
                          aria-labelledby="v-pills-other-purchases-tab">
                         @include('client.partials.history_tab.table')
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

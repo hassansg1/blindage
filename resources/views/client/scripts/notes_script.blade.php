@@ -62,4 +62,24 @@
             },
         });
     }
+
+
+    function getAppointmentData(user_id,search_with_respect_id)
+    {
+        $.ajax({
+            type: "GET",
+            url: route,
+            success: function (result) {
+                if (result.status) {
+                    showModal(centerModal, result.html);
+                } else {
+                    doSomethingWentWrongToast();
+                }
+            },
+        });
+        alert(id);
+    }
+
+
+
 </script>
