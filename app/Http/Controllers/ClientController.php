@@ -163,7 +163,7 @@ class ClientController extends BaseController
                 case AppointmentBook::UPCOMMING_APPT:
                     $status=true;
 
-                    $data = AppointmentBook::whereDate('activity_date', '>=', date('Y-m-d'))->get();
+                    $data = AppointmentBook::where('client_id',$request->client_id)->whereDate('activity_date', '>=', date('Y-m-d'))->get();
                     // dd($data);
                     $html =  view('client.partials.history_tab.table')->with(['data'=>$data])->render();
                     break;
