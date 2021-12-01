@@ -79,6 +79,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('appointmentBook/updateAppointWhenDrag',[App\Http\Controllers\AjaxAppointmentBookController::class,'updateAppointWhenDrag'])->name('appointment_book.updateAppointWhenDrag');
 
+
+    // ............ Client
+
+    Route::get('client/getData',[App\Http\Controllers\AjaxAppointmentBookController::class, 'getAppointmentModal'])->name('appointment_book.getAppointmentModal');
+
+
 });
 Route::get('errors/detail',function (){
     return view('errors.500');

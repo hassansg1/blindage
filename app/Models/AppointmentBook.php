@@ -33,6 +33,7 @@ class AppointmentBook extends Model
     const VOIDED = 5;
     const CHECKIN = 6;
     const CHECKOUT = 7;
+    const WAITLIST = 8;
 
     ///.............Confirmation Status Flag
 
@@ -41,6 +42,12 @@ class AppointmentBook extends Model
     const IN_PERSON = 3;
     const EMAIL = 4;
     ////............................
+
+    const UPCOMMING_APPT = 1;
+    const PREVIOUS_SERVICES = 2;
+    const PURCHASED_PRODUCT = 3;
+    const OTHER_PURCHASES = 4;
+
 
 
     public function client()
