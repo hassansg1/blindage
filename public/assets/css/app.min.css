@@ -4715,3 +4715,24 @@ display: flex;
 .cursor-pointer{
     cursor: pointer;
 }
+#selectWeek{
+    border-top: 1px solid #c8c8c8;
+    padding-top: 5px;
+    background: #dee2f4;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #c8c8c8;
+}
+#selectWeek span{
+    color: #000;transition: all .3s;padding: 6px;cursor: pointer;
+}
+#selectWeek span:first-child , #selectWeek span:last-child{
+    padding: 0;background: none;
+}
+#selectWeek span:first-child , #selectWeek span:last-child:hover{
+background: none !important;color: #000;
+}
+#selectWeek span:hover{
+    background: #2a3042;
+    color: #fff;
+    border-radius: 3px;
+}
