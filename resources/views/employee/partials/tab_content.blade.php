@@ -1,4 +1,4 @@
-<div class="tab-content p-3 text-muted">
+<div class="tab-content text-muted">
     <div class="tab-pane active" id="personal_info" role="tabpanel">
         @include($route.'.partials.personal_info')
     </div>

@@ -17,7 +17,7 @@
                     Business Hours
                 </div>
                 <div class="businessHoursEdit">
-                    <a data-bs-toggle="modal" data-bs-target=".businessHoursModal">Edit</a>
+                    <a href="javascript:void(0);" class="text-orange" data-bs-toggle="modal" data-bs-target=".businessHoursModal">Edit</a>
                 </div>
             </div>
         </div>
