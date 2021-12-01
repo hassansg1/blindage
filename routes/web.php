@@ -82,7 +82,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // ............ Client
 
-    Route::get('client/getData',[App\Http\Controllers\AjaxAppointmentBookController::class, 'getAppointmentModal'])->name('appointment_book.getAppointmentModal');
+    Route::get('client/get/HistoryDataClient',[App\Http\Controllers\ClientController::class, 'getClientHistoryData'])->name('client.getClientHistoryData');
 
 
 });

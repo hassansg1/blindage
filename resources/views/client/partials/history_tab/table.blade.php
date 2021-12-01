@@ -18,9 +18,18 @@
                         <tbody>
                             <tr>
                                 <td>
-                                asdsad
+                                @if(isset($data))
+                                    {{ $data->activity_date }}
+                                @else
+                                    No Record Found
+                                @endif
                                     
                                 </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
