@@ -4,10 +4,10 @@
             <div class="left-side-bar-wrapper pb-2">
                 <label class="p-2">Calender</label>
                 <div data-provide="datepicker-inline" class="bootstrap-datepicker-inline" id="calenderValue"></div>
-                <div id="selectWeek">
+                <div id="selectWeek" class="text-center">
                     <span>+</span>
                     @for ($i = 1; $i < 9; $i++)
-                    <span style="padding: 6px;cursor: pointer;" name="{{$i}}-week">{{ $i }}</span>
+                    <span name="{{$i}}-week">{{ $i }}</span>
                     @endfor
                     <span>Weeks</span>
                 </div>
