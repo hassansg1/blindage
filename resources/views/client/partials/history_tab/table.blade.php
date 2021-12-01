@@ -19,7 +19,7 @@
                             <tr>
                                 <td>
                                 @if(isset($data))
-                                    {{ $data }}
+                                    {{ $data->activity_date }}
                                 @else
                                     No Record Found
                                 @endif
