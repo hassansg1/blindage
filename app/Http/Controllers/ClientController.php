@@ -163,30 +163,33 @@ class ClientController extends BaseController
                 case AppointmentBook::UPCOMMING_APPT:
                     $status=true;
 
-                    $data = AppointmentBook::whereDate('activity_date', '>=', date('Y-m-d'))->get();
-                    // dd($data);
+                    $data = AppointmentBook::where('client_id',$request->client_id)->whereDate('activity_date', '>=', date('Y-m-d'))->get();
                     $html =  view('client.partials.history_tab.table')->with(['data'=>$data])->render();
                     break;
 
                 case AppointmentBook::PREVIOUS_SERVICES:
                     $status = true;
-                    $html =  view('client.partials.history_tab.table')->render();
+                    $data = AppointmentBook::where('client_id',$request->client_id)->whereDate('activity_date', '<=', date('Y-m-d'))->get();
+                    $html =  view('client.partials.history_tab.table')->with(['data'=>$data])->render();
                     break;
                 
                 case AppointmentBook::PURCHASED_PRODUCT:
                     $status = true;
-                    $html =  view('client.partials.history_tab.table')->render();
+                    $data = AppointmentBook::has('appointmentBookItems')->where('client_id',$request->client_id)->get();
+                    // dd($data);
+                    $html =  view('client.partials.history_tab.table_product')->with(['data'=>$data])->render();
                     break;
 
                 case AppointmentBook::CANCELED:
                     $status = true;
-                    $html =  view('client.partials.history_tab.table')->render();
+                    $data = AppointmentBook::where('client_id',$request->client_id)->where('status_flag', '=', AppointmentBook::CANCELED)->get();
+                    $html =  view('client.partials.history_tab.table')->with(['data'=>$data])->render();
                     break;
 
-                case AppointmentBook::OTHER_PURCHASES:
-                    $status = true;
-                    $html =  view('client.partials.history_tab.table')->render();
-                    break;
+                // case AppointmentBook::OTHER_PURCHASES:
+                //     $status = true;
+                //     $html =  view('client.partials.history_tab.table_product')->render();
+                //     break;
                 
                 default:
                     

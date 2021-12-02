@@ -99,7 +99,7 @@
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div>
-                                    <h4>Client Comment</h4>
+                                    <h4>Client Notes</h4>
                                         <div class="row" id="clientCommentData">
                                                 @forelse($appt->appointmentBookNotes as $note)
 
@@ -121,7 +121,7 @@
                                                 @endforelse
                                             </div>
 
-                                    <h4 class="mt-20">Notes</h4>
+                                   
                                     {{--                                    <form action="" method="">--}}
                                     <div class="row">
                                         <div class="col-md-10">
@@ -143,8 +143,78 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div class="Upcoming Appointments">
-                                    <h4>Client Comments</h4>
-                                    <p class="text-muted">No upcoming appointments found</p>
+                                    <h4>Upcomming Appointments</h4>
+                                     <table class="table table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Start Time</th>
+                                                <th>Description</th>
+                                                <th>Employee</th>
+                                                <th>Qty</th>
+                                                <th>Total Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(isset($data_upcomming))
+                                                @foreach($data_upcomming as $loop_variable)
+                                                <tr>
+                                                    <td>
+                                                        {{ date('l, M d, Y',strtotime($loop_variable->activity_date)) }}
+                                                    </td>
+                                                    <td>
+                                                        @forelse($loop_variable->appointments as $loop_var)
+                                                            <div>{{ isset($loop_var->start_time)? date('h:i A',strtotime($loop_var->start_time)) :'' }}</div>
+                                                        @empty   
+                                                        @endforelse
+                                                    </td>
+                                                    <td>
+                                                        @forelse($loop_variable->appointments as $loop_var)
+                                                            <div>{{ isset($loop_var->service)?$loop_var->service->name:'' }} (Regular Service) </div>
+                                                            <div>Duration : {{ isset($loop_var->service)?$loop_var->service->minutes:'' }} Min.</div>
+                                                        @empty   
+                                                        @endforelse
+                                                        @forelse($loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class) as $app_book_items)
+                                                            @foreach($app_book_items->serviceitemable->service_items() as $loop_var)
+                                                                <div>{{ $loop_var->packageitemable->name }} (Package Service) </div>
+                                                                <div>{{ $loop_var->packageitemable->minutes }} Min.</div>
+                                                            @endforeach
+                                                        @empty   
+                                                        @endforelse
+                                                    </td>
+                                                    <td>
+                                                        @forelse($loop_variable->appointments as $loop_var)
+                                                            @if(isset($loop_var->employee_type_id) && $loop_var->employee_type_id !=null)
+                                                        
+                                                             <span>{{ $loop_var->employee->getFirstAndLastName() }}</span>
+                                                            
+                                                            @endif
+                                                        @empty
+
+                                                        @endforelse
+                                                    </td>
+                                                    <td>
+                                                        @forelse($loop_variable->appointments as $loop_var)
+                                                            <div>{{ isset($loop_var->quantity)?$loop_var->quantity:'' }}</div>
+                                                        @empty   
+                                                        @endforelse
+                                                    </td>
+                                                    <td>
+                                                        {{ ($loop_variable->appointments->sum('price')) +  $loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class)->sum('price') }}
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            @else
+                                            <tr>
+                                                <td colspan="6">
+                                                    No Record Found
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            
+     
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +225,77 @@
                             <div class="accordion-body">
                                 <div class="text-muted">
                                    <h4>Recent Visits</h4>
-                                    <p class="text-muted">No recent visits found</p>
+                                    <table class="table table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Start Time</th>
+                                                <th>Description</th>
+                                                <th>Employee</th>
+                                                <th>Qty</th>
+                                                <th>Total Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(isset($data_previous))
+                                                @foreach($data_previous as $loop_variable)
+                                                <tr>
+                                                    <td>
+                                                        {{ date('l, M d, Y',strtotime($loop_variable->activity_date)) }}
+                                                    </td>
+                                                    <td>
+                                                        @forelse($loop_variable->appointments as $loop_var)
+                                                            <div>{{ isset($loop_var->start_time)? date('h:i A',strtotime($loop_var->start_time)) :'' }}</div>
+                                                        @empty   
+                                                        @endforelse
+                                                    </td>
+                                                    <td>
+                                                        @forelse($loop_variable->appointments as $loop_var)
+                                                            <div>{{ isset($loop_var->service)?$loop_var->service->name:'' }} (Regular Service) </div>
+                                                            <div>Duration : {{ isset($loop_var->service)?$loop_var->service->minutes:'' }} Min.</div>
+                                                        @empty   
+                                                        @endforelse
+                                                        @forelse($loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class) as $app_book_items)
+                                                            @foreach($app_book_items->serviceitemable->service_items() as $loop_var)
+                                                                <div>{{ $loop_var->packageitemable->name }} (Package Service) </div>
+                                                                <div>{{ $loop_var->packageitemable->minutes }} Min.</div>
+                                                            @endforeach
+                                                        @empty   
+                                                        @endforelse
+                                                    </td>
+                                                    <td>
+                                                        @forelse($loop_variable->appointments as $loop_var)
+                                                            @if(isset($loop_var->employee_type_id) && $loop_var->employee_type_id !=null)
+                                                        
+                                                             <span>{{ $loop_var->employee->getFirstAndLastName() }}</span>
+                                                            
+                                                            @endif
+                                                        @empty
+
+                                                        @endforelse
+                                                    </td>
+                                                    <td>
+                                                        @forelse($loop_variable->appointments as $loop_var)
+                                                            <div>{{ isset($loop_var->quantity)?$loop_var->quantity:'' }}</div>
+                                                        @empty   
+                                                        @endforelse
+                                                    </td>
+                                                    <td>
+                                                        {{ ($loop_variable->appointments->sum('price')) +  $loop_variable->appointmentBookItems->where('serviceitemable_type','=',App\Models\Package::class)->sum('price') }}
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            @else
+                                            <tr>
+                                                <td colspan="6">
+                                                    No Record Found
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            
+     
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

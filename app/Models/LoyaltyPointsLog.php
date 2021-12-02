@@ -54,7 +54,8 @@ class LoyaltyPointsLog extends Model
             'balance' => $balance,
             'ticket_id' => $ticketId,
             'comment' => $comment,
-            'description' => $description ?? 'Manually ' . (int) $adjustment < 0 ? 'decreased' : 'increased' . ' by ' . abs($adjustment),
+            // 'description' => $description ?? 'Manually ' . (int) $adjustment < 0 ? 'decreased' : 'increased' . ' by ' . abs($adjustment),
+            'description' => $description ?? $adjustment < 0 ? 'Decreased by ' . abs($adjustment) :'Increased by ' . abs($adjustment),
             'performed_by' => $performedBy ?? lgUId(),
         ]);
 

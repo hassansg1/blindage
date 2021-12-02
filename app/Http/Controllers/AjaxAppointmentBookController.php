@@ -41,12 +41,14 @@ class AjaxAppointmentBookController extends Controller
     public function getAppointmentDetailModal(Request $request)
     {
         $appt = AppointmentBook::find($request->id);
+        $data_upcomming = AppointmentBook::where('client_id',$appt->client_id)->whereDate('activity_date', '>=', date('Y-m-d'))->get();
+        $data_previous = AppointmentBook::where('client_id',$appt->client_id)->whereDate('activity_date', '<=', date('Y-m-d'))->get();
         $start = $request->start_time;
         $end = $request->end_time;
         $duration = getMinutesDifference($start, $end);
         return response()->json([
             'status' => true,
-            'html' => view($this->view_path . '.partials.schedule_details_modal')->with(compact('appt','start','end','duration'))->render()
+            'html' => view($this->view_path . '.partials.schedule_details_modal')->with(compact('appt','start','end','duration','data_upcomming','data_previous'))->render()
         ]);
     }
 

@@ -21,8 +21,8 @@
            href="#v-pills-upcoming-appts"
            role="tab" aria-controls="v-pills-cancelled-appts" aria-selected="false" onclick="getAppointmentData('{{ $item->id }}','{{ App\Models\AppointmentBook::CANCELED }}')">Cancelled Appts</a>
 
-        <a class="nav-link mb-2" id="v-pills-other-purchases-tab" data-bs-toggle="pill"
+        {{-- <a class="nav-link mb-2" id="v-pills-other-purchases-tab" data-bs-toggle="pill"
            href="#v-pills-upcoming-appts"
-           role="tab" aria-controls="v-pills-other-purchases" aria-selected="false" onclick="getAppointmentData('{{ $item->id }}','{{ App\Models\AppointmentBook::OTHER_PURCHASES }}')">Other Purchases</a>
+           role="tab" aria-controls="v-pills-other-purchases" aria-selected="false" onclick="getAppointmentData('{{ $item->id }}','{{ App\Models\AppointmentBook::OTHER_PURCHASES }}')">Other Purchases</a> --}}
     </div>
 </div>
