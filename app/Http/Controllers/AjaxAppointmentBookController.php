@@ -71,7 +71,6 @@ class AjaxAppointmentBookController extends Controller
 
     public function getItemsDataView(Request $request)
     {
-
         $start = isset($request->start)?$request->start:'';
         $end = isset($request->end)?$request->end:'';
         $duration = isset($request->duration)?$request->duration:'';
@@ -121,13 +120,13 @@ class AjaxAppointmentBookController extends Controller
 
         // dd($request->all());
     }
-    
+
     public function appointment_confirmation_status_update(Request $request)
     {
         $result = AppointmentBook::find($request->appointbook_id);
         if($result !=null)
         {
-            
+
             $result->confirmation_status_flag = $request->value;
             $result->save();
             return response()->json([
@@ -163,16 +162,16 @@ class AjaxAppointmentBookController extends Controller
         return response()->json([
             'status' => true,
             'clients' => $clients,
-        ]);    
+        ]);
     }
 
     public function deleteAppointmentNote(Request $request)
     {
         if(Notes::find($request->note_id)->delete())
         {
-            return response()->json(['status' => true]);  
+            return response()->json(['status' => true]);
         }
-        return response()->json(['status' => false]); 
+        return response()->json(['status' => false]);
 
     }
 
@@ -181,7 +180,7 @@ class AjaxAppointmentBookController extends Controller
         $pathName = 'clientImages';
         if (!empty($request->old_image)) {
             $path = public_path() . '/' . $pathName . '/' . $request->old_image;
-            if (file_exists($path)) 
+            if (file_exists($path))
             {
                 unlink($path);
             }
@@ -196,10 +195,10 @@ class AjaxAppointmentBookController extends Controller
         $client->image = $input;
         if($client->save())
         {
-            return response()->json(['status' => true,'newFileName'=>$input]); 
+            return response()->json(['status' => true,'newFileName'=>$input]);
         }
-        
-        return response()->json(['status' => false]); 
+
+        return response()->json(['status' => false]);
     }
 
     public function updateAppointWhenDrag(Request $request)
@@ -215,10 +214,10 @@ class AjaxAppointmentBookController extends Controller
 
         if($appt_obj->save());
         {
-            return response()->json(['status' => true]); 
+            return response()->json(['status' => true]);
         }
 
-        return response()->json(['status' => false]); 
+        return response()->json(['status' => false]);
 
     }
 

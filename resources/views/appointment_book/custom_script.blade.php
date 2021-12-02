@@ -2,8 +2,34 @@
 
     $(document).ready(function () {
         getAllAppointments();
-    });
+        $('.create_new_services_items_for_waitlist_dropdown').on('change', function () {
+            let start =  $('#start_for_service').val();
+            let end =  $('#end_for_service').val();
+            let duration =  $('#duration_for_service').val();
+            $.ajax({
+                type: "GET",
+                url: '{{ route('waitlist_appointment_book.getWishlistItemsDataView') }}',
+                data: {
+                    value: this.value,
+                    start: start,
+                    end: end,
+                    duration: duration
+                },
+                success: function (result) {
+                    // console.log('get');
+                    // console.log(result);
 
+                    if (result.status) {
+                        $('.wishlist_item_services').append(result.html)
+                    }
+                }
+
+
+
+
+        });
+    });
+    });
     $('.calendar_branch').on('change', function () {
         var branch_id = $(this).val();
         getBranchAppointments(branch_id);
@@ -108,7 +134,7 @@ var t = '';
 // var today_val = ;
 function listData() {
     t = $('#view-List').DataTable({
-        "lengthChange": false, 
+        "lengthChange": false,
         "dom": 'Btipr',
         "processing": true,
         "serverSide": true,
@@ -167,13 +193,13 @@ function listData() {
         if (v) {
             t.search(v).draw();
         }
-    });    
+    });
 
     $('#clear_data').on('click', function (e) {
         $("#search").val(''); // getting search input value
         var v = $("#search").val(); // getting search input value
         t.search(v).draw();
-     
+
     });
 
 }
@@ -286,18 +312,18 @@ $(function() {
     }
     function updateAppointWhenDrag(value) {
 
-        var time =  value.changes.start._date.getHours() + ":"  
-            + value.changes.start._date.getMinutes() + ":" 
+        var time =  value.changes.start._date.getHours() + ":"
+            + value.changes.start._date.getMinutes() + ":"
             + value.changes.start._date.getSeconds();
 
         var id = value.schedule.isPrivate;
 
         var start_date = value.changes.start._date.getDate() + "-"
-            + (value.changes.start._date.getMonth()+1)  + "-" 
+            + (value.changes.start._date.getMonth()+1)  + "-"
             + value.changes.start._date.getFullYear();
 
         var end_date = value.changes.end._date.getDate() + "-"
-            + (value.changes.end._date.getMonth()+1)  + "-" 
+            + (value.changes.end._date.getMonth()+1)  + "-"
             + value.changes.end._date.getFullYear();
 
         $.ajax({
@@ -307,10 +333,14 @@ $(function() {
             success: function (result) {
                 if (result.status) {
                     console.log(result);
-                    
+
                 } else {
                 }
             },
         });
     }
+
+
+
+
 </script>

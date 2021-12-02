@@ -22,7 +22,7 @@
                                                         <b class="text-black">Fahad Amin</b>
                                                     </li>
                                                     <li>
-                                                         1234567890 
+                                                         1234567890
                                                     </li>
                                                     <li>
                                                         <div class="d-flex">
@@ -182,7 +182,7 @@
                         <div id="calendarList" class="lnb-calendars-d1 mt-4 mt-sm-0 me-sm-0 mb-4"></div>
                         <div id="calendar" style="height: 800px;"></div>
                         <!--New Schedule Modal Start-->
-               
+
                     </div>
                     <!--New Schedule Modal End-->
                 </div>
@@ -234,7 +234,7 @@
                                 <option value="HI">Afternoon</option>
                                 <option value="HI">Evening</option>
                             </optgroup>
-                                
+
                             </select>
                        </div>
                        <div class="col-md-4">
@@ -252,7 +252,7 @@
                    <div class="row mb-3">
                        <div class="col-md-6">
                             <label class="form-label required">Service</label>
-                            <select class="form-control services_items_dropdown" name="services_items_dropdown">
+                            <select class="form-control services_items_dropdown create_new_services_items_for_waitlist_dropdown" name="services_items_dropdown">
                                  <option>-- Select Service -- </option>
                                 @foreach(\App\Models\Service::all() as $service_loopVariable)
                                 <option  value="{{ 'Service??'.$service_loopVariable->id ?? '' }}" >{{ $service_loopVariable->name ?? '' }}</option>
@@ -260,6 +260,10 @@
                             </select>
                        </div>
                    </div>
+
+                    <div class="row mb-3">
+                        <div id="create_new_services_items_append_div "> <h3 class="heading-style wishlist_item_services"> Services: </h3> </div>
+                    </div>
                    <div class="row">
                        <div class="col-md-12">
                             <h5 class="mt-20">Comments</h5>

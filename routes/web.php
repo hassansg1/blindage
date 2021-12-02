@@ -73,6 +73,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('getAppointmentModal', [App\Http\Controllers\AjaxAppointmentBookController::class, 'getAppointmentModal'])->name('appointment_book.getAppointmentModal');
     Route::get('getAppointmentDetailModal', [App\Http\Controllers\AjaxAppointmentBookController::class, 'getAppointmentDetailModal'])->name('appointment_book.getAppointmentDetailModal');
     Route::get('getItemsDataView', [App\Http\Controllers\AjaxAppointmentBookController::class, 'getItemsDataView'])->name('appointment_book.getItemsDataView');
+
+    Route::get('getWishlistItemsDataView', [App\Http\Controllers\AjaxAppointmentBookController::class, 'getItemsDataView'])->name('waitlist_appointment_book.getWishlistItemsDataView');
     Route::post('unit/filter', [App\Http\Controllers\UnitController::class, 'filter'])->name('unit.filter');
     Route::post('addNewClient', [App\Http\Controllers\AjaxAppointmentBookController::class, 'addNewClient'])->name('addNewClient');
     Route::post('addClientImage', [App\Http\Controllers\AjaxAppointmentBookController::class, 'addClientImage'])->name('addClientImage');
