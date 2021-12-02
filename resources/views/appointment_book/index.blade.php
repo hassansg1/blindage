@@ -36,4 +36,6 @@
     <script src="{{ URL::asset('/assets/js/pages/schedules.js') }}"></script>
     @include('appointment_book.script')
     @include('appointment_book.custom_script')
+    @include('appointment_book.form_script')
+
 @endsection

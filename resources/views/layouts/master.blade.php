@@ -86,7 +86,7 @@
                         </div>
                         <div class="col-md-4">
                            <label for="category" class="form-label">Category</label>
-                           <select class="form-select" name="category">
+                           <select class="form-select" name="category" required>
                               <option value="">--Select Category--</option>
                                @foreach(getClientCategories() as $category)
                               <option value="{{$category->id}}">{{$category->name}}</option>
@@ -98,7 +98,7 @@
                         <div class="col-md-4">
                            <div class="mb-3">
                               <label for="first_name" class="form-label">Mobile Phone</label>
-                              <input type="text" value=""
+                              <input type="number" value="" required
                                  class="form-control" id=""
                                  name="mobile_no">
                            </div>
@@ -106,7 +106,7 @@
                         <div class="col-md-4">
                            <div class="mb-3">
                               <label for="first_name" class="form-label">Alternative Phone</label>
-                              <input type="text" value=""
+                              <input type="number" value=""
                                  class="form-control" id=""
                                  name="alt_mobile_no">
                            </div>
@@ -125,7 +125,7 @@
                            <div class="mb-3">
                               <label for="" class="form-label">Email</label>
                               <input type="email" value=""
-                                 class="form-control" id=""
+                                 class="form-control" id=""  required
                                  name="email">
                            </div>
                         </div>
@@ -192,5 +192,6 @@
       </div>
       <!-- /.modal -->
       <!-- Add New Client Modal Ends Here -->
+
    </body>
 </html>

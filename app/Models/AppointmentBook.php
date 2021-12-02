@@ -145,6 +145,7 @@ class AppointmentBook extends Model
         if (isset($request->activity_date)) $item->activity_date = $request->activity_date;
         if (isset($request->notes)) $item->notes = $request->notes;
         if (isset($request->status)) $item->status = $request->status;
+        if (isset($request->status_flag)) $item->status_flag = $request->status_flag;
         if (isset($request->appointment_type_id)) $item->appointment_type_id = $request->appointment_type_id;
         $item->created_by = Auth::user()->id ?? 0;
 
@@ -252,7 +253,7 @@ class AppointmentBook extends Model
         if (isset($request->create_new_client_id)) $item->client_id = $request->create_new_client_id;
         if (isset($request->create_new_activity_date)) $item->activity_date = $request->create_new_activity_date;
         if (isset($request->create_new_appointment_note)) $item->notes = $request->create_new_appointment_note;
-        if (isset($request->create_new_appointment_type_id)) $item->appointment_type_id = $request->create_new_appointment_type_id;
+          if (isset($request->create_new_appointment_type_id)) $item->appointment_type_id = $request->create_new_appointment_type_id;
         $item->created_by = Auth::user()->id ?? 0;
 
         if ($item->save())
@@ -443,6 +444,10 @@ class AppointmentBook extends Model
     public function appointmentType()
     {
         return $this->belongsTo(AppointmentType::class, 'appointment_type_id');
+    }
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class, 'branch_id');
     }
 
 

@@ -210,6 +210,12 @@ if (!function_exists('checkBranchOpen')){
 
     }
 }
+if (!function_exists('waitListData')){
+    function waitListData(){
+       return  AppointmentBook::with('appointments')->where('status_flag', AppointmentBook::WAITLIST)->get();
+
+    }
+}
 //if (!function_exists('addAppointmentLog')) {
 //    function addAppointmentLog($id)
 //    {

@@ -136,21 +136,6 @@
             },
         });
     }
-    $('#submitFormClient').on('click', function () {
-        $.ajax({
-            type: "POST",
-            url: '{{ route('addNewClient') }}',
-            data: $('#addNewClientModal').serialize(),
-            success: function (result) {
-                getAllAppointments();
-                $('.addNewClientModal').modal('hide');
-                if(result.clients){
-                    $('#select_client_drop_down').html(result.clients);
-                }
-                $('#addNewClientModal').reset();
-            },
-        });
-    });
 
     function openScheduleDetailPopup(id,start=null,end=null) {
         $.ajax({
@@ -290,12 +275,52 @@
         }
     }
 
-         $('.addNewClient').click(function(){
-             $('.bs-example-modal-center').modal('hide');
-         });
+         // $('.addNewClient').click(function(){
+         //     $('.bs-example-modal-center').modal('hide');
+         // });
 
 
+     function setEndTime(startTime) {
+    if(startTime == '10:00:00'){
+     $('#time_start').val('10:00:00')
+     $('#endTime').val('11:00:00')
+     } if(startTime == '14:00:00'){
+     $('#time_start').val('14:00:00');
+     $('#endTime').val('15:00:00');
+     } if(startTime == '16:00:00') {
+             $('#time_start').val('16:00:00')
+             $('#endTime').val('17:00:00')
+         }
+     }
+    function submitWaitForm() {
+        $.ajax({
+            type: "POST",
+            url: '{{ route('appointment_book.store') }}',
+            data: $('#appointment_wait_form').serialize(),
+            success: function (result) {
+                if (result.status) {
+                    getAllAppointments();
+                    $('.waitlistModal').modal('hide')
+                }
+            },
+        });
+    }
 
 
-
+    $('#submitFormClient').on('click', function () {
+        $.ajax({
+            type: "POST",
+            url: '{{ route('addNewClient') }}',
+            data: $('#addNewClientModal').serialize(),
+            success: function (result) {
+                getAllAppointments();
+                $('.addNewClientModal').modal('hide');
+                if(result.clients){
+                    $('#select_client_drop_down').html(result.clients);
+                    $('#select_client_drop_down_wait').html(result.clients);
+                }
+                $('#addNewClientModal').trigger("reset");
+            },
+        });
+    });
 </script>

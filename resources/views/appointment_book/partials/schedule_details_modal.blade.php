@@ -50,12 +50,12 @@
                 <div>
                     <span>Balance:</span> <b>$0.00 Credit</b>
                 </div>
-                
+
                 <div>
                     <label>Confirmation Type : </label>
                     <select class="form-select mb-2 actionSelectOption" onchange="appointmentComfirmationStatusUpdate('{{ $appt->id??'' }}',this.value)">
                         <option selected="" value="">None</option>
-                          
+
                         <option @if(App\Models\AppointmentBook::PHONE_DIRECT == $appt->confirmation_status_flag) selected @endif value="{{ App\Models\AppointmentBook::PHONE_DIRECT }}">Phone (Direct)</option>
                         <option @if(App\Models\AppointmentBook::PHONE_ANSWER_MACHINE == $appt->confirmation_status_flag) selected @endif value="{{ App\Models\AppointmentBook::PHONE_ANSWER_MACHINE }}">Phone (Answer Machine)</option>
 
@@ -102,7 +102,7 @@
                                     <h4>Client Comment</h4>
                                         <div class="row" id="clientCommentData">
                                                 @forelse($appt->appointmentBookNotes as $note)
-                                                    
+
                                                         <div class="col-lg-4 deleteRowClientNote">
                                                             <div class="card border border-success">
                                                                 <div class="card-header bg-transparent border-success d-flex justify-content-between">
@@ -115,7 +115,7 @@
                                                             </div>
                                                         </div>
 
-                                                    
+
                                                 @empty
                                                 {{-- No data found --}}
                                                 @endforelse
@@ -502,4 +502,3 @@
         <div class="btn btn-primary" data-bs-dismiss="modal">Schedule</div>
     </div>
 </form>
-@include('appointment_book.form_script')

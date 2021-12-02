@@ -58,7 +58,7 @@ class AppointmentController extends BaseController
      */
     public function create()
     {
-        dd('dss');
+
         return view($this->route . "/create")
             ->with(['route' => $this->route, 'heading' => $this->heading]);
     }
