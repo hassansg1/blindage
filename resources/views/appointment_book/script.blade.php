@@ -442,14 +442,28 @@
         }
 
         function selectCompleteWeek(){
-         var t = $(this).text();
-         var today = new Date();
-         var date = (7*t+1);
-         $("#calenderValue").datepicker("setDate", new Date(today.getFullYear(), today.getMonth(), date));
-     }
+           var t = $(this).text();
+           var today = new Date();
+           var date = (7*t+1);
+           $("#calenderValue").datepicker("setDate", new Date(today.getFullYear(), today.getMonth(), date));
+           activeWeek();
+       }
 
 
-     function onNewSchedule() {
+       function activeWeek() {
+        var WeekFirstDay = $( "#calenderValue" ).datepicker("getDate").getDate();
+        var WeekLastDay = $( "#calenderValue" ).datepicker("getDate").getDate()+7;
+        $('.day.active').closest('tr').find('td:eq(4)').css('background-color','#eee3b2');
+        $('.day.active').closest('tr').find('td:eq(5)').css('background-color','#eee3b2');
+        $('.day.active').closest('tr').find('td:eq(6)').css('background-color','#eee3b2');
+        $('.day.active').closest('tr').next('tr').find('td:eq(0)').css('background-color', '#eee3b2');
+        $('.day.active').closest('tr').next('tr').find('td:eq(1)').css('background-color', '#eee3b2');
+        $('.day.active').closest('tr').next('tr').find('td:eq(2)').css('background-color', '#eee3b2');
+        $('.day.active').closest('tr').next('tr').find('td:eq(3)').css('background-color', '#eee3b2');
+    }
+
+
+    function onNewSchedule() {
         var title = $('#new-schedule-title').val();
         var location = $('#new-schedule-location').val();
         var isAllDay = document.getElementById('new-schedule-allday').checked;
