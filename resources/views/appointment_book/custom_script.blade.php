@@ -42,6 +42,15 @@
             }
         });
     }
+    function getAllSchedules() {
+        $.ajax({
+            type: "GET",
+            url: '{{ route('schedule.get_branch_schedule') }}',
+            success: function (result) {
+                console.log(result)
+            }
+        });
+    }
 
     function openCustomCreateSchedulePopup(start, end, id) {
         $.ajax({

@@ -192,6 +192,15 @@ class ScheduleController extends BaseController
         ];
     }
 
+    public function getBranchSchedule(){
+        $user = Auth::user();
+        $schedule = Schedule::with('scheduleTime')->where(['branch_id'=>$user->id])->get();
+        return [
+            'status' => 1,
+            'result' => $schedule,
+        ];
+    }  
+
     public function setBranchTime(Request $request)
     {
         $keyValue = $request->keyValue;

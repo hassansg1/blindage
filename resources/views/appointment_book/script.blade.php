@@ -432,7 +432,7 @@
                 var selecetdDate =e.format();
                 cal.clear();
                 if (cal.getViewName() === 'week') {
-                    cal.setDate(new Date(selecetdDate));
+                    cal.setDate(new Date(selecetdDate+1));
                     cal.changeView('week', true);
                 }
             }
@@ -451,7 +451,7 @@
 
 
 
-       function activeWeek() {
+       function activeWeek() {      
         var WeekFirstDay = $( "#calenderValue" ).datepicker("getDate").getDate();
         var WeekLastDay = $( "#calenderValue" ).datepicker("getDate").getDate()+7;
         $('.day.active').closest('tr').find('td:eq(4)').css('background-color','#eee3b2');
